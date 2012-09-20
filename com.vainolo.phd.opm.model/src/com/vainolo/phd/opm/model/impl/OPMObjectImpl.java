@@ -9,7 +9,9 @@ package com.vainolo.phd.opm.model.impl;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMPackage;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,22 +24,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class OPMObjectImpl extends OPMThingImpl implements OPMObject {
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	protected OPMObjectImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OPMPackage.Literals.OPM_OBJECT;
-	}
+    return OPMPackage.Literals.OPM_OBJECT;
+  }
 
 } //OPMObjectImpl

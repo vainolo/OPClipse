@@ -1,0 +1,25 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OPM Utilities
+Bundle-SymbolicName: com.vainolo.phd.opm.utilities
+Bundle-Version: 0.1
+Bundle-Activator: com.vainolo.phd.opm.utilities.Activator
+Bundle-Vendor: Arieh "Vainolo" Bibliowicz
+Require-Bundle: org.eclipse.core.runtime,
+ com.vainolo.phd.opm.model;bundle-version="1.0.0",
+ org.junit;bundle-version="4.8.2",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: lib/simplelogger.jar,
+ .,
+ lib/guava-12.0.jar,
+ lib/cglib-nodep-2.2.jar,
+ lib/easymock-3.1.jar,
+ lib/objenesis-1.2.jar
+Export-Package: com.google.common.base,
+ com.google.common.collect,
+ com.vainolo.phd.opm.utilities,
+ com.vainolo.phd.opm.utilities.analysis,
+ com.vainolo.utils,
+ org.easymock
