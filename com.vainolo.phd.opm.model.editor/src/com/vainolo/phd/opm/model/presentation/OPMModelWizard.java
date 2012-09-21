@@ -87,7 +87,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
-
+ 
 
 /**
  * This is a simple wizard for creating a new model file.
