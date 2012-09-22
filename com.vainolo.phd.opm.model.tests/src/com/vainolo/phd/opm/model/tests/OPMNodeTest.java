@@ -15,23 +15,23 @@ import com.vainolo.phd.opm.model.OPMNode;
 public abstract class OPMNodeTest extends OPMElementWithIDTest {
 
   /**
-   * Constructs a new Node test case with the given name.
-   * <!-- begin-user-doc
+	 * Constructs a new Node test case with the given name.
+	 * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public OPMNodeTest(String name) {
-    super(name);
-  }
+		super(name);
+	}
 
   /**
-   * Returns the fixture for this Node test case.
-   * <!-- begin-user-doc --> <!--
+	 * Returns the fixture for this Node test case.
+	 * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected OPMNode getFixture() {
-    return (OPMNode)fixture;
-  }
+		return (OPMNode)fixture;
+	}
 } // OPMNodeTest

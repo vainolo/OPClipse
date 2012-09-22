@@ -23,21 +23,21 @@ package com.vainolo.phd.opm.model;
 public interface OPMProcess extends OPMThing {
 
   /**
-   * Returns the value of the '<em><b>Kind</b></em>' attribute.
-   * The default value is <code>""</code>.
-   * The literals are from the enumeration {@link com.vainolo.phd.opm.model.OPMProcessKind}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * The literals are from the enumeration {@link com.vainolo.phd.opm.model.OPMProcessKind}.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Kind</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Kind</em>' attribute.
-   * @see com.vainolo.phd.opm.model.OPMProcessKind
-   * @see #setKind(OPMProcessKind)
-   * @see com.vainolo.phd.opm.model.OPMPackage#getOPMProcess_Kind()
-   * @model default="" required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Kind</em>' attribute.
+	 * @see com.vainolo.phd.opm.model.OPMProcessKind
+	 * @see #setKind(OPMProcessKind)
+	 * @see com.vainolo.phd.opm.model.OPMPackage#getOPMProcess_Kind()
+	 * @model default="" required="true"
+	 * @generated
+	 */
   OPMProcessKind getKind();
 
   /**

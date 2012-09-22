@@ -19,58 +19,58 @@ import junit.textui.TestRunner;
  * <!-- end-user-doc -->
  * @generated
  */
-public class OPMLinkTest extends OPMNodeTest {
+public class OPMLinkTest extends OPMElementWithIDTest {
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public static void main(String[] args) {
-    TestRunner.run(OPMLinkTest.class);
-  }
+		TestRunner.run(OPMLinkTest.class);
+	}
 
 	/**
-   * Constructs a new Link test case with the given name.
-   * <!-- begin-user-doc -->
+	 * Constructs a new Link test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public OPMLinkTest(String name) {
-    super(name);
-  }
+		super(name);
+	}
 
 	/**
-   * Returns the fixture for this Link test case.
-   * <!-- begin-user-doc -->
+	 * Returns the fixture for this Link test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
   protected OPMLink getFixture() {
-    return (OPMLink)fixture;
-  }
+		return (OPMLink)fixture;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see junit.framework.TestCase#setUp()
-   * @generated
-   */
+	 * @see junit.framework.TestCase#setUp()
+	 * @generated
+	 */
 	@Override
 	protected void setUp() throws Exception {
-    setFixture(OPMFactory.eINSTANCE.createOPMLink());
-  }
+		setFixture(OPMFactory.eINSTANCE.createOPMLink());
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see junit.framework.TestCase#tearDown()
-   * @generated
-   */
+	 * @see junit.framework.TestCase#tearDown()
+	 * @generated
+	 */
 	@Override
 	protected void tearDown() throws Exception {
-    setFixture(null);
-  }
+		setFixture(null);
+	}
 
 } //OPMLinkTest

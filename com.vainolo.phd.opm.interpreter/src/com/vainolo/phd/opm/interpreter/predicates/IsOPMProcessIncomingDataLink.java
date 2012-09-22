@@ -5,7 +5,12 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.interpreter.predicates;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.base.Predicate;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -18,23 +23,24 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 public enum IsOPMProcessIncomingDataLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
+  private ArrayList<EClass> TrueTypes;
+  
+  IsOPMProcessIncomingDataLink(){
+	  TrueTypes = new ArrayList<>();
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMAgentLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionConditionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionEventLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentConditionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentEventLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectConditionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectEventLink());
+  }
+  
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case AGENT:
-      case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
-      case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
-      case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
-        return true;
-      default:
-        return false;
+	  return MultiTypeSelectionHelper.apply(TrueTypes, link);
     }
-  }
-
 }

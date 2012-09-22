@@ -22,24 +22,24 @@ import junit.textui.TestRunner;
 public abstract class OPMContainerTest extends OPMElementWithIDTest {
 
     /**
-   * Constructs a new Container test case with the given name.
-   * <!-- begin-user-doc -->
+	 * Constructs a new Container test case with the given name.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
     public OPMContainerTest(String name) {
-    super(name);
-  }
+		super(name);
+	}
 
     /**
-   * Returns the fixture for this Container test case.
-   * <!-- begin-user-doc -->
+	 * Returns the fixture for this Container test case.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
     @Override
     protected OPMContainer getFixture() {
-    return (OPMContainer)fixture;
-  }
+		return (OPMContainer)fixture;
+	}
 
 } //OPMContainerTest

@@ -17,6 +17,6 @@ package com.vainolo.phd.opm.model;
  * @model
  * @generated
  */
-public interface OPMState extends OPMNode, OPMNamedElement {
+public interface OPMState extends OPMNode {
 
 } // OPMState

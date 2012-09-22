@@ -19,6 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Label extends OPMNode, OPMNamedElement {
+public interface Label extends OPMNode {
 
 } // Label

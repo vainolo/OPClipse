@@ -22,41 +22,41 @@ import junit.textui.TestRunner;
 public abstract class OPMElementWithIDTest extends TestCase {
 
   /**
-   * The fixture for this Element With ID test case.
-   * <!-- begin-user-doc -->
+	 * The fixture for this Element With ID test case.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected OPMElementWithID fixture = null;
 
   /**
-   * Constructs a new Element With ID test case with the given name.
-   * <!-- begin-user-doc -->
+	 * Constructs a new Element With ID test case with the given name.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public OPMElementWithIDTest(String name) {
-    super(name);
-  }
+		super(name);
+	}
 
   /**
-   * Sets the fixture for this Element With ID test case.
-   * <!-- begin-user-doc -->
+	 * Sets the fixture for this Element With ID test case.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected void setFixture(OPMElementWithID fixture) {
-    this.fixture = fixture;
-  }
+		this.fixture = fixture;
+	}
 
   /**
-   * Returns the fixture for this Element With ID test case.
-   * <!-- begin-user-doc -->
+	 * Returns the fixture for this Element With ID test case.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected OPMElementWithID getFixture() {
-    return fixture;
-  }
+		return fixture;
+	}
 
 } //OPMElementWithIDTest

@@ -6,6 +6,7 @@
 package com.vainolo.phd.opm.utilities.predicates;
 
 import com.google.common.base.Predicate;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -18,13 +19,11 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 public enum IsOPMInvocationLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
+  
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case INVOCATION:
-        return true;
-      default:
-        return false;
-    }
+    if(OPMPackage.eINSTANCE.getOPMInvocationLink().isInstance(link))
+      return true;
+    return false;
   }
 }

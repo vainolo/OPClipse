@@ -13,6 +13,7 @@ import com.vainolo.phd.opm.model.OPMPackage;
  * Predicate that returns true for incoming OPM structural links.
  * 
  * @author Arieh 'Vainolo' Bibliowicz
+ * @author Eyal 
  * 
  */
 public enum IsOPMStructuralLink implements Predicate<OPMLink> {
@@ -20,10 +21,8 @@ public enum IsOPMStructuralLink implements Predicate<OPMLink> {
 
   @Override
   public boolean apply(final OPMLink link) {
-    if(OPMPackage.eINSTANCE.getOPMStructuralLinkAggregator().isInstance(link.getSource()) ||
-        OPMPackage.eINSTANCE.getOPMStructuralLinkAggregator().isInstance(link.getTarget()))
+    if(OPMPackage.eINSTANCE.getOPMStructuralLink().isInstance(link))
       return true;
-
     return false;
   }
 }

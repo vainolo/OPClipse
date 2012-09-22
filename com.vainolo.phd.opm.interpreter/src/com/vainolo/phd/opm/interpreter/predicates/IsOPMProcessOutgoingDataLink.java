@@ -5,7 +5,12 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.interpreter.predicates;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.base.Predicate;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -18,17 +23,19 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 public enum IsOPMProcessOutgoingDataLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
+private ArrayList<EClass> TrueTypes;
+  
+IsOPMProcessOutgoingDataLink(){
+	  TrueTypes = new ArrayList<>();
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMResultLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectConditionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectEventLink());
+  }
+  
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
-      case RESULT:
-        return true;
-      default:
-        return false;
+	  return MultiTypeSelectionHelper.apply(TrueTypes, link);
     }
-  }
 
 }

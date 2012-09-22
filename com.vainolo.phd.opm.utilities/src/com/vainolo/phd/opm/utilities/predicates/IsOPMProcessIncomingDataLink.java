@@ -5,8 +5,10 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.utilities.predicates;
 
+import java.util.ArrayList;
+
 import com.google.common.base.Predicate;
-import com.vainolo.phd.opm.model.OPMProceduralLink;
+import com.vainolo.phd.opm.model.*;
 
 /**
  * Predicate that returns true for links that provide incoming data.
@@ -18,23 +20,28 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 public enum IsOPMProcessIncomingDataLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
+  private ArrayList<Class<?>> TrueTypes;
+  
+  IsOPMProcessIncomingDataLink(){
+	  TrueTypes.add(OPMAgentLink.class);
+	  TrueTypes.add(OPMConsumptionLink.class);
+	  TrueTypes.add(OPMConsumptionConditionLink.class);
+	  TrueTypes.add(OPMConsumptionEventLink.class);
+	  TrueTypes.add(OPMInstrumentLink.class);
+	  TrueTypes.add(OPMInstrumentConditionLink.class);
+	  TrueTypes.add(OPMInstrumentEventLink.class);
+	  TrueTypes.add(OPMEffectLink.class);
+	  TrueTypes.add(OPMEffectConditionLink.class);
+	  TrueTypes.add(OPMEffectEventLink.class);
+  }
+  
+  
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case AGENT:
-      case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
-      case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
-      case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
-        return true;
-      default:
-        return false;
-    }
+	  Class<?> linkType = link.getClass();
+    for (Class<?> type:TrueTypes)
+    	if (type.isAssignableFrom(linkType)) return true;
+    return false;
   }
 
 }

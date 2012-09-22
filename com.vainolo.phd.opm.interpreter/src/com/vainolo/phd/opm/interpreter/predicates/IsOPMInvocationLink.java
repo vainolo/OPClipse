@@ -5,7 +5,12 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.interpreter.predicates;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.base.Predicate;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -18,13 +23,15 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 public enum IsOPMInvocationLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
+  private ArrayList<EClass> TrueTypes;
+  
+  IsOPMInvocationLink(){
+	  TrueTypes = new ArrayList<>();
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInvocationLink());
+  }
+  
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case INVOCATION:
-        return true;
-      default:
-        return false;
+	  return MultiTypeSelectionHelper.apply(TrueTypes, link);
     }
-  }
 }
