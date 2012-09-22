@@ -23,10 +23,9 @@ import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.model.OPMProceduralLinkKind;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPDAnalysisTest {
 
@@ -42,15 +41,13 @@ public class OPDAnalysisTest {
   private OPMObjectProcessDiagram systemOPD;
   private Map<Integer, OPMProcess> systemProcesses = Maps.newHashMap();
   private Map<Integer, OPMObject> systemObjects = Maps.newHashMap();
-  private Map<Integer, OPMStructuralLinkAggregator> systemAggregators = Maps.newHashMap();
-  private Map<Integer, OPMLink> systemStructuralLinks = Maps.newHashMap();
+  private Map<Integer, OPMStructuralLink> systemStructuralLinks = Maps.newHashMap();
   private Map<Integer, OPMProceduralLink> systemProceduralLinks = Maps.newHashMap();
 
   private OPMObjectProcessDiagram inZoomedOPD;
   private Map<Integer, OPMProcess> inZoomedProcesses = Maps.newHashMap();
   private Map<Integer, OPMObject> inZoomedObjects = Maps.newHashMap();
-  private Map<Integer, OPMStructuralLinkAggregator> inZoomedAggregators = Maps.newHashMap();
-  private Map<Integer, OPMLink> inZoomedStructuralLinks = Maps.newHashMap();
+  private Map<Integer, OPMStructuralLink> inZoomedStructuralLinks = Maps.newHashMap();
   private Map<Integer, OPMProceduralLink> inZoomedProceduralLinks = Maps.newHashMap();
   private Map<Integer, OPMObject> inZoomedObjectsWithStates = Maps.newHashMap();
   private Map<Integer, OPMState> inZoomedStates = Maps.newHashMap();
@@ -139,7 +136,7 @@ public class OPDAnalysisTest {
 
   @Test
   public void testFindOutgoingDataLinks_Process() {
-    Iterable<OPMProceduralLink> result = fixture.findOutgoingDataLinks(inZoomedProcesses.get(2));
+    Iterable<OPMProceduralLink> result = OPDAnalysis.findOutgoingDataLinks(inZoomedProcesses.get(2));
 
     assertEquals(4, Iterables.size(result));
     assertTrue(Iterables.contains(result, inZoomedProceduralLinks.get(5)));
@@ -227,88 +224,66 @@ public class OPDAnalysisTest {
 
     createProcesses(systemOPD, systemProcesses, SYSTEM_PROCESSES, 0);
     createObjects(systemOPD, systemObjects, SYSTEM_OBJETCS, 0);
-    createAggregators(systemOPD, systemAggregators, 3, 0);
 
     createSystemOPDStructuralLinks();
     createSystemOPDProceduralLinks();
   }
 
   private void createSystemOPDProceduralLinks() {
-    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.AGENT);
+    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMAgentLink();
     link.setSource(systemObjects.get(0));
     link.setTarget(systemProcesses.get(0));
     systemProceduralLinks.put(0, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INSTRUMENT);
+    link = OPMFactory.eINSTANCE.createOPMInstrumentLink();    
     link.setSource(systemObjects.get(1));
     link.setTarget(systemProcesses.get(0));
     systemProceduralLinks.put(1, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION);
+    link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
     link.setSource(systemObjects.get(2));
     link.setTarget(systemProcesses.get(0));
     systemProceduralLinks.put(2, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.RESULT);
+    link = OPMFactory.eINSTANCE.createOPMResultLink();
     link.setSource(systemProcesses.get(0));
     link.setTarget(systemObjects.get(3));
     systemProceduralLinks.put(3, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.EFFECT);
+    link = OPMFactory.eINSTANCE.createOPMEffectLink();
     link.setSource(systemObjects.get(4));
     link.setTarget(systemProcesses.get(0));
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.EFFECT);
+    link = OPMFactory.eINSTANCE.createOPMEffectLink();
     link.setSource(systemProcesses.get(0));
     link.setTarget(systemObjects.get(5));
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INVOCATION);
+    link = OPMFactory.eINSTANCE.createOPMInvocationLink();
     link.setSource(systemProcesses.get(0));
     link.setTarget(systemProcesses.get(1));
   }
 
   private void createSystemOPDStructuralLinks() {
-    OPMLink link = OPMFactory.eINSTANCE.createOPMLink();
+	  
+    OPMStructuralLink link = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
     link.setSource(systemObjects.get(0));
-    link.setTarget(systemAggregators.get(0));
+    link.setTarget(systemObjects.get(1));
     systemStructuralLinks.put(0, link);
 
-    link = OPMFactory.eINSTANCE.createOPMLink();
-    link.setSource(systemAggregators.get(0));
-    link.setTarget(systemObjects.get(1));
+    link = OPMFactory.eINSTANCE.createOPMExhibitionLink();
+    link.setSource(systemObjects.get(0));
+    link.setTarget(systemObjects.get(2));
     systemStructuralLinks.put(1, link);
 
-    link = OPMFactory.eINSTANCE.createOPMLink();
-    link.setSource(systemAggregators.get(0));
+    link = OPMFactory.eINSTANCE.createOPMAggregationLink();
+    link.setSource(systemObjects.get(3));
     link.setTarget(systemObjects.get(2));
     systemStructuralLinks.put(2, link);
 
-    link = OPMFactory.eINSTANCE.createOPMLink();
+    link = OPMFactory.eINSTANCE.createOPMExhibitionLink();
     link.setSource(systemObjects.get(3));
-    link.setTarget(systemAggregators.get(1));
-    systemStructuralLinks.put(3, link);
-
-    link = OPMFactory.eINSTANCE.createOPMLink();
-    link.setSource(systemAggregators.get(1));
-    link.setTarget(systemObjects.get(2));
-    systemStructuralLinks.put(4, link);
-
-    link = OPMFactory.eINSTANCE.createOPMLink();
-    link.setSource(systemObjects.get(3));
-    link.setTarget(systemAggregators.get(2));
-    systemStructuralLinks.put(5, link);
-
-    link = OPMFactory.eINSTANCE.createOPMLink();
-    link.setSource(systemAggregators.get(2));
     link.setTarget(systemObjects.get(4));
-    systemStructuralLinks.put(6, link);
+    systemStructuralLinks.put(3, link);
   }
 
   private void initInZoomedOPD() {
@@ -317,7 +292,6 @@ public class OPDAnalysisTest {
 
     createObjects(inZoomedOPD, inZoomedObjects, IN_ZOOMED_OBJECTS, 0);
     createProcesses(inZoomedOPD, inZoomedProcesses, IN_ZOOMED_PROCESSES, 0);
-    createAggregators(inZoomedOPD, inZoomedAggregators, 3, 0);
 
     OPMProcess inZoomedProcess = inZoomedProcesses.get(0);
     createObjects(inZoomedProcess, inZoomedObjects, IN_ZOOMED_INSIDE_OBJECTS, IN_ZOOMED_OBJECTS);
@@ -343,97 +317,81 @@ public class OPDAnalysisTest {
       j++;
     }
 
-    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION);
+    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
     link.setSource(inZoomedStates.get(0));
     link.setTarget(inZoomedProcesses.get(5));
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INSTRUMENT_EVENT);
+    link = OPMFactory.eINSTANCE.createOPMInstrumentEventLink();
     link.setSource(inZoomedStates.get(1));
     link.setTarget(inZoomedProcesses.get(5));
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.RESULT);
+    link = OPMFactory.eINSTANCE.createOPMResultLink();
     link.setSource(inZoomedProcesses.get(6));
     link.setTarget(inZoomedStates.get(2));
   }
 
   private void createInZoomedOPDProceduralLinks() {
-    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.AGENT);
+    OPMProceduralLink link = OPMFactory.eINSTANCE.createOPMAgentLink();
     link.setSource(inZoomedObjects.get(0));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(1, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION);
+    link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
     link.setSource(inZoomedObjects.get(1));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(2, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION_CONDITION);
+    link = OPMFactory.eINSTANCE.createOPMConsumptionConditionLink();
     link.setSource(inZoomedObjects.get(2));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(3, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION_EVENT);
+    link = OPMFactory.eINSTANCE.createOPMConsumptionEventLink();
     link.setSource(inZoomedObjects.get(3));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(4, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.EFFECT);
+    link = OPMFactory.eINSTANCE.createOPMEffectLink();
     link.setSource(inZoomedObjects.get(4));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(5, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.EFFECT_CONDITION);
+    link = OPMFactory.eINSTANCE.createOPMEffectConditionLink();
     link.setSource(inZoomedObjects.get(5));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(6, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.EFFECT_EVENT);
+    link = OPMFactory.eINSTANCE.createOPMEffectEventLink();
     link.setSource(inZoomedObjects.get(6));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(7, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INSTRUMENT);
+    link = OPMFactory.eINSTANCE.createOPMInstrumentLink();
     link.setSource(inZoomedObjects.get(7));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(8, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INSTRUMENT_CONDITION);
+    link = OPMFactory.eINSTANCE.createOPMInstrumentConditionLink();
     link.setSource(inZoomedObjects.get(8));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(9, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INSTRUMENT_EVENT);
+    link = OPMFactory.eINSTANCE.createOPMInstrumentEventLink();
     link.setSource(inZoomedObjects.get(9));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(10, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.INVOCATION);
+    link = OPMFactory.eINSTANCE.createOPMInvocationLink();
     link.setSource(inZoomedProcesses.get(2));
     link.setTarget(inZoomedProcesses.get(3));
     inZoomedProceduralLinks.put(11, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.RESULT);
+    link = OPMFactory.eINSTANCE.createOPMResultLink();
     link.setTarget(inZoomedProcesses.get(2));
     link.setSource(inZoomedObjects.get(10));
     inZoomedProceduralLinks.put(12, link);
 
-    link = OPMFactory.eINSTANCE.createOPMProceduralLink();
-    link.setKind(OPMProceduralLinkKind.CONSUMPTION_EVENT);
+    link = OPMFactory.eINSTANCE.createOPMConsumptionEventLink();
     link.setSource(inZoomedObjects.get(6));
     link.setTarget(inZoomedProcesses.get(4));
   }
@@ -453,15 +411,6 @@ public class OPDAnalysisTest {
       process.setName(Integer.toString(i));
       processes.put(i, process);
       container.getNodes().add(process);
-    }
-  }
-
-  private void createAggregators(OPMContainer container, Map<Integer, OPMStructuralLinkAggregator> aggregators,
-      int number, int startIndex) {
-    for(int i = startIndex; i < startIndex + number; i++) {
-      OPMStructuralLinkAggregator aggregator = OPMFactory.eINSTANCE.createOPMStructuralLinkAggregator();
-      aggregators.put(i, aggregator);
-      container.getNodes().add(aggregator);
     }
   }
 

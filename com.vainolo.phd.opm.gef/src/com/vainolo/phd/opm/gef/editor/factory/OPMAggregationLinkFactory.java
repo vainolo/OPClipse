@@ -8,24 +8,26 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
+import com.vainolo.phd.opm.model.OPMAggregationLink;
 import com.vainolo.phd.opm.model.OPMFactory;
-import com.vainolo.phd.opm.model.OPMInstrumentConditionLink;
-
 /**
- * Factory used by palette tools to create {@link OPMInstrumentConditionLink}.
+ * Factory used by palette tools to create {@link OPMAggregationLink}.
+ * 
+ * @author vainolo
+ * 
  */
-public class OPMInstrumentConditionLinkFactory implements CreationFactory {
+public class OPMAggregationLinkFactory implements CreationFactory {
 
   @Override
   public Object getNewObject() {
-    OPMInstrumentConditionLink link = OPMFactory.eINSTANCE.createOPMInstrumentConditionLink();
-    link.setId(OPMIdManager.getNextId());
-    return link;
+    OPMAggregationLink aggregator = OPMFactory.eINSTANCE.createOPMAggregationLink();
+    aggregator.setId(OPMIdManager.getNextId());
+    return aggregator;
   }
 
   @Override
   public Object getObjectType() {
-    return OPMInstrumentConditionLink.class;
+    return OPMAggregationLink.class;
   }
 
 }
