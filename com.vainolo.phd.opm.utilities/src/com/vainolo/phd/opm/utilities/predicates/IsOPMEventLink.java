@@ -25,7 +25,8 @@ public enum IsOPMEventLink implements Predicate<OPMProceduralLink> {
 
   private ArrayList<Class<?>> TrueTypes;
   
-  IsOPMEventLink(){
+  private IsOPMEventLink(){
+	  TrueTypes = new ArrayList<>();
 	  TrueTypes.add(OPMConsumptionEventLink.class);
 	  TrueTypes.add(OPMInstrumentEventLink.class);
 	  TrueTypes.add(OPMEffectEventLink.class);

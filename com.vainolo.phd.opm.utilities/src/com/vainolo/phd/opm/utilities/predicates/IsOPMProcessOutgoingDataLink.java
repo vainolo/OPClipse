@@ -27,7 +27,8 @@ public enum IsOPMProcessOutgoingDataLink implements Predicate<OPMProceduralLink>
 
   private ArrayList<Class<?>> TrueTypes;
   
-  IsOPMProcessOutgoingDataLink(){
+  private IsOPMProcessOutgoingDataLink(){
+	  TrueTypes = new ArrayList<>();
 	  TrueTypes.add(OPMResultLink.class);
 	  TrueTypes.add(OPMEffectLink.class);
 	  TrueTypes.add(OPMEffectConditionLink.class);

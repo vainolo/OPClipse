@@ -58,8 +58,8 @@ public class OPDAnalysisTest {
   public void testFindIncomingStructuralLinks() {
     Collection<OPMLink> result = fixture.findIncomingStructuralLinks(systemObjects.get(2));
     assertEquals(2, result.size());
+    assertTrue(result.contains(systemStructuralLinks.get(1)));
     assertTrue(result.contains(systemStructuralLinks.get(2)));
-    assertTrue(result.contains(systemStructuralLinks.get(4)));
   }
 
   @Test
@@ -67,8 +67,8 @@ public class OPDAnalysisTest {
     Collection<OPMLink> result = fixture.findOutgoingStructuralLinks(systemObjects.get(3));
 
     assertEquals(2, result.size());
+    assertTrue(result.contains(systemStructuralLinks.get(2)));
     assertTrue(result.contains(systemStructuralLinks.get(3)));
-    assertTrue(result.contains(systemStructuralLinks.get(5)));
   }
 
   @Test
@@ -136,7 +136,8 @@ public class OPDAnalysisTest {
 
   @Test
   public void testFindOutgoingDataLinks_Process() {
-    Iterable<OPMProceduralLink> result = OPDAnalysis.findOutgoingDataLinks(inZoomedProcesses.get(2));
+	  OPMProcess third = inZoomedProcesses.get(2);
+    Iterable<OPMProceduralLink> result = OPDAnalysis.findOutgoingDataLinks(third);
 
     assertEquals(4, Iterables.size(result));
     assertTrue(Iterables.contains(result, inZoomedProceduralLinks.get(5)));
