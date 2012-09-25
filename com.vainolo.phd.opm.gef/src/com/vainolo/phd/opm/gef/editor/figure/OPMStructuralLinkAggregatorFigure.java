@@ -16,9 +16,6 @@ import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregatorKind;
-
 /**
  * Draws the figure for a {@link OPMStructuralLinkAggregator}. This figure
  * consists of one or two {@link IsoscelesTriangle}, filled or not filled,
@@ -36,13 +33,13 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     /** Anchor created at the center-bottom of the figure, used for source anchors. */
     private ConnectionAnchor bottomAnchor;
     /** The kind of aggregator this figure represents. */
-    OPMStructuralLinkAggregatorKind kind;
+    StructuralLinkKind kind;
     
     /**
      * Create a new aggregator figure depending on the aggregator kind. 
      * @param kind the {@link OPMStructuralLinkAggregatorKind} of the figure.
      */
-    public OPMStructuralLinkAggregatorFigure(final OPMStructuralLinkAggregatorKind kind) {
+    public OPMStructuralLinkAggregatorFigure(final StructuralLinkKind kind) {
         this.kind = kind;
         setLayoutManager(new XYLayout());
         triangle = new IsoscelesTriangle();
@@ -71,7 +68,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     protected void paintFigure(Graphics graphics) {
         Rectangle bounds = getBounds().getCopy();
         setConstraint(triangle, new Rectangle(0,0,bounds.width,bounds.height));
-        if(kind == OPMStructuralLinkAggregatorKind.EXHIBITION) {
+        if(kind == StructuralLinkKind.EXHIBITION) {
             triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
         }
         triangle.invalidate();

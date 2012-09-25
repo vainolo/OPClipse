@@ -10,22 +10,26 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.GraphicalEditPart;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMStructuralLinkAggregatorFigure;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
+import com.vainolo.phd.opm.gef.utils.OPMStructuralLinkToStructuralLinkKindConverter;
+import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
 
     private IFigure figure;
+    private StructuralLinkKind linkKind;
 
     @Override
     protected IFigure createFigure() {
-        OPMStructuralLinkAggregator model = (OPMStructuralLinkAggregator) getModel();
-        figure = new OPMStructuralLinkAggregatorFigure(model.getKind());
+        OPMStructuralLink model = (OPMStructuralLink) getModel();
+        linkKind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(model);
+        figure = new OPMStructuralLinkAggregatorFigure(linkKind);
         return figure;
     }
 
     @Override
     protected void refreshVisuals() {
-        OPMStructuralLinkAggregator model = (OPMStructuralLinkAggregator) getModel();
+        OPMStructuralLink model = (OPMStructuralLink) getModel();
         ((GraphicalEditPart) getParent()).setLayoutConstraint(this, figure,model.getConstraints());
     }
 }

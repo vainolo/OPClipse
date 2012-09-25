@@ -16,8 +16,9 @@ import org.eclipse.draw2d.PolylineDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
+import com.vainolo.phd.opm.gef.editor.figure.ProceduralLinkKind;
+import com.vainolo.phd.opm.gef.utils.OPMProceduralLinkToProceduralLinkKindConverter;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 /**
  * An extension of a {@link OPMLinkEditPart} used for {@link OPMProceduralLink} instances. It add endpoint decorations
@@ -46,7 +47,8 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   @Override
   protected PolylineConnection createFigure() {
     OPMProceduralLink model = (OPMProceduralLink) getModel();
-    PolylineConnection connection = new OPMProceduralLinkFigure(model.getKind());
+    ProceduralLinkKind linkKind =OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.Convert(model); 
+    PolylineConnection connection = new OPMProceduralLinkFigure(linkKind,model.getActivationKind());
     connection.setLineWidth(OPMFigureConstants.connectionLineWidth);
     // decorateConnection(connection, model.getKind());
     centerDecorationLabel = new Label();
@@ -55,6 +57,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
     connection.setConnectionRouter(new BendpointConnectionRouter());
 
     return connection;
+	  
   }
 
   @Override

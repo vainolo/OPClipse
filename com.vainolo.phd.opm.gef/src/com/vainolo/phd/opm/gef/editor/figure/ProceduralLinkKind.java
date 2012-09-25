@@ -6,4 +6,5 @@ public enum ProceduralLinkKind {
 	EFFECT,
 	INVOCATION,
 	INSTRUMENT,
+	AGENT
 }
