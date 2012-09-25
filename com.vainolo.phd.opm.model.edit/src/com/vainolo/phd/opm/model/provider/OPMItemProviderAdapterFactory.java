@@ -145,29 +145,6 @@ public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMLinkItemProvider opmLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMLinkAdapter() {
-		if (opmLinkItemProvider == null) {
-			opmLinkItemProvider = new OPMLinkItemProvider(this);
-		}
-
-		return opmLinkItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMState} instances.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -260,52 +237,6 @@ public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMEffectEventLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMEffectEventLinkItemProvider opmEffectEventLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMEffectEventLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMEffectEventLinkAdapter() {
-		if (opmEffectEventLinkItemProvider == null) {
-			opmEffectEventLinkItemProvider = new OPMEffectEventLinkItemProvider(this);
-		}
-
-		return opmEffectEventLinkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMEffectConditionLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMEffectConditionLinkItemProvider opmEffectConditionLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMEffectConditionLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMEffectConditionLinkAdapter() {
-		if (opmEffectConditionLinkItemProvider == null) {
-			opmEffectConditionLinkItemProvider = new OPMEffectConditionLinkItemProvider(this);
-		}
-
-		return opmEffectConditionLinkItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMResultLink} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -375,52 +306,6 @@ public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMInstrumentEventLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMInstrumentEventLinkItemProvider opmInstrumentEventLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMInstrumentEventLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMInstrumentEventLinkAdapter() {
-		if (opmInstrumentEventLinkItemProvider == null) {
-			opmInstrumentEventLinkItemProvider = new OPMInstrumentEventLinkItemProvider(this);
-		}
-
-		return opmInstrumentEventLinkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMInstrumentConditionLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMInstrumentConditionLinkItemProvider opmInstrumentConditionLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMInstrumentConditionLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMInstrumentConditionLinkAdapter() {
-		if (opmInstrumentConditionLinkItemProvider == null) {
-			opmInstrumentConditionLinkItemProvider = new OPMInstrumentConditionLinkItemProvider(this);
-		}
-
-		return opmInstrumentConditionLinkItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMConsumptionLink} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -441,52 +326,6 @@ public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements 
 		}
 
 		return opmConsumptionLinkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMConsumptionEventLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMConsumptionEventLinkItemProvider opmConsumptionEventLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMConsumptionEventLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMConsumptionEventLinkAdapter() {
-		if (opmConsumptionEventLinkItemProvider == null) {
-			opmConsumptionEventLinkItemProvider = new OPMConsumptionEventLinkItemProvider(this);
-		}
-
-		return opmConsumptionEventLinkItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMConsumptionConditionLink} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected OPMConsumptionConditionLinkItemProvider opmConsumptionConditionLinkItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMConsumptionConditionLink}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createOPMConsumptionConditionLinkAdapter() {
-		if (opmConsumptionConditionLinkItemProvider == null) {
-			opmConsumptionConditionLinkItemProvider = new OPMConsumptionConditionLinkItemProvider(this);
-		}
-
-		return opmConsumptionConditionLinkItemProvider;
 	}
 
 	/**
@@ -661,20 +500,13 @@ public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements 
 		if (opmStateItemProvider != null) opmStateItemProvider.dispose();
 		if (opmObjectItemProvider != null) opmObjectItemProvider.dispose();
 		if (opmProcessItemProvider != null) opmProcessItemProvider.dispose();
-		if (opmLinkItemProvider != null) opmLinkItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
 		if (opmAgentLinkItemProvider != null) opmAgentLinkItemProvider.dispose();
 		if (opmEffectLinkItemProvider != null) opmEffectLinkItemProvider.dispose();
-		if (opmEffectEventLinkItemProvider != null) opmEffectEventLinkItemProvider.dispose();
-		if (opmEffectConditionLinkItemProvider != null) opmEffectConditionLinkItemProvider.dispose();
 		if (opmResultLinkItemProvider != null) opmResultLinkItemProvider.dispose();
 		if (opmInvocationLinkItemProvider != null) opmInvocationLinkItemProvider.dispose();
 		if (opmInstrumentLinkItemProvider != null) opmInstrumentLinkItemProvider.dispose();
-		if (opmInstrumentEventLinkItemProvider != null) opmInstrumentEventLinkItemProvider.dispose();
-		if (opmInstrumentConditionLinkItemProvider != null) opmInstrumentConditionLinkItemProvider.dispose();
 		if (opmConsumptionLinkItemProvider != null) opmConsumptionLinkItemProvider.dispose();
-		if (opmConsumptionEventLinkItemProvider != null) opmConsumptionEventLinkItemProvider.dispose();
-		if (opmConsumptionConditionLinkItemProvider != null) opmConsumptionConditionLinkItemProvider.dispose();
 		if (opmAggregationLinkItemProvider != null) opmAggregationLinkItemProvider.dispose();
 		if (opmExhibitionLinkItemProvider != null) opmExhibitionLinkItemProvider.dispose();
 		if (opmGeneralizationLinkItemProvider != null) opmGeneralizationLinkItemProvider.dispose();

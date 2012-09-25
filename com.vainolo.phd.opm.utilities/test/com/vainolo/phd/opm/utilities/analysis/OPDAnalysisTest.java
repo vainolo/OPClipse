@@ -16,12 +16,16 @@ import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
+import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMContainer;
+import com.vainolo.phd.opm.model.OPMEffectLink;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
@@ -138,7 +142,7 @@ public class OPDAnalysisTest {
   public void testFindOutgoingDataLinks_Process() {
 	  OPMProcess third = inZoomedProcesses.get(2);
     Iterable<OPMProceduralLink> result = OPDAnalysis.findOutgoingDataLinks(third);
-
+    
     assertEquals(4, Iterables.size(result));
     assertTrue(Iterables.contains(result, inZoomedProceduralLinks.get(5)));
     assertTrue(Iterables.contains(result, inZoomedProceduralLinks.get(6)));
@@ -322,9 +326,10 @@ public class OPDAnalysisTest {
     link.setSource(inZoomedStates.get(0));
     link.setTarget(inZoomedProcesses.get(5));
 
-    link = OPMFactory.eINSTANCE.createOPMInstrumentEventLink();
-    link.setSource(inZoomedStates.get(1));
-    link.setTarget(inZoomedProcesses.get(5));
+    OPMInstrumentLink instrumentLink = OPMFactory.eINSTANCE.createOPMInstrumentLink();
+    instrumentLink.setActivationKind(OPMProceduralActivationKind.EVENT);
+    instrumentLink.setSource(inZoomedStates.get(1));
+    instrumentLink.setTarget(inZoomedProcesses.get(5));
 
     link = OPMFactory.eINSTANCE.createOPMResultLink();
     link.setSource(inZoomedProcesses.get(6));
@@ -342,45 +347,51 @@ public class OPDAnalysisTest {
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(2, link);
 
-    link = OPMFactory.eINSTANCE.createOPMConsumptionConditionLink();
-    link.setSource(inZoomedObjects.get(2));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(3, link);
+    OPMConsumptionLink consumptionLink = OPMFactory.eINSTANCE.createOPMConsumptionLink();
+    consumptionLink.setActivationKind(OPMProceduralActivationKind.CONDITION);
+    consumptionLink.setSource(inZoomedObjects.get(2));
+    consumptionLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(3, consumptionLink);
 
-    link = OPMFactory.eINSTANCE.createOPMConsumptionEventLink();
-    link.setSource(inZoomedObjects.get(3));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(4, link);
+    consumptionLink = OPMFactory.eINSTANCE.createOPMConsumptionLink();
+    consumptionLink.setActivationKind(OPMProceduralActivationKind.EVENT);
+    consumptionLink.setSource(inZoomedObjects.get(3));
+    consumptionLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(4, consumptionLink);
 
     link = OPMFactory.eINSTANCE.createOPMEffectLink();
     link.setSource(inZoomedObjects.get(4));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(5, link);
 
-    link = OPMFactory.eINSTANCE.createOPMEffectConditionLink();
-    link.setSource(inZoomedObjects.get(5));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(6, link);
+    OPMEffectLink effectLink = OPMFactory.eINSTANCE.createOPMEffectLink();
+    effectLink.setActivationKind(OPMProceduralActivationKind.CONDITION);
+    effectLink.setSource(inZoomedObjects.get(5));
+    effectLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(6, effectLink);
 
-    link = OPMFactory.eINSTANCE.createOPMEffectEventLink();
-    link.setSource(inZoomedObjects.get(6));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(7, link);
+    effectLink = OPMFactory.eINSTANCE.createOPMEffectLink();
+    effectLink.setActivationKind(OPMProceduralActivationKind.EVENT);
+    effectLink.setSource(inZoomedObjects.get(6));
+    effectLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(7, effectLink);
 
     link = OPMFactory.eINSTANCE.createOPMInstrumentLink();
     link.setSource(inZoomedObjects.get(7));
     link.setTarget(inZoomedProcesses.get(2));
     inZoomedProceduralLinks.put(8, link);
 
-    link = OPMFactory.eINSTANCE.createOPMInstrumentConditionLink();
-    link.setSource(inZoomedObjects.get(8));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(9, link);
+    OPMInstrumentLink instrumentLink = OPMFactory.eINSTANCE.createOPMInstrumentLink();
+    effectLink.setActivationKind(OPMProceduralActivationKind.CONDITION);
+    instrumentLink.setSource(inZoomedObjects.get(8));
+    instrumentLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(9, instrumentLink);
 
-    link = OPMFactory.eINSTANCE.createOPMInstrumentEventLink();
-    link.setSource(inZoomedObjects.get(9));
-    link.setTarget(inZoomedProcesses.get(2));
-    inZoomedProceduralLinks.put(10, link);
+    instrumentLink = OPMFactory.eINSTANCE.createOPMInstrumentLink();
+    effectLink.setActivationKind(OPMProceduralActivationKind.EVENT);
+    instrumentLink.setSource(inZoomedObjects.get(9));
+    instrumentLink.setTarget(inZoomedProcesses.get(2));
+    inZoomedProceduralLinks.put(10, instrumentLink);
 
     link = OPMFactory.eINSTANCE.createOPMInvocationLink();
     link.setSource(inZoomedProcesses.get(2));
@@ -392,9 +403,10 @@ public class OPDAnalysisTest {
     link.setSource(inZoomedObjects.get(10));
     inZoomedProceduralLinks.put(12, link);
 
-    link = OPMFactory.eINSTANCE.createOPMConsumptionEventLink();
-    link.setSource(inZoomedObjects.get(6));
-    link.setTarget(inZoomedProcesses.get(4));
+    consumptionLink = OPMFactory.eINSTANCE.createOPMConsumptionLink();
+    consumptionLink.setActivationKind(OPMProceduralActivationKind.EVENT);
+    consumptionLink.setSource(inZoomedObjects.get(6));
+    consumptionLink.setTarget(inZoomedProcesses.get(4));
   }
 
   private void createObjects(OPMContainer container, Map<Integer, OPMObject> objects, int number, int startIndex) {

@@ -7,6 +7,8 @@ package com.vainolo.phd.opm.utilities.predicates;
 
 import java.util.ArrayList;
 
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.*;
 
@@ -20,29 +22,22 @@ import com.vainolo.phd.opm.model.*;
 public enum IsOPMProcessIncomingDataLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
 
-  private ArrayList<Class<?>> TrueTypes;
+  private ArrayList<EClass> TrueTypes;
   
   private IsOPMProcessIncomingDataLink(){
 	  TrueTypes = new ArrayList<>();
-	  TrueTypes.add(OPMAgentLink.class);
-	  TrueTypes.add(OPMConsumptionLink.class);
-	  TrueTypes.add(OPMConsumptionConditionLink.class);
-	  TrueTypes.add(OPMConsumptionEventLink.class);
-	  TrueTypes.add(OPMInstrumentLink.class);
-	  TrueTypes.add(OPMInstrumentConditionLink.class);
-	  TrueTypes.add(OPMInstrumentEventLink.class);
-	  TrueTypes.add(OPMEffectLink.class);
-	  TrueTypes.add(OPMEffectConditionLink.class);
-	  TrueTypes.add(OPMEffectEventLink.class);
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMAgentLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
   }
   
   
   @Override
   public boolean apply(final OPMProceduralLink link) {
-	  Class<?> linkType = link.getClass();
-    for (Class<?> type:TrueTypes)
-    	if (type.isAssignableFrom(linkType)) return true;
-    return false;
+	  for (EClass type:TrueTypes)
+	    	if (type.isInstance(link)) return true;
+	    return false;
   }
 
 }

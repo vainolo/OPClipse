@@ -7,8 +7,9 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
-import com.vainolo.phd.opm.model.OPMConsumptionConditionLink;
+import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 /**
  * Factory used by palette tools to create {@link OPMConsumptionConditionLink}. 
@@ -17,15 +18,15 @@ public class OPMConsumptionConditionLinkFactory implements CreationFactory {
 
   @Override
   public Object getNewObject() {
-    OPMConsumptionConditionLink link = OPMFactory.eINSTANCE.createOPMConsumptionConditionLink();
-    
+    OPMConsumptionLink link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
+    link.setActivationKind(OPMProceduralActivationKind.CONDITION);
     link.setId(OPMIdManager.getNextId());
     return link;
   }
 
   @Override
   public Object getObjectType() {
-    return OPMConsumptionConditionLink.class;
+    return OPMConsumptionLink.class;
   }
 
 }

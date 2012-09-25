@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.model.impl;
 import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMPackage;
 
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -38,6 +39,16 @@ public class OPMConsumptionLinkImpl extends OPMProceduralLinkImpl implements OPM
 	@Override
 	protected EClass eStaticClass() {
 		return OPMPackage.Literals.OPM_CONSUMPTION_LINK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActivationKind(OPMProceduralActivationKind activationKind) {
+		if (this.activationKind==activationKind) return;
+		this.activationKind=activationKind;
 	}
 
 } //OPMConsumptionLinkImpl

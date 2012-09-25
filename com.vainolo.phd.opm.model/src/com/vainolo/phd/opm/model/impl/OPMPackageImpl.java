@@ -9,19 +9,13 @@ package com.vainolo.phd.opm.model.impl;
 import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMAgentLink;
 import com.vainolo.phd.opm.model.OPMAggregationLink;
-import com.vainolo.phd.opm.model.OPMConsumptionConditionLink;
-import com.vainolo.phd.opm.model.OPMConsumptionEventLink;
 import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMContainer;
-import com.vainolo.phd.opm.model.OPMEffectConditionLink;
-import com.vainolo.phd.opm.model.OPMEffectEventLink;
 import com.vainolo.phd.opm.model.OPMEffectLink;
 import com.vainolo.phd.opm.model.OPMElementWithID;
 import com.vainolo.phd.opm.model.OPMExhibitionLink;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMGeneralizationLink;
-import com.vainolo.phd.opm.model.OPMInstrumentConditionLink;
-import com.vainolo.phd.opm.model.OPMInstrumentEventLink;
 import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMInvocationLink;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -32,6 +26,7 @@ import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
 import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMProcessKind;
@@ -47,6 +42,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -162,20 +158,6 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass opmEffectEventLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass opmEffectConditionLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass opmResultLinkEClass = null;
 
 				/**
@@ -197,35 +179,7 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass opmInstrumentEventLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass opmInstrumentConditionLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass opmConsumptionLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass opmConsumptionEventLinkEClass = null;
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass opmConsumptionConditionLinkEClass = null;
 
 				/**
 	 * <!-- begin-user-doc -->
@@ -284,6 +238,13 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
   private EEnum verticalAlignmentEEnum = null;
 
         /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum opmProceduralActivationKindEEnum = null;
+
+								/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -621,6 +582,15 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getOPMProceduralLink_ActivationKind() {
+		return (EAttribute)opmProceduralLinkEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -678,24 +648,6 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPMEffectEventLink() {
-		return opmEffectEventLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOPMEffectConditionLink() {
-		return opmEffectConditionLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOPMResultLink() {
 		return opmResultLinkEClass;
 	}
@@ -723,44 +675,8 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPMInstrumentEventLink() {
-		return opmInstrumentEventLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOPMInstrumentConditionLink() {
-		return opmInstrumentConditionLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getOPMConsumptionLink() {
 		return opmConsumptionLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOPMConsumptionEventLink() {
-		return opmConsumptionEventLinkEClass;
-	}
-
-				/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getOPMConsumptionConditionLink() {
-		return opmConsumptionConditionLinkEClass;
 	}
 
 				/**
@@ -849,6 +765,15 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getOPMProceduralActivationKind() {
+		return opmProceduralActivationKindEEnum;
+	}
+
+								/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EDataType getRectangle() {
 		return rectangleEDataType;
 	}
@@ -932,6 +857,7 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		createEAttribute(opmLinkEClass, OPM_LINK__CENTER_DECORATION);
 
 		opmProceduralLinkEClass = createEClass(OPM_PROCEDURAL_LINK);
+		createEAttribute(opmProceduralLinkEClass, OPM_PROCEDURAL_LINK__ACTIVATION_KIND);
 
 		labelEClass = createEClass(LABEL);
 
@@ -939,25 +865,13 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 
 		opmEffectLinkEClass = createEClass(OPM_EFFECT_LINK);
 
-		opmEffectEventLinkEClass = createEClass(OPM_EFFECT_EVENT_LINK);
-
-		opmEffectConditionLinkEClass = createEClass(OPM_EFFECT_CONDITION_LINK);
-
 		opmResultLinkEClass = createEClass(OPM_RESULT_LINK);
 
 		opmInvocationLinkEClass = createEClass(OPM_INVOCATION_LINK);
 
 		opmInstrumentLinkEClass = createEClass(OPM_INSTRUMENT_LINK);
 
-		opmInstrumentEventLinkEClass = createEClass(OPM_INSTRUMENT_EVENT_LINK);
-
-		opmInstrumentConditionLinkEClass = createEClass(OPM_INSTRUMENT_CONDITION_LINK);
-
 		opmConsumptionLinkEClass = createEClass(OPM_CONSUMPTION_LINK);
-
-		opmConsumptionEventLinkEClass = createEClass(OPM_CONSUMPTION_EVENT_LINK);
-
-		opmConsumptionConditionLinkEClass = createEClass(OPM_CONSUMPTION_CONDITION_LINK);
 
 		opmStructuralLinkEClass = createEClass(OPM_STRUCTURAL_LINK);
 		createEAttribute(opmStructuralLinkEClass, OPM_STRUCTURAL_LINK__AGGREGATOR_POSITION);
@@ -973,6 +887,7 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		opmProcessKindEEnum = createEEnum(OPM_PROCESS_KIND);
 		opmObjectProcessDiagramKindEEnum = createEEnum(OPM_OBJECT_PROCESS_DIAGRAM_KIND);
 		verticalAlignmentEEnum = createEEnum(VERTICAL_ALIGNMENT);
+		opmProceduralActivationKindEEnum = createEEnum(OPM_PROCEDURAL_ACTIVATION_KIND);
 
 		// Create data types
 		pointEDataType = createEDataType(POINT);
@@ -1022,16 +937,10 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		labelEClass.getESuperTypes().add(this.getOPMNode());
 		opmAgentLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmEffectLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmEffectEventLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmEffectConditionLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmResultLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmInvocationLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmInstrumentLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmInstrumentEventLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmInstrumentConditionLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmConsumptionLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmConsumptionEventLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
-		opmConsumptionConditionLinkEClass.getESuperTypes().add(this.getOPMProceduralLink());
 		opmStructuralLinkEClass.getESuperTypes().add(this.getOPMLink());
 		opmAggregationLinkEClass.getESuperTypes().add(this.getOPMStructuralLink());
 		opmExhibitionLinkEClass.getESuperTypes().add(this.getOPMStructuralLink());
@@ -1069,7 +978,7 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		initEClass(opmProcessEClass, OPMProcess.class, "OPMProcess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOPMProcess_Kind(), this.getOPMProcessKind(), "kind", "", 1, 1, OPMProcess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(opmLinkEClass, OPMLink.class, "OPMLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(opmLinkEClass, OPMLink.class, "OPMLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOPMLink_Opd(), this.getOPMObjectProcessDiagram(), this.getOPMObjectProcessDiagram_Links(), "opd", null, 0, 1, OPMLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPMLink_Source(), this.getOPMNode(), this.getOPMNode_OutgoingLinks(), "source", null, 0, 1, OPMLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPMLink_Target(), this.getOPMNode(), this.getOPMNode_IncomingLinks(), "target", null, 0, 1, OPMLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1080,6 +989,7 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		initEAttribute(getOPMLink_CenterDecoration(), ecorePackage.getEString(), "centerDecoration", null, 0, 1, OPMLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(opmProceduralLinkEClass, OPMProceduralLink.class, "OPMProceduralLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOPMProceduralLink_ActivationKind(), this.getOPMProceduralActivationKind(), "ActivationKind", "Normal", 1, 1, OPMProceduralLink.class, IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1087,9 +997,8 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 
 		initEClass(opmEffectLinkEClass, OPMEffectLink.class, "OPMEffectLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(opmEffectEventLinkEClass, OPMEffectEventLink.class, "OPMEffectEventLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(opmEffectConditionLinkEClass, OPMEffectConditionLink.class, "OPMEffectConditionLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		EOperation op = addEOperation(opmEffectLinkEClass, null, "setActivationKind", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getOPMProceduralActivationKind(), "activationKind", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(opmResultLinkEClass, OPMResultLink.class, "OPMResultLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1097,15 +1006,13 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 
 		initEClass(opmInstrumentLinkEClass, OPMInstrumentLink.class, "OPMInstrumentLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(opmInstrumentEventLinkEClass, OPMInstrumentEventLink.class, "OPMInstrumentEventLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(opmInstrumentConditionLinkEClass, OPMInstrumentConditionLink.class, "OPMInstrumentConditionLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		op = addEOperation(opmInstrumentLinkEClass, null, "setActivationKind", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getOPMProceduralActivationKind(), "activationKind", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(opmConsumptionLinkEClass, OPMConsumptionLink.class, "OPMConsumptionLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(opmConsumptionEventLinkEClass, OPMConsumptionEventLink.class, "OPMConsumptionEventLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(opmConsumptionConditionLinkEClass, OPMConsumptionConditionLink.class, "OPMConsumptionConditionLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		op = addEOperation(opmConsumptionLinkEClass, null, "setActivationKind", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getOPMProceduralActivationKind(), "activationKind", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(opmStructuralLinkEClass, OPMStructuralLink.class, "OPMStructuralLink", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOPMStructuralLink_AggregatorPosition(), this.getPoint(), "aggregatorPosition", null, 0, 1, OPMStructuralLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1135,6 +1042,11 @@ public class OPMPackageImpl extends EPackageImpl implements OPMPackage {
 		addEEnumLiteral(verticalAlignmentEEnum, VerticalAlignment.TOP);
 		addEEnumLiteral(verticalAlignmentEEnum, VerticalAlignment.CENTER);
 		addEEnumLiteral(verticalAlignmentEEnum, VerticalAlignment.BOTTOM);
+
+		initEEnum(opmProceduralActivationKindEEnum, OPMProceduralActivationKind.class, "OPMProceduralActivationKind");
+		addEEnumLiteral(opmProceduralActivationKindEEnum, OPMProceduralActivationKind.NORMAL);
+		addEEnumLiteral(opmProceduralActivationKindEEnum, OPMProceduralActivationKind.EVENT);
+		addEEnumLiteral(opmProceduralActivationKindEEnum, OPMProceduralActivationKind.CONDITION);
 
 		// Initialize data types
 		initEDataType(pointEDataType, Point.class, "Point", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

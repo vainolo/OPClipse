@@ -35,6 +35,9 @@ public class OPMTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new OPMTests("opm Tests");
+		suite.addTestSuite(OPMEffectLinkTest.class);
+		suite.addTestSuite(OPMInstrumentLinkTest.class);
+		suite.addTestSuite(OPMConsumptionLinkTest.class);
 		return suite;
 	}
 

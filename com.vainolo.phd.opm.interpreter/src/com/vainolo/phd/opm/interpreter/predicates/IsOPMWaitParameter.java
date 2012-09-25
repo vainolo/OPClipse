@@ -30,14 +30,8 @@ public enum IsOPMWaitParameter implements Predicate<Parameter> {
   IsOPMWaitParameter(){
 	  TrueTypes = new ArrayList<>();
 	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionConditionLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionEventLink());
 	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentConditionLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentEventLink());
 	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectConditionLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectEventLink());
   }
   
   @Override

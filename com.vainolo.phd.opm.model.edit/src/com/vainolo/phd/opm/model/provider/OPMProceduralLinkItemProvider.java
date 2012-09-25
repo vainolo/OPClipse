@@ -62,8 +62,31 @@ public class OPMProceduralLinkItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addActivationKindPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Activation Kind feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addActivationKindPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPMProceduralLink_ActivationKind_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMProceduralLink_ActivationKind_feature", "_UI_OPMProceduralLink_type"),
+				 OPMPackage.Literals.OPM_PROCEDURAL_LINK__ACTIVATION_KIND,
+				 false,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,6 +122,12 @@ public class OPMProceduralLinkItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(OPMProceduralLink.class)) {
+			case OPMPackage.OPM_PROCEDURAL_LINK__ACTIVATION_KIND:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

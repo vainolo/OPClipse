@@ -18,4 +18,12 @@ package com.vainolo.phd.opm.model;
  * @generated
  */
 public interface OPMInstrumentLink extends OPMProceduralLink {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.activationKind==activationKind) return;\r\nthis.activationKind=activationKind;'"
+	 * @generated
+	 */
+	void setActivationKind(OPMProceduralActivationKind activationKind);
 } // OPMInstrumentLink

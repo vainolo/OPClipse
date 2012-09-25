@@ -15,6 +15,12 @@ import junit.textui.TestRunner;
  * <!-- begin-user-doc -->
  * A test case for the model object '<em><b>Effect Link</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following operations are tested:
+ * <ul>
+ *   <li>{@link com.vainolo.phd.opm.model.OPMEffectLink#setActivationKind(com.vainolo.phd.opm.model.OPMProceduralActivationKind) <em>Set Activation Kind</em>}</li>
+ * </ul>
+ * </p>
  * @generated
  */
 public class OPMEffectLinkTest extends OPMProceduralLinkTest {
@@ -69,6 +75,19 @@ public class OPMEffectLinkTest extends OPMProceduralLinkTest {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * Tests the '{@link com.vainolo.phd.opm.model.OPMEffectLink#setActivationKind(com.vainolo.phd.opm.model.OPMProceduralActivationKind) <em>Set Activation Kind</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opm.model.OPMEffectLink#setActivationKind(com.vainolo.phd.opm.model.OPMProceduralActivationKind)
+	 * @generated
+	 */
+	public void testSetActivationKind__OPMProceduralActivationKind() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
 	}
 
 } //OPMEffectLinkTest

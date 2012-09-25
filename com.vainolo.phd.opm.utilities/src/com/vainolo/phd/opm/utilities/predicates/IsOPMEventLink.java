@@ -5,12 +5,8 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.utilities.predicates;
 
-import java.util.ArrayList;
-
 import com.google.common.base.Predicate;
-import com.vainolo.phd.opm.model.OPMConsumptionEventLink;
-import com.vainolo.phd.opm.model.OPMEffectEventLink;
-import com.vainolo.phd.opm.model.OPMInstrumentEventLink;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -22,22 +18,10 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
  */
 public enum IsOPMEventLink implements Predicate<OPMProceduralLink> {
   INSTANCE;
-
-  private ArrayList<Class<?>> TrueTypes;
-  
-  private IsOPMEventLink(){
-	  TrueTypes = new ArrayList<>();
-	  TrueTypes.add(OPMConsumptionEventLink.class);
-	  TrueTypes.add(OPMInstrumentEventLink.class);
-	  TrueTypes.add(OPMEffectEventLink.class);
-  }
   
   @Override
   public boolean apply(final OPMProceduralLink link) {
-	  Class<?> linkType = link.getClass();
-    for (Class<?> type:TrueTypes)
-    	if (type.isAssignableFrom(linkType)) return true;
-    return false;
+	  return (link.getActivationKind() == OPMProceduralActivationKind.EVENT);
   }
 
 }

@@ -29,8 +29,6 @@ IsOPMProcessOutgoingDataLink(){
 	  TrueTypes = new ArrayList<>();
 	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMResultLink());
 	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectConditionLink());
-	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectEventLink());
   }
   
   @Override

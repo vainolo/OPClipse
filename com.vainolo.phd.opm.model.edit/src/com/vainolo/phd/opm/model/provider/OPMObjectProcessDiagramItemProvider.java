@@ -257,27 +257,12 @@ public class OPMObjectProcessDiagramItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
 				 OPMFactory.eINSTANCE.createOPMAgentLink()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
 				 OPMFactory.eINSTANCE.createOPMEffectLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMEffectEventLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMEffectConditionLink()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -297,27 +282,7 @@ public class OPMObjectProcessDiagramItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMInstrumentEventLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMInstrumentConditionLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
 				 OPMFactory.eINSTANCE.createOPMConsumptionLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMConsumptionEventLink()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(OPMPackage.Literals.OPM_OBJECT_PROCESS_DIAGRAM__LINKS,
-				 OPMFactory.eINSTANCE.createOPMConsumptionConditionLink()));
 
 		newChildDescriptors.add
 			(createChildParameter

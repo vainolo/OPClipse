@@ -191,24 +191,6 @@ public class OPMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OPMPackage.OPM_EFFECT_EVENT_LINK: {
-				OPMEffectEventLink opmEffectEventLink = (OPMEffectEventLink)theEObject;
-				T result = caseOPMEffectEventLink(opmEffectEventLink);
-				if (result == null) result = caseOPMProceduralLink(opmEffectEventLink);
-				if (result == null) result = caseOPMLink(opmEffectEventLink);
-				if (result == null) result = caseOPMElementWithID(opmEffectEventLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OPMPackage.OPM_EFFECT_CONDITION_LINK: {
-				OPMEffectConditionLink opmEffectConditionLink = (OPMEffectConditionLink)theEObject;
-				T result = caseOPMEffectConditionLink(opmEffectConditionLink);
-				if (result == null) result = caseOPMProceduralLink(opmEffectConditionLink);
-				if (result == null) result = caseOPMLink(opmEffectConditionLink);
-				if (result == null) result = caseOPMElementWithID(opmEffectConditionLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case OPMPackage.OPM_RESULT_LINK: {
 				OPMResultLink opmResultLink = (OPMResultLink)theEObject;
 				T result = caseOPMResultLink(opmResultLink);
@@ -236,48 +218,12 @@ public class OPMSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case OPMPackage.OPM_INSTRUMENT_EVENT_LINK: {
-				OPMInstrumentEventLink opmInstrumentEventLink = (OPMInstrumentEventLink)theEObject;
-				T result = caseOPMInstrumentEventLink(opmInstrumentEventLink);
-				if (result == null) result = caseOPMProceduralLink(opmInstrumentEventLink);
-				if (result == null) result = caseOPMLink(opmInstrumentEventLink);
-				if (result == null) result = caseOPMElementWithID(opmInstrumentEventLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OPMPackage.OPM_INSTRUMENT_CONDITION_LINK: {
-				OPMInstrumentConditionLink opmInstrumentConditionLink = (OPMInstrumentConditionLink)theEObject;
-				T result = caseOPMInstrumentConditionLink(opmInstrumentConditionLink);
-				if (result == null) result = caseOPMProceduralLink(opmInstrumentConditionLink);
-				if (result == null) result = caseOPMLink(opmInstrumentConditionLink);
-				if (result == null) result = caseOPMElementWithID(opmInstrumentConditionLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case OPMPackage.OPM_CONSUMPTION_LINK: {
 				OPMConsumptionLink opmConsumptionLink = (OPMConsumptionLink)theEObject;
 				T result = caseOPMConsumptionLink(opmConsumptionLink);
 				if (result == null) result = caseOPMProceduralLink(opmConsumptionLink);
 				if (result == null) result = caseOPMLink(opmConsumptionLink);
 				if (result == null) result = caseOPMElementWithID(opmConsumptionLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OPMPackage.OPM_CONSUMPTION_EVENT_LINK: {
-				OPMConsumptionEventLink opmConsumptionEventLink = (OPMConsumptionEventLink)theEObject;
-				T result = caseOPMConsumptionEventLink(opmConsumptionEventLink);
-				if (result == null) result = caseOPMProceduralLink(opmConsumptionEventLink);
-				if (result == null) result = caseOPMLink(opmConsumptionEventLink);
-				if (result == null) result = caseOPMElementWithID(opmConsumptionEventLink);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case OPMPackage.OPM_CONSUMPTION_CONDITION_LINK: {
-				OPMConsumptionConditionLink opmConsumptionConditionLink = (OPMConsumptionConditionLink)theEObject;
-				T result = caseOPMConsumptionConditionLink(opmConsumptionConditionLink);
-				if (result == null) result = caseOPMProceduralLink(opmConsumptionConditionLink);
-				if (result == null) result = caseOPMLink(opmConsumptionConditionLink);
-				if (result == null) result = caseOPMElementWithID(opmConsumptionConditionLink);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -531,36 +477,6 @@ public class OPMSwitch<T> extends Switch<T> {
 	}
 
 				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Effect Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Effect Event Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMEffectEventLink(OPMEffectEventLink object) {
-		return null;
-	}
-
-				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Effect Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Effect Condition Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMEffectConditionLink(OPMEffectConditionLink object) {
-		return null;
-	}
-
-				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Result Link</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -606,36 +522,6 @@ public class OPMSwitch<T> extends Switch<T> {
 	}
 
 				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instrument Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instrument Event Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMInstrumentEventLink(OPMInstrumentEventLink object) {
-		return null;
-	}
-
-				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Instrument Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Instrument Condition Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMInstrumentConditionLink(OPMInstrumentConditionLink object) {
-		return null;
-	}
-
-				/**
 	 * Returns the result of interpreting the object as an instance of '<em>Consumption Link</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -647,36 +533,6 @@ public class OPMSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOPMConsumptionLink(OPMConsumptionLink object) {
-		return null;
-	}
-
-				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Consumption Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Consumption Event Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMConsumptionEventLink(OPMConsumptionEventLink object) {
-		return null;
-	}
-
-				/**
-	 * Returns the result of interpreting the object as an instance of '<em>Consumption Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Consumption Condition Link</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseOPMConsumptionConditionLink(OPMConsumptionConditionLink object) {
 		return null;
 	}
 

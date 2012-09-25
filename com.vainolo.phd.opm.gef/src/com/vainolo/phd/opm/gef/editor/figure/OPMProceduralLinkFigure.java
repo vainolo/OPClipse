@@ -13,14 +13,16 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.vainolo.phd.opm.model.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 public class OPMProceduralLinkFigure extends PolylineConnection {
   private static final PolylineDecoration arrow = new PolylineDecoration();
-  private OPMProceduralLinkKind kind;
-
-  public OPMProceduralLinkFigure(OPMProceduralLinkKind kind) {
-    this.kind = kind;
+  private ProceduralLinkKind linkKind;
+  private OPMProceduralActivationKind activationKind;
+  
+  public OPMProceduralLinkFigure(ProceduralLinkKind linkKind, OPMProceduralActivationKind activationKind) {
+    this.linkKind = linkKind;
+    this.activationKind = activationKind;
   }
 
   @Override
@@ -33,22 +35,16 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
     Point target = points.getLastPoint();
     Point pointBeforeTarget = points.getPoint(points.size() - 2);
 
-    switch(kind) {
+    switch(linkKind) {
       case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
       case RESULT:
       case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
       case INVOCATION:
         arrow.setLocation(target);
         arrow.setReferencePoint(pointBeforeTarget);
         g.drawPolyline(arrow.getPoints());
         break;
       case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
         int radius = OPMFigureConstants.agentCircleRadius;
         g.pushState();
         g.setBackgroundColor(ColorConstants.black);
@@ -59,35 +55,25 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
         break;
     }
 
-    switch(kind) {
-      case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
+    if (linkKind == ProceduralLinkKind.EFFECT) {
         arrow.setLocation(source);
         arrow.setReferencePoint(pointAfterSource);
         g.drawPolyline(arrow.getPoints());
-        break;
     }
 
-    switch(kind) {
-      case INSTRUMENT_CONDITION:
-      case CONSUMPTION_CONDITION:
-      case EFFECT_CONDITION:
+    switch(activationKind) {
+      case CONDITION:
         if(pointBeforeTarget.x() < target.x())
           g.drawText("c", target.x() - 20, target.y() - 20);
         else
           g.drawText("c", target.x() + 20, target.y() - 20);
         break;
-    }
-
-    switch(kind) {
-      case INSTRUMENT_EVENT:
-      case CONSUMPTION_EVENT:
-      case EFFECT_EVENT:
+      case EVENT:
         if(pointBeforeTarget.x() < target.x())
           g.drawText("e", target.x() - 20, target.y() - 20);
         else
           g.drawText("e", target.x() + 20, target.y() - 20);
+        break;
     }
   }
 

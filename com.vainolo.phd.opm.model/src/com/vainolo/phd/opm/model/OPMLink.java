@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see com.vainolo.phd.opm.model.OPMPackage#getOPMLink()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface OPMLink extends OPMElementWithID {

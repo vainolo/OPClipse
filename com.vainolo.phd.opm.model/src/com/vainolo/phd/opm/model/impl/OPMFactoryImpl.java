@@ -67,20 +67,13 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 			case OPMPackage.OPM_STATE: return createOPMState();
 			case OPMPackage.OPM_OBJECT: return createOPMObject();
 			case OPMPackage.OPM_PROCESS: return createOPMProcess();
-			case OPMPackage.OPM_LINK: return createOPMLink();
 			case OPMPackage.LABEL: return createLabel();
 			case OPMPackage.OPM_AGENT_LINK: return createOPMAgentLink();
 			case OPMPackage.OPM_EFFECT_LINK: return createOPMEffectLink();
-			case OPMPackage.OPM_EFFECT_EVENT_LINK: return createOPMEffectEventLink();
-			case OPMPackage.OPM_EFFECT_CONDITION_LINK: return createOPMEffectConditionLink();
 			case OPMPackage.OPM_RESULT_LINK: return createOPMResultLink();
 			case OPMPackage.OPM_INVOCATION_LINK: return createOPMInvocationLink();
 			case OPMPackage.OPM_INSTRUMENT_LINK: return createOPMInstrumentLink();
-			case OPMPackage.OPM_INSTRUMENT_EVENT_LINK: return createOPMInstrumentEventLink();
-			case OPMPackage.OPM_INSTRUMENT_CONDITION_LINK: return createOPMInstrumentConditionLink();
 			case OPMPackage.OPM_CONSUMPTION_LINK: return createOPMConsumptionLink();
-			case OPMPackage.OPM_CONSUMPTION_EVENT_LINK: return createOPMConsumptionEventLink();
-			case OPMPackage.OPM_CONSUMPTION_CONDITION_LINK: return createOPMConsumptionConditionLink();
 			case OPMPackage.OPM_AGGREGATION_LINK: return createOPMAggregationLink();
 			case OPMPackage.OPM_EXHIBITION_LINK: return createOPMExhibitionLink();
 			case OPMPackage.OPM_GENERALIZATION_LINK: return createOPMGeneralizationLink();
@@ -105,6 +98,8 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 				return createOPMObjectProcessDiagramKindFromString(eDataType, initialValue);
 			case OPMPackage.VERTICAL_ALIGNMENT:
 				return createVerticalAlignmentFromString(eDataType, initialValue);
+			case OPMPackage.OPM_PROCEDURAL_ACTIVATION_KIND:
+				return createOPMProceduralActivationKindFromString(eDataType, initialValue);
 			case OPMPackage.POINT:
 				return createPointFromString(eDataType, initialValue);
 			case OPMPackage.RECTANGLE:
@@ -130,6 +125,8 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 				return convertOPMObjectProcessDiagramKindToString(eDataType, instanceValue);
 			case OPMPackage.VERTICAL_ALIGNMENT:
 				return convertVerticalAlignmentToString(eDataType, instanceValue);
+			case OPMPackage.OPM_PROCEDURAL_ACTIVATION_KIND:
+				return convertOPMProceduralActivationKindToString(eDataType, instanceValue);
 			case OPMPackage.POINT:
 				return convertPointToString(eDataType, instanceValue);
 			case OPMPackage.RECTANGLE:
@@ -167,16 +164,6 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 	public OPMProcess createOPMProcess() {
 		OPMProcessImpl opmProcess = new OPMProcessImpl();
 		return opmProcess;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPMLink createOPMLink() {
-		OPMLinkImpl opmLink = new OPMLinkImpl();
-		return opmLink;
 	}
 
 	/**
@@ -224,26 +211,6 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OPMEffectEventLink createOPMEffectEventLink() {
-		OPMEffectEventLinkImpl opmEffectEventLink = new OPMEffectEventLinkImpl();
-		return opmEffectEventLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPMEffectConditionLink createOPMEffectConditionLink() {
-		OPMEffectConditionLinkImpl opmEffectConditionLink = new OPMEffectConditionLinkImpl();
-		return opmEffectConditionLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OPMResultLink createOPMResultLink() {
 		OPMResultLinkImpl opmResultLink = new OPMResultLinkImpl();
 		return opmResultLink;
@@ -274,49 +241,9 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OPMInstrumentEventLink createOPMInstrumentEventLink() {
-		OPMInstrumentEventLinkImpl opmInstrumentEventLink = new OPMInstrumentEventLinkImpl();
-		return opmInstrumentEventLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPMInstrumentConditionLink createOPMInstrumentConditionLink() {
-		OPMInstrumentConditionLinkImpl opmInstrumentConditionLink = new OPMInstrumentConditionLinkImpl();
-		return opmInstrumentConditionLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public OPMConsumptionLink createOPMConsumptionLink() {
 		OPMConsumptionLinkImpl opmConsumptionLink = new OPMConsumptionLinkImpl();
 		return opmConsumptionLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPMConsumptionEventLink createOPMConsumptionEventLink() {
-		OPMConsumptionEventLinkImpl opmConsumptionEventLink = new OPMConsumptionEventLinkImpl();
-		return opmConsumptionEventLink;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OPMConsumptionConditionLink createOPMConsumptionConditionLink() {
-		OPMConsumptionConditionLinkImpl opmConsumptionConditionLink = new OPMConsumptionConditionLinkImpl();
-		return opmConsumptionConditionLink;
 	}
 
 	/**
@@ -430,6 +357,26 @@ public class OPMFactoryImpl extends EFactoryImpl implements OPMFactory {
 	}
 
         /**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OPMProceduralActivationKind createOPMProceduralActivationKindFromString(EDataType eDataType, String initialValue) {
+		OPMProceduralActivationKind result = OPMProceduralActivationKind.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+								/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertOPMProceduralActivationKindToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+								/**
 	 * <!-- begin-user-doc -->
 	 * Create a <code>Rectangle</code> instance from a <code>String</code>. The expected
 	 * representation is "x,y,width,height". Illegal representations will return a null

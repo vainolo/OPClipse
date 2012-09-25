@@ -910,13 +910,22 @@ int OPM_PROCEDURAL_LINK__SOURCE_DECORATION = OPM_LINK__SOURCE_DECORATION;
 	int OPM_PROCEDURAL_LINK__CENTER_DECORATION = OPM_LINK__CENTER_DECORATION;
 
   /**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_PROCEDURAL_LINK__ACTIVATION_KIND = OPM_LINK_FEATURE_COUNT + 0;
+
+		/**
 	 * The number of structural features of the '<em>Procedural Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPM_PROCEDURAL_LINK_FEATURE_COUNT = OPM_LINK_FEATURE_COUNT + 0;
+	int OPM_PROCEDURAL_LINK_FEATURE_COUNT = OPM_LINK_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.LabelImpl <em>Label</em>}' class.
@@ -1092,6 +1101,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_AGENT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_AGENT_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Agent Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1192,6 +1210,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_EFFECT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_EFFECT_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Effect Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1201,206 +1228,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_EFFECT_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
 
 		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMEffectEventLinkImpl <em>Effect Event Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMEffectEventLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMEffectEventLink()
-	 * @generated
-	 */
-	int OPM_EFFECT_EVENT_LINK = 14;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Effect Event Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_EVENT_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMEffectConditionLinkImpl <em>Effect Condition Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMEffectConditionLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMEffectConditionLink()
-	 * @generated
-	 */
-	int OPM_EFFECT_CONDITION_LINK = 15;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Effect Condition Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_EFFECT_CONDITION_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMResultLinkImpl <em>Result Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1408,7 +1235,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMResultLink()
 	 * @generated
 	 */
-	int OPM_RESULT_LINK = 16;
+	int OPM_RESULT_LINK = 14;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1492,6 +1319,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_RESULT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_RESULT_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Result Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1508,7 +1344,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInvocationLink()
 	 * @generated
 	 */
-	int OPM_INVOCATION_LINK = 17;
+	int OPM_INVOCATION_LINK = 15;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1592,6 +1428,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_INVOCATION_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_INVOCATION_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Invocation Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1608,7 +1453,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInstrumentLink()
 	 * @generated
 	 */
-	int OPM_INSTRUMENT_LINK = 18;
+	int OPM_INSTRUMENT_LINK = 16;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1692,6 +1537,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_INSTRUMENT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_INSTRUMENT_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Instrument Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1701,206 +1555,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_INSTRUMENT_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
 
 		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMInstrumentEventLinkImpl <em>Instrument Event Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMInstrumentEventLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInstrumentEventLink()
-	 * @generated
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK = 19;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Instrument Event Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_EVENT_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMInstrumentConditionLinkImpl <em>Instrument Condition Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMInstrumentConditionLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInstrumentConditionLink()
-	 * @generated
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK = 20;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Instrument Condition Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_INSTRUMENT_CONDITION_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionLinkImpl <em>Consumption Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1908,7 +1562,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMConsumptionLink()
 	 * @generated
 	 */
-	int OPM_CONSUMPTION_LINK = 21;
+	int OPM_CONSUMPTION_LINK = 17;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1992,6 +1646,15 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_CONSUMPTION_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
 
 		/**
+	 * The feature id for the '<em><b>Activation Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPM_CONSUMPTION_LINK__ACTIVATION_KIND = OPM_PROCEDURAL_LINK__ACTIVATION_KIND;
+
+		/**
 	 * The number of structural features of the '<em>Consumption Link</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2001,206 +1664,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	int OPM_CONSUMPTION_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
 
 		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionEventLinkImpl <em>Consumption Event Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMConsumptionEventLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMConsumptionEventLink()
-	 * @generated
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK = 22;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Consumption Event Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_EVENT_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
-	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionConditionLinkImpl <em>Consumption Condition Link</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.impl.OPMConsumptionConditionLinkImpl
-	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMConsumptionConditionLink()
-	 * @generated
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK = 23;
-
-		/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__ID = OPM_PROCEDURAL_LINK__ID;
-
-		/**
-	 * The feature id for the '<em><b>Opd</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__OPD = OPM_PROCEDURAL_LINK__OPD;
-
-		/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__SOURCE = OPM_PROCEDURAL_LINK__SOURCE;
-
-		/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__TARGET = OPM_PROCEDURAL_LINK__TARGET;
-
-		/**
-	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__BENDPOINTS = OPM_PROCEDURAL_LINK__BENDPOINTS;
-
-		/**
-	 * The feature id for the '<em><b>Router Kind</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__ROUTER_KIND = OPM_PROCEDURAL_LINK__ROUTER_KIND;
-
-		/**
-	 * The feature id for the '<em><b>Source Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__SOURCE_DECORATION = OPM_PROCEDURAL_LINK__SOURCE_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Target Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__TARGET_DECORATION = OPM_PROCEDURAL_LINK__TARGET_DECORATION;
-
-		/**
-	 * The feature id for the '<em><b>Center Decoration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK__CENTER_DECORATION = OPM_PROCEDURAL_LINK__CENTER_DECORATION;
-
-		/**
-	 * The number of structural features of the '<em>Consumption Condition Link</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPM_CONSUMPTION_CONDITION_LINK_FEATURE_COUNT = OPM_PROCEDURAL_LINK_FEATURE_COUNT + 0;
-
-		/**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.impl.OPMStructuralLinkImpl <em>Structural Link</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2208,7 +1671,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMStructuralLink()
 	 * @generated
 	 */
-	int OPM_STRUCTURAL_LINK = 24;
+	int OPM_STRUCTURAL_LINK = 18;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2317,7 +1780,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMAggregationLink()
 	 * @generated
 	 */
-	int OPM_AGGREGATION_LINK = 25;
+	int OPM_AGGREGATION_LINK = 19;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2426,7 +1889,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMExhibitionLink()
 	 * @generated
 	 */
-	int OPM_EXHIBITION_LINK = 26;
+	int OPM_EXHIBITION_LINK = 20;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2535,7 +1998,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMGeneralizationLink()
 	 * @generated
 	 */
-	int OPM_GENERALIZATION_LINK = 27;
+	int OPM_GENERALIZATION_LINK = 21;
 
 		/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2644,7 +2107,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMLinkRouterKind()
 	 * @generated
 	 */
-    int OPM_LINK_ROUTER_KIND = 28;
+    int OPM_LINK_ROUTER_KIND = 22;
 
     /**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.OPMProcessKind <em>Process Kind</em>}' enum.
@@ -2654,7 +2117,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMProcessKind()
 	 * @generated
 	 */
-	int OPM_PROCESS_KIND = 29;
+	int OPM_PROCESS_KIND = 23;
 
 				/**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind <em>Object Process Diagram Kind</em>}' enum.
@@ -2664,7 +2127,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMObjectProcessDiagramKind()
 	 * @generated
 	 */
-  int OPM_OBJECT_PROCESS_DIAGRAM_KIND = 30;
+  int OPM_OBJECT_PROCESS_DIAGRAM_KIND = 24;
 
         /**
 	 * The meta object id for the '{@link com.vainolo.phd.opm.model.VerticalAlignment <em>Vertical Alignment</em>}' enum.
@@ -2674,9 +2137,19 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getVerticalAlignment()
 	 * @generated
 	 */
-  int VERTICAL_ALIGNMENT = 31;
+  int VERTICAL_ALIGNMENT = 25;
 
         /**
+	 * The meta object id for the '{@link com.vainolo.phd.opm.model.OPMProceduralActivationKind <em>Procedural Activation Kind</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opm.model.OPMProceduralActivationKind
+	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMProceduralActivationKind()
+	 * @generated
+	 */
+	int OPM_PROCEDURAL_ACTIVATION_KIND = 26;
+
+								/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2684,7 +2157,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 33;
+	int RECTANGLE = 28;
 
 
 	/**
@@ -2737,7 +2210,7 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getPoint()
 	 * @generated
 	 */
-	int POINT = 32;
+	int POINT = 27;
 
 
 	/**
@@ -3008,6 +2481,17 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	EClass getOPMProceduralLink();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opm.model.OPMProceduralLink#getActivationKind <em>Activation Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Activation Kind</em>'.
+	 * @see com.vainolo.phd.opm.model.OPMProceduralLink#getActivationKind()
+	 * @see #getOPMProceduralLink()
+	 * @generated
+	 */
+	EAttribute getOPMProceduralLink_ActivationKind();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMNamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3070,26 +2554,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	EClass getOPMEffectLink();
 
 		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMEffectEventLink <em>Effect Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Effect Event Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMEffectEventLink
-	 * @generated
-	 */
-	EClass getOPMEffectEventLink();
-
-		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMEffectConditionLink <em>Effect Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Effect Condition Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMEffectConditionLink
-	 * @generated
-	 */
-	EClass getOPMEffectConditionLink();
-
-		/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMResultLink <em>Result Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3120,26 +2584,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	EClass getOPMInstrumentLink();
 
 		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMInstrumentEventLink <em>Instrument Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Instrument Event Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMInstrumentEventLink
-	 * @generated
-	 */
-	EClass getOPMInstrumentEventLink();
-
-		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMInstrumentConditionLink <em>Instrument Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Instrument Condition Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMInstrumentConditionLink
-	 * @generated
-	 */
-	EClass getOPMInstrumentConditionLink();
-
-		/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMConsumptionLink <em>Consumption Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3148,26 +2592,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 	 * @generated
 	 */
 	EClass getOPMConsumptionLink();
-
-		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMConsumptionEventLink <em>Consumption Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Consumption Event Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMConsumptionEventLink
-	 * @generated
-	 */
-	EClass getOPMConsumptionEventLink();
-
-		/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMConsumptionConditionLink <em>Consumption Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Consumption Condition Link</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMConsumptionConditionLink
-	 * @generated
-	 */
-	EClass getOPMConsumptionConditionLink();
 
 		/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opm.model.OPMStructuralLink <em>Structural Link</em>}'.
@@ -3261,6 +2685,16 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
   EEnum getVerticalAlignment();
 
         /**
+	 * Returns the meta object for enum '{@link com.vainolo.phd.opm.model.OPMProceduralActivationKind <em>Procedural Activation Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Procedural Activation Kind</em>'.
+	 * @see com.vainolo.phd.opm.model.OPMProceduralActivationKind
+	 * @generated
+	 */
+	EEnum getOPMProceduralActivationKind();
+
+								/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3557,6 +2991,14 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 		EClass OPM_PROCEDURAL_LINK = eINSTANCE.getOPMProceduralLink();
 
 		/**
+		 * The meta object literal for the '<em><b>Activation Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPM_PROCEDURAL_LINK__ACTIVATION_KIND = eINSTANCE.getOPMProceduralLink_ActivationKind();
+
+		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMNamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3613,26 +3055,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 		EClass OPM_EFFECT_LINK = eINSTANCE.getOPMEffectLink();
 
 				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMEffectEventLinkImpl <em>Effect Event Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMEffectEventLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMEffectEventLink()
-		 * @generated
-		 */
-		EClass OPM_EFFECT_EVENT_LINK = eINSTANCE.getOPMEffectEventLink();
-
-				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMEffectConditionLinkImpl <em>Effect Condition Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMEffectConditionLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMEffectConditionLink()
-		 * @generated
-		 */
-		EClass OPM_EFFECT_CONDITION_LINK = eINSTANCE.getOPMEffectConditionLink();
-
-				/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMResultLinkImpl <em>Result Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3663,26 +3085,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 		EClass OPM_INSTRUMENT_LINK = eINSTANCE.getOPMInstrumentLink();
 
 				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMInstrumentEventLinkImpl <em>Instrument Event Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMInstrumentEventLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInstrumentEventLink()
-		 * @generated
-		 */
-		EClass OPM_INSTRUMENT_EVENT_LINK = eINSTANCE.getOPMInstrumentEventLink();
-
-				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMInstrumentConditionLinkImpl <em>Instrument Condition Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMInstrumentConditionLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMInstrumentConditionLink()
-		 * @generated
-		 */
-		EClass OPM_INSTRUMENT_CONDITION_LINK = eINSTANCE.getOPMInstrumentConditionLink();
-
-				/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionLinkImpl <em>Consumption Link</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3691,26 +3093,6 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
 		 * @generated
 		 */
 		EClass OPM_CONSUMPTION_LINK = eINSTANCE.getOPMConsumptionLink();
-
-				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionEventLinkImpl <em>Consumption Event Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMConsumptionEventLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMConsumptionEventLink()
-		 * @generated
-		 */
-		EClass OPM_CONSUMPTION_EVENT_LINK = eINSTANCE.getOPMConsumptionEventLink();
-
-				/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMConsumptionConditionLinkImpl <em>Consumption Condition Link</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.impl.OPMConsumptionConditionLinkImpl
-		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMConsumptionConditionLink()
-		 * @generated
-		 */
-		EClass OPM_CONSUMPTION_CONDITION_LINK = eINSTANCE.getOPMConsumptionConditionLink();
 
 				/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.impl.OPMStructuralLinkImpl <em>Structural Link</em>}' class.
@@ -3801,6 +3183,16 @@ int LABEL__INCOMING_LINKS = OPM_NODE__INCOMING_LINKS;
     EEnum VERTICAL_ALIGNMENT = eINSTANCE.getVerticalAlignment();
 
                 /**
+		 * The meta object literal for the '{@link com.vainolo.phd.opm.model.OPMProceduralActivationKind <em>Procedural Activation Kind</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opm.model.OPMProceduralActivationKind
+		 * @see com.vainolo.phd.opm.model.impl.OPMPackageImpl#getOPMProceduralActivationKind()
+		 * @generated
+		 */
+		EEnum OPM_PROCEDURAL_ACTIVATION_KIND = eINSTANCE.getOPMProceduralActivationKind();
+
+																/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

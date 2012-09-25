@@ -17,7 +17,7 @@ import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.model.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 /**
  * An extension of a {@link OPMLinkEditPart} used for {@link OPMProceduralLink} instances. It add endpoint decorations
@@ -72,7 +72,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
    * @param kind
    *          the {@link OPMProceduralLinkKind} of the model entity.
    */
-  private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
+  /*private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
     switch(kind) {
       case AGENT:
         CircleDecoration agentDecoration = new CircleDecoration();
@@ -102,5 +102,5 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
       default:
         throw new IllegalArgumentException("No case for kind " + kind);
     }
-  }
+  }*/
 }

@@ -14,8 +14,16 @@ package com.vainolo.phd.opm.model;
  *
  *
  * @see com.vainolo.phd.opm.model.OPMPackage#getOPMEffectLink()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.activationKind == activationKind) return;\r\nthis.activationKind = activationKind;'"
  * @generated
  */
 public interface OPMEffectLink extends OPMProceduralLink {
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='if (this.activationKind==activationKind) return;\r\nthis.activationKind=activationKind;'"
+	 * @generated
+	 */
+	void setActivationKind(OPMProceduralActivationKind activationKind);
 } // OPMEffectLink

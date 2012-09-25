@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.model.impl;
 import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMPackage;
 
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -38,6 +39,16 @@ public class OPMInstrumentLinkImpl extends OPMProceduralLinkImpl implements OPMI
 	@Override
 	protected EClass eStaticClass() {
 		return OPMPackage.Literals.OPM_INSTRUMENT_LINK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setActivationKind(OPMProceduralActivationKind activationKind) {
+		if (this.activationKind==activationKind) return;
+		this.activationKind=activationKind;
 	}
 
 } //OPMInstrumentLinkImpl

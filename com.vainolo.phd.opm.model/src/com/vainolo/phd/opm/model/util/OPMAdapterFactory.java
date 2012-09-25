@@ -128,14 +128,6 @@ public class OPMAdapterFactory extends AdapterFactoryImpl {
 				return createOPMEffectLinkAdapter();
 			}
 			@Override
-			public Adapter caseOPMEffectEventLink(OPMEffectEventLink object) {
-				return createOPMEffectEventLinkAdapter();
-			}
-			@Override
-			public Adapter caseOPMEffectConditionLink(OPMEffectConditionLink object) {
-				return createOPMEffectConditionLinkAdapter();
-			}
-			@Override
 			public Adapter caseOPMResultLink(OPMResultLink object) {
 				return createOPMResultLinkAdapter();
 			}
@@ -148,24 +140,8 @@ public class OPMAdapterFactory extends AdapterFactoryImpl {
 				return createOPMInstrumentLinkAdapter();
 			}
 			@Override
-			public Adapter caseOPMInstrumentEventLink(OPMInstrumentEventLink object) {
-				return createOPMInstrumentEventLinkAdapter();
-			}
-			@Override
-			public Adapter caseOPMInstrumentConditionLink(OPMInstrumentConditionLink object) {
-				return createOPMInstrumentConditionLinkAdapter();
-			}
-			@Override
 			public Adapter caseOPMConsumptionLink(OPMConsumptionLink object) {
 				return createOPMConsumptionLinkAdapter();
-			}
-			@Override
-			public Adapter caseOPMConsumptionEventLink(OPMConsumptionEventLink object) {
-				return createOPMConsumptionEventLinkAdapter();
-			}
-			@Override
-			public Adapter caseOPMConsumptionConditionLink(OPMConsumptionConditionLink object) {
-				return createOPMConsumptionConditionLinkAdapter();
 			}
 			@Override
 			public Adapter caseOPMStructuralLink(OPMStructuralLink object) {
@@ -400,34 +376,6 @@ public class OPMAdapterFactory extends AdapterFactoryImpl {
 	}
 
 				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMEffectEventLink <em>Effect Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMEffectEventLink
-	 * @generated
-	 */
-	public Adapter createOPMEffectEventLinkAdapter() {
-		return null;
-	}
-
-				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMEffectConditionLink <em>Effect Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMEffectConditionLink
-	 * @generated
-	 */
-	public Adapter createOPMEffectConditionLinkAdapter() {
-		return null;
-	}
-
-				/**
 	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMResultLink <em>Result Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -470,34 +418,6 @@ public class OPMAdapterFactory extends AdapterFactoryImpl {
 	}
 
 				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMInstrumentEventLink <em>Instrument Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMInstrumentEventLink
-	 * @generated
-	 */
-	public Adapter createOPMInstrumentEventLinkAdapter() {
-		return null;
-	}
-
-				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMInstrumentConditionLink <em>Instrument Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMInstrumentConditionLink
-	 * @generated
-	 */
-	public Adapter createOPMInstrumentConditionLinkAdapter() {
-		return null;
-	}
-
-				/**
 	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMConsumptionLink <em>Consumption Link</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -508,34 +428,6 @@ public class OPMAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOPMConsumptionLinkAdapter() {
-		return null;
-	}
-
-				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMConsumptionEventLink <em>Consumption Event Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMConsumptionEventLink
-	 * @generated
-	 */
-	public Adapter createOPMConsumptionEventLinkAdapter() {
-		return null;
-	}
-
-				/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opm.model.OPMConsumptionConditionLink <em>Consumption Condition Link</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opm.model.OPMConsumptionConditionLink
-	 * @generated
-	 */
-	public Adapter createOPMConsumptionConditionLinkAdapter() {
 		return null;
 	}
 

@@ -43,7 +43,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//OPMProcessKind"
         defaultValueLiteral=""/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMLink" eSuperTypes="#//OPMElementWithID">
+  <eClassifiers xsi:type="ecore:EClass" name="OPMLink" abstract="true" eSuperTypes="#//OPMElementWithID">
     <eStructuralFeatures xsi:type="ecore:EReference" name="opd" eType="#//OPMObjectProcessDiagram"
         eOpposite="#//OPMObjectProcessDiagram/links"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//OPMNode"
@@ -58,7 +58,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetDecoration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="centerDecoration" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMProceduralLink" abstract="true" eSuperTypes="#//OPMLink"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMProceduralLink" abstract="true" eSuperTypes="#//OPMLink">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ActivationKind" lowerBound="1"
+        eType="#//OPMProceduralActivationKind" changeable="false" transient="true"
+        defaultValueLiteral="Normal"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label" eSuperTypes="#//OPMNode"/>
   <eClassifiers xsi:type="ecore:EEnum" name="OPMLinkRouterKind">
     <eLiterals name="BENDPOINT" literal="Bendpoint"/>
@@ -82,21 +86,44 @@
     <eLiterals name="BOTTOM" value="32" literal="Bottom"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPMAgentLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMEffectLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMEffectEventLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMEffectConditionLink" eSuperTypes="#//OPMProceduralLink"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMEffectLink" eSuperTypes="#//OPMProceduralLink">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="body" value="if (this.activationKind == activationKind) return;&#xD;&#xA;this.activationKind = activationKind;"/>
+    </eAnnotations>
+    <eOperations name="setActivationKind">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (this.activationKind==activationKind) return;&#xD;&#xA;this.activationKind=activationKind;"/>
+      </eAnnotations>
+      <eParameters name="activationKind" eType="#//OPMProceduralActivationKind"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPMResultLink" eSuperTypes="#//OPMProceduralLink"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPMInvocationLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMInstrumentLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMInstrumentEventLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMInstrumentConditionLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMConsumptionLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMConsumptionEventLink" eSuperTypes="#//OPMProceduralLink"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMConsumptionConditionLink" eSuperTypes="#//OPMProceduralLink"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMInstrumentLink" eSuperTypes="#//OPMProceduralLink">
+    <eOperations name="setActivationKind" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (this.activationKind==activationKind) return;&#xD;&#xA;this.activationKind=activationKind;"/>
+      </eAnnotations>
+      <eParameters name="activationKind" eType="#//OPMProceduralActivationKind"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMConsumptionLink" eSuperTypes="#//OPMProceduralLink">
+    <eOperations name="setActivationKind" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="if (this.activationKind==activationKind) return;&#xD;&#xA;this.activationKind=activationKind;"/>
+      </eAnnotations>
+      <eParameters name="activationKind" eType="#//OPMProceduralActivationKind"/>
+    </eOperations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPMStructuralLink" abstract="true" eSuperTypes="#//OPMLink">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="aggregatorPosition" eType="#//Point"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPMAggregationLink" eSuperTypes="#//OPMStructuralLink"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPMExhibitionLink" eSuperTypes="#//OPMStructuralLink"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPMGeneralizationLink" eSuperTypes="#//OPMStructuralLink"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="OPMProceduralActivationKind">
+    <eLiterals name="Normal"/>
+    <eLiterals name="Event" value="1"/>
+    <eLiterals name="Condition" value="2"/>
+  </eClassifiers>
 </ecore:EPackage>

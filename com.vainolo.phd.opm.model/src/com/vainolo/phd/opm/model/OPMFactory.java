@@ -53,15 +53,6 @@ public interface OPMFactory extends EFactory {
 	OPMProcess createOPMProcess();
 
 	/**
-	 * Returns a new object of class '<em>Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link</em>'.
-	 * @generated
-	 */
-	OPMLink createOPMLink();
-
-	/**
 	 * Returns a new object of class '<em>State</em>'.
 	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -98,24 +89,6 @@ public interface OPMFactory extends EFactory {
 	OPMEffectLink createOPMEffectLink();
 
 	/**
-	 * Returns a new object of class '<em>Effect Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Effect Event Link</em>'.
-	 * @generated
-	 */
-	OPMEffectEventLink createOPMEffectEventLink();
-
-	/**
-	 * Returns a new object of class '<em>Effect Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Effect Condition Link</em>'.
-	 * @generated
-	 */
-	OPMEffectConditionLink createOPMEffectConditionLink();
-
-	/**
 	 * Returns a new object of class '<em>Result Link</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,24 +116,6 @@ public interface OPMFactory extends EFactory {
 	OPMInstrumentLink createOPMInstrumentLink();
 
 	/**
-	 * Returns a new object of class '<em>Instrument Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instrument Event Link</em>'.
-	 * @generated
-	 */
-	OPMInstrumentEventLink createOPMInstrumentEventLink();
-
-	/**
-	 * Returns a new object of class '<em>Instrument Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Instrument Condition Link</em>'.
-	 * @generated
-	 */
-	OPMInstrumentConditionLink createOPMInstrumentConditionLink();
-
-	/**
 	 * Returns a new object of class '<em>Consumption Link</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,24 +123,6 @@ public interface OPMFactory extends EFactory {
 	 * @generated
 	 */
 	OPMConsumptionLink createOPMConsumptionLink();
-
-	/**
-	 * Returns a new object of class '<em>Consumption Event Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Consumption Event Link</em>'.
-	 * @generated
-	 */
-	OPMConsumptionEventLink createOPMConsumptionEventLink();
-
-	/**
-	 * Returns a new object of class '<em>Consumption Condition Link</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Consumption Condition Link</em>'.
-	 * @generated
-	 */
-	OPMConsumptionConditionLink createOPMConsumptionConditionLink();
 
 	/**
 	 * Returns a new object of class '<em>Aggregation Link</em>'.
