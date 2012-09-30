@@ -126,4 +126,13 @@ public final class IsoscelesTriangle extends Shape implements Orientable {
 		revalidate();
 		repaint();
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void setBounds(Rectangle rect) {
+		super.setBounds(rect);
+		validate();
+	}
 }

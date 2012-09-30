@@ -15,7 +15,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMEditPartFactory implements EditPartFactory {
 
@@ -33,11 +33,11 @@ public class OPMEditPartFactory implements EditPartFactory {
       // It is important for OPMProceduralLink to be before OPMLink because they have an is-a relation and we would get
       // the wrong EditPart if the order is changed.
       part = new OPMProceduralLinkEditPart();
+    } else if(model instanceof OPMStructuralLink) {
+        part = new OPMStructuralLinkEditPart();
     } else if(model instanceof OPMLink) {
       part = new OPMLinkEditPart();
-    } else if(model instanceof OPMStructuralLinkAggregator) {
-      part = new OPMStructuralLinkAggregatorEditPart();
-    } else if(model instanceof OPMState) {
+    }  else if(model instanceof OPMState) {
       part = new OPMStateEditPart();
     } else if(model instanceof Label) {
       part = new LabelEditPart();

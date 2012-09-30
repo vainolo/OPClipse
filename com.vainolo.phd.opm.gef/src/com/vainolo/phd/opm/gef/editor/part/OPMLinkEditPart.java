@@ -11,6 +11,7 @@ import java.util.List;
 import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Adapter;
@@ -44,7 +45,7 @@ public class OPMLinkEditPart extends AbstractConnectionEditPart {
   }
 
   /**
-   * Installs two edit policies:
+   * Installs three edit policies:
    * <ol>
    * <li>For the {@link EditPolicy#CONNECTION_ENDPOINTS_ROLE} a {@link ConnectionEndpoinEditPolicy}.</li>
    * <li>For the {@link EditPolicy#CONNECTION_ROLE} a {@link OPMLinkConnectionEditPolicy}.</li>
@@ -64,7 +65,7 @@ public class OPMLinkEditPart extends AbstractConnectionEditPart {
    * Create a {@link PolylineConnection} with a {@link BendpointConnectionRouter}
    */
   @Override
-  protected PolylineConnection createFigure() {
+  protected IFigure createFigure() {
     PolylineConnection conn = new PolylineConnection();
     conn.setConnectionRouter(new BendpointConnectionRouter());
     conn.setLineWidth(OPMFigureConstants.connectionLineWidth);

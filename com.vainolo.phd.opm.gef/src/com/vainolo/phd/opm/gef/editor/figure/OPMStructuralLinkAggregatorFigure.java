@@ -33,7 +33,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     /** Anchor created at the center-bottom of the figure, used for source anchors. */
     private ConnectionAnchor bottomAnchor;
     /** The kind of aggregator this figure represents. */
-    StructuralLinkKind kind;
+    private StructuralLinkKind kind;
     
     /**
      * Create a new aggregator figure depending on the aggregator kind. 
@@ -44,6 +44,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
         setLayoutManager(new XYLayout());
         triangle = new IsoscelesTriangle();
         triangle.setBackgroundColor(ColorConstants.black);
+        setBackgroundColor(ColorConstants.blue);
         switch(kind) {
         case AGGREGATION:
             triangle.setFill(true);
@@ -66,12 +67,8 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     
     @Override
     protected void paintFigure(Graphics graphics) {
-        Rectangle bounds = getBounds().getCopy();
-        setConstraint(triangle, new Rectangle(0,0,bounds.width,bounds.height));
-        if(kind == StructuralLinkKind.EXHIBITION) {
-            triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
-        }
-        triangle.invalidate();
+        super.paintFigure(graphics);
+        triangle.paintFigure(graphics);
     }
     
     /**
@@ -117,12 +114,25 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     
     @Override
     public ConnectionAnchor getSourceConnectionAnchor() {
-        return getBottomAnchor();
+        return getTopAnchor();
     }
 
     @Override
     public ConnectionAnchor getTargetConnectionAnchor() {
-        return getTopAnchor();
+        return getBottomAnchor();
     }
-
+    
+    @Override
+    public void setBounds(Rectangle rect){
+    	super.setBounds(rect);
+    	Rectangle bounds = getBounds().getCopy();
+    	
+        setConstraint(triangle, new Rectangle(0,0,bounds.width,bounds.height));
+    	//triangle.setBounds(bounds);
+        if(kind == StructuralLinkKind.EXHIBITION) {
+            triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
+        }
+        triangle.invalidate();
+        
+    }
 }
