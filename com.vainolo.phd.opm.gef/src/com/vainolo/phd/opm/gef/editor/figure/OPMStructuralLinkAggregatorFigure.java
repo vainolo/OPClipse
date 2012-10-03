@@ -126,9 +126,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     public void setBounds(Rectangle rect){
     	super.setBounds(rect);
     	Rectangle bounds = getBounds().getCopy();
-    	
-        setConstraint(triangle, new Rectangle(0,0,bounds.width,bounds.height));
-    	//triangle.setBounds(bounds);
+    	triangle.setBounds(bounds);
         if(kind == StructuralLinkKind.EXHIBITION) {
             triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
         }

@@ -55,12 +55,6 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
         break;
     }
 
-    if (linkKind == ProceduralLinkKind.EFFECT) {
-        arrow.setLocation(source);
-        arrow.setReferencePoint(pointAfterSource);
-        g.drawPolyline(arrow.getPoints());
-    }
-
     switch(activationKind) {
       case CONDITION:
         if(pointBeforeTarget.x() < target.x())
