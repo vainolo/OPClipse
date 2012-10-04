@@ -11,6 +11,8 @@ import static com.google.common.collect.Iterables.*;
 import java.util.Collection;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.collect.Sets;
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -22,6 +24,7 @@ import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMEventLink;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMInvocationLink;
+import com.vainolo.phd.opm.utilities.predicates.IsOPMLinkofType;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMObjectNode;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMProceduralLink;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMProcessIncomingDataLink;
@@ -121,5 +124,13 @@ public class OPDAnalysis {
 
   public static Collection<OPMLink> findIncomingStructuralLinks(OPMNode node) {
     return filter(node.getIncomingLinks(), IsOPMStructuralLink.INSTANCE);
+  }
+  
+  public static OPMLink findFirstOutgoingLink(OPMNode node, EClass eClass){
+	  Collection<OPMLink> filtered =  filter(node.getOutgoingLinks(), new IsOPMLinkofType(eClass));
+	  if (null == filtered) return null;
+	  for (OPMLink current:filtered)
+		  return current;
+	  return null;
   }
 }

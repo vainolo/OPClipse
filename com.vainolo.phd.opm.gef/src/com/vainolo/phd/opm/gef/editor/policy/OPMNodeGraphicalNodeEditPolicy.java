@@ -92,7 +92,6 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
     Command command = null;
 
-    // TODO check this
     if(request.getNewObject() instanceof OPMStructuralLink) {
       command = handleOPMStructuralLinkRequest(request);
     } else {
@@ -130,13 +129,12 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     // Search for an outgoing structural link aggregator matching the
     // requested kind.
     boolean aggregatorFound = false;
-    for(OPMLink structuralLink : OPDAnalysis.findOutgoingStructuralLinks(sNode)) {
-    	OPMStructuralLink existingAggregator = (OPMStructuralLink) structuralLink.getTarget();
-      if(agrNode.eClass().isInstance(existingAggregator)) {
+    OPMStructuralLink existingAggregator = (OPMStructuralLink) OPDAnalysis.findFirstOutgoingLink(sNode, agrNode.eClass());
+      if (null !=existingAggregator) {
         aggregatorFound = true;
         agrNode = existingAggregator;
       }
-    }
+    
 
     if(aggregatorFound) {
       // Just create a link from the aggregator to the target.
@@ -145,7 +143,7 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
       // Create a compound command consisting of three commands.
     	OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
         linkCreateCommand.setTarget((OPMNode) getHost().getModel());
-        
+        linkCreateCommand.getLink().setRouterKind(OPMLinkRouterKind.MANHATTAN);
         agrNode.setAggregatorPosition(getAggregatorPosition(sNode,tNode));
       //cCommand.add(createCreateAggregatorNodeCommand(sNode, tNode, agrNode));
       //cCommand.add(createCreateOPMLlinkCreateCommand(sNode, agrNode, OPDAnalysis.findOPD(sNode)));
