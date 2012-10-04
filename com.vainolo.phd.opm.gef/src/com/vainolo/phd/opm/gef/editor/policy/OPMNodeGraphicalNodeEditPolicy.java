@@ -120,7 +120,6 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
    * @return a command that creates the links as stated above.
    */
   private Command handleOPMStructuralLinkRequest(CreateConnectionRequest request) {
-    Command command = null;
 
     OPMNode sNode = (OPMNode) request.getSourceEditPart().getModel();
     OPMNode tNode = (OPMNode) request.getTargetEditPart().getModel();
@@ -128,31 +127,15 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
     // Search for an outgoing structural link aggregator matching the
     // requested kind.
-    boolean aggregatorFound = false;
-    OPMStructuralLink existingAggregator = (OPMStructuralLink) OPDAnalysis.findFirstOutgoingLink(sNode, agrNode.eClass());
-      if (null !=existingAggregator) {
-        aggregatorFound = true;
-        agrNode = existingAggregator;
-      }
     
+    OPMStructuralLink existingAggregator = (OPMStructuralLink) OPDAnalysis.findFirstOutgoingLink(sNode, agrNode.eClass());
+    
+    OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
+    linkCreateCommand.setTarget((OPMNode) getHost().getModel());
+    linkCreateCommand.getLink().setRouterKind(OPMLinkRouterKind.MANHATTAN);
+    agrNode.setAggregatorPosition(getAggregatorPosition(sNode,tNode));
 
-    if(aggregatorFound) {
-      // Just create a link from the aggregator to the target.
-      //command = createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(agrNode));
-    } else {
-      // Create a compound command consisting of three commands.
-    	OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
-        linkCreateCommand.setTarget((OPMNode) getHost().getModel());
-        linkCreateCommand.getLink().setRouterKind(OPMLinkRouterKind.MANHATTAN);
-        agrNode.setAggregatorPosition(getAggregatorPosition(sNode,tNode));
-      //cCommand.add(createCreateAggregatorNodeCommand(sNode, tNode, agrNode));
-      //cCommand.add(createCreateOPMLlinkCreateCommand(sNode, agrNode, OPDAnalysis.findOPD(sNode)));
-      //cCommand.add(createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(sNode)));
-
-      command = linkCreateCommand;
-    }
-
-    return command;
+    return linkCreateCommand;
   }
 
   /**

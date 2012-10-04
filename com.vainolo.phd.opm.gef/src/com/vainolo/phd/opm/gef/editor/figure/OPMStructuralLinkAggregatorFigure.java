@@ -14,6 +14,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Orientable;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 /**
@@ -131,6 +132,14 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
             triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
         }
         triangle.invalidate();
-        
+        revalidate();
     }
+    
+    public PointList getPoints(){
+    	return triangle.triangle.getCopy();
+    }
+    
+    public void setAggregatorLocation(int x, int y){
+		setBounds(new Rectangle(x, y, OPMFigureConstants.defaultAggregatorDimension.height, OPMFigureConstants.defaultAggregatorDimension.width));
+	}
 }

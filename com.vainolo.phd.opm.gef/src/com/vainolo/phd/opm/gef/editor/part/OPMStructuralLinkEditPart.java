@@ -1,16 +1,10 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.BendpointConnectionRouter;
-import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolylineConnection;
-import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.Request;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
@@ -19,12 +13,17 @@ import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
 import com.vainolo.phd.opm.gef.editor.policy.OPMLinkConnectionEditPolicy;
 import com.vainolo.phd.opm.gef.utils.OPMStructuralLinkToStructuralLinkKindConverter;
-import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 
 	private OPMStructuralLinkFigure figure;
+	private OPMStructuralLinkAggregatorEditPart aggregatorEditPart;
+	private OPMLinkEditPart sourceToAggregatorEditPart, aggregatorToTargetEditPart;
+	
+	public OPMStructuralLinkEditPart(){
+		// does nothing yet...
+	}
 	
 	@Override
 	protected IFigure createFigure() {
@@ -67,6 +66,7 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 	   */
 	  @Override
 	  protected void createEditPolicies() {
+		super.createEditPolicies();
 	    installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
 	    installEditPolicy(EditPolicy.CONNECTION_ROLE, new OPMLinkConnectionEditPolicy());
 	    installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new OPMLinkBendpointEditPolicy());

@@ -93,9 +93,10 @@ public class OPMStructuralLinkFigure extends Figure implements Connection{
 
 	@Override
 	public PointList getPoints() {
-		System.out.println("In OPMStructuralLinkFigure.getPoints");
-		// TODO Auto-generated method stub
-		return null;
+		PointList points = sourceToAggregator.getPoints().getCopy();
+		points.addAll(aggregatorFigure.getPoints());
+		points.addAll(aggregatorToTarget.getPoints());
+		return points;
 	}
 
 	@Override

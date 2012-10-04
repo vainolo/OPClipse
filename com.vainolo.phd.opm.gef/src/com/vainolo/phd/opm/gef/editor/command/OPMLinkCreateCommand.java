@@ -19,6 +19,16 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
  */
 public class OPMLinkCreateCommand extends Command {
 
+	public OPMLinkCreateCommand(){
+	}
+	
+	protected OPMLinkCreateCommand(OPMLinkCreateCommand orig){
+		this.target = orig.target;
+		this.source = orig.source;
+		this.opd = orig.opd;
+		this.link = orig.link;
+	}
+	
   /** Source {@link OPMNode} of the link. */
   private OPMNode source;
   /** Target {@link OPMNode} of the link. */

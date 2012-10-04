@@ -8,8 +8,6 @@ package com.vainolo.phd.opm.gef.editor.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gef.ConnectionEditPart;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
@@ -18,16 +16,13 @@ import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.utils.OPMStructuralLinkToStructuralLinkKindConverter;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 
-public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart implements ConnectionEditPart {
+public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
 
     private OPMStructuralLinkAggregatorFigure figure;
     private StructuralLinkKind linkKind;
-    private EditPart source;
-    private EditPart target;
 
     @Override
     protected IFigure createFigure() {
-    	
         OPMStructuralLink model = (OPMStructuralLink) getModel();
         linkKind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(model);
         figure = new OPMStructuralLinkAggregatorFigure(linkKind);
@@ -38,29 +33,8 @@ public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart impleme
 
     @Override
     protected void refreshVisuals() {
-        
-    	figure.repaint();
+    	OPMStructuralLink model = (OPMStructuralLink) getModel();
+		figure.setAggregatorLocation(model.getAggregatorPosition().x, model.getAggregatorPosition().y);
+		getFigure().repaint();
     }
-
-	@Override
-	public EditPart getSource() {
-		return source;
-	}
-
-	@Override
-	public EditPart getTarget() {
-		return target;
-	}
-
-	@Override
-	public void setSource(EditPart source) {
-		if (this.source == source) return;
-		this.source = source;
-	}
-
-	@Override
-	public void setTarget(EditPart target) {
-		if (this.target == target) return;
-		this.target = target;
-	}
 }
