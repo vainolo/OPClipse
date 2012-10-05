@@ -6,6 +6,10 @@
 
 package com.vainolo.phd.opm.gef.editor.policy;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -16,9 +20,11 @@ import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 
+import com.google.common.collect.Iterables;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkCreateCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
+import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkAggregatorEditPart;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkEditPart;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -58,9 +64,7 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
     // TODO check this
     if(request.getNewObject() instanceof OPMStructuralLinkAggregatorEditPart) {
-      request.setStartCommand(new Command() {
-      });
-      return request.getStartCommand();
+      return null;
     }
 
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
@@ -128,12 +132,17 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     // Search for an outgoing structural link aggregator matching the
     // requested kind.
     
-    OPMStructuralLink existingAggregator = (OPMStructuralLink) OPDAnalysis.findFirstOutgoingLink(sNode, agrNode.eClass());
+    Collection existing = OPDAnalysis.findOutgoingLinks(sNode, agrNode.eClass());
     
     OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
     linkCreateCommand.setTarget((OPMNode) getHost().getModel());
     linkCreateCommand.getLink().setRouterKind(OPMLinkRouterKind.MANHATTAN);
-    agrNode.setAggregatorPosition(getAggregatorPosition(sNode,tNode));
+    if (null == existing || existing.isEmpty())
+    	agrNode.setAggregatorPosition(getAggregatorPosition(sNode,tNode));
+    else{
+    	OPMStructuralLink exsitingLink = (OPMStructuralLink)Iterables.getFirst(existing, null);
+    	agrNode.setAggregatorPosition(exsitingLink.getAggregatorPosition());
+    }
 
     return linkCreateCommand;
   }

@@ -140,6 +140,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     }
     
     public void setAggregatorLocation(int x, int y){
+    	// TODO : check this
 		setBounds(new Rectangle(x, y, OPMFigureConstants.defaultAggregatorDimension.height, OPMFigureConstants.defaultAggregatorDimension.width));
 	}
 }

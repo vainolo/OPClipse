@@ -126,11 +126,8 @@ public class OPDAnalysis {
     return filter(node.getIncomingLinks(), IsOPMStructuralLink.INSTANCE);
   }
   
-  public static OPMLink findFirstOutgoingLink(OPMNode node, EClass eClass){
+  public static Collection<OPMLink> findOutgoingLinks(OPMNode node, EClass eClass){
 	  Collection<OPMLink> filtered =  filter(node.getOutgoingLinks(), new IsOPMLinkofType(eClass));
-	  if (null == filtered) return null;
-	  for (OPMLink current:filtered)
-		  return current;
-	  return null;
+	  return filtered;
   }
 }

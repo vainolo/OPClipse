@@ -6,14 +6,16 @@
 
 package com.vainolo.phd.opm.gef.editor.part;
 
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gef.GraphicalEditPart;
+import java.util.Collections;
+import java.util.List;
 
-import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
+import org.eclipse.draw2d.IFigure;
 import com.vainolo.phd.opm.gef.editor.figure.OPMStructuralLinkAggregatorFigure;
 import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.utils.OPMStructuralLinkToStructuralLinkKindConverter;
+import com.vainolo.phd.opm.model.OPMContainer;
+import com.vainolo.phd.opm.model.OPMLink;
+import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
@@ -21,13 +23,17 @@ public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
     private OPMStructuralLinkAggregatorFigure figure;
     private StructuralLinkKind linkKind;
 
+    public OPMStructuralLinkAggregatorEditPart(OPMStructuralLink model){
+    	setModel(model);
+    }
+    
     @Override
     protected IFigure createFigure() {
         OPMStructuralLink model = (OPMStructuralLink) getModel();
         linkKind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(model);
         figure = new OPMStructuralLinkAggregatorFigure(linkKind);
-        figure.setBounds(new Rectangle(model.getAggregatorPosition().x,model.getAggregatorPosition().y,OPMFigureConstants.defaultAggregatorDimension.height,OPMFigureConstants.defaultAggregatorDimension.width));
-        ((GraphicalEditPart) getParent()).setLayoutConstraint(this, figure,figure.getBounds());
+        //figure.setAggregatorLocation(model.getAggregatorPosition().x,model.getAggregatorPosition().y);
+        //((GraphicalEditPart) getParent()).setLayoutConstraint(this, figure,figure.getBounds());
         return figure;
     }
 
@@ -37,4 +43,19 @@ public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
 		figure.setAggregatorLocation(model.getAggregatorPosition().x, model.getAggregatorPosition().y);
 		getFigure().repaint();
     }
+    
+    @Override
+	protected List getModelChildren() {
+			return Collections.EMPTY_LIST;
+	}
+    
+    @Override
+	protected List<OPMLink> getModelSourceConnections() {
+    	return Collections.emptyList();
+	}
+
+	@Override
+	protected List<OPMLink> getModelTargetConnections() {
+		return Collections.emptyList();
+	}
 }
