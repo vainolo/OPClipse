@@ -7,14 +7,10 @@
 package com.vainolo.phd.opm.gef.editor.policy;
 
 import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
@@ -24,13 +20,10 @@ import com.google.common.collect.Iterables;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkCreateCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
-import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkAggregatorEditPart;
-import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkEditPart;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
-import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;

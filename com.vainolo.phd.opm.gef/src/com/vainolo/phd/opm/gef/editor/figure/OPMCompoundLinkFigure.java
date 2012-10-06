@@ -20,18 +20,14 @@ public class OPMCompoundLinkFigure extends Figure implements Connection{
 		super();
 		
 		if (midFigure == null) throw new NullPointerException();
+		if (sourceToFigure == null) throw new NullPointerException();
+		if (figureToTarget == null) throw new NullPointerException();
 		setLayoutManager(new XYLayout());
 		this.midFigure = midFigure;
-		
-		if (null == sourceToFigure) this.sourceToFigure = new PolylineConnection();
-		else this.sourceToFigure = sourceToFigure;
+		this.sourceToFigure = sourceToFigure;
 		add(sourceToFigure);
-		sourceToFigure.setTargetAnchor(midFigure.getSourceConnectionAnchor());
-		
-		if (null == figureToTarget) this.figureToTarget = new PolylineConnection();
-		else this.figureToTarget = figureToTarget;
+		this.figureToTarget = figureToTarget;
 		add(figureToTarget);
-		figureToTarget.setSourceAnchor(midFigure.getTargetConnectionAnchor());
 	}
 	
 	@Override

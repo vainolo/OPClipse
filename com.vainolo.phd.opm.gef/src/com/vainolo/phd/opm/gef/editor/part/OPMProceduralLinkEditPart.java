@@ -7,7 +7,6 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PolylineConnection;
@@ -36,7 +35,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   }
 
   /**
-   * Extend the connection created by {@link OPMLinkEditPart#createFigure()} by adding decorations depending on the
+   * Extend the connection created by {@link LinkEditPart#createFigure()} by adding decorations depending on the
    * link kind. An agent link is decorated at the target with black filled {@link CircleDecoration}. An instrument
    * link is decorated at the target with a white filled {@link CircleDecoration}. A consumption or result link is
    * decorated at the target with a {@link PolylineDecoration} (which is an arrow). An effect link link is decorated
@@ -66,7 +65,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
     centerDecorationLabel.setText(model.getCenterDecoration());
     super.refreshVisuals();
   }
-
+  
   /**
    * Decorate a connection depending on its kind.
    * 

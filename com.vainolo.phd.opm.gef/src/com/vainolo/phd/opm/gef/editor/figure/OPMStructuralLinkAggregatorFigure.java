@@ -115,12 +115,12 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     
     @Override
     public ConnectionAnchor getSourceConnectionAnchor() {
-        return getTopAnchor();
+        return getBottomAnchor();
     }
 
     @Override
     public ConnectionAnchor getTargetConnectionAnchor() {
-        return getBottomAnchor();
+        return getTopAnchor();
     }
     
     @Override

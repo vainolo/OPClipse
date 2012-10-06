@@ -69,6 +69,7 @@ public class OPMEditPartFactory implements EditPartFactory {
 	  for (OPMLink exsit:exsiting)
 		  if (structuralLinksMap.containsKey(exsit)){
 			  exsitingEditPart = structuralLinksMap.get(exsit);
+			  // getCurrentViewer().getEditPartRegistry().get(model)
 			  break;
 		  }
 	

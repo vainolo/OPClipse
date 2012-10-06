@@ -1,25 +1,22 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
-import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
-import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMCompoundLinkFigure;
 import com.vainolo.phd.opm.gef.editor.figure.OPMNodeFigure;
-import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
-import com.vainolo.phd.opm.gef.editor.policy.OPMLinkConnectionEditPolicy;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 
 	private OPMCompoundLinkFigure figure;
 	private OPMStructuralLinkAggregatorEditPart aggregatorEditPart;
-	private OPMLinkEditPart sourceToAggregatorEditPart, aggregatorToTargetEditPart;
+	private LinkEditPart sourceToAggregatorEditPart, aggregatorToTargetEditPart;
 	
-	public OPMStructuralLinkEditPart(OPMStructuralLinkAggregatorEditPart aggregatorEditPart,OPMLinkEditPart sourceToAggregatorEditPart,OPMLinkEditPart aggregatorToTargetEditPart){
+	public OPMStructuralLinkEditPart(OPMStructuralLinkAggregatorEditPart aggregatorEditPart,LinkEditPart sourceToAggregatorEditPart,LinkEditPart aggregatorToTargetEditPart){
 		super();
 		this.aggregatorEditPart = aggregatorEditPart;
 		this.sourceToAggregatorEditPart = sourceToAggregatorEditPart;
@@ -28,7 +25,6 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 	
 	public OPMStructuralLinkEditPart(){
 		super();
-		// does nothing yet...
 	}
 	
 	@Override
@@ -38,8 +34,16 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 			aggregatorEditPart = new OPMStructuralLinkAggregatorEditPart(model);
 			aggregatorEditPart.setParent(getParent());
 		}
-		if (null == sourceToAggregatorEditPart) sourceToAggregatorEditPart = new OPMLinkEditPart();
-		if (null == aggregatorToTargetEditPart) aggregatorToTargetEditPart = new OPMLinkEditPart();
+		if (null == sourceToAggregatorEditPart){
+			sourceToAggregatorEditPart = new LinkEditPart();
+			sourceToAggregatorEditPart.setParent(getParent());
+			sourceToAggregatorEditPart.setTarget(aggregatorEditPart);
+		}
+		if (null == aggregatorToTargetEditPart){
+			aggregatorToTargetEditPart = new LinkEditPart();
+			aggregatorToTargetEditPart.setParent(getParent());
+			aggregatorToTargetEditPart.setSource(aggregatorEditPart);
+		}
 		IFigure sourceConnectionFigure =  sourceToAggregatorEditPart.getFigure();
 		if (!(sourceConnectionFigure instanceof PolylineConnection)) sourceConnectionFigure = null;
 		IFigure targetConnectionFigure =  aggregatorToTargetEditPart.getFigure();
@@ -76,34 +80,65 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 		
 	}
 	
-	/**
-	   * Installs three edit policies:
-	   * <ol>
-	   * <li>For the {@link EditPolicy#CONNECTION_ENDPOINTS_ROLE} a {@link ConnectionEndpoinEditPolicy}.</li>
-	   * <li>For the {@link EditPolicy#CONNECTION_ROLE} a {@link OPMLinkConnectionEditPolicy}.</li>
-	   * <li>For the {@link EditPolicy#CONNECTION_BENDPOINTS_ROLE} a {@link OPMLinkBendpointEditPolicy} (for links that use
-	   * a {@link BendpointConnectionRouter}).</li>
-	   * </ol>
-	   */
 	  @Override
 	  protected void createEditPolicies() {
 		super.createEditPolicies();
-	    installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
-	    installEditPolicy(EditPolicy.CONNECTION_ROLE, new OPMLinkConnectionEditPolicy());
-	    installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new OPMLinkBendpointEditPolicy());
-
+	    removeEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE);
+	  }
+	  
+	  @Override
+	  public void setSource(EditPart editPart){
+		  super.setSource(editPart);
+		  sourceToAggregatorEditPart.setSource(editPart);
+	  }
+	  
+	  @Override
+	  public void setTarget(EditPart editPart){
+		  super.setTarget(editPart);
+		  aggregatorToTargetEditPart.setTarget(editPart);
 	  }
 	  
 	  public OPMStructuralLinkAggregatorEditPart getAggregatorEditPart() {
 			return aggregatorEditPart;
 		}
 
-		public OPMLinkEditPart getSourceToAggregatorEditPart() {
+		public LinkEditPart getSourceToAggregatorEditPart() {
 			return sourceToAggregatorEditPart;
 		}
 
-		public OPMLinkEditPart getAggregatorToTargetEditPart() {
+		public LinkEditPart getAggregatorToTargetEditPart() {
 			return aggregatorToTargetEditPart;
 		}
 
+		@Override
+		public void addNotify(){
+			super.addNotify();
+			aggregatorEditPart.createEditPolicies();
+			sourceToAggregatorEditPart.createEditPolicies();
+			aggregatorToTargetEditPart.createEditPolicies();
+			refresh();
+		}
+		
+		@Override
+		public void refresh(){
+			super.refresh();
+			aggregatorEditPart.refresh();
+			sourceToAggregatorEditPart.refresh();
+			aggregatorToTargetEditPart.refresh();
+		}
+		
+		@Override
+		public void activate(){
+			super.activate();
+			aggregatorEditPart.activate();
+			sourceToAggregatorEditPart.activate();
+			aggregatorToTargetEditPart.activate();
+		}
+		@Override
+		public void deactivate(){
+			super.deactivate();
+			aggregatorEditPart.deactivate();
+			sourceToAggregatorEditPart.deactivate();
+			aggregatorToTargetEditPart.deactivate();
+		}
 }
