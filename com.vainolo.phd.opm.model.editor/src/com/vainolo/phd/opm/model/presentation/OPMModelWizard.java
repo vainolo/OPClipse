@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.CommonPlugin;
-
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
@@ -311,10 +311,13 @@ public class OPMModelWizard extends Wizard implements INewWizard {
 		 * <!-- end-user-doc -->
      * @generated
      */
+		
+		protected Button MetaModelCheckBox;
+		
 		public OPMModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
-      super(pageId, selection);
-    }
-
+			super(pageId, selection);
+		}
+		
 		/**
      * The framework calls this to see if the file is correct.
      * <!-- begin-user-doc -->
@@ -335,14 +338,111 @@ public class OPMModelWizard extends Wizard implements INewWizard {
       return false;
     }
 
+		@Override
+		
+//		 public void createControl(Composite parent) {
+//			Composite composite = new Composite(parent,SWT.NONE);
+//			MetaModelCheckBox= new Button(composite,SWT.CHECK);
+//			MetaModelCheckBoxs
+//		}
+		
+		
+		public void createControl(Composite parent) {	
+			
+			super.createControl(parent);
+		      Composite composite = new Composite(parent, SWT.NONE); 
+//		      {
+//		        GridLayout layout = new GridLayout();
+//		        layout.numColumns = 1;
+//		        layout.verticalSpacing = 12;
+//		        composite.setLayout(layout);
+//
+//		        GridData data = new GridData();
+//		        data.verticalAlignment = GridData.FILL;
+//		        data.grabExcessVerticalSpace = true;
+//		        data.horizontalAlignment = GridData.FILL;
+//		        composite.setLayoutData(data);
+//		      }
+
+		      MetaModelCheckBox = new Button(composite,SWT.CHECK);
+		      MetaModelCheckBox.setText("Check To Load A Pre Define meta Model");
+		      MetaModelCheckBox.setSelection(true);
+		      MetaModelCheckBox.addListener(SWT.Selection, this);
+		      {
+		        GridData data = new GridData();
+		        data.horizontalAlignment = GridData.FILL;
+		        data.grabExcessHorizontalSpace = true;
+		        MetaModelCheckBox.setLayoutData(data);
+		      }
+//		      setPageComplete(validatePage());s
+
+		}
+		      
+		      
+		      
+		      
+//		      
+//		      Label containerLabel = new Label(composite, SWT.LEFT);
+//		      {
+//		        containerLabel.setText(OPMEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+//
+//		        GridData data = new GridData();
+//		        data.horizontalAlignment = GridData.FILL;
+//		        containerLabel.setLayoutData(data);
+//		      }
+//
+//		      initialObjectField = new Combo(composite, SWT.BORDER);
+//		      {
+//		        GridData data = new GridData();
+//		        data.horizontalAlignment = GridData.FILL;
+//		        data.grabExcessHorizontalSpace = true;
+//		        initialObjectField.setLayoutData(data);
+//		      }
+//
+//		      for (String objectName : getInitialObjectNames()) {
+//		        initialObjectField.add(getLabel(objectName));
+//		      }
+//
+//		      if (initialObjectField.getItemCount() == 1) {
+//		    	  initialObjectField.select(0);
+//		      }
+//		      initialObjectField.addModifyListener(validator);
+//
+//		      Label encodingLabel = new Label(composite, SWT.LEFT);
+//		      {
+//		        encodingLabel.setText(OPMEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+//
+//		        GridData data = new GridData();
+//		        data.horizontalAlignment = GridData.FILL;
+//		        encodingLabel.setLayoutData(data);
+//		      }
+//		      encodingField = new Combo(composite, SWT.BORDER);
+//		      {
+//		        GridData data = new GridData();
+//		        data.horizontalAlignment = GridData.FILL;
+//		        data.grabExcessHorizontalSpace = true;
+//		        encodingField.setLayoutData(data);
+//		      }
+//
+//		      for (String encoding : getEncodings()) {
+//		        encodingField.add(encoding);
+//		      }
+//
+//		      encodingField.select(0);
+//		      encodingField.addModifyListener(validator);
+//
+//		      setPageComplete(validatePage());
+//		      setControl(composite);
+//	}
+		
 		/**
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
      * @generated
      */
 		public IFile getModelFile() {
-      return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
-    }
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+		}
 	}
 
 	/**
