@@ -1,13 +1,24 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
+import java.util.List;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
+import org.eclipse.gef.editpolicies.LayoutEditPolicy;
+import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.editpolicies.ResizableEditPolicy;
+import org.eclipse.gef.requests.CreateRequest;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMCompoundLinkFigure;
 import com.vainolo.phd.opm.gef.editor.figure.OPMNodeFigure;
+import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 
 public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
@@ -64,7 +75,9 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 	@Override
 	protected void refreshVisuals() {
 		// Connection connection = getConnectionFigure();
-		// List<Point> modelConstraint = ((OPMLink) getModel()).getBendpoints();
+		OPMStructuralLink model = (OPMStructuralLink) getModel();
+		List<Point> modelConstraint = model.getBendpoints();
+		
 		// List<AbsoluteBendpoint> figureConstraint = new
 		// ArrayList<AbsoluteBendpoint>();
 		// for(Point p : modelConstraint) {
@@ -82,8 +95,21 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 	
 	  @Override
 	  protected void createEditPolicies() {
-		super.createEditPolicies();
-	    removeEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE);
+		//super.createEditPolicies();
+	    //removeEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE);
+
+		removeEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+		  
+	    sourceToAggregatorEditPart.installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
+	    aggregatorToTargetEditPart.installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
+	    
+	    aggregatorEditPart.installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new NonResizableEditPolicy());
+	  }
+	   
+	  @Override
+	  public void installEditPolicy(Object key, EditPolicy editPolicy){
+		  if (key.equals(EditPolicy.PRIMARY_DRAG_ROLE)) return;
+		  super.installEditPolicy(key, editPolicy);
 	  }
 	  
 	  @Override
@@ -141,4 +167,6 @@ public class OPMStructuralLinkEditPart extends OPMLinkEditPart {
 			sourceToAggregatorEditPart.deactivate();
 			aggregatorToTargetEditPart.deactivate();
 		}
+		
+		
 }

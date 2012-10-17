@@ -7,11 +7,17 @@ package com.vainolo.phd.opm.gef.editor.part;
 
 import java.util.Collection;
 
+import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
+
+import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
+import com.vainolo.phd.opm.gef.editor.policy.OPMLinkConnectionEditPolicy;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
@@ -35,6 +41,23 @@ public class OPMLinkEditPart extends LinkEditPart {
   @Override
   public Collection<Point> getBendpoints(){
 	  return ((OPMProceduralLink) getModel()).getBendpoints();
+  }
+  
+  /**
+   * Installs edit policies:
+   * <ol>
+   * <li>For the {@link EditPolicy#CONNECTION_ENDPOINTS_ROLE} a {@link ConnectionEndpoinEditPolicy}.</li>
+   * <li>For the {@link EditPolicy#CONNECTION_ROLE} a {@link OPMLinkConnectionEditPolicy}.</li>
+   * <li>For the {@link EditPolicy#CONNECTION_BENDPOINTS_ROLE} a {@link OPMLinkBendpointEditPolicy} (for links that use
+   * a {@link BendpointConnectionRouter}).</li>
+   * </ol>
+   */
+  @Override
+  protected void createEditPolicies() {
+	super.createEditPolicies();
+	installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
+    installEditPolicy(EditPolicy.CONNECTION_ROLE, new OPMLinkConnectionEditPolicy());
+	installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new OPMLinkBendpointEditPolicy());
   }
   
   @Override

@@ -19,12 +19,12 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.vainolo.phd.opm.gef.editor.figure.OPMNodeFigure;
 import com.vainolo.phd.opm.gef.editor.figure.OPMStructuralLinkAggregatorFigure;
-import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.gef.editor.policy.OPMNodeComponentEditPolicy;
 import com.vainolo.phd.opm.gef.editor.policy.OPMNodeGraphicalNodeEditPolicy;
 import com.vainolo.phd.opm.gef.utils.OPMStructuralLinkToStructuralLinkKindConverter;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.StructuralLinkKind;
 
 public class OPMStructuralLinkAggregatorEditPart extends AbstractGraphicalEditPart implements NodeEditPart {
 
@@ -92,6 +92,6 @@ public class OPMStructuralLinkAggregatorEditPart extends AbstractGraphicalEditPa
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new OPMNodeComponentEditPolicy());
-		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new OPMNodeGraphicalNodeEditPolicy());
+		
 	}
 }

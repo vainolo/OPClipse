@@ -5,10 +5,10 @@ import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EClass;
 
-import com.vainolo.phd.opm.gef.editor.figure.StructuralLinkKind;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.StructuralLinkKind;
 
 public enum OPMStructuralLinkToStructuralLinkKindConverter {
 	INSTANCE;

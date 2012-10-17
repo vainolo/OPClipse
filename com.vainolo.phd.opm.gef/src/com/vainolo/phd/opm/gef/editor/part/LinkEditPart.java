@@ -11,13 +11,8 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
-import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
-
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
-import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
-import com.vainolo.phd.opm.gef.editor.policy.OPMLinkConnectionEditPolicy;
 
 public class LinkEditPart extends AbstractConnectionEditPart {
 
@@ -29,21 +24,10 @@ public class LinkEditPart extends AbstractConnectionEditPart {
 	    super();
 	  }
 
-	  /**
-	   * Installs three edit policies:
-	   * <ol>
-	   * <li>For the {@link EditPolicy#CONNECTION_ENDPOINTS_ROLE} a {@link ConnectionEndpoinEditPolicy}.</li>
-	   * <li>For the {@link EditPolicy#CONNECTION_ROLE} a {@link OPMLinkConnectionEditPolicy}.</li>
-	   * <li>For the {@link EditPolicy#CONNECTION_BENDPOINTS_ROLE} a {@link OPMLinkBendpointEditPolicy} (for links that use
-	   * a {@link BendpointConnectionRouter}).</li>
-	   * </ol>
-	   */
+	 
 	  @Override
 	  protected void createEditPolicies() {
-	    installEditPolicy(EditPolicy.CONNECTION_ENDPOINTS_ROLE, new ConnectionEndpointEditPolicy());
-	    installEditPolicy(EditPolicy.CONNECTION_ROLE, new OPMLinkConnectionEditPolicy());
-	    installEditPolicy(EditPolicy.CONNECTION_BENDPOINTS_ROLE, new OPMLinkBendpointEditPolicy());
-
+	    
 	  }
 
 	  /**

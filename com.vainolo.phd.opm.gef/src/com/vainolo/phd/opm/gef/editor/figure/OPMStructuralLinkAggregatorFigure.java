@@ -11,11 +11,15 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.MouseEvent;
+import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.Orientable;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.vainolo.phd.opm.utilities.decoratorationLayer.StructuralLinkKind;
 
 /**
  * Draws the figure for a {@link OPMStructuralLinkAggregator}. This figure
@@ -63,7 +67,7 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
         default:
             throw new IllegalArgumentException("Invalid aggregator kind: " + kind);
         }
-        add(triangle);
+        add(triangle);        
     }
     
     @Override
