@@ -22,6 +22,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMEventLink;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMInvocationLink;
 import com.vainolo.phd.opm.utilities.predicates.IsOPMLinkofType;
@@ -130,4 +131,12 @@ public class OPDAnalysis {
 	  Collection<OPMLink> filtered =  filter(node.getOutgoingLinks(), new IsOPMLinkofType(eClass));
 	  return filtered;
   }
+  
+  public static OPMObjectProcessDiagram findOPD(OPMStructuralLinkAggregator node) {
+	    OPMContainer currentContainer = node.getContainer();
+	    while(!(currentContainer instanceof OPMObjectProcessDiagram)) {
+	      currentContainer = ((OPMNode) currentContainer).getContainer();
+	    }
+	    return (OPMObjectProcessDiagram) currentContainer;
+	  }
 }

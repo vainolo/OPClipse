@@ -8,9 +8,9 @@ import com.vainolo.phd.opm.model.OPMLink;
 
 public class OPMStructuralLinkAggregatorImpl implements OPMStructuralLinkAggregator{
 
-	protected static final StructuralLinkKind KIND_EDEFAULT = StructuralLinkKind.AGGREGATION;
+	protected static final OPMStructuralLinkKind KIND_EDEFAULT = OPMStructuralLinkKind.AGGREGATION;
 
-	protected StructuralLinkKind kind = KIND_EDEFAULT;
+	protected OPMStructuralLinkKind kind = KIND_EDEFAULT;
 
 	/**
    * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ public class OPMStructuralLinkAggregatorImpl implements OPMStructuralLinkAggrega
 	 * <!-- end-user-doc -->
    * @generated
    */
-	public StructuralLinkKind getKind() {
+	public OPMStructuralLinkKind getKind() {
     return kind;
   }
 
@@ -35,8 +35,8 @@ public class OPMStructuralLinkAggregatorImpl implements OPMStructuralLinkAggrega
 	 * <!-- end-user-doc -->
    * @generated
    */
-	public void setKind(StructuralLinkKind newKind) {
-		StructuralLinkKind oldKind = kind;
+	public void setKind(OPMStructuralLinkKind newKind) {
+		OPMStructuralLinkKind oldKind = kind;
     kind = newKind == null ? KIND_EDEFAULT : newKind;
     //if (eNotificationRequired())
       //eNotify(new ENotificationImpl(this, Notification.SET, OPMPackage.OPM_STRUCTURAL_LINK_AGGREGATOR__KIND, oldKind, kind));

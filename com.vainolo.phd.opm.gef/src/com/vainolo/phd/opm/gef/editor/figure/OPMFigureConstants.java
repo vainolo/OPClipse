@@ -6,7 +6,6 @@
 package com.vainolo.phd.opm.gef.editor.figure;
 
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.swt.graphics.Color;
 
 public enum OPMFigureConstants {
@@ -21,5 +20,4 @@ public enum OPMFigureConstants {
   public static int agentCircleRadius = 5;
   public static final int opmNodeInsets = 2;
 
-  public static final Dimension defaultAggregatorDimension = new Dimension(15, 15);
 }

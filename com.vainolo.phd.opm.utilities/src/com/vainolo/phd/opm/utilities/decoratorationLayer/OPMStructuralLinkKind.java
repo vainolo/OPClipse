@@ -1,6 +1,6 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
-public enum StructuralLinkKind {
+public enum OPMStructuralLinkKind {
 	AGGREGATION,
 	GENERALIZATION,
 	EXHIBITION

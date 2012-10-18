@@ -14,14 +14,15 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkKind;
 
 public class OPMProceduralLinkFigure extends PolylineConnection {
   private static final PolylineDecoration arrow = new PolylineDecoration();
-  private ProceduralLinkKind linkKind;
+  private OPMProceduralLinkKind kind;
   private OPMProceduralActivationKind activationKind;
-  
-  public OPMProceduralLinkFigure(ProceduralLinkKind linkKind, OPMProceduralActivationKind activationKind) {
-    this.linkKind = linkKind;
+
+  public OPMProceduralLinkFigure(OPMProceduralLinkKind kind, OPMProceduralActivationKind activationKind) {
+    this.kind = kind;
     this.activationKind = activationKind;
   }
 
@@ -35,10 +36,13 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
     Point target = points.getLastPoint();
     Point pointBeforeTarget = points.getPoint(points.size() - 2);
 
-    switch(linkKind) {
+    switch(kind) {
+      case EFFECT:	  
+    	  arrow.setLocation(source);
+          arrow.setReferencePoint(pointAfterSource);
+          g.drawPolyline(arrow.getPoints());
       case CONSUMPTION:
       case RESULT:
-      case EFFECT:
       case INVOCATION:
         arrow.setLocation(target);
         arrow.setReferencePoint(pointBeforeTarget);
@@ -67,7 +71,6 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
           g.drawText("e", target.x() - 20, target.y() - 20);
         else
           g.drawText("e", target.x() + 20, target.y() - 20);
-        break;
     }
   }
 

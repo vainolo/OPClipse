@@ -8,26 +8,25 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
-import com.vainolo.phd.opm.model.OPMFactory;
-import com.vainolo.phd.opm.model.OPMInstrumentLink;
-import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMFactory;
+import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
- * Factory used by palette tools to create {@link OPMInstrumentEventLink}.
+ * Factory used by palette tools to create {@link OPMProceduralLink} of {@link OPMProceduralLinkKind#INSTRUMENT_EVENT}
+ * kind.
  */
 public class OPMInstrumentEventLinkFactory implements CreationFactory {
 
   @Override
   public Object getNewObject() {
-    OPMInstrumentLink link = OPMFactory.eINSTANCE.createOPMInstrumentLink();
-    link.setActivationKind(OPMProceduralActivationKind.EVENT);
+    OPMProceduralLink link = OPMFactory.Instance().createOPMInstrumentEventLink();
     link.setId(OPMIdManager.getNextId());
     return link;
   }
 
   @Override
   public Object getObjectType() {
-    return OPMInstrumentLink.class;
+    return OPMProceduralLink.class;
   }
 
 }

@@ -2,14 +2,16 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
+import com.vainolo.phd.opm.model.OPMNode;
+
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 
 public interface OPMStructuralLinkAggregator{
 
-	StructuralLinkKind getKind();
+	OPMStructuralLinkKind getKind();
 		
-	void setKind(StructuralLinkKind newKind);
+	void setKind(OPMStructuralLinkKind newKind);
 	
 	/**
 	 * Returns the value of the '<em><b>Incoming Links</b></em>' reference list.

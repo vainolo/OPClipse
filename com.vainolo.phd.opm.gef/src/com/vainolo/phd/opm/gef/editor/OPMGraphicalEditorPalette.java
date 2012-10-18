@@ -14,13 +14,13 @@ import org.eclipse.jface.resource.ImageDescriptor;
 
 import com.vainolo.phd.opm.gef.editor.factory.LabelFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMAgentLinkFactory;
-import com.vainolo.phd.opm.gef.editor.factory.OPMAggregationLinkFactory;
+import com.vainolo.phd.opm.gef.editor.factory.OPMAggregationStructuralLinkAggregatorFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMConsumptionConditionLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMConsumptionEventLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMConsumptionLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMEffectLinkFactory;
-import com.vainolo.phd.opm.gef.editor.factory.OPMExhibitionLinkFactory;
-import com.vainolo.phd.opm.gef.editor.factory.OPMGeneralizationLinkFactory;
+import com.vainolo.phd.opm.gef.editor.factory.OPMExhibitionStructuralLinkAggregatorFactory;
+import com.vainolo.phd.opm.gef.editor.factory.OPMGeneralizationStructuralLinkAggregatorFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMInstrumentConditionLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMInstrumentEventLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMInstrumentLinkFactory;
@@ -171,7 +171,7 @@ public class OPMGraphicalEditorPalette extends PaletteRoot {
 		entry = new ConnectionCreationToolEntry(
 												"Aggregation",
 												"Create a new Aggregation link",
-												new OPMAggregationLinkFactory(),
+												new OPMAggregationStructuralLinkAggregatorFactory(),
 												ImageDescriptor.createFromFile(this.getClass(), "icons/aggregation.ico"),
 												ImageDescriptor.createFromFile(this.getClass(), "icons/aggregation.ico"));
 		group.add(entry);
@@ -179,13 +179,13 @@ public class OPMGraphicalEditorPalette extends PaletteRoot {
 		entry = new ConnectionCreationToolEntry(
 												"Exhibition",
 												"Create a new Exhibition link",
-												new OPMExhibitionLinkFactory(),
+												new OPMExhibitionStructuralLinkAggregatorFactory(),
 												ImageDescriptor.createFromFile(this.getClass(), "icons/exhibition.ico"),
 												ImageDescriptor.createFromFile(this.getClass(), "icons/exhibition.ico"));
 		group.add(entry);
 
 		entry = new ConnectionCreationToolEntry("Generalization", "Create a new Generalization link",
-												new OPMGeneralizationLinkFactory(),
+												new OPMGeneralizationStructuralLinkAggregatorFactory(),
 												ImageDescriptor.createFromFile(	this.getClass(),
 																				"icons/generalization.ico"),
 												ImageDescriptor.createFromFile(	this.getClass(),

@@ -11,15 +11,13 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
-import org.eclipse.draw2d.MouseEvent;
-import org.eclipse.draw2d.MouseListener;
 import org.eclipse.draw2d.Orientable;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.vainolo.phd.opm.utilities.decoratorationLayer.StructuralLinkKind;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkKind;
 
 /**
  * Draws the figure for a {@link OPMStructuralLinkAggregator}. This figure
@@ -38,18 +36,17 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     /** Anchor created at the center-bottom of the figure, used for source anchors. */
     private ConnectionAnchor bottomAnchor;
     /** The kind of aggregator this figure represents. */
-    private StructuralLinkKind kind;
+    OPMStructuralLinkKind kind;
     
     /**
      * Create a new aggregator figure depending on the aggregator kind. 
      * @param kind the {@link OPMStructuralLinkAggregatorKind} of the figure.
      */
-    public OPMStructuralLinkAggregatorFigure(final StructuralLinkKind kind) {
+    public OPMStructuralLinkAggregatorFigure(final OPMStructuralLinkKind kind) {
         this.kind = kind;
         setLayoutManager(new XYLayout());
         triangle = new IsoscelesTriangle();
         triangle.setBackgroundColor(ColorConstants.black);
-        setBackgroundColor(ColorConstants.blue);
         switch(kind) {
         case AGGREGATION:
             triangle.setFill(true);
@@ -67,13 +64,17 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
         default:
             throw new IllegalArgumentException("Invalid aggregator kind: " + kind);
         }
-        add(triangle);        
+        add(triangle);
     }
     
     @Override
     protected void paintFigure(Graphics graphics) {
-        super.paintFigure(graphics);
-        triangle.paintFigure(graphics);
+        Rectangle bounds = getBounds().getCopy();
+        setConstraint(triangle, new Rectangle(0,0,bounds.width,bounds.height));
+        if(kind == OPMStructuralLinkKind.EXHIBITION) {
+            triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
+        }
+        triangle.invalidate();
     }
     
     /**
@@ -126,25 +127,5 @@ public class OPMStructuralLinkAggregatorFigure extends Figure implements OPMNode
     public ConnectionAnchor getTargetConnectionAnchor() {
         return getTopAnchor();
     }
-    
-    @Override
-    public void setBounds(Rectangle rect){
-    	super.setBounds(rect);
-    	Rectangle bounds = getBounds().getCopy();
-    	triangle.setBounds(bounds);
-        if(kind == StructuralLinkKind.EXHIBITION) {
-            triangle.setConstraint(innerTriangle, new Rectangle(bounds.width/3, bounds.height/2, bounds.width/3, bounds.height/3));
-        }
-        triangle.invalidate();
-        revalidate();
-    }
-    
-    public PointList getPoints(){
-    	return triangle.triangle.getCopy();
-    }
-    
-    public void setAggregatorLocation(int x, int y){
-    	// TODO : check this
-		setBounds(new Rectangle(x, y, OPMFigureConstants.defaultAggregatorDimension.height, OPMFigureConstants.defaultAggregatorDimension.width));
-	}
+
 }

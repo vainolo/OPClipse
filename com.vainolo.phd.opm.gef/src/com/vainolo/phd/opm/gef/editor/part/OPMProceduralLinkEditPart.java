@@ -7,6 +7,7 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
+import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PolylineConnection;
@@ -15,9 +16,9 @@ import org.eclipse.draw2d.PolylineDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
-import com.vainolo.phd.opm.gef.editor.figure.ProceduralLinkKind;
-import com.vainolo.phd.opm.gef.utils.OPMProceduralLinkToProceduralLinkKindConverter;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkToProceduralLinkKindConverter;
 
 /**
  * An extension of a {@link OPMLinkEditPart} used for {@link OPMProceduralLink} instances. It add endpoint decorations
@@ -35,7 +36,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   }
 
   /**
-   * Extend the connection created by {@link LinkEditPart#createFigure()} by adding decorations depending on the
+   * Extend the connection created by {@link OPMLinkEditPart#createFigure()} by adding decorations depending on the
    * link kind. An agent link is decorated at the target with black filled {@link CircleDecoration}. An instrument
    * link is decorated at the target with a white filled {@link CircleDecoration}. A consumption or result link is
    * decorated at the target with a {@link PolylineDecoration} (which is an arrow). An effect link link is decorated
@@ -46,8 +47,8 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   @Override
   protected PolylineConnection createFigure() {
     OPMProceduralLink model = (OPMProceduralLink) getModel();
-    ProceduralLinkKind linkKind =OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.Convert(model); 
-    PolylineConnection connection = new OPMProceduralLinkFigure(linkKind,model.getActivationKind());
+    OPMProceduralLinkKind kind =  OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.Convert(model);
+    PolylineConnection connection = new OPMProceduralLinkFigure(kind, model.getActivationKind());
     connection.setLineWidth(OPMFigureConstants.connectionLineWidth);
     // decorateConnection(connection, model.getKind());
     centerDecorationLabel = new Label();
@@ -56,7 +57,6 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
     connection.setConnectionRouter(new BendpointConnectionRouter());
 
     return connection;
-	  
   }
 
   @Override
@@ -65,7 +65,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
     centerDecorationLabel.setText(model.getCenterDecoration());
     super.refreshVisuals();
   }
-  
+
   /**
    * Decorate a connection depending on its kind.
    * 
@@ -74,7 +74,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
    * @param kind
    *          the {@link OPMProceduralLinkKind} of the model entity.
    */
-  /*private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
+  private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
     switch(kind) {
       case AGENT:
         CircleDecoration agentDecoration = new CircleDecoration();
@@ -83,16 +83,12 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
         connection.setTargetDecoration(agentDecoration);
         break;
       case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
         CircleDecoration instrumentDecoration = new CircleDecoration();
         instrumentDecoration.setBackgroundColor(ColorConstants.white);
         instrumentDecoration.setFill(true);
         connection.setTargetDecoration(instrumentDecoration);
         break;
       case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
       case RESULT:
       case INVOCATION:
         connection.setTargetDecoration(new PolylineDecoration());
@@ -104,5 +100,5 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
       default:
         throw new IllegalArgumentException("No case for kind " + kind);
     }
-  }*/
+  }
 }
