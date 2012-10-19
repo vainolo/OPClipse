@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 public class EObjectDecorator implements EObject{
 
-	public EObjectDecorator(EObject decorated){
+	protected EObjectDecorator(EObject decorated){
 		Assert.isNotNull(decorated);
 		this.decorated = decorated;
 	}
 	
-	EObject decorated;
+	private EObject decorated;
 	
 	@Override
 	public EClass eClass() {

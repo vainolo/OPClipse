@@ -8,11 +8,11 @@ import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 
-public class OPMLinkDecorator extends EObjectDecorator implements OPMLink{
+public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implements OPMLink,OPMDecorated<T>{
 
-	private OPMLink decorated;
+	protected T decorated;
 	
-	public OPMLinkDecorator(OPMLink decorated) {
+	protected OPMLinkDecorator(T decorated) {
 		super(decorated);
 		this.decorated = decorated;
 	}
@@ -29,38 +29,56 @@ public class OPMLinkDecorator extends EObjectDecorator implements OPMLink{
 
 	@Override
 	public OPMObjectProcessDiagram getOpd() {
-		// TODO Auto-generated method stub
-		return null;
+		OPMObjectProcessDiagram orig = decorated.getOpd();
+		if (orig==null) return null;
+		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(orig);
+		if (wrapper==null) wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.putDecorator(orig, new OPMObjectProcessDiagramDecorator(orig));
+		return wrapper;
 	}
 
 	@Override
 	public void setOpd(OPMObjectProcessDiagram value) {
-		// TODO Auto-generated method stub
+		if (value instanceof OPMObjectProcessDiagramDecorator){
+			OPMObjectProcessDiagramDecorator wrapper = (OPMObjectProcessDiagramDecorator)value;
+			decorated.setOpd(wrapper.getDecorated());
+		}else{
+			decorated.setOpd(value);
+		}
 		
 	}
 
 	@Override
 	public OPMNode getSource() {
-		// TODO Auto-generated method stub
-		return null;
+		OPMNode origSource= decorated.getSource();
+		return (OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(origSource);
 	}
 
 	@Override
 	public void setSource(OPMNode value) {
-		// TODO Auto-generated method stub
+		if (value instanceof OPMNodeDecorator) {
+			OPMNodeDecorator<?> decorator =(OPMNodeDecorator<?>) value;
+			decorated.setSource((OPMNode)decorator.getDecorated());
+		} else {
+			decorated.setSource(value);
+		}
+		
 		
 	}
 
 	@Override
 	public OPMNode getTarget() {
-		// TODO Auto-generated method stub
-		return null;
+		OPMNode origTarget= decorated.getTarget();
+		return (OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(origTarget);
 	}
 
 	@Override
 	public void setTarget(OPMNode value) {
-		// TODO Auto-generated method stub
-		
+		if (value instanceof OPMNodeDecorator) {
+			OPMNodeDecorator<?> decorator =(OPMNodeDecorator<?>) value;
+			decorated.setTarget((OPMNode)decorator.getDecorated());
+		} else {
+			decorated.setTarget(value);
+		}
 	}
 
 	@Override
@@ -107,6 +125,11 @@ public class OPMLinkDecorator extends EObjectDecorator implements OPMLink{
 	@Override
 	public void setCenterDecoration(String value) {
 		decorated.setCenterDecoration(value);
+	}
+
+	@Override
+	public T getDecorated() {
+		return decorated;
 	}
 
 }

@@ -7,7 +7,7 @@ import com.vainolo.phd.opm.model.OPMNode;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 
-public interface OPMStructuralLinkAggregator{
+public interface OPMStructuralLinkAggregator extends OPMNode{
 
 	OPMStructuralLinkKind getKind();
 		

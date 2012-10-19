@@ -7,7 +7,7 @@ package com.vainolo.phd.opm.utilities.predicates;
 
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.OPMLink;
-import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
  * Predicate that returns true for OPM procedural links.
@@ -21,7 +21,7 @@ public enum IsOPMProceduralLink implements Predicate<OPMLink> {
 
   @Override
   public boolean apply(final OPMLink link) {
-    if(OPMPackage.eINSTANCE.getOPMProceduralLink().isInstance(link))
+    if(link instanceof OPMProceduralLink)
       return true;
     return false;
   }

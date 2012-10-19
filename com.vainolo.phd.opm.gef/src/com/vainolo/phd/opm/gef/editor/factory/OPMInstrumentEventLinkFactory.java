@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.gef.editor.factory;
 import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMFactory;
+import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -26,7 +27,7 @@ public class OPMInstrumentEventLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMProceduralLink.class;
+    return OPMInstrumentLink.class;
   }
 
 }

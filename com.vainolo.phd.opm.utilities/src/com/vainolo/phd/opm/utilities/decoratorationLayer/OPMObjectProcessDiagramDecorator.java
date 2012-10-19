@@ -1,32 +1,61 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.util.NotifyingInternalEListImpl;
 
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
+import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 
-public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implements OPMObjectProcessDiagram{
+public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implements OPMObjectProcessDiagram, 
+	OPMDecorated<OPMObjectProcessDiagram>{
 
 	private OPMObjectProcessDiagram original;
 	
 	public OPMObjectProcessDiagramDecorator(OPMObjectProcessDiagram original){
 		super(original);
 		this.original =original; 
+		DecorationsBank.INSTANCE.putDecorator(original, this);
+		
+		InitializeNodesAndLinks();
 	}
+	
+	private void InitializeNodesAndLinks(){
+		EList<OPMNode> origNodes =  original.getNodes();
+		nodes = new NotifyingInternalEListImpl<OPMNode>();
+		for (OPMNode orig:origNodes){
+			nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
+		}
+		EList<OPMLink> origLinks =  original.getLinks();
+		links = new NotifyingInternalEListImpl<OPMLink>();
+		for (OPMLink link:origLinks){
+			if (link instanceof OPMStructuralLink){
+//			 	OPMNodeDecorator<OPMNode> source = (OPMNodeDecorator<OPMNode>)DecorationsBank.INSTANCE.GetOrCreateDecorator(link.getSource());
+//			 	findOutgoingStructuralLinks source.getOutgoingLinks()
+				
+			}else{
+				links.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(link));
+			}
+		}	
+	}
+	
+	NotifyingInternalEListImpl<OPMNode> nodes;
 	
 	@Override
 	public EList<OPMNode> getNodes() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return nodes;
 	}
+	
+	NotifyingInternalEListImpl<OPMLink> links;
 	
 	@Override
 	public EList<OPMLink> getLinks() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return links;
 	}
 
 	@Override
@@ -78,6 +107,11 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 	@Override
 	public void setKind(OPMObjectProcessDiagramKind value) {
 		original.setKind(value);
+	}
+
+	@Override
+	public OPMObjectProcessDiagram getDecorated() {
+		return original;
 	}
 
 }

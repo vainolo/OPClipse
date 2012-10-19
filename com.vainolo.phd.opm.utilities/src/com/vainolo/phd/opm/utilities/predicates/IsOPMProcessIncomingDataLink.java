@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.*;
+import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkDecorator;
 
 /**
  * Predicate that returns true for links that provide incoming data.
@@ -35,8 +36,10 @@ public enum IsOPMProcessIncomingDataLink implements Predicate<OPMProceduralLink>
   
   @Override
   public boolean apply(final OPMProceduralLink link) {
+	  OPMProceduralLink proceduralLink = link;
+	  if (link instanceof OPMProceduralLinkDecorator) proceduralLink = ((OPMProceduralLinkDecorator)link).getDecorated();
 	  for (EClass type:TrueTypes)
-	    	if (type.isInstance(link)) return true;
+	    	if (type.isInstance(proceduralLink)) return true;
 	    return false;
   }
 

@@ -1,5 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
+import org.eclipse.emf.ecore.EObject;
+
 import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -22,89 +24,83 @@ public class OPMFactory {
 	
 	public OPMProceduralLink createOPMAgentLink(){
 		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMAgentLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMProceduralLink createOPMConsumptionConditionLink(){
 		OPMConsumptionLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMConsumptionLink();
 		link.setActivationKind(OPMProceduralActivationKind.CONDITION);
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMProceduralLink createOPMConsumptionEventLink(){
 		OPMConsumptionLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMConsumptionLink();
 		link.setActivationKind(OPMProceduralActivationKind.EVENT);
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	public OPMProceduralLink createOPMConsumptionLink(){
 		OPMConsumptionLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMConsumptionLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMProceduralLink createOPMEffectLink(){
 		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMEffectLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	public OPMProceduralLink createOPMInstrumentLink(){
 		OPMInstrumentLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMInstrumentLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMProceduralLink createOPMInstrumentConditionLink(){
 		OPMInstrumentLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMInstrumentLink();
 		link.setActivationKind(OPMProceduralActivationKind.CONDITION);
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	public OPMProceduralLink createOPMInstrumentEventLink(){
 		OPMInstrumentLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMInstrumentLink();
 		link.setActivationKind(OPMProceduralActivationKind.EVENT);
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMProceduralLink createOPMInvocationLink(){
 		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMInvocationLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
-	public OPMLink createOPMSimpleLink(){
-		return new OPMSimpleLink();
-	}
 	public OPMProceduralLink createOPMResultLink(){
 		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMResultLink();
-		return new OPMProceduralLinkDecorator(link);
+		return (OPMProceduralLink)DecorationsBank.INSTANCE.putDecorator(link,  new OPMProceduralLinkDecorator(link));
 	}
 	
 	public OPMObject createOPMObject() {
-		return new OPMObjectDecorator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMObject());
+		OPMObject model = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMObject();
+		return (OPMObject)DecorationsBank.INSTANCE.putDecorator(model,new OPMObjectDecorator(model));
 	}
 	
 	public OPMProcess createOPMProcess() {
-		return new OPMProcessDecorator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMProcess());
+		OPMProcess model = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMProcess();
+		return (OPMProcess)DecorationsBank.INSTANCE.putDecorator(model,new OPMProcessDecorator(model));
 	}
 	
 	public OPMObjectProcessDiagram createOPMObjectProcessDiagram() {
-		return new OPMObjectProcessDiagramDecorator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		OPMObjectProcessDiagram model = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMObjectProcessDiagram();
+		return (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.putDecorator(model,new OPMObjectProcessDiagramDecorator(model));
+		
 	}
 	
 	public OPMState createOPMState() {
-		return new OPMStateDecorator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMState());
+		OPMState model = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMState();
+		return (OPMState)DecorationsBank.INSTANCE.putDecorator(model,new OPMStateDecorator(model));
 	}
 	
 	public OPMStructuralLinkAggregator createOPMStructuralLinkAggregator() {
 		return new OPMStructuralLinkAggregatorImpl();
 	}
 	
-//	public OPMProceduralLink createOPMAgentLink(){
-//		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMAgentLink();
-//		return new OPMProceduralLinkDecorator(link);
-//	}
-//	public OPMProceduralLink createOPMAgentLink(){
-//		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMAgentLink();
-//		return new OPMProceduralLinkDecorator(link);
-//	}
-//	
-//	public OPMProceduralLink createOPMAgentLink(){
-//		OPMProceduralLink link = com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMAgentLink();
-//		return new OPMProceduralLinkDecorator(link);
-//	}
+	public OPMLink createOPMSimpleLink(){
+		return new OPMSimpleLink();
+	}
+	
+	
 }

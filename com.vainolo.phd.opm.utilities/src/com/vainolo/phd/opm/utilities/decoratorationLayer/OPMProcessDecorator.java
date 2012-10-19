@@ -3,14 +3,12 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMProcessKind;
 
-public class OPMProcessDecorator extends OPMThingDecorator implements
-		OPMProcess , OPMDecorated<OPMProcess>{
+public class OPMProcessDecorator extends OPMThingDecorator<OPMProcess> implements
+		OPMProcess{
 
-	private OPMProcess decorated;
 	
-	public OPMProcessDecorator(OPMProcess decorated) {
+	OPMProcessDecorator(OPMProcess decorated) {
 		super(decorated);
-		this.decorated = decorated;
 	}
 
 	@Override
@@ -22,10 +20,4 @@ public class OPMProcessDecorator extends OPMThingDecorator implements
 	public void setKind(OPMProcessKind value) {
 		decorated.setKind(value);
 	}
-
-	@Override
-	public OPMProcess getDecorated() {
-		return decorated;
-	}
-
 }

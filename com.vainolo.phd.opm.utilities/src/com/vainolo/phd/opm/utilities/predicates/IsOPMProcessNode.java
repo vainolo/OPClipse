@@ -7,7 +7,7 @@ package com.vainolo.phd.opm.utilities.predicates;
 
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.OPMNode;
-import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.OPMProcess;
 
 /**
  * Predicate that returns true for OPM Process nodes.
@@ -21,7 +21,7 @@ public enum IsOPMProcessNode implements Predicate<OPMNode> {
 
   @Override
   public boolean apply(final OPMNode node) {
-    if(OPMPackage.eINSTANCE.getOPMProcess().isInstance(node))
+    if(node instanceof OPMProcess)
       return true;
     return false;
   }

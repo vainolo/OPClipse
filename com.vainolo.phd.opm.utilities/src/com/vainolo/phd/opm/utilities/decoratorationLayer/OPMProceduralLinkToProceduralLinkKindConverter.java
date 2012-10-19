@@ -24,6 +24,8 @@ public enum OPMProceduralLinkToProceduralLinkKindConverter {
 	  }
 	
 	public OPMProceduralLinkKind Convert(OPMProceduralLink link) {
+		if (link instanceof OPMProceduralLinkDecorator) link = ((OPMProceduralLinkDecorator)link).getDecorated();
+		
 		for (Entry<OPMProceduralLinkKind,EClass> entry : Map.entrySet()) {
 			if (entry.getValue().isInstance(link)) return entry.getKey();
 		}
