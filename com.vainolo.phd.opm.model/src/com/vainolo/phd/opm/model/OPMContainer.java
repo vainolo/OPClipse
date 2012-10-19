@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opm.model;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
@@ -41,6 +42,6 @@ public interface OPMContainer extends OPMElementWithID {
 	 * @model opposite="container" containment="true"
 	 * @generated
 	 */
-	EList<OPMNode> getNodes();
+	List<OPMNode> getNodes();
 
 } // OPMContainer

@@ -8,6 +8,7 @@ package com.vainolo.phd.opm.model.impl;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -189,7 +190,7 @@ public class OPMObjectProcessDiagramImpl extends OPMContainerImpl implements OPM
 	 * @generated
 	 */
   @Override
-  public EList<OPMLink> getLinks() {
+  public List<OPMLink> getLinks() {
 		if (links == null) {
 			links = new EObjectContainmentWithInverseEList<OPMLink>(OPMLink.class, this, OPMPackage.OPM_OBJECT_PROCESS_DIAGRAM__LINKS, OPMPackage.OPM_LINK__OPD);
 		}

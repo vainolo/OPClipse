@@ -1,8 +1,10 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.EList;
 
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -51,13 +53,13 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 		
 	}
 
-	MyEList<OPMLink> incomingLinks;
+	ArrayList<OPMLink> incomingLinks;
 	
 	@Override
-	public EList<OPMLink> getIncomingLinks() {
+	public List<OPMLink> getIncomingLinks() {
 		if (incomingLinks == null){
-			incomingLinks = new MyEList<>();
-			EList<OPMLink> origs = decorated.getIncomingLinks();
+			incomingLinks = new ArrayList<>();
+			List<OPMLink> origs = decorated.getIncomingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
 					// what to do here
@@ -69,13 +71,13 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 		return incomingLinks;
 	}
 
-	MyEList<OPMLink> outgoingLinks;
+	ArrayList<OPMLink> outgoingLinks;
 	
 	@Override
-	public EList<OPMLink> getOutgoingLinks() {
+	public List<OPMLink> getOutgoingLinks() {
 		if (outgoingLinks == null){
-			outgoingLinks = new MyEList<>();
-			EList<OPMLink> origs = decorated.getIncomingLinks();
+			outgoingLinks = new ArrayList<>();
+			List<OPMLink> origs = decorated.getIncomingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
 					// what to do here

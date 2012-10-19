@@ -1,6 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.util.NotifyingInternalEListImpl;
 
 import com.vainolo.phd.opm.model.OPMLink;
@@ -24,12 +25,12 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 	}
 	
 	private void InitializeNodesAndLinks(){
-		EList<OPMNode> origNodes =  original.getNodes();
+		List<OPMNode> origNodes =  original.getNodes();
 		nodes = new NotifyingInternalEListImpl<OPMNode>();
 		for (OPMNode orig:origNodes){
 			nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 		}
-		EList<OPMLink> origLinks =  original.getLinks();
+		List<OPMLink> origLinks =  original.getLinks();
 		links = new NotifyingInternalEListImpl<OPMLink>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
@@ -45,7 +46,7 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 	NotifyingInternalEListImpl<OPMNode> nodes;
 	
 	@Override
-	public EList<OPMNode> getNodes() {
+	public List<OPMNode> getNodes() {
 		
 		return nodes;
 	}
@@ -53,7 +54,7 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 	NotifyingInternalEListImpl<OPMLink> links;
 	
 	@Override
-	public EList<OPMLink> getLinks() {
+	public List<OPMLink> getLinks() {
 		
 		return links;
 	}

@@ -8,6 +8,7 @@ package com.vainolo.phd.opm.model.impl;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -188,7 +189,7 @@ public abstract class OPMNodeImpl extends OPMElementWithIDImpl implements OPMNod
 	 * @generated
 	 */
   @Override
-  public EList<OPMLink> getIncomingLinks() {
+  public List<OPMLink> getIncomingLinks() {
 		if (incomingLinks == null) {
 			incomingLinks = new EObjectWithInverseResolvingEList<OPMLink>(OPMLink.class, this, OPMPackage.OPM_NODE__INCOMING_LINKS, OPMPackage.OPM_LINK__TARGET);
 		}
@@ -200,7 +201,7 @@ public abstract class OPMNodeImpl extends OPMElementWithIDImpl implements OPMNod
 	 * @generated
 	 */
   @Override
-  public EList<OPMLink> getOutgoingLinks() {
+  public List<OPMLink> getOutgoingLinks() {
 		if (outgoingLinks == null) {
 			outgoingLinks = new EObjectWithInverseResolvingEList<OPMLink>(OPMLink.class, this, OPMPackage.OPM_NODE__OUTGOING_LINKS, OPMPackage.OPM_LINK__SOURCE);
 		}

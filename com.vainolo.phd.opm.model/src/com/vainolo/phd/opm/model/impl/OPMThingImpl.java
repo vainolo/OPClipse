@@ -18,6 +18,7 @@ import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -104,7 +105,7 @@ public abstract class OPMThingImpl extends OPMNodeImpl implements OPMThing {
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<OPMNode> getNodes() {
+    public List<OPMNode> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectContainmentWithInverseEList<OPMNode>(OPMNode.class, this, OPMPackage.OPM_THING__NODES, OPMPackage.OPM_NODE__CONTAINER);
 		}

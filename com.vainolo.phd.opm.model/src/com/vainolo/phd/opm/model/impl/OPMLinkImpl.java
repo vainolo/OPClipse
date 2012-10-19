@@ -14,6 +14,7 @@ import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMThing;
 
 import java.util.Collection;
+import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -344,7 +345,7 @@ public abstract class OPMLinkImpl extends OPMElementWithIDImpl implements OPMLin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Point> getBendpoints() {
+	public List<Point> getBendpoints() {
 		if (bendpoints == null) {
 			bendpoints = new EDataTypeUniqueEList<Point>(Point.class, this, OPMPackage.OPM_LINK__BENDPOINTS);
 		}

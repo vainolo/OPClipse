@@ -1,7 +1,8 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.emf.common.util.EList;
 
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMLinkRouterKind;
@@ -82,7 +83,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implem
 	}
 
 	@Override
-	public EList<Point> getBendpoints() {
+	public List<Point> getBendpoints() {
 		return decorated.getBendpoints();
 	}
 

@@ -1,7 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.util.NotifyingInternalEListImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMThing;
@@ -12,13 +12,13 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 		super(decorated);
 	}
 
-	NotifyingInternalEListImpl<OPMNode> nodes;
+	ArrayList<OPMNode> nodes;
 	
 	@Override
-	public EList<OPMNode> getNodes() {
+	public List<OPMNode> getNodes() {
 		if (nodes == null){
-			EList<OPMNode> origNodes =  decorated.getNodes();
-			nodes = new NotifyingInternalEListImpl<OPMNode>();
+			List<OPMNode> origNodes =  decorated.getNodes();
+			nodes = new ArrayList<>();
 			for (OPMNode orig:origNodes){
 				nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 			}

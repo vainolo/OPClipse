@@ -12,6 +12,7 @@ import com.vainolo.phd.opm.model.OPMPackage;
 
 import java.util.Collection;
 
+import java.util.List;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -72,7 +73,7 @@ public abstract class OPMContainerImpl extends OPMElementWithIDImpl implements O
      * <!-- end-user-doc -->
 	 * @generated
 	 */
-    public EList<OPMNode> getNodes() {
+    public List<OPMNode> getNodes() {
 		if (nodes == null) {
 			nodes = new EObjectContainmentWithInverseEList<OPMNode>(OPMNode.class, this, OPMPackage.OPM_CONTAINER__NODES, OPMPackage.OPM_NODE__CONTAINER);
 		}

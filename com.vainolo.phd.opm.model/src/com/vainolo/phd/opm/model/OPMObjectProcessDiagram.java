@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opm.model;
 
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -45,7 +46,7 @@ public interface OPMObjectProcessDiagram extends OPMContainer, OPMNamedElement {
 	 * @model opposite="opd" containment="true"
 	 * @generated
 	 */
-	EList<OPMLink> getLinks();
+	List<OPMLink> getLinks();
 
 	/**
 	 * Returns the value of the '<em><b>Next Id</b></em>' attribute.

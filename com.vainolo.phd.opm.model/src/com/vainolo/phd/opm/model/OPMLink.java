@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opm.model;
 
+import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -132,7 +133,7 @@ public interface OPMLink extends OPMElementWithID {
 	 * @model dataType="com.vainolo.phd.opm.model.Point"
 	 * @generated
 	 */
-	EList<Point> getBendpoints();
+	List<Point> getBendpoints();
 
     /**
 	 * Returns the value of the '<em><b>Router Kind</b></em>' attribute.
