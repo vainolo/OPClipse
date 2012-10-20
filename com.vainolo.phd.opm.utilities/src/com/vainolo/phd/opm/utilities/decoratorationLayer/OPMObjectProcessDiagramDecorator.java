@@ -10,30 +10,27 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 
-public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implements OPMObjectProcessDiagram, 
-	OPMDecorated<OPMObjectProcessDiagram>{
-
-	private OPMObjectProcessDiagram original;
+public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObjectProcessDiagram> implements OPMObjectProcessDiagram 
+	{
 	private boolean recreateNeeded = true;
 	
 	public OPMObjectProcessDiagramDecorator(OPMObjectProcessDiagram original){
 		super(original);
-		this.original =original; 
 		DecorationsBank.INSTANCE.putDecorator(original, this);
 	}
-	
-	void SetNeedRecreateNodesAndLinks(){
+	@Override
+	protected void NotifingChange(){
 		recreateNeeded = true;
 	}
 	
 	private void RecreateNodesAndLinks(){
 		if (!recreateNeeded) return;
-		List<OPMNode> origNodes =  original.getNodes();
+		List<OPMNode> origNodes =  decorated.getNodes();
 		nodes = new ArrayList<OPMNode>();
 		for (OPMNode orig:origNodes){
 			nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 		}
-		List<OPMLink> origLinks =  original.getLinks();
+		List<OPMLink> origLinks =  decorated.getLinks();
 		links = new ArrayList<OPMLink>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
@@ -66,58 +63,52 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 
 	@Override
 	public long getId() {
-		return original.getId();
+		return decorated.getId();
 	}
 
 	@Override
 	public void setId(long value) {
-		original.setId(value);
+		decorated.setId(value);
 	}
 
 	
 	@Override
 	public String getName() {
-		return original.getName();
+		return decorated.getName();
 	}
 
 	@Override
 	public void setName(String value) {
-		original.setName(value);
+		decorated.setName(value);
 	}
 
 	@Override
 	public VerticalAlignment getAlignment() {
-		return original.getAlignment();
+		return decorated.getAlignment();
 	}
 
 	@Override
 	public void setAlignment(VerticalAlignment value) {
-		original.setAlignment(value);
+		decorated.setAlignment(value);
 	}
 
 	@Override
 	public long getNextId() {
-		return original.getNextId();
+		return decorated.getNextId();
 	}
 
 	@Override
 	public void setNextId(long value) {
-		original.setNextId(value);
+		decorated.setNextId(value);
 	}
 
 	@Override
 	public OPMObjectProcessDiagramKind getKind() {
-		return original.getKind();
+		return decorated.getKind();
 	}
 
 	@Override
 	public void setKind(OPMObjectProcessDiagramKind value) {
-		original.setKind(value);
-	}
-
-	@Override
-	public OPMObjectProcessDiagram getDecorated() {
-		return original;
-	}
-
+		decorated.setKind(value);
+	}	
 }

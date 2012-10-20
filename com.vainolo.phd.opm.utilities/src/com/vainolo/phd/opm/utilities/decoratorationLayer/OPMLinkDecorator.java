@@ -10,13 +10,10 @@ import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 
-public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implements OPMLink,OPMDecorated<T>{
-
-	protected T decorated;
+public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> implements OPMLink{
 	
 	protected OPMLinkDecorator(T decorated) {
 		super(decorated);
-		this.decorated = decorated;
 	}
 
 	@Override
@@ -41,15 +38,6 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implem
 	public void setOpd(OPMObjectProcessDiagram value) {
 		OPMObjectProcessDiagram container = value;
 		if (value instanceof OPMObjectProcessDiagramDecorator) container = ((OPMObjectProcessDiagramDecorator)value).getDecorated();
-		
-		// notify previous
-		OPMObjectProcessDiagram current = getOpd();
-		if (current !=null) ((OPMObjectProcessDiagramDecorator)current).SetNeedRecreateNodesAndLinks();
-		
-		// notify next
-		OPMObjectProcessDiagramDecorator decorator = (OPMObjectProcessDiagramDecorator)DecorationsBank.INSTANCE.GetOrCreateDecorator(container);
-		decorator.SetNeedRecreateNodesAndLinks();
-		
 		
 		decorated.setOpd(container);
 	}
@@ -134,9 +122,6 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implem
 		decorated.setCenterDecoration(value);
 	}
 
-	@Override
-	public T getDecorated() {
-		return decorated;
-	}
+	
 
 }

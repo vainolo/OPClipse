@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
@@ -14,14 +15,17 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
-public class EObjectDecorator implements EObject{
+import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 
-	protected EObjectDecorator(EObject decorated){
+public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorated<T>{
+
+	protected EObjectDecorator(T decorated){
 		Assert.isNotNull(decorated);
 		this.decorated = decorated;
+		decorated.eAdapters().add(new EObjectDecoratorAdapter());
 	}
 	
-	private EObject decorated;
+	protected T decorated;
 	
 	@Override
 	public EClass eClass() {
@@ -98,12 +102,40 @@ public class EObjectDecorator implements EObject{
 			throws InvocationTargetException {
 		return decorated.eInvoke(operation, arguments);
 	}
-
+	
+	protected void NotifingChange(){}
+	
+	private MyEList<Adapter> eAdapters = new MyEList<>();
+	
 	@Override
-	public EList<Adapter> eAdapters() {
-		return decorated.eAdapters();
+	public EList<Adapter> eAdapters(){
+		return eAdapters;
 	}
+	
+	private class EObjectDecoratorAdapter implements Adapter{
 
+		@Override
+		public void notifyChanged(Notification notification) {
+			NotifingChange();
+			for (Adapter adapter:eAdapters) adapter.notifyChanged(notification);
+		}
+
+		@Override
+		public Notifier getTarget() {
+			return getDecorated();
+		}
+
+		@Override
+		public void setTarget(Notifier newTarget) {
+			// does nothing
+		}
+
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return type.equals(OPMObjectProcessDiagram.class);
+		}
+		
+	}
 	@Override
 	public boolean eDeliver() {
 		return decorated.eDeliver();
@@ -117,6 +149,11 @@ public class EObjectDecorator implements EObject{
 	@Override
 	public void eNotify(Notification notification) {
 		decorated.eNotify(notification);
+	}
+
+	@Override
+	public T getDecorated() {
+		return decorated;
 	}
 	
 }

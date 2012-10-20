@@ -12,15 +12,18 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 
-public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implements OPMNode,OPMDecorated<T>{
+public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> implements OPMNode{
 	
 	protected OPMNodeDecorator(T decorated){
 		super(decorated);
 		Assert.isNotNull(decorated);
-		this.decorated = decorated;
 	}
-	
-	protected T decorated;
+
+	@Override
+	protected void NotifingChange(){
+		incomingLinks = null;
+		outgoingLinks = null;
+	}
 	
 	@Override
 	public long getId() {
@@ -100,14 +103,6 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 		OPMContainer container = value;
 		if (value instanceof OPMDecorated<?>) container = (OPMContainer)((OPMDecorated<?>)value).getDecorated();
 		
-		// notify previous container
-		OPMContainer current = getContainer();
-		if (current instanceof OPMObjectProcessDiagramDecorator) ((OPMObjectProcessDiagramDecorator)current).SetNeedRecreateNodesAndLinks();
-		// notify next container - need to this before to handle events fired from within
-		OPMObjectProcessDiagramDecorator decorator = (OPMObjectProcessDiagramDecorator)DecorationsBank.INSTANCE.GetOrCreateDecorator(container);
-		decorator.SetNeedRecreateNodesAndLinks(); 
-		//TODO same for OPMThingDecorator
-		
 		decorated.setContainer(container);
 	}
 
@@ -121,11 +116,5 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 		decorated.setConstraints(value);
 		
 	}
-
-	@Override
-	public T getDecorated() {
-		return decorated;
-	}
-
 	
 }

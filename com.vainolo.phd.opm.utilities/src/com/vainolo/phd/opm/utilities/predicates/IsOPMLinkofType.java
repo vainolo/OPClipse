@@ -24,7 +24,7 @@ public class IsOPMLinkofType implements Predicate<OPMLink> {
 	@Override
 	public boolean apply(OPMLink origLink) {
 		OPMLink link = origLink;
-		  if (origLink instanceof OPMLinkDecorator) link = ((OPMLinkDecorator)origLink).getDecorated();
+		  if (origLink instanceof OPMLinkDecorator) link =(OPMLink) ((OPMLinkDecorator)origLink).getDecorated();
 		return type.isInstance(link);
 	}
 
