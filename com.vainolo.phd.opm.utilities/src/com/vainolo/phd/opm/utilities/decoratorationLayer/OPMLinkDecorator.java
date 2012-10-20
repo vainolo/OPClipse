@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
 
+import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
@@ -32,20 +33,25 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator implem
 	public OPMObjectProcessDiagram getOpd() {
 		OPMObjectProcessDiagram orig = decorated.getOpd();
 		if (orig==null) return null;
-		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(orig);
-		if (wrapper==null) wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.putDecorator(orig, new OPMObjectProcessDiagramDecorator(orig));
+		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig);
 		return wrapper;
 	}
 
 	@Override
 	public void setOpd(OPMObjectProcessDiagram value) {
-		if (value instanceof OPMObjectProcessDiagramDecorator){
-			OPMObjectProcessDiagramDecorator wrapper = (OPMObjectProcessDiagramDecorator)value;
-			decorated.setOpd(wrapper.getDecorated());
-		}else{
-			decorated.setOpd(value);
-		}
+		OPMObjectProcessDiagram container = value;
+		if (value instanceof OPMObjectProcessDiagramDecorator) container = ((OPMObjectProcessDiagramDecorator)value).getDecorated();
 		
+		// notify previous
+		OPMObjectProcessDiagram current = getOpd();
+		if (current !=null) ((OPMObjectProcessDiagramDecorator)current).SetNeedRecreateNodesAndLinks();
+		
+		// notify next
+		OPMObjectProcessDiagramDecorator decorator = (OPMObjectProcessDiagramDecorator)DecorationsBank.INSTANCE.GetOrCreateDecorator(container);
+		decorator.SetNeedRecreateNodesAndLinks();
+		
+		
+		decorated.setOpd(container);
 	}
 
 	@Override

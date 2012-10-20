@@ -24,7 +24,7 @@ public class CreationAndDirectEditTool extends CreationTool {
 			return;
 		}
 		
-		final Object o = getCurrentViewer().getEditPartRegistry().get(model);
+		final Object o = viewer.getEditPartRegistry().get(model);
 		if(o instanceof EditPart) {
 			Display.getCurrent().asyncExec(new Runnable() {
 				

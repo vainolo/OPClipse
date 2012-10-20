@@ -1,8 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.emf.ecore.util.NotifyingInternalEListImpl;
 
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
@@ -15,47 +14,53 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator implement
 	OPMDecorated<OPMObjectProcessDiagram>{
 
 	private OPMObjectProcessDiagram original;
+	private boolean recreateNeeded = true;
 	
 	public OPMObjectProcessDiagramDecorator(OPMObjectProcessDiagram original){
 		super(original);
 		this.original =original; 
 		DecorationsBank.INSTANCE.putDecorator(original, this);
-		
-		InitializeNodesAndLinks();
 	}
 	
-	private void InitializeNodesAndLinks(){
+	void SetNeedRecreateNodesAndLinks(){
+		recreateNeeded = true;
+	}
+	
+	private void RecreateNodesAndLinks(){
+		if (!recreateNeeded) return;
 		List<OPMNode> origNodes =  original.getNodes();
-		nodes = new NotifyingInternalEListImpl<OPMNode>();
+		nodes = new ArrayList<OPMNode>();
 		for (OPMNode orig:origNodes){
 			nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 		}
 		List<OPMLink> origLinks =  original.getLinks();
-		links = new NotifyingInternalEListImpl<OPMLink>();
+		links = new ArrayList<OPMLink>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
+				// TODO what goes here
 //			 	OPMNodeDecorator<OPMNode> source = (OPMNodeDecorator<OPMNode>)DecorationsBank.INSTANCE.GetOrCreateDecorator(link.getSource());
 //			 	findOutgoingStructuralLinks source.getOutgoingLinks()
 				
 			}else{
 				links.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(link));
 			}
-		}	
+		}
+		recreateNeeded = false;
 	}
 	
-	NotifyingInternalEListImpl<OPMNode> nodes;
+	ArrayList<OPMNode> nodes;
 	
 	@Override
 	public List<OPMNode> getNodes() {
-		
+		RecreateNodesAndLinks();
 		return nodes;
 	}
 	
-	NotifyingInternalEListImpl<OPMLink> links;
+	ArrayList<OPMLink> links;
 	
 	@Override
 	public List<OPMLink> getLinks() {
-		
+		RecreateNodesAndLinks();
 		return links;
 	}
 

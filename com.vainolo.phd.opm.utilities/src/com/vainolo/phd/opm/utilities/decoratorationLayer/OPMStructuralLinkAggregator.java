@@ -5,7 +5,7 @@ import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 public interface OPMStructuralLinkAggregator extends OPMNode{
 
@@ -29,7 +29,7 @@ public interface OPMStructuralLinkAggregator extends OPMNode{
 	 * @model opposite="target"
 	 * @generated
 	 */
-	EList<OPMLink> getIncomingLinks();
+	List<OPMLink> getIncomingLinks();
 
 	/**
 	 * Returns the value of the '<em><b>Outgoing Links</b></em>' reference list.
@@ -47,7 +47,7 @@ public interface OPMStructuralLinkAggregator extends OPMNode{
 	 * @model opposite="source"
 	 * @generated
 	 */
-	EList<OPMLink> getOutgoingLinks();
+	List<OPMLink> getOutgoingLinks();
 
     /**
 	 * Returns the value of the '<em><b>Container</b></em>' container reference.

@@ -62,7 +62,7 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 			List<OPMLink> origs = decorated.getIncomingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
-					// what to do here
+					//TODO what to do here
 				}else
 					incomingLinks.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 				
@@ -77,10 +77,10 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 	public List<OPMLink> getOutgoingLinks() {
 		if (outgoingLinks == null){
 			outgoingLinks = new ArrayList<>();
-			List<OPMLink> origs = decorated.getIncomingLinks();
+			List<OPMLink> origs = decorated.getOutgoingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
-					// what to do here
+					//TODO what to do here
 				}else
 					outgoingLinks.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 				
@@ -91,13 +91,24 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator implem
 
 	@Override
 	public OPMContainer getContainer() {
-		return decorated.getContainer();
+		OPMContainer orig = decorated.getContainer(); 
+		return (OPMContainer) DecorationsBank.INSTANCE.GetOrCreateDecorator(orig);
 	}
 
 	@Override
 	public void setContainer(OPMContainer value) {
-		decorated.setContainer(value);
+		OPMContainer container = value;
+		if (value instanceof OPMDecorated<?>) container = (OPMContainer)((OPMDecorated<?>)value).getDecorated();
 		
+		// notify previous container
+		OPMContainer current = getContainer();
+		if (current instanceof OPMObjectProcessDiagramDecorator) ((OPMObjectProcessDiagramDecorator)current).SetNeedRecreateNodesAndLinks();
+		// notify next container - need to this before to handle events fired from within
+		OPMObjectProcessDiagramDecorator decorator = (OPMObjectProcessDiagramDecorator)DecorationsBank.INSTANCE.GetOrCreateDecorator(container);
+		decorator.SetNeedRecreateNodesAndLinks(); 
+		//TODO same for OPMThingDecorator
+		
+		decorated.setContainer(container);
 	}
 
 	@Override

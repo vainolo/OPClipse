@@ -1,6 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
@@ -55,13 +56,13 @@ public class OPMStructuralLinkAggregatorImpl implements OPMStructuralLinkAggrega
   }
 
 	@Override
-	public EList<OPMLink> getIncomingLinks() {
+	public List<OPMLink> getIncomingLinks() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public EList<OPMLink> getOutgoingLinks() {
+	public List<OPMLink> getOutgoingLinks() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -189,56 +190,52 @@ public class OPMStructuralLinkAggregatorImpl implements OPMStructuralLinkAggrega
 	@Override
 	public Object eInvoke(EOperation operation, EList<?> arguments)
 			throws InvocationTargetException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public EList<Adapter> eAdapters() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
+	boolean deliver;
+	
 	@Override
 	public boolean eDeliver() {
-		// TODO Auto-generated method stub
-		return false;
+		return deliver;
 	}
 
 	@Override
 	public void eSetDeliver(boolean deliver) {
-		// TODO Auto-generated method stub
-		
+		this.deliver = deliver; 
 	}
 
 	@Override
 	public void eNotify(Notification notification) {
-		// TODO Auto-generated method stub
-		
 	}
 
+	String name;
+	
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
 	public void setName(String value) {
-		// TODO Auto-generated method stub
-		
+		name = value;
 	}
 
+	private VerticalAlignment verticalAlignment;
+	
 	@Override
 	public VerticalAlignment getAlignment() {
-		// TODO Auto-generated method stub
-		return null;
+		return verticalAlignment;
 	}
 
 	@Override
 	public void setAlignment(VerticalAlignment value) {
-		// TODO Auto-generated method stub
-		
+		verticalAlignment = value;
 	}
 
 }

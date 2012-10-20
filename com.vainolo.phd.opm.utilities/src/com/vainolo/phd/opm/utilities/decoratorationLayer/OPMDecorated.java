@@ -1,5 +1,5 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
-public interface OPMDecorated<T> {
+interface OPMDecorated<T> {
 	T getDecorated();
 }
