@@ -13,22 +13,22 @@ import com.vainolo.phd.opm.model.OPMState;
 enum DecorationsBank {
 	INSTANCE;
 	
-	private HashMap<EObject,EObjectDecorator> bank = new HashMap<EObject,EObjectDecorator>(); 
+	private HashMap<EObject,EObjectDecorator<?>> bank = new HashMap<EObject,EObjectDecorator<?>>(); 
 	
-	public EObjectDecorator getDecorator(EObject decorated){
+	public EObjectDecorator<?> getDecorator(EObject decorated){
 		return bank.get(decorated);
 	}
 	
-	public EObjectDecorator putDecorator(EObject decorated, EObjectDecorator decorator){
+	public EObjectDecorator<?> putDecorator(EObject decorated, EObjectDecorator<?> decorator){
 		if (bank.containsKey(decorated)) return getDecorator(decorated);
 		bank.put(decorated, decorator);
 		return decorator;
 	}
 	
-	EObjectDecorator GetOrCreateDecorator(EObject opmOrig){
+	EObjectDecorator<?> GetOrCreateDecorator(EObject opmOrig){
 		if (opmOrig == null)return null;
-		if (opmOrig instanceof EObjectDecorator) return (EObjectDecorator)opmOrig;
-		EObjectDecorator wrapper = getDecorator(opmOrig);
+		if (opmOrig instanceof EObjectDecorator) return (EObjectDecorator<?>)opmOrig;
+		EObjectDecorator<?> wrapper = getDecorator(opmOrig);
 		if (wrapper != null) return wrapper;
 		if (opmOrig instanceof OPMObjectProcessDiagram)
 			return putDecorator(opmOrig, new OPMObjectProcessDiagramDecorator((OPMObjectProcessDiagram)opmOrig));

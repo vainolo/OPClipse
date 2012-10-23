@@ -94,8 +94,16 @@ public class OPMFactory {
 		return (OPMState)DecorationsBank.INSTANCE.putDecorator(model,new OPMStateDecorator(model));
 	}
 	
-	public OPMStructuralLinkAggregator createOPMStructuralLinkAggregator() {
-		return new OPMStructuralLinkAggregatorImpl();
+	public OPMStructuralLinkAggregator createOPMAggregationLinkAggregator() {
+		return new OPMStructuralLinkAggregator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMAggregationLink());
+	}
+	
+	public OPMStructuralLinkAggregator createOPMExhibitionLinkAggregator() {
+		return new OPMStructuralLinkAggregator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMExhibitionLink());
+	}
+	
+	public OPMStructuralLinkAggregator createOPMGeneralizationLinkAggregator() {
+		return new OPMStructuralLinkAggregator(com.vainolo.phd.opm.model.OPMFactory.eINSTANCE.createOPMGeneralizationLink());
 	}
 	
 	public OPMLink createOPMSimpleLink(){

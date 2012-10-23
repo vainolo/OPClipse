@@ -32,15 +32,21 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 		}
 		List<OPMLink> origLinks =  decorated.getLinks();
 		links = new ArrayList<OPMLink>();
+		List<OPMStructuralLinkAggregator> aggregators = new ArrayList<>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
-				// TODO what goes here
-//			 	OPMNodeDecorator<OPMNode> source = (OPMNodeDecorator<OPMNode>)DecorationsBank.INSTANCE.GetOrCreateDecorator(link.getSource());
-//			 	findOutgoingStructuralLinks source.getOutgoingLinks()
-				
+				OPMStructuralLinkAggregator aggregator = OPMStructuralLinkAggregatorPool.INSTANCE.getOrCreateAggregator((OPMStructuralLink)link,this);
+				if (!nodes.contains(aggregator)){
+					nodes.add(aggregator);
+					aggregators.add(aggregator);
+				}
 			}else{
 				links.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(link));
 			}
+		}
+		for (OPMStructuralLinkAggregator aggregator:aggregators){
+			links.addAll(aggregator.getIncomingLinks());
+			links.addAll(aggregator.getOutgoingLinks());
 		}
 		recreateNeeded = false;
 	}

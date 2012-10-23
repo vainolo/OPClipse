@@ -10,7 +10,6 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMFactory;
 import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkKind;
 
 /**
  * Factory used by palette tools to create {@link OPMStructuralLinkAggregator} of
@@ -23,9 +22,8 @@ public class OPMExhibitionStructuralLinkAggregatorFactory implements CreationFac
 
   @Override
   public Object getNewObject() {
-    OPMStructuralLinkAggregator aggregator = OPMFactory.Instance().createOPMStructuralLinkAggregator();
-    aggregator.setKind(OPMStructuralLinkKind.EXHIBITION);
-    //aggregator.setId(OPMIdManager.getNextId());
+    OPMStructuralLinkAggregator aggregator = OPMFactory.Instance().createOPMExhibitionLinkAggregator();
+    aggregator.setId(OPMIdManager.getNextId());
     return aggregator;
   }
 

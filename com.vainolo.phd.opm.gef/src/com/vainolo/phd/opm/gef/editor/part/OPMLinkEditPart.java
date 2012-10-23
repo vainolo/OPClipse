@@ -75,11 +75,13 @@ public class OPMLinkEditPart extends AbstractConnectionEditPart {
   protected void refreshVisuals() {
     Connection connection = getConnectionFigure();
     List<Point> modelConstraint = ((OPMLink) getModel()).getBendpoints();
-    List<AbsoluteBendpoint> figureConstraint = new ArrayList<AbsoluteBendpoint>();
-    for(Point p : modelConstraint) {
-      figureConstraint.add(new AbsoluteBendpoint(p));
+    if (modelConstraint != null){
+	    List<AbsoluteBendpoint> figureConstraint = new ArrayList<AbsoluteBendpoint>();
+	    for(Point p : modelConstraint) {
+	      figureConstraint.add(new AbsoluteBendpoint(p));
+	    }
+	    connection.setRoutingConstraint(figureConstraint);
     }
-    connection.setRoutingConstraint(figureConstraint);
 
   }
 

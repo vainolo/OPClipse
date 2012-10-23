@@ -65,7 +65,10 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 			List<OPMLink> origs = decorated.getIncomingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
-					//TODO what to do here
+					OPMStructuralLinkAggregator aggregator = OPMStructuralLinkAggregatorPool.INSTANCE.getAggregator((OPMStructuralLink)orig);
+					if (aggregator == null) continue;
+					OPMSimpleLink link = OPMSimpleLinkPool.INSTANCE.getSimpleLink(aggregator, this);
+					if (link!=null) incomingLinks.add(link);
 				}else
 					incomingLinks.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 				
@@ -83,7 +86,10 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 			List<OPMLink> origs = decorated.getOutgoingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
-					//TODO what to do here
+					OPMStructuralLinkAggregator aggregator = OPMStructuralLinkAggregatorPool.INSTANCE.getAggregator((OPMStructuralLink)orig);
+					if (aggregator == null) continue;
+					OPMSimpleLink link = OPMSimpleLinkPool.INSTANCE.getSimpleLink(this,aggregator);
+					if (link!=null) outgoingLinks.add(link);
 				}else
 					outgoingLinks.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
 				

@@ -5,6 +5,8 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.gef.editor.command;
 
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.commands.Command;
 
@@ -28,12 +30,16 @@ public final class OPMLinkCreateBendpointCommand extends Command {
 
   @Override
   public void execute() {
-    link.getBendpoints().add(index, location);
+	List<Point> points =  link.getBendpoints();
+	if (points != null)
+		points.add(index, location);
   }
 
   @Override
   public void undo() {
-    link.getBendpoints().remove(index);
+	  List<Point> points =  link.getBendpoints();
+		if (points != null)
+			link.getBendpoints().remove(index);
   }
 
   /**

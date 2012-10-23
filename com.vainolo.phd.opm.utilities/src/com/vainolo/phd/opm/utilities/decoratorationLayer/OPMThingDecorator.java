@@ -27,6 +27,12 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 	}
 
 	@Override
+	protected void NotifingChange(){
+		super.NotifingChange();
+		nodes = null;
+	}
+	
+	@Override
 	public String getDescription() {
 		return decorated.getDescription();
 	}
