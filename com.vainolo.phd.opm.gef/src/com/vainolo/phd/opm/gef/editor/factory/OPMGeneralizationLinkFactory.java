@@ -8,28 +8,27 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMFactory;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMGeneralizationLink;
 
 /**
- * Factory used by palette tools to create {@link OPMStructuralLinkAggregator} of
- * {@link OPMStructuralLinkAggregatorKind#AGGREGATION} kind.
+ * Factory used by palette tools to create {@link OPMGeneralizationLink}.
  * 
  * @author vainolo
  * 
  */
-public class OPMAggregationStructuralLinkAggregatorFactory implements CreationFactory {
+public class OPMGeneralizationLinkFactory implements CreationFactory {
 
   @Override
   public Object getNewObject() {
-    OPMStructuralLinkAggregator aggregator = OPMFactory.Instance().createOPMAggregationLinkAggregator();
+    OPMGeneralizationLink aggregator = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
     aggregator.setId(OPMIdManager.getNextId());
     return aggregator;
   }
 
   @Override
   public Object getObjectType() {
-    return OPMStructuralLinkAggregator.class;
+    return OPMGeneralizationLink.class;
   }
 
 }

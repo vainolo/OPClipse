@@ -38,7 +38,11 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	
 	OPMStructuralLinkAggregator(OPMStructuralLink link) {
 		this.kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
-		location = new Point(link.getAggregatorPosition());
+		Point linkPos = link.getAggregatorPosition();
+		if (linkPos != null)
+			location = new Point(linkPos);
+		else
+			location = new Point();
 		createSourceLink(link);
 		AddOPMStructuralLink(link);
     }

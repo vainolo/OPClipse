@@ -18,14 +18,16 @@ import org.eclipse.gef.requests.ReconnectRequest;
 
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkCreateCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
-import com.vainolo.phd.opm.gef.editor.factory.OPMLinkFactory;
+//import com.vainolo.phd.opm.gef.editor.factory.OPMLinkFactory;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkAggregatorEditPart;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
+import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
+import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 
 /**
@@ -64,9 +66,13 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     }
 
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
-    result.setSource((OPMNode) getHost().getModel());
+    OPMNode source = (OPMNode) getHost().getModel();
+    if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<OPMNode>)source).getDecorated();
+    result.setSource(source);
     result.setLink((OPMLink) request.getNewObject());
-    result.setOPD(OPDAnalysis.findOPD((OPMNode) getHost().getModel()));
+    OPMObjectProcessDiagram opd =OPDAnalysis.findOPD((OPMNode) getHost().getModel());
+    if (opd instanceof OPMDecorated<?>) opd = (OPMObjectProcessDiagram)((OPMDecorated<OPMObjectProcessDiagram>)opd).getDecorated();
+    result.setOPD(opd);
     request.setStartCommand(result);
     return result;
   }
@@ -91,18 +97,37 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     }
 
     Command command = null;
-
-    if(request.getNewObject() instanceof OPMStructuralLinkAggregator) {
-      command = handleOPMStructuralLinkRequest(request);
-    } else {
-      OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
-      linkCreateCommand.setTarget((OPMNode) getHost().getModel());
-      command = linkCreateCommand;
+    OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
+    OPMNode target = (OPMNode) getHost().getModel();
+    if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<OPMNode>)target).getDecorated();
+    linkCreateCommand.setTarget(target);
+    command = linkCreateCommand;
+    if(request.getNewObject() instanceof OPMStructuralLink){
+    	setStructuralLinkAggregatorPosition(request);
     }
+    
+    
+//    if(request.getNewObject() instanceof OPMStructuralLinkAggregator) {
+//      command = handleOPMStructuralLinkRequest(request);
+//    } else {
+//      OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
+//      linkCreateCommand.setTarget((OPMNode) getHost().getModel());
+//      command = linkCreateCommand;
+//    }
 
     return command;
   }
 
+  private void setStructuralLinkAggregatorPosition(CreateConnectionRequest request){
+	  OPMStructuralLink structuralLink = (OPMStructuralLink) request.getNewObject();
+	  OPMNode source = (OPMNode) request.getSourceEditPart().getModel();
+	  if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<OPMNode>)source).getDecorated();
+	  OPMNode target = (OPMNode) request.getTargetEditPart().getModel();
+	  if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<OPMNode>)target).getDecorated();
+  	structuralLink.setAggregatorPosition(getAggregatorPosition(source,target));
+  }
+  
+  
   /**
    * <p>
    * When the user requests the creation of a structural link, the following is done:
@@ -119,40 +144,40 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
    *          nodes.
    * @return a command that creates the links as stated above.
    */
-  private Command handleOPMStructuralLinkRequest(CreateConnectionRequest request) {
-    Command command = null;
-
-    OPMNode sNode = (OPMNode) request.getSourceEditPart().getModel();
-    OPMNode tNode = (OPMNode) request.getTargetEditPart().getModel();
-    OPMStructuralLinkAggregator agrNode = (OPMStructuralLinkAggregator) request.getNewObject();
-
-    // Search for an outgoing structural link aggregator matching the
-    // requested kind.
-    boolean aggregatorFound = false;
-    for(OPMLink structuralLink : OPDAnalysis.findOutgoingStructuralLinks(sNode)) {
-      OPMStructuralLinkAggregator existingAggregator = (OPMStructuralLinkAggregator) structuralLink.getTarget();
-      if(existingAggregator.getKind() == agrNode.getKind()) {
-        aggregatorFound = true;
-        agrNode = existingAggregator;
-      }
-    }
-
-    if(aggregatorFound) {
-      // Just create a link from the aggregator to the target.
-      command = createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(agrNode));
-    } else {
-      // Create a compound command consisting of three commands.
-      CompoundCommand cCommand = new CompoundCommand();
-      cCommand.add(createCreateAggregatorNodeCommand(sNode, tNode, agrNode));
-      cCommand.add(createCreateOPMLlinkCreateCommand(sNode, agrNode, OPDAnalysis.findOPD(sNode)));
-      cCommand.add(createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(sNode)));
-
-      command = cCommand;
-    }
-
-    return command;
-  }
-
+//  private Command handleOPMStructuralLinkRequest(CreateConnectionRequest request) {
+//    Command command = null;
+//
+//    OPMNode sNode = (OPMNode) request.getSourceEditPart().getModel();
+//    OPMNode tNode = (OPMNode) request.getTargetEditPart().getModel();
+//    OPMStructuralLinkAggregator agrNode = (OPMStructuralLinkAggregator) request.getNewObject();
+//
+//    // Search for an outgoing structural link aggregator matching the
+//    // requested kind.
+//    boolean aggregatorFound = false;
+//    for(OPMLink structuralLink : OPDAnalysis.findOutgoingStructuralLinks(sNode)) {
+//      OPMStructuralLinkAggregator existingAggregator = (OPMStructuralLinkAggregator) structuralLink.getTarget();
+//      if(existingAggregator.getKind() == agrNode.getKind()) {
+//        aggregatorFound = true;
+//        agrNode = existingAggregator;
+//      }
+//    }
+//
+//    if(aggregatorFound) {
+//      // Just create a link from the aggregator to the target.
+//      command = createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(agrNode));
+//    } else {
+//      // Create a compound command consisting of three commands.
+//      CompoundCommand cCommand = new CompoundCommand();
+//      cCommand.add(createCreateAggregatorNodeCommand(sNode, tNode, agrNode));
+//      cCommand.add(createCreateOPMLlinkCreateCommand(sNode, agrNode, OPDAnalysis.findOPD(sNode)));
+//      cCommand.add(createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(sNode)));
+//
+//      command = cCommand;
+//    }
+//
+//    return command;
+//  }
+  
   /**
    * Helper function to create a command that connects two nodes with a
    * factory generated link.
@@ -163,17 +188,17 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
    *          the target of the link.
    * @return
    */
-  private OPMLinkCreateCommand createCreateOPMLlinkCreateCommand(OPMNode source, OPMNode target,
-      OPMObjectProcessDiagram opd) {
-    OPMLinkCreateCommand command = new OPMLinkCreateCommand();
-    command.setSource(source);
-    command.setTarget(target);
-    command.setOPD(opd);
-    OPMLink link = OPMLinkFactory.INSTANCE.getNewObject();
-    link.setRouterKind(OPMLinkRouterKind.MANHATTAN);
-    command.setLink(link);
-    return command;
-  }
+//  private OPMLinkCreateCommand createCreateOPMLlinkCreateCommand(OPMNode source, OPMNode target,
+//      OPMObjectProcessDiagram opd) {
+//    OPMLinkCreateCommand command = new OPMLinkCreateCommand();
+//    command.setSource(source);
+//    command.setTarget(target);
+//    command.setOPD(opd);
+//    OPMLink link = OPMLinkFactory.INSTANCE.getNewObject();
+//    link.setRouterKind(OPMLinkRouterKind.MANHATTAN);
+//    command.setLink(link);
+//    return command;
+//  }
 
   /**
    * Create a command that adds the provided {@link OPMStructuralLinkAggregator} to the diagram located between the
@@ -212,6 +237,24 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     return command;
   }
 
+  private Point getAggregatorPosition(OPMNode source, OPMNode target) {
+		// Calculate location of aggregator, between the source and targetnodes.
+		    Rectangle sCnstrnts = source.getConstraints();
+		    Rectangle tCnstrnts = target.getConstraints();
+		    Point sCenter = new Point(sCnstrnts.x + sCnstrnts.width / 2, sCnstrnts.y + sCnstrnts.height / 2);
+		    Point tCenter = new Point(tCnstrnts.x + tCnstrnts.width / 2, tCnstrnts.y + tCnstrnts.height / 2);
+		    Point aggrgLeftTopCorner = new Point();
+		    aggrgLeftTopCorner.x = sCenter.x + (tCenter.x - sCenter.x) / 2 - DEFAULT_AGGREGATOR_DIMENSION.width / 2;
+		    aggrgLeftTopCorner.y = sCenter.y + (tCenter.y - sCenter.y) / 2 - DEFAULT_AGGREGATOR_DIMENSION.height / 2;
+		    if(aggrgLeftTopCorner.x < 0) {
+		      aggrgLeftTopCorner.x = 0;
+		    }
+		    if(aggrgLeftTopCorner.y < 0) {
+		      aggrgLeftTopCorner.y = 0;
+		    }
+		    return aggrgLeftTopCorner;
+	}
+  
   @Override
   protected Command getReconnectTargetCommand(ReconnectRequest request) {
     return null;

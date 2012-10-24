@@ -8,12 +8,11 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMFactory;
 import com.vainolo.phd.opm.model.OPMAgentLink;
-import com.vainolo.phd.opm.model.OPMProceduralLink;
+import com.vainolo.phd.opm.model.OPMFactory;
 
 /**
- * Factory used by palette tools to create {@link OPMProceduralLink} of {@link OPMProceduralLinkKind#AGENT} kind.
+ * Factory used by palette tools to create {@link OPMAgentLink}.
  * 
  * @author Arieh 'Vainolo' Bibliowicz
  * 
@@ -22,7 +21,7 @@ public class OPMAgentLinkFactory implements CreationFactory {
 
   @Override
   public Object getNewObject() {
-    OPMProceduralLink link = OPMFactory.Instance().createOPMAgentLink();
+	  OPMAgentLink link = OPMFactory.eINSTANCE.createOPMAgentLink();
     link.setId(OPMIdManager.getNextId());
     return link;
   }
