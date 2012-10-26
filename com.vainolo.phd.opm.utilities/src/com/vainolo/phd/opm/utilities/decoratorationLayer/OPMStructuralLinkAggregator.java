@@ -88,7 +88,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	public List<OPMLink> getOutgoingLinks() {
 		return new ArrayList<>(outgoingLinks);
 	}
-
+	
 	private class OPMStructuralLinkAggregatorAdapter implements Adapter{
 
 		OPMStructuralLinkAggregator aggregator;

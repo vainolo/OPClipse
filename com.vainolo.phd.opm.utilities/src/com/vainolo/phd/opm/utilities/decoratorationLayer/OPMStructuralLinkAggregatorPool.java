@@ -17,6 +17,7 @@ enum OPMStructuralLinkAggregatorPool {
 		OPMStructuralLinkKind kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
 		aggragetor = new OPMStructuralLinkAggregator(link);
 		Map.put(new KindAndSourceKey(kind,link.getSource()), aggragetor);
+		aggragetor.setContainer(container);
 		return aggragetor;
 	}
 	

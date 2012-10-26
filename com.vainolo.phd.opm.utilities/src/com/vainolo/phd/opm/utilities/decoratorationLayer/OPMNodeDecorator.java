@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Notification;
 
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -21,9 +22,10 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 	}
 
 	@Override
-	protected void NotifingChange(){
+	protected void NotifingChange(Notification notification){
 		incomingLinks = null;
 		outgoingLinks = null;
+		super.NotifingChange(notification);
 	}
 	
 	@Override

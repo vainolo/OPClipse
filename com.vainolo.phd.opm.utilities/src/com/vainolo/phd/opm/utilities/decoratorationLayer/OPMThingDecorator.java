@@ -3,6 +3,8 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMThing;
 
@@ -27,9 +29,9 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 	}
 
 	@Override
-	protected void NotifingChange(){
-		super.NotifingChange();
+	protected void NotifingChange(Notification notification){
 		nodes = null;
+		super.NotifingChange(notification);
 	}
 	
 	@Override

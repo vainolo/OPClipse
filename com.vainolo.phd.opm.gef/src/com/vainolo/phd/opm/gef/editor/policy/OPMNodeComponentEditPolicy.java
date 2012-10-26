@@ -20,10 +20,9 @@ import com.vainolo.phd.opm.gef.editor.command.OPMNodeDeleteCommand;
 import com.vainolo.phd.opm.gef.editor.figure.OPMNodeFigure;
 import com.vainolo.phd.opm.gef.editor.part.OPMNodeEditPart;
 import com.vainolo.phd.opm.model.OPMContainer;
-import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMThing;
-import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
+import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 
 /**
@@ -47,10 +46,11 @@ public class OPMNodeComponentEditPolicy extends ComponentEditPolicy {
   @Override
   protected Command createDeleteCommand(GroupRequest deleteRequest) {
     OPMNode nodeToDelete = (OPMNode) getHost().getModel();
+    if (nodeToDelete instanceof OPMStructuralLinkAggregator) return createDeleteStructuralLinkAggregatorNodeCommand((OPMStructuralLinkAggregator)nodeToDelete);
     return createRecursiveDeleteNodeCommand(nodeToDelete);
   }
 
-  @Override
+@Override
   public Command getCommand(Request request) {
     if(request.getType().equals(ResizeToContentsAction.RESIZE_TO_CONTENTS_REQUEST)) {
       OPMNodeEditPart host = (OPMNodeEditPart) getHost();
@@ -83,25 +83,6 @@ public class OPMNodeComponentEditPolicy extends ComponentEditPolicy {
   private CompoundCommand createRecursiveDeleteNodeCommand(OPMNode nodeToDelete) {
     CompoundCommand compoundCommand = new CompoundCommand();
 
-    // For every outgoing structural link, create a command to delete the aggregator node at the end of the link.
-    for(OPMLink outgoingStructuralLink : OPDAnalysis.findOutgoingStructuralLinks(nodeToDelete)) {
-      OPMNode aggregatorNode = outgoingStructuralLink.getTarget();
-      OPMNodeDeleteCommand aggregatorNodeDeleteCommand = new OPMNodeDeleteCommand();
-      aggregatorNodeDeleteCommand.setNode(aggregatorNode);
-      compoundCommand.add(aggregatorNodeDeleteCommand);
-    }
-
-    // For every incoming structural link whose aggregator has only one outgoing link, create a command to delete the
-    // aggregator.
-    for(OPMLink incomingStructuralLink : OPDAnalysis.findIncomingStructuralLinks(nodeToDelete)) {
-      OPMNode aggregatorNode = incomingStructuralLink.getSource();
-      if(aggregatorNode.getOutgoingLinks().size() == 1) {
-        OPMNodeDeleteCommand aggregatorNodeDeleteCommand = new OPMNodeDeleteCommand();
-        aggregatorNodeDeleteCommand.setNode(aggregatorNode);
-        compoundCommand.add(aggregatorNodeDeleteCommand);
-      }
-    }
-
     if(nodeToDelete instanceof OPMContainer) {
       OPMContainer container = (OPMContainer) nodeToDelete;
       for(OPMNode node : container.getNodes()) {
@@ -112,9 +93,19 @@ public class OPMNodeComponentEditPolicy extends ComponentEditPolicy {
 
     // Create a command to delete the node.
     OPMNodeDeleteCommand nodeDeleteCommand = new OPMNodeDeleteCommand();
+    if (nodeToDelete instanceof OPMDecorated<?>) nodeToDelete = ((OPMDecorated<OPMNode>)nodeToDelete).getDecorated();
     nodeDeleteCommand.setNode(nodeToDelete);
     compoundCommand.add(nodeDeleteCommand);
 
     return compoundCommand;
   }
+  
+  private Command createDeleteStructuralLinkAggregatorNodeCommand(
+			OPMStructuralLinkAggregator nodeToDelete) {
+	  OPMNodeDeleteCommand nodeDeleteCommand = new OPMNodeDeleteCommand();
+	  nodeDeleteCommand.setNode(nodeToDelete);
+	  OPMContainer container = ((OPMDecorated<OPMContainer>)nodeToDelete.getContainer()).getDecorated();
+	  nodeDeleteCommand.setContainer(container);
+		return nodeDeleteCommand;
+	}
 }

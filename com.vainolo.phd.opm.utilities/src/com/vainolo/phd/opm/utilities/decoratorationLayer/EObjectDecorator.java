@@ -104,7 +104,9 @@ public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorate
 		return decorated.eInvoke(operation, arguments);
 	}
 	
-	protected void NotifingChange(){}
+	protected void NotifingChange(Notification notification){
+		for (Adapter adapter:eAdapters) adapter.notifyChanged(notification);
+	}
 	
 	private MyEList<Adapter> eAdapters = new MyEList<>();
 	
@@ -117,8 +119,8 @@ public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorate
 
 		@Override
 		public void notifyChanged(Notification notification) {
-			NotifingChange();
-			for (Adapter adapter:eAdapters) adapter.notifyChanged(notification);
+			NotifingChange(notification);
+			
 		}
 
 		@Override

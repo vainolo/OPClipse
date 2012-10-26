@@ -3,6 +3,9 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.NotificationImpl;
+
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
@@ -19,8 +22,9 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 		DecorationsBank.INSTANCE.putDecorator(original, this);
 	}
 	@Override
-	protected void NotifingChange(){
+	protected void NotifingChange(Notification notification){
 		recreateNeeded = true;
+		super.NotifingChange(notification);
 	}
 	
 	private void RecreateNodesAndLinks(){
@@ -47,6 +51,9 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 		for (OPMStructuralLinkAggregator aggregator:aggregators){
 			links.addAll(aggregator.getIncomingLinks());
 			links.addAll(aggregator.getOutgoingLinks());
+		}
+		for (OPMNode node:nodes){
+			if (node instanceof OPMNodeDecorator<?>) ((OPMNodeDecorator<OPMNode>)node).NotifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
 		}
 		recreateNeeded = false;
 	}
