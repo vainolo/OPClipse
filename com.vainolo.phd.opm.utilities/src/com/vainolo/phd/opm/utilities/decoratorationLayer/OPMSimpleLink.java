@@ -1,7 +1,6 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -53,6 +52,11 @@ public class OPMSimpleLink implements OPMLink{
 			}
 			
 		});
+	}
+	
+	public OPMLink getUnderliningLink()
+	{
+		return link;
 	}
 	
 	private OPMObjectProcessDiagram opd;

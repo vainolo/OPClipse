@@ -26,6 +26,7 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
+import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class OPMStructuralLinkAggregator implements OPMNode{
 
@@ -51,6 +52,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		OPMSimpleLink sourceLink = new OPMSimpleLink();
 		sourceLink.setSource((OPMNode)DecorationsBank.INSTANCE.getDecorator(link.getSource()));
 		sourceLink.setTarget(this);
+		sourceLink.setOpd((OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(link.getOpd()));
 		incomingLinks.add(sourceLink);
 		OPMSimpleLinkPool.INSTANCE.put(sourceLink);
 	}
@@ -75,6 +77,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		OPMSimpleLink link = new OPMSimpleLink(orig);
 		link.setSource(this);
 		link.setTarget((OPMNode)DecorationsBank.INSTANCE.getDecorator(orig.getTarget()));
+		link.setOpd((OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(orig.getOpd()));
 		OPMSimpleLinkPool.INSTANCE.put(link);
 		return link;
 	}
@@ -120,6 +123,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		}
 		
 	}
+
 	
 	private OPMContainer container; 
 	
@@ -132,10 +136,10 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	public void setContainer(OPMContainer value) {
 		if (container == value) return;
 		OPMContainer old = container;
-		this.container = value;
+		container = value;
+		if (!(container instanceof OPMDecorated<?>)) container = (OPMContainer)DecorationsBank.INSTANCE.getDecorator(container);
 		if (container instanceof OPMObjectProcessDiagram){
-			OPMObjectProcessDiagram diagram = (OPMObjectProcessDiagram) container;
-			if (diagram instanceof OPMObjectProcessDiagramDecorator) diagram = ((OPMObjectProcessDiagramDecorator)container).getDecorated();
+			OPMObjectProcessDiagram diagram = ((OPMObjectProcessDiagramDecorator)container).getDecorated();
 		
 			for (OPMStructuralLink original:originals){
 				original.setOpd(diagram);

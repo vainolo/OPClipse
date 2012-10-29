@@ -45,6 +45,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import com.vainolo.phd.opm.utilities.OPDLoader;
+import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
@@ -180,7 +181,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
           public IPropertySource getPropertySource(Object object) {
             IPropertySource source = null;
             if(object instanceof EditPart) {
-              source = modelPropertySourceProvider.getPropertySource(((EditPart) object).getModel());
+            	Object model = ((EditPart) object).getModel();
+            	if (model instanceof OPMDecorated<?>) model = ((OPMDecorated<?>)model).getDecorated();
+              source = modelPropertySourceProvider.getPropertySource(model);
             } else {
               source = modelPropertySourceProvider.getPropertySource(object);
             }
