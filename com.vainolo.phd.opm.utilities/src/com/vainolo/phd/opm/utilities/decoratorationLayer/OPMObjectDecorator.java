@@ -4,7 +4,7 @@ import com.vainolo.phd.opm.model.OPMObject;
 
 public class OPMObjectDecorator extends OPMThingDecorator<OPMObject> implements OPMObject{
 
-	OPMObjectDecorator(OPMObject decorated) {
-		super(decorated);
+	OPMObjectDecorator(OPMObject decorated, DecorationsBank decorationsBank) {
+		super(decorated, decorationsBank);
 	}
 }

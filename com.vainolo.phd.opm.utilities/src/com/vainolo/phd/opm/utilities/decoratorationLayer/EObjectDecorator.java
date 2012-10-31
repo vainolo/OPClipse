@@ -20,11 +20,15 @@ import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorated<T>{
 
-	protected EObjectDecorator(T decorated){
+	protected EObjectDecorator(T decorated,DecorationsBank decorationsBank){
 		Assert.isNotNull(decorated);
+		Assert.isNotNull(decorationsBank);
 		this.decorated = decorated;
+		this.decorationsBank = decorationsBank;
 		decorated.eAdapters().add(new EObjectDecoratorAdapter());
 	}
+	
+	protected DecorationsBank decorationsBank;
 	
 	protected T decorated;
 	

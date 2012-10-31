@@ -264,4 +264,8 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   public OPMObjectProcessDiagram getOPD() {
     return opd;
   }
+  
+  @Override public void dispose(){
+	  super.dispose();
+  }
 }

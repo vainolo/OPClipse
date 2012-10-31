@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -30,6 +31,7 @@ import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class OPMStructuralLinkAggregator implements OPMNode{
 
+	private DecorationsBank decorationsBank;
 	protected OPMStructuralLinkKind kind;
 	private final Dimension dimension = new Dimension(15,15);
 	MyEList<Adapter> eAdapters = new MyEList<>();
@@ -37,7 +39,9 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	List<OPMLink> incomingLinks = new ArrayList<>();
 	List<OPMLink> outgoingLinks = new ArrayList<>();
 	
-	OPMStructuralLinkAggregator(OPMStructuralLink link) {
+	OPMStructuralLinkAggregator(OPMStructuralLink link, DecorationsBank decorationsBank) {
+		Assert.isNotNull(decorationsBank);
+		this.decorationsBank = decorationsBank;
 		this.kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
 		Point linkPos = link.getAggregatorPosition();
 		if (linkPos != null)
@@ -50,11 +54,11 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 
 	private void createSourceLink(OPMStructuralLink link) {
 		OPMSimpleLink sourceLink = new OPMSimpleLink();
-		sourceLink.setSource((OPMNode)DecorationsBank.INSTANCE.getDecorator(link.getSource()));
+		sourceLink.setSource((OPMNode)decorationsBank.getDecorator(link.getSource()));
 		sourceLink.setTarget(this);
-		sourceLink.setOpd((OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(link.getOpd()));
+		sourceLink.setOpd((OPMObjectProcessDiagram)decorationsBank.getDecorator(link.getOpd()));
 		incomingLinks.add(sourceLink);
-		OPMSimpleLinkPool.INSTANCE.put(sourceLink);
+		decorationsBank.putSimpleLink(sourceLink);
 	}
 	
 	public boolean AddOPMStructuralLink(OPMStructuralLink link){
@@ -76,9 +80,9 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	private OPMLink createSimpleLink(OPMStructuralLink orig){
 		OPMSimpleLink link = new OPMSimpleLink(orig);
 		link.setSource(this);
-		link.setTarget((OPMNode)DecorationsBank.INSTANCE.getDecorator(orig.getTarget()));
-		link.setOpd((OPMObjectProcessDiagram)DecorationsBank.INSTANCE.getDecorator(orig.getOpd()));
-		OPMSimpleLinkPool.INSTANCE.put(link);
+		link.setTarget((OPMNode)decorationsBank.getDecorator(orig.getTarget()));
+		link.setOpd((OPMObjectProcessDiagram)decorationsBank.getDecorator(orig.getOpd()));
+		decorationsBank.putSimpleLink(link);
 		return link;
 	}
 	
@@ -137,7 +141,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		if (container == value) return;
 		OPMContainer old = container;
 		container = value;
-		if (!(container instanceof OPMDecorated<?>)) container = (OPMContainer)DecorationsBank.INSTANCE.getDecorator(container);
+		if (!(container instanceof OPMDecorated<?>)) container = (OPMContainer)decorationsBank.getDecorator(container);
 		if (container instanceof OPMObjectProcessDiagram){
 			OPMObjectProcessDiagram diagram = ((OPMObjectProcessDiagramDecorator)container).getDecorated();
 		

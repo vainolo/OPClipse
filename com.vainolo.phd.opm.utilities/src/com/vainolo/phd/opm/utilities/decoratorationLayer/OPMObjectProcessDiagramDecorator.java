@@ -18,8 +18,12 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 	private boolean recreateNeeded = true;
 	
 	public OPMObjectProcessDiagramDecorator(OPMObjectProcessDiagram original){
-		super(original);
-		DecorationsBank.INSTANCE.putDecorator(original, this);
+		this(original,new DecorationsBank());
+	}
+	
+	public OPMObjectProcessDiagramDecorator(OPMObjectProcessDiagram original, DecorationsBank decorationsBank){
+		super(original,decorationsBank);
+		decorationsBank.putDecorator(original, this);
 	}
 	@Override
 	protected void NotifingChange(Notification notification){
@@ -32,20 +36,20 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 		List<OPMNode> origNodes =  decorated.getNodes();
 		nodes = new ArrayList<OPMNode>();
 		for (OPMNode orig:origNodes){
-			nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
+			nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
 		}
 		List<OPMLink> origLinks =  decorated.getLinks();
 		links = new ArrayList<OPMLink>();
 		List<OPMStructuralLinkAggregator> aggregators = new ArrayList<>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
-				OPMStructuralLinkAggregator aggregator = OPMStructuralLinkAggregatorPool.INSTANCE.getOrCreateAggregator((OPMStructuralLink)link,this);
+				OPMStructuralLinkAggregator aggregator = decorationsBank.getOrCreateAggregator((OPMStructuralLink)link,this);
 				if (!nodes.contains(aggregator)){
 					nodes.add(aggregator);
 					aggregators.add(aggregator);
 				}
 			}else{
-				links.add((OPMLink)DecorationsBank.INSTANCE.GetOrCreateDecorator(link));
+				links.add((OPMLink)decorationsBank.GetOrCreateDecorator(link));
 			}
 		}
 		for (OPMStructuralLinkAggregator aggregator:aggregators){

@@ -10,8 +10,8 @@ import com.vainolo.phd.opm.model.OPMThing;
 
 public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> implements OPMThing{
 	
-	protected OPMThingDecorator(T decorated){
-		super(decorated);
+	protected OPMThingDecorator(T decorated, DecorationsBank decorationsBank){
+		super(decorated, decorationsBank);
 	}
 
 	ArrayList<OPMNode> nodes;
@@ -22,7 +22,7 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 			List<OPMNode> origNodes =  decorated.getNodes();
 			nodes = new ArrayList<>();
 			for (OPMNode orig:origNodes){
-				nodes.add((OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig));
+				nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
 			}
 		}
 		return nodes;

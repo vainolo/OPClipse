@@ -7,8 +7,8 @@ public class OPMProcessDecorator extends OPMThingDecorator<OPMProcess> implement
 		OPMProcess{
 
 	
-	OPMProcessDecorator(OPMProcess decorated) {
-		super(decorated);
+	OPMProcessDecorator(OPMProcess decorated, DecorationsBank decorationsBank) {
+		super(decorated, decorationsBank);
 	}
 
 	@Override

@@ -12,8 +12,8 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 
 public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> implements OPMLink{
 	
-	protected OPMLinkDecorator(T decorated) {
-		super(decorated);
+	protected OPMLinkDecorator(T decorated, DecorationsBank decorationsBank) {
+		super(decorated, decorationsBank);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	public OPMObjectProcessDiagram getOpd() {
 		OPMObjectProcessDiagram orig = decorated.getOpd();
 		if (orig==null) return null;
-		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)DecorationsBank.INSTANCE.GetOrCreateDecorator(orig);
+		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)decorationsBank.GetOrCreateDecorator(orig);
 		return wrapper;
 	}
 
@@ -45,7 +45,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	@Override
 	public OPMNode getSource() {
 		OPMNode origSource= decorated.getSource();
-		return (OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(origSource);
+		return (OPMNode)decorationsBank.GetOrCreateDecorator(origSource);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	@Override
 	public OPMNode getTarget() {
 		OPMNode origTarget= decorated.getTarget();
-		return (OPMNode)DecorationsBank.INSTANCE.GetOrCreateDecorator(origTarget);
+		return (OPMNode)decorationsBank.GetOrCreateDecorator(origTarget);
 	}
 
 	@Override
