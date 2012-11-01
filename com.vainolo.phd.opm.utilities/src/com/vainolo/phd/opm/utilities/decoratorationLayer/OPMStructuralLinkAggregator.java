@@ -111,10 +111,30 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		
 		@Override
 		public void notifyChanged(Notification notification) {
-			aggregator.OriginalsNotification(notification);
+			int featureid = notification.getFeatureID(OPMStructuralLink.class);
+			OPMStructuralLink link =  (OPMStructuralLink) notification.getNotifier();
+			if (featureid ==OPMPackage.OPM_LINK__TARGET ){
+				OPMNode oldTarget = (OPMNode)notification.getOldValue();
+				removeSimpleLink(oldTarget,link);
+			}
+			if (featureid  == OPMPackage.OPM_LINK__SOURCE){
+				OPMNode target = (OPMNode)decorationsBank.getDecorator(link.getTarget());
+				removeSimpleLink(target,link);
+			}
+			NotifyAdapters(notification);
 			
 		}
 
+		private void removeSimpleLink(OPMNode target,OPMStructuralLink link){
+			if (target == null) return;
+			OPMSimpleLink simpleLink = decorationsBank.getSimpleLink(aggregator, target);
+			decorationsBank.removeSimpleLink(simpleLink);
+			originals.remove(link);
+			link.eAdapters().remove(this);
+			outgoingLinks.remove(simpleLink);
+			decorationsBank.OnNumberOfOriginalsChangedInAggregator(aggregator);
+		}
+		
 		@Override
 		public Notifier getTarget() {
 			return aggregator;
@@ -139,30 +159,6 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	@Override
 	public OPMContainer getContainer() {
 		return container;
-	}
-
-	void OriginalsNotification(Notification notification) {
-		int featureid = notification.getFeatureID(OPMStructuralLink.class);
-		OPMStructuralLink link =  (OPMStructuralLink) notification.getNotifier();
-		if (featureid ==OPMPackage.OPM_LINK__TARGET ){
-			OPMNode oldTarget = (OPMNode)notification.getOldValue();
-			removeSimpleLink(oldTarget,link);
-		}
-		if (featureid  == OPMPackage.OPM_LINK__SOURCE){
-			OPMNode target = (OPMNode)decorationsBank.getDecorator(link.getTarget());
-			removeSimpleLink(target,link);
-		}
-		NotifyAdapters(notification);
-	}
-	
-	private void removeSimpleLink(OPMNode target,OPMStructuralLink link){
-		if (target == null) return;
-		OPMSimpleLink simpleLink = decorationsBank.getSimpleLink(this, target);
-		decorationsBank.removeSimpleLink(simpleLink);
-		originals.remove(link);
-		link.eAdapters().remove(this);
-		outgoingLinks.remove(simpleLink);
-		decorationsBank.OnNumberOfOriginalsChangedInAggregator(this);
 	}
 	
 	@Override
