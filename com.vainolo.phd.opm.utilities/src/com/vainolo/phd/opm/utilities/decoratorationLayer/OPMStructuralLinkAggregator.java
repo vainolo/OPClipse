@@ -26,6 +26,7 @@ import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
@@ -39,11 +40,13 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	HashSet<OPMStructuralLink> originals = new HashSet<>();
 	HashSet<OPMLink> incomingLinks = new HashSet<>();
 	HashSet<OPMLink> outgoingLinks = new HashSet<>();
+	OPMNode source;
 	
-	OPMStructuralLinkAggregator(OPMStructuralLink link, DecorationsBank decorationsBank) {
+	OPMStructuralLinkAggregator(OPMStructuralLink link, DecorationsBank decorationsBank, OPMNode source) {
 		Assert.isNotNull(decorationsBank);
 		this.decorationsBank = decorationsBank;
 		this.kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
+		this.source = source;
 		Point linkPos = link.getAggregatorPosition();
 		if (linkPos != null)
 			location = new Point(linkPos);
@@ -64,14 +67,15 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	
 	public boolean AddOPMStructuralLink(OPMStructuralLink link){
 		if (OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link) != kind) return false;
-		if (link.getSource() == null || link.getTarget() == null || link.getOpd()==null) return false;
+		if (link.getSource() == null || link.getTarget() == null) return false;
 		
 		if (originals.add(link)){
 			link.setAggregatorPosition(location);
-			link.eAdapters().add(new OPMStructuralLinkAggregatorAdapter(this));
+			link.eAdapters().add(new OPMStructuralLinkAggregatorOriginalAdapter(this));
 			outgoingLinks.add(createSimpleLink(link));
 			NotificationImpl notification = new NotificationImpl(NotificationImpl.PRIMITIVE_TYPE_OBJECT,null,link);
 			NotifyAdapters(notification);
+			decorationsBank.OnNumberOfOriginalsChangedInAggregator(this);
 			return true;
 		}
 		return false;
@@ -97,17 +101,17 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		return new ArrayList<>(outgoingLinks);
 	}
 	
-	private class OPMStructuralLinkAggregatorAdapter implements Adapter{
+	private class OPMStructuralLinkAggregatorOriginalAdapter implements Adapter{
 
 		OPMStructuralLinkAggregator aggregator;
 		
-		OPMStructuralLinkAggregatorAdapter(OPMStructuralLinkAggregator aggregator){
+		OPMStructuralLinkAggregatorOriginalAdapter(OPMStructuralLinkAggregator aggregator){
 			this.aggregator = aggregator;
 		}
 		
 		@Override
 		public void notifyChanged(Notification notification) {
-			aggregator.NotifyAdapters(notification);
+			aggregator.OriginalsNotification(notification);
 			
 		}
 
@@ -137,6 +141,30 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		return container;
 	}
 
+	void OriginalsNotification(Notification notification) {
+		int featureid = notification.getFeatureID(OPMStructuralLink.class);
+		OPMStructuralLink link =  (OPMStructuralLink) notification.getNotifier();
+		if (featureid ==OPMPackage.OPM_LINK__TARGET ){
+			OPMNode oldTarget = (OPMNode)notification.getOldValue();
+			removeSimpleLink(oldTarget,link);
+		}
+		if (featureid  == OPMPackage.OPM_LINK__SOURCE){
+			OPMNode target = (OPMNode)decorationsBank.getDecorator(link.getTarget());
+			removeSimpleLink(target,link);
+		}
+		NotifyAdapters(notification);
+	}
+	
+	private void removeSimpleLink(OPMNode target,OPMStructuralLink link){
+		if (target == null) return;
+		OPMSimpleLink simpleLink = decorationsBank.getSimpleLink(this, target);
+		decorationsBank.removeSimpleLink(simpleLink);
+		originals.remove(link);
+		link.eAdapters().remove(this);
+		outgoingLinks.remove(simpleLink);
+		decorationsBank.OnNumberOfOriginalsChangedInAggregator(this);
+	}
+	
 	@Override
 	public void setContainer(OPMContainer value) {
 		if (container == value) return;

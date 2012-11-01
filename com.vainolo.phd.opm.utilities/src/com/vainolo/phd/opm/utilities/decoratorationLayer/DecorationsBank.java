@@ -54,7 +54,7 @@ class DecorationsBank {
 		OPMStructuralLinkAggregator aggragetor = getAggregator(link);
 		if (aggragetor != null || link.getSource()==null) return aggragetor;
 		OPMStructuralLinkKind kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
-		aggragetor = new OPMStructuralLinkAggregator(link, this);
+		aggragetor = new OPMStructuralLinkAggregator(link, this, link.getSource());
 		Map.put(new KindAndSourceKey(kind,link.getSource()), aggragetor);
 		aggragetor.setContainer(container);
 		return aggragetor;
@@ -71,6 +71,13 @@ class DecorationsBank {
 	public OPMStructuralLinkAggregator getAggregator(OPMStructuralLinkKind kind,OPMNode source){
 		if (source == null) return null;
 		return Map.get(new KindAndSourceKey(kind,source));
+	}
+	
+	void OnNumberOfOriginalsChangedInAggregator(OPMStructuralLinkAggregator aggregator){
+		if (aggregator.originals.isEmpty()){
+			Map.remove(new KindAndSourceKey(aggregator.kind,aggregator.source));
+			// TODO: source connecting link?
+		}
 	}
 	
 	private class KindAndSourceKey{
@@ -109,5 +116,9 @@ class DecorationsBank {
 		if (link != null){
 			simpleLinks.add(link);
 		}
+	}
+
+	void removeSimpleLink(OPMSimpleLink link){
+		simpleLinks.remove(link);
 	}
 }
