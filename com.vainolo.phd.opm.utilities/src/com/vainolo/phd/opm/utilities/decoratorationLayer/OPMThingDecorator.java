@@ -1,6 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -14,18 +15,18 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 		super(decorated, decorationsBank);
 	}
 
-	ArrayList<OPMNode> nodes;
+	HashSet<OPMNode> nodes;
 	
 	@Override
 	public List<OPMNode> getNodes() {
 		if (nodes == null){
 			List<OPMNode> origNodes =  decorated.getNodes();
-			nodes = new ArrayList<>();
+			nodes = new HashSet<>();
 			for (OPMNode orig:origNodes){
 				nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
 			}
 		}
-		return nodes;
+		return new ArrayList<>(nodes);
 	}
 
 	@Override

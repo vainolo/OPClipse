@@ -1,9 +1,10 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 
@@ -58,12 +59,12 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 		
 	}
 
-	ArrayList<OPMLink> incomingLinks;
+	Set<OPMLink> incomingLinks;
 	
 	@Override
 	public List<OPMLink> getIncomingLinks() {
 		if (incomingLinks == null){
-			incomingLinks = new ArrayList<>();
+			incomingLinks = new HashSet<>();
 			List<OPMLink> origs = decorated.getIncomingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
@@ -76,15 +77,15 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 				
 			}
 		}
-		return incomingLinks;
+		return new ArrayList<OPMLink>(incomingLinks);
 	}
 
-	ArrayList<OPMLink> outgoingLinks;
+	Set<OPMLink> outgoingLinks;
 	
 	@Override
 	public List<OPMLink> getOutgoingLinks() {
 		if (outgoingLinks == null){
-			outgoingLinks = new ArrayList<>();
+			outgoingLinks = new HashSet<OPMLink>();
 			List<OPMLink> origs = decorated.getOutgoingLinks();
 			for (OPMLink orig:origs){
 				if (orig instanceof OPMStructuralLink){
@@ -97,7 +98,7 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 				
 			}
 		}
-		return outgoingLinks;
+		return new ArrayList<OPMLink>(outgoingLinks);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -34,20 +35,18 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 	private void RecreateNodesAndLinks(){
 		if (!recreateNeeded) return;
 		List<OPMNode> origNodes =  decorated.getNodes();
-		nodes = new ArrayList<OPMNode>();
+		nodes = new HashSet<>();
 		for (OPMNode orig:origNodes){
 			nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
 		}
 		List<OPMLink> origLinks =  decorated.getLinks();
-		links = new ArrayList<OPMLink>();
-		List<OPMStructuralLinkAggregator> aggregators = new ArrayList<>();
+		links = new HashSet<OPMLink>();
+		HashSet<OPMStructuralLinkAggregator> aggregators = new HashSet<>();
 		for (OPMLink link:origLinks){
 			if (link instanceof OPMStructuralLink){
 				OPMStructuralLinkAggregator aggregator = decorationsBank.getOrCreateAggregator((OPMStructuralLink)link,this);
-				if (!nodes.contains(aggregator)){
-					nodes.add(aggregator);
-					aggregators.add(aggregator);
-				}
+				nodes.add(aggregator);
+				aggregators.add(aggregator);
 			}else{
 				links.add((OPMLink)decorationsBank.GetOrCreateDecorator(link));
 			}
@@ -57,25 +56,25 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 			links.addAll(aggregator.getOutgoingLinks());
 		}
 		for (OPMNode node:nodes){
-			if (node instanceof OPMNodeDecorator<?>) ((OPMNodeDecorator<OPMNode>)node).NotifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
+			if (node instanceof OPMNodeDecorator<?>) ((OPMNodeDecorator<?>)node).NotifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
 		}
 		recreateNeeded = false;
 	}
 	
-	ArrayList<OPMNode> nodes;
+	HashSet<OPMNode> nodes;
 	
 	@Override
 	public List<OPMNode> getNodes() {
 		RecreateNodesAndLinks();
-		return nodes;
+		return new ArrayList<>(nodes);
 	}
 	
-	ArrayList<OPMLink> links;
+	HashSet<OPMLink> links;
 	
 	@Override
 	public List<OPMLink> getLinks() {
 		RecreateNodesAndLinks();
-		return links;
+		return new ArrayList(links);
 	}
 
 	@Override

@@ -67,11 +67,11 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
     OPMNode source = (OPMNode) getHost().getModel();
-    if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<OPMNode>)source).getDecorated();
+    if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
     result.setSource(source);
     result.setLink((OPMLink) request.getNewObject());
     OPMObjectProcessDiagram opd =OPDAnalysis.findOPD((OPMNode) getHost().getModel());
-    if (opd instanceof OPMDecorated<?>) opd = (OPMObjectProcessDiagram)((OPMDecorated<OPMObjectProcessDiagram>)opd).getDecorated();
+    if (opd instanceof OPMDecorated<?>) opd = (OPMObjectProcessDiagram)((OPMDecorated<?>)opd).getDecorated();
     result.setOPD(opd);
     request.setStartCommand(result);
     return result;
@@ -96,26 +96,16 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
       return null;
     }
 
-    Command command = null;
+    
     OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
     OPMNode target = (OPMNode) getHost().getModel();
-    if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<OPMNode>)target).getDecorated();
+    if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<?>)target).getDecorated();
     linkCreateCommand.setTarget(target);
-    command = linkCreateCommand;
     if(request.getNewObject() instanceof OPMStructuralLink){
     	setStructuralLinkAggregatorPosition(request);
     }
     
-    
-//    if(request.getNewObject() instanceof OPMStructuralLinkAggregator) {
-//      command = handleOPMStructuralLinkRequest(request);
-//    } else {
-//      OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
-//      linkCreateCommand.setTarget((OPMNode) getHost().getModel());
-//      command = linkCreateCommand;
-//    }
-
-    return command;
+    return linkCreateCommand;
   }
 
   private void setStructuralLinkAggregatorPosition(CreateConnectionRequest request){

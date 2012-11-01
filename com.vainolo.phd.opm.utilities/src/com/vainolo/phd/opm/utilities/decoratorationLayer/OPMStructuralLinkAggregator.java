@@ -2,6 +2,7 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.eclipse.core.runtime.Assert;
@@ -35,9 +36,9 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	protected OPMStructuralLinkKind kind;
 	private final Dimension dimension = new Dimension(15,15);
 	MyEList<Adapter> eAdapters = new MyEList<>();
-	ArrayList<OPMStructuralLink> originals = new ArrayList<>();
-	List<OPMLink> incomingLinks = new ArrayList<>();
-	List<OPMLink> outgoingLinks = new ArrayList<>();
+	HashSet<OPMStructuralLink> originals = new HashSet<>();
+	HashSet<OPMLink> incomingLinks = new HashSet<>();
+	HashSet<OPMLink> outgoingLinks = new HashSet<>();
 	
 	OPMStructuralLinkAggregator(OPMStructuralLink link, DecorationsBank decorationsBank) {
 		Assert.isNotNull(decorationsBank);
@@ -63,7 +64,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	
 	public boolean AddOPMStructuralLink(OPMStructuralLink link){
 		if (OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link) != kind) return false;
-		if (originals.contains(link)) return true;
+		if (link.getSource() == null || link.getTarget() == null || link.getOpd()==null) return false;
 		
 		if (originals.add(link)){
 			link.setAggregatorPosition(location);

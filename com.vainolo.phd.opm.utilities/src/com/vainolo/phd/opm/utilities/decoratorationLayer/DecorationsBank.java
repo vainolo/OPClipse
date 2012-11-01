@@ -2,6 +2,7 @@ package com.vainolo.phd.opm.utilities.decoratorationLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -93,7 +94,7 @@ class DecorationsBank {
 		}
 	}
 	
-	private ArrayList<OPMSimpleLink> simpleLinks = new ArrayList<>();
+	private HashSet<OPMSimpleLink> simpleLinks = new HashSet<>();
 
 	public OPMSimpleLink getSimpleLink(OPMNode source, OPMNode target)
 	{
