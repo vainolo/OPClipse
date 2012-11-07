@@ -52,8 +52,7 @@
         eType="#//OPMetaModelLinkTypeDefintion"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="SourceType" lowerBound="1"
         eType="#//OPMetaModelTypeDefinitions"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="TargetType" lowerBound="1"
-        eType="#//OPMetaModelTypeDefinitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="TargetType" eType="#//OPMetaModelTypeDefinitions"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="IsValid" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
