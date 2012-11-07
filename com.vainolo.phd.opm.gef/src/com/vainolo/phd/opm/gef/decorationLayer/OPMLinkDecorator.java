@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	public OPMObjectProcessDiagram getOpd() {
 		OPMObjectProcessDiagram orig = decorated.getOpd();
 		if (orig==null) return null;
-		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)decorationsBank.GetOrCreateDecorator(orig);
+		OPMObjectProcessDiagram wrapper = (OPMObjectProcessDiagram)decorationsBank.getOrCreateDecorator(orig);
 		return wrapper;
 	}
 
@@ -45,7 +45,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	@Override
 	public OPMNode getSource() {
 		OPMNode origSource= decorated.getSource();
-		return (OPMNode)decorationsBank.GetOrCreateDecorator(origSource);
+		return (OPMNode)decorationsBank.getOrCreateDecorator(origSource);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class OPMLinkDecorator<T extends OPMLink> extends EObjectDecorator<T> imp
 	@Override
 	public OPMNode getTarget() {
 		OPMNode origTarget= decorated.getTarget();
-		return (OPMNode)decorationsBank.GetOrCreateDecorator(origTarget);
+		return (OPMNode)decorationsBank.getOrCreateDecorator(origTarget);
 	}
 
 	@Override

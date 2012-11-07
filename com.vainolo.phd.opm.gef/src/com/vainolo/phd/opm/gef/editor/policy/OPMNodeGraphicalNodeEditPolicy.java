@@ -16,6 +16,7 @@ import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkCreateCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
 //import com.vainolo.phd.opm.gef.editor.factory.OPMLinkFactory;
@@ -28,7 +29,6 @@ import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
 import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 
 /**
  * Policy used to connect two nodes in the diagram. Currently connections can

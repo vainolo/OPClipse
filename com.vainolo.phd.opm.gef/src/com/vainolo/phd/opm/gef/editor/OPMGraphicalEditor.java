@@ -45,6 +45,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import com.vainolo.phd.opm.utilities.OPDLoader;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMObjectProcessDiagramDecorator;
 import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
@@ -129,6 +130,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
       if(opd == null) {
         throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
       }
+      opd = new OPMObjectProcessDiagramDecorator(opd);
       if(opd.getId() == 0) {
         opd.setId(1);
         opd.setNextId(2);

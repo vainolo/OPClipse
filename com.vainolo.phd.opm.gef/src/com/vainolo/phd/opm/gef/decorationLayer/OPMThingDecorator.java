@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -23,16 +23,16 @@ public class OPMThingDecorator<T extends OPMThing> extends OPMNodeDecorator<T> i
 			List<OPMNode> origNodes =  decorated.getNodes();
 			nodes = new HashSet<>();
 			for (OPMNode orig:origNodes){
-				nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
+				nodes.add((OPMNode)decorationsBank.getOrCreateDecorator(orig));
 			}
 		}
 		return new ArrayList<>(nodes);
 	}
 
 	@Override
-	protected void NotifingChange(Notification notification){
+	protected void notifingChange(Notification notification){
 		nodes = null;
-		super.NotifingChange(notification);
+		super.notifingChange(notification);
 	}
 	
 	@Override

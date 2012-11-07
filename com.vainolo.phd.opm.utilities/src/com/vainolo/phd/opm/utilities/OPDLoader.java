@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMObjectProcessDiagramDecorator;
+//import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMObjectProcessDiagramDecorator;
 import com.vainolo.utils.SimpleLoggerFactory;
 
 public class OPDLoader {
@@ -37,7 +37,7 @@ public class OPDLoader {
       logger.fine("Exception thrown: " + e);
       opd = null;
     }
-    if (opd!=null) opd = new OPMObjectProcessDiagramDecorator(opd);
+    
     return opd;
   }
 

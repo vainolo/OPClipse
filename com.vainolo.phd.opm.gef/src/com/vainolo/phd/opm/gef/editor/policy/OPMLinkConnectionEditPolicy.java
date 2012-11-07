@@ -10,11 +10,11 @@ import org.eclipse.gef.editpolicies.ConnectionEditPolicy;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gef.commands.Command;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMSimpleLink;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkDeleteCommand;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMSimpleLink;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 
 /**
  * Edit policy used by the OPMLink class to server delete requests.

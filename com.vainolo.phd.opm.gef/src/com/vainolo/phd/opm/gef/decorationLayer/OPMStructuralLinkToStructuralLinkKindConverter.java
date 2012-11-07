@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -20,7 +20,7 @@ INSTANCE;
 		Map.put(OPMStructuralLinkKind.GENERALIZATION, OPMPackage.eINSTANCE.getOPMGeneralizationLink());
 	}
 	
-	public OPMStructuralLinkKind Convert(final OPMStructuralLink link) {
+	public OPMStructuralLinkKind convert(final OPMStructuralLink link) {
 		for (Entry<OPMStructuralLinkKind,EClass> entry : Map.entrySet()) {
 			if (entry.getValue().isInstance(link)) return entry.getKey();
 		}

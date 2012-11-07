@@ -13,12 +13,12 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.PolylineDecoration;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkToProceduralLinkKindConverter;
 import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkKind;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkToProceduralLinkKindConverter;
 
 /**
  * An extension of a {@link OPMLinkEditPart} used for {@link OPMProceduralLink} instances. It add endpoint decorations
@@ -47,7 +47,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   @Override
   protected PolylineConnection createFigure() {
     OPMProceduralLink model = (OPMProceduralLink) getModel();
-    OPMProceduralLinkKind kind =  OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.Convert(model);
+    OPMProceduralLinkKind kind =  OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.convert(model);
     PolylineConnection connection = new OPMProceduralLinkFigure(kind, model.getActivationKind());
     connection.setLineWidth(OPMFigureConstants.connectionLineWidth);
     // decorateConnection(connection, model.getKind());

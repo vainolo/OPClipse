@@ -8,7 +8,7 @@ package com.vainolo.phd.opm.utilities.predicates;
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkDecorator;
+import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 /**
  * Predicate that returns true for invocation links.
@@ -24,7 +24,7 @@ public enum IsOPMInvocationLink implements Predicate<OPMProceduralLink> {
   @Override
   public boolean apply(final OPMProceduralLink link) {
 	  OPMProceduralLink proceduralLink = link;
-	  if (link instanceof OPMProceduralLinkDecorator) proceduralLink = ((OPMProceduralLinkDecorator)link).getDecorated();
+	  if (link instanceof OPMDecorated<?>) proceduralLink = (OPMProceduralLink)((OPMDecorated<?>)link).getDecorated();
     if(OPMPackage.eINSTANCE.getOPMInvocationLink().isInstance(proceduralLink))
       return true;
     return false;

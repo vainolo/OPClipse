@@ -15,6 +15,8 @@ import org.eclipse.gef.editpolicies.ComponentEditPolicy;
 import org.eclipse.gef.requests.GroupRequest;
 
 import com.vainolo.phd.opm.gef.action.ResizeToContentsAction;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMSimpleLink;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkDeleteCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeChangeConstraintCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeDeleteCommand;
@@ -25,8 +27,6 @@ import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMSimpleLink;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
 
 /**
  * {@link EditPolicy} used for delete requests.
