@@ -3,6 +3,7 @@ package com.vainolo.phd.opm.gef.decorationLayer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
@@ -60,10 +61,17 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 			links.addAll(aggregator.getIncomingLinks());
 			links.addAll(aggregator.getOutgoingLinks());
 		}
-		for (OPMNode node:nodes){
-			if (node instanceof OPMNodeDecorator<?>) ((OPMNodeDecorator<?>)node).notifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
-		}
+		recursiveNotifyChangeToAllNodes(nodes);
 		recreateNeeded = false;
+	}
+	
+	private void recursiveNotifyChangeToAllNodes(Iterable<OPMNode> nodes){
+		for (OPMNode node:nodes){
+			if (node instanceof OPMNodeDecorator<?>){
+				((OPMNodeDecorator<?>)node).notifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
+				if (node instanceof OPMThing) recursiveNotifyChangeToAllNodes(((OPMThing) node).getNodes());
+			}
+		}
 	}
 	
 	HashSet<OPMNode> nodes;

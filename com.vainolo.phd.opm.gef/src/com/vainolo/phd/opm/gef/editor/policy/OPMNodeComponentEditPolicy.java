@@ -26,7 +26,7 @@ import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMThing;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 /**
  * {@link EditPolicy} used for delete requests.

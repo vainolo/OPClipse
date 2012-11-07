@@ -45,8 +45,8 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import com.vainolo.phd.opm.utilities.OPDLoader;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 import com.vainolo.phd.opm.gef.decorationLayer.OPMObjectProcessDiagramDecorator;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 

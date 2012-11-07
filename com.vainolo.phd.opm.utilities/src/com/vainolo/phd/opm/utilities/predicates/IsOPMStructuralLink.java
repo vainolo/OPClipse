@@ -8,7 +8,7 @@ package com.vainolo.phd.opm.utilities.predicates;
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 /**
  * Predicate that returns true for incoming OPM structural links.

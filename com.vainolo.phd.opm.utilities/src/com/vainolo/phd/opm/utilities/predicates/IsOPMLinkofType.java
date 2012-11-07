@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.OPMLink;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 public class IsOPMLinkofType implements Predicate<OPMLink> {
 

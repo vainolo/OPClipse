@@ -27,8 +27,8 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
 
 /**
  * Policy used to connect two nodes in the diagram. Currently connections can
@@ -229,8 +229,8 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 
   private Point getAggregatorPosition(OPMNode source, OPMNode target) {
 		// Calculate location of aggregator, between the source and targetnodes.
-		    Rectangle sCnstrnts = source.getConstraints();
-		    Rectangle tCnstrnts = target.getConstraints();
+		    Rectangle sCnstrnts = getTrueCinstraints(source);
+		    Rectangle tCnstrnts = getTrueCinstraints(target);
 		    Point sCenter = new Point(sCnstrnts.x + sCnstrnts.width / 2, sCnstrnts.y + sCnstrnts.height / 2);
 		    Point tCenter = new Point(tCnstrnts.x + tCnstrnts.width / 2, tCnstrnts.y + tCnstrnts.height / 2);
 		    Point aggrgLeftTopCorner = new Point();
@@ -244,6 +244,16 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
 		    }
 		    return aggrgLeftTopCorner;
 	}
+  
+  private Rectangle getTrueCinstraints(OPMNode node){
+	  Rectangle rect = node.getConstraints().getCopy();
+	  if ((node.getContainer() instanceof OPMNode) && (node.getContainer() != getHost().getRoot().getModel())){
+		  Rectangle added = getTrueCinstraints((OPMNode)node.getContainer());
+		  rect.x += added.x;
+		  rect.y += added.y;
+	  }
+	  return rect;
+  }
   
   @Override
   protected Command getReconnectTargetCommand(ReconnectRequest request) {

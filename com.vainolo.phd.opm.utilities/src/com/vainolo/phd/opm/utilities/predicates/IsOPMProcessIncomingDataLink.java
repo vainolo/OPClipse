@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.model.*;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 /**
  * Predicate that returns true for links that provide incoming data.
