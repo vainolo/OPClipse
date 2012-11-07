@@ -25,7 +25,7 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 /**
  * This class describes the commands that can be used to change the layout and

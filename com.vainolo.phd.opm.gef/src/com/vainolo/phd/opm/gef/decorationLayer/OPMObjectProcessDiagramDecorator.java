@@ -1,8 +1,9 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
@@ -12,6 +13,7 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
+import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.model.VerticalAlignment;
 
 public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObjectProcessDiagram> implements OPMObjectProcessDiagram 
@@ -27,17 +29,21 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 		decorationsBank.putDecorator(original, this);
 	}
 	@Override
-	protected void NotifingChange(Notification notification){
+	protected void notifingChange(Notification notification){
 		recreateNeeded = true;
-		super.NotifingChange(notification);
+		super.notifingChange(notification);
 	}
 	
-	private void RecreateNodesAndLinks(){
+	private void recreateNodesAndLinks(){
 		if (!recreateNeeded) return;
 		List<OPMNode> origNodes =  decorated.getNodes();
 		nodes = new HashSet<>();
 		for (OPMNode orig:origNodes){
-			nodes.add((OPMNode)decorationsBank.GetOrCreateDecorator(orig));
+			OPMNode nodeDecorator = (OPMNode)decorationsBank.getOrCreateDecorator(orig);
+			if (nodes.add(nodeDecorator))
+			{
+				if (orig instanceof OPMThing) ((OPMThing)nodeDecorator).getNodes();
+			}
 		}
 		List<OPMLink> origLinks =  decorated.getLinks();
 		links = new HashSet<OPMLink>();
@@ -48,24 +54,31 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 				nodes.add(aggregator);
 				aggregators.add(aggregator);
 			}else{
-				links.add((OPMLink)decorationsBank.GetOrCreateDecorator(link));
+				links.add((OPMLink)decorationsBank.getOrCreateDecorator(link));
 			}
 		}
 		for (OPMStructuralLinkAggregator aggregator:aggregators){
 			links.addAll(aggregator.getIncomingLinks());
 			links.addAll(aggregator.getOutgoingLinks());
 		}
-		for (OPMNode node:nodes){
-			if (node instanceof OPMNodeDecorator<?>) ((OPMNodeDecorator<?>)node).NotifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
-		}
+		recursiveNotifyChangeToAllNodes(nodes);
 		recreateNeeded = false;
+	}
+	
+	private void recursiveNotifyChangeToAllNodes(Iterable<OPMNode> nodes){
+		for (OPMNode node:nodes){
+			if (node instanceof OPMNodeDecorator<?>){
+				((OPMNodeDecorator<?>)node).notifingChange(new NotificationImpl(NotificationImpl.NO_INDEX,null,null));
+				if (node instanceof OPMThing) recursiveNotifyChangeToAllNodes(((OPMThing) node).getNodes());
+			}
+		}
 	}
 	
 	HashSet<OPMNode> nodes;
 	
 	@Override
 	public List<OPMNode> getNodes() {
-		RecreateNodesAndLinks();
+		recreateNodesAndLinks();
 		return new ArrayList<>(nodes);
 	}
 	
@@ -73,7 +86,7 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 	
 	@Override
 	public List<OPMLink> getLinks() {
-		RecreateNodesAndLinks();
+		recreateNodesAndLinks();
 		return new ArrayList(links);
 	}
 

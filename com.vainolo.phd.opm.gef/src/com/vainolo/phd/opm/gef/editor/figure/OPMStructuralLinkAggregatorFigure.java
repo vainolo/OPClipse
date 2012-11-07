@@ -16,8 +16,8 @@ import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkAggregator;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMStructuralLinkKind;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkKind;
 
 /**
  * Draws the figure for a {@link OPMStructuralLinkAggregator}. This figure

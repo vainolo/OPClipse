@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 public class OPMStructuralLinkAggregator implements OPMNode{
 
@@ -45,7 +45,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	OPMStructuralLinkAggregator(OPMStructuralLink link, DecorationsBank decorationsBank, OPMNode source) {
 		Assert.isNotNull(decorationsBank);
 		this.decorationsBank = decorationsBank;
-		this.kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
+		this.kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.convert(link);
 		this.source = source;
 		Point linkPos = link.getAggregatorPosition();
 		if (linkPos != null)
@@ -53,7 +53,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		else
 			location = new Point();
 		createSourceLink(link);
-		AddOPMStructuralLink(link);
+		addOPMStructuralLink(link);
     }
 
 	private void createSourceLink(OPMStructuralLink link) {
@@ -65,8 +65,8 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 		decorationsBank.putSimpleLink(sourceLink);
 	}
 	
-	public boolean AddOPMStructuralLink(OPMStructuralLink link){
-		if (OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link) != kind) return false;
+	public boolean addOPMStructuralLink(OPMStructuralLink link){
+		if (OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.convert(link) != kind) return false;
 		if (link.getSource() == null || link.getTarget() == null) return false;
 		
 		if (originals.add(link)){
@@ -75,7 +75,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 			outgoingLinks.add(createSimpleLink(link));
 			NotificationImpl notification = new NotificationImpl(NotificationImpl.PRIMITIVE_TYPE_OBJECT,null,link);
 			NotifyAdapters(notification);
-			decorationsBank.OnNumberOfOriginalsChangedInAggregator(this);
+			decorationsBank.onNumberOfOriginalsChangedInAggregator(this);
 			return true;
 		}
 		return false;
@@ -132,7 +132,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 			originals.remove(link);
 			link.eAdapters().remove(this);
 			outgoingLinks.remove(simpleLink);
-			decorationsBank.OnNumberOfOriginalsChangedInAggregator(aggregator);
+			decorationsBank.onNumberOfOriginalsChangedInAggregator(aggregator);
 		}
 		
 		@Override

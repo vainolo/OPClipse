@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.LinkedList;
 

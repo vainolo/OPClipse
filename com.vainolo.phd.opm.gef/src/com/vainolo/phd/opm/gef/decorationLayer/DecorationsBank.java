@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,7 @@ class DecorationsBank {
 		return decorator;
 	}
 	
-	EObjectDecorator<?> GetOrCreateDecorator(EObject opmOrig){
+	EObjectDecorator<?> getOrCreateDecorator(EObject opmOrig){
 		if (opmOrig == null)return null;
 		if (opmOrig instanceof EObjectDecorator) return (EObjectDecorator<?>)opmOrig;
 		EObjectDecorator<?> wrapper = getDecorator(opmOrig);
@@ -53,7 +53,7 @@ class DecorationsBank {
 	public OPMStructuralLinkAggregator getOrCreateAggregator(OPMStructuralLink link,OPMContainer container){
 		OPMStructuralLinkAggregator aggragetor = getAggregator(link);
 		if (aggragetor != null || link.getSource()==null) return aggragetor;
-		OPMStructuralLinkKind kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link);
+		OPMStructuralLinkKind kind = OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.convert(link);
 		aggragetor = new OPMStructuralLinkAggregator(link, this, link.getSource());
 		Map.put(new KindAndSourceKey(kind,link.getSource()), aggragetor);
 		aggragetor.setContainer(container);
@@ -61,9 +61,9 @@ class DecorationsBank {
 	}
 	
 	public OPMStructuralLinkAggregator getAggregator(OPMStructuralLink link){
-		OPMStructuralLinkAggregator aggragetor =  getAggregator(OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.Convert(link),link.getSource());
+		OPMStructuralLinkAggregator aggragetor =  getAggregator(OPMStructuralLinkToStructuralLinkKindConverter.INSTANCE.convert(link),link.getSource());
 		if (aggragetor != null){
-			aggragetor.AddOPMStructuralLink(link);
+			aggragetor.addOPMStructuralLink(link);
 		}
 		return aggragetor;
 	}
@@ -73,7 +73,7 @@ class DecorationsBank {
 		return Map.get(new KindAndSourceKey(kind,source));
 	}
 	
-	void OnNumberOfOriginalsChangedInAggregator(OPMStructuralLinkAggregator aggregator){
+	void onNumberOfOriginalsChangedInAggregator(OPMStructuralLinkAggregator aggregator){
 		if (aggregator.originals.isEmpty()){
 			Map.remove(new KindAndSourceKey(aggregator.kind,aggregator.source));
 			// TODO: source connecting link?

@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.analysis;
+package com.vainolo.phd.opm.utilities;
 
 public interface OPMDecorated<T> {
 	T getDecorated();

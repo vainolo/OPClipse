@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -23,7 +23,7 @@ public enum OPMProceduralLinkToProceduralLinkKindConverter {
 		Map.put(OPMProceduralLinkKind.INVOCATION,OPMPackage.eINSTANCE.getOPMInvocationLink());
 	  }
 	
-	public OPMProceduralLinkKind Convert(OPMProceduralLink link) {
+	public OPMProceduralLinkKind convert(OPMProceduralLink link) {
 		if (link instanceof OPMProceduralLinkDecorator) link = ((OPMProceduralLinkDecorator)link).getDecorated();
 		
 		for (Entry<OPMProceduralLinkKind,EClass> entry : Map.entrySet()) {

@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorated<T>{
 
@@ -108,7 +108,7 @@ public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorate
 		return decorated.eInvoke(operation, arguments);
 	}
 	
-	protected void NotifingChange(Notification notification){
+	protected void notifingChange(Notification notification){
 		for (Adapter adapter:eAdapters) adapter.notifyChanged(notification);
 	}
 	
@@ -123,7 +123,7 @@ public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorate
 
 		@Override
 		public void notifyChanged(Notification notification) {
-			NotifingChange(notification);
+			notifingChange(notification);
 			
 		}
 

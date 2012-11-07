@@ -13,8 +13,8 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
 import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
-import com.vainolo.phd.opm.utilities.decoratorationLayer.OPMProceduralLinkKind;
 
 public class OPMProceduralLinkFigure extends PolylineConnection {
   private static final PolylineDecoration arrow = new PolylineDecoration();

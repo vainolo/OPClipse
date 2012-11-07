@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.utilities.decoratorationLayer;
+package com.vainolo.phd.opm.gef.decorationLayer;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,7 +13,7 @@ import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
-import com.vainolo.phd.opm.utilities.analysis.OPMDecorated;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> implements OPMNode{
 	
@@ -22,10 +22,10 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 	}
 
 	@Override
-	protected void NotifingChange(Notification notification){
+	protected void notifingChange(Notification notification){
 		incomingLinks = null;
 		outgoingLinks = null;
-		super.NotifingChange(notification);
+		super.notifingChange(notification);
 	}
 	
 	@Override
@@ -73,7 +73,7 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 					OPMSimpleLink link = decorationsBank.getSimpleLink(aggregator, this);
 					if (link!=null) incomingLinks.add(link);
 				}else
-					incomingLinks.add((OPMLink)decorationsBank.GetOrCreateDecorator(orig));
+					incomingLinks.add((OPMLink)decorationsBank.getOrCreateDecorator(orig));
 				
 			}
 		}
@@ -94,7 +94,7 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 					OPMSimpleLink link = decorationsBank.getSimpleLink(this,aggregator);
 					if (link!=null) outgoingLinks.add(link);
 				}else
-					outgoingLinks.add((OPMLink)decorationsBank.GetOrCreateDecorator(orig));
+					outgoingLinks.add((OPMLink)decorationsBank.getOrCreateDecorator(orig));
 				
 			}
 		}
@@ -104,7 +104,7 @@ public class OPMNodeDecorator<T extends OPMNode> extends EObjectDecorator<T> imp
 	@Override
 	public OPMContainer getContainer() {
 		OPMContainer orig = decorated.getContainer(); 
-		return (OPMContainer) decorationsBank.GetOrCreateDecorator(orig);
+		return (OPMContainer) decorationsBank.getOrCreateDecorator(orig);
 	}
 
 	@Override
