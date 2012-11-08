@@ -13,6 +13,17 @@
       </editor>
    </extension>
    <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.vainolo.phd.opm.gef.mm.editor.OPMetaModelGraphicalEditor"
+            contributorClass="com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorActionBarContributor"
+            default="true"
+            extensions="opmeta"
+            id="com.vainolo.phd.opm.mm.gef.editorID"
+            name="OP Meta Model GEF Editor">
+      </editor>
+   </extension>
+   <extension
          point="org.eclipse.ui.views">
       <view
             class="com.vainolo.phd.opm.gef.OPLViewPart"

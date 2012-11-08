@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.vainolo.phd.opmeta.model.presentation.opmetaModelWizardID"
+            name="%_UI_opmetaModelWizard_label"
+            class="com.vainolo.phd.opmeta.model.presentation.opmetaModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/opmetaModelFile.gif">
+         <description>%_UI_opmetaModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="com.vainolo.phd.opmeta.model.presentation.opmetaEditorID"
+            name="%_UI_opmetaEditor_label"
+            icon="icons/full/obj16/opmetaModelFile.gif"
+            extensions="opmeta"
+            class="com.vainolo.phd.opmeta.model.presentation.opmetaEditor"
+            contributorClass="com.vainolo.phd.opmeta.model.presentation.opmetaActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

@@ -41,6 +41,7 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import com.vainolo.phd.opm.gef.action.ResizeToContentsAction;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.editor.part.OPMEditPartFactory;
+import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
@@ -130,13 +131,17 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
       if(opd == null) {
         throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
       }
-      opd = new OPMObjectProcessDiagramDecorator(opd);
-      if(opd.getId() == 0) {
-        opd.setId(1);
-        opd.setNextId(2);
-      }
-      OPMIdManager.setId(opd.getNextId());
+      
     }
+    if (input instanceof OPMDiagramEditorInput){
+    	opd = ((OPMDiagramEditorInput) input).getOPD();
+    }
+    opd = new OPMObjectProcessDiagramDecorator(opd);
+    if(opd.getId() == 0) {
+      opd.setId(1);
+      opd.setNextId(2);
+    }
+    OPMIdManager.setId(opd.getNextId());
   }
 
   @SuppressWarnings("unchecked")
