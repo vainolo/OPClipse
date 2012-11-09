@@ -52,6 +52,7 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object object) {
 		if (object == modelPackage) {
 			return true;
@@ -68,18 +69,22 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected opmetaSwitch modelSwitch =
-		new opmetaSwitch() {
-			public Object caseOPMetaModelDiagram(OPMetaModelDiagram object) {
+	protected opmetaSwitch<Adapter> modelSwitch =
+		new opmetaSwitch<Adapter>() {
+			@Override
+			public Adapter caseOPMetaModelDiagram(OPMetaModelDiagram object) {
 				return createOPMetaModelDiagramAdapter();
 			}
-			public Object caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
+			@Override
+			public Adapter caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
 				return createOPMetaModelContaimentValidationRuleAdapter();
 			}
-			public Object caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
+			@Override
+			public Adapter caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
 				return createOPMetaModelLinkValidationRuleAdapter();
 			}
-			public Object defaultCase(EObject object) {
+			@Override
+			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
 		};
@@ -92,8 +97,9 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
+	@Override
 	public Adapter createAdapter(Notifier target) {
-		return (Adapter)modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 

@@ -41,7 +41,7 @@ public interface opmetaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://opmeta/1.0";
+	String eNS_URI = "www.vainolo.com/phd/opmeta";
 
 	/**
 	 * The package namespace name.

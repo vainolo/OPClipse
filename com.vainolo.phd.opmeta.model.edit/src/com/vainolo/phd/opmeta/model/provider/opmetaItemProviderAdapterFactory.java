@@ -59,7 +59,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection supportedTypes = new ArrayList();
+	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
 	 * This constructs an instance.
@@ -89,6 +89,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOPMetaModelDiagramAdapter() {
 		if (opMetaModelDiagramItemProvider == null) {
 			opMetaModelDiagramItemProvider = new OPMetaModelDiagramItemProvider(this);
@@ -111,6 +112,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOPMetaModelContaimentValidationRuleAdapter() {
 		if (opMetaModelContaimentValidationRuleItemProvider == null) {
 			opMetaModelContaimentValidationRuleItemProvider = new OPMetaModelContaimentValidationRuleItemProvider(this);
@@ -133,6 +135,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter createOPMetaModelLinkValidationRuleAdapter() {
 		if (opMetaModelLinkValidationRuleItemProvider == null) {
 			opMetaModelLinkValidationRuleItemProvider = new OPMetaModelLinkValidationRuleItemProvider(this);
@@ -166,6 +169,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isFactoryForType(Object type) {
 		return supportedTypes.contains(type) || super.isFactoryForType(type);
 	}
@@ -176,6 +180,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
 		return super.adapt(notifier, this);
 	}
@@ -185,10 +190,11 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class) || (((Class)type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
 				return adapter;
 			}
 		}

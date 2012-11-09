@@ -152,8 +152,10 @@ import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
+import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 
+import org.eclipse.emf.edit.ui.util.EditUIUtil;
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import com.vainolo.phd.opmeta.model.provider.opmetaItemProviderAdapterFactory;
@@ -299,7 +301,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection selectionChangedListeners = new ArrayList();
+	protected Collection<ISelectionChangedListener> selectionChangedListeners = new ArrayList<ISelectionChangedListener>();
 
 	/**
 	 * This keeps track of the selection of the editor as a whole.
@@ -364,7 +366,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection removedResources = new ArrayList();
+	protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been changed since last activation.
@@ -372,7 +374,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection changedResources = new ArrayList();
+	protected Collection<Resource> changedResources = new ArrayList<Resource>();
 
 	/**
 	 * Resources that have been saved.
@@ -380,7 +382,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection savedResources = new ArrayList();
+	protected Collection<Resource> savedResources = new ArrayList<Resource>();
 
 	/**
 	 * Map to store the diagnostic associated with a resource.
@@ -388,7 +390,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Map resourceToDiagnosticMap = new LinkedHashMap();
+	protected Map<Resource, Diagnostic> resourceToDiagnosticMap = new LinkedHashMap<Resource, Diagnostic>();
 
 	/**
 	 * Controls whether the problem indication should be updated.
@@ -406,6 +408,7 @@ public class opmetaEditor
 	 */
 	protected EContentAdapter problemIndicationAdapter = 
 		new EContentAdapter() {
+			@Override
 			public void notifyChanged(Notification notification) {
 				if (notification.getNotifier() instanceof Resource) {
 					switch (notification.getFeatureID(Resource.class)) {
@@ -438,10 +441,12 @@ public class opmetaEditor
 				}
 			}
 
+			@Override
 			protected void setTarget(Resource target) {
 				basicSetTarget(target);
 			}
 
+			@Override
 			protected void unsetTarget(Resource target) {
 				basicUnsetTarget(target);
 			}
@@ -460,8 +465,8 @@ public class opmetaEditor
 				try {
 					class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 						protected ResourceSet resourceSet = editingDomain.getResourceSet();
-						protected Collection changedResources = new ArrayList();
-						protected Collection removedResources = new ArrayList();
+						protected Collection<Resource> changedResources = new ArrayList<Resource>();
+						protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
 						public boolean visit(IResourceDelta delta) {
 							if (delta.getResource().getType() == IResource.FILE) {
@@ -482,11 +487,11 @@ public class opmetaEditor
 							return true;
 						}
 
-						public Collection getChangedResources() {
+						public Collection<Resource> getChangedResources() {
 							return changedResources;
 						}
 
-						public Collection getRemovedResources() {
+						public Collection<Resource> getRemovedResources() {
 							return removedResources;
 						}
 					}
@@ -573,8 +578,7 @@ public class opmetaEditor
 			editingDomain.getCommandStack().flush();
 
 			updateProblemIndication = false;
-			for (Iterator i = changedResources.iterator(); i.hasNext(); ) {
-				Resource resource = (Resource)i.next();
+			for (Resource resource : changedResources) {
 				if (resource.isLoaded()) {
 					resource.unload();
 					try {
@@ -588,6 +592,9 @@ public class opmetaEditor
 				}
 			}
 
+			if (AdapterFactoryEditingDomain.isStale(editorSelection)) {
+				setSelection(StructuredSelection.EMPTY);
+			}
 
 			updateProblemIndication = true;
 			updateProblemIndication();
@@ -609,8 +616,7 @@ public class opmetaEditor
 					 0,
 					 null,
 					 new Object [] { editingDomain.getResourceSet() });
-			for (Iterator i = resourceToDiagnosticMap.values().iterator(); i.hasNext(); ) {
-				Diagnostic childDiagnostic = (Diagnostic)i.next();
+			for (Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
 				}
@@ -722,7 +728,7 @@ public class opmetaEditor
 
 		// Create the editing domain with a special command stack.
 		//
-		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap());
+		editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
 	}
 
 	/**
@@ -731,6 +737,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void firePropertyChange(int action) {
 		super.firePropertyChange(action);
 	}
@@ -741,8 +748,8 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSelectionToViewer(Collection collection) {
-		final Collection theSelection = collection;
+	public void setSelectionToViewer(Collection<?> collection) {
+		final Collection<?> theSelection = collection;
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
@@ -792,6 +799,7 @@ public class opmetaEditor
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public Object [] getElements(Object object) {
 			Object parent = super.getParent(object);
 			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
@@ -802,6 +810,7 @@ public class opmetaEditor
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public Object [] getChildren(Object object) {
 			Object parent = super.getParent(object);
 			return (parent == null ? Collections.EMPTY_SET : Collections.singleton(parent)).toArray();
@@ -812,6 +821,7 @@ public class opmetaEditor
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public boolean hasChildren(Object object) {
 			Object parent = super.getParent(object);
 			return parent != null;
@@ -822,6 +832,7 @@ public class opmetaEditor
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
+		@Override
 		public Object getParent(Object object) {
 			return null;
 		}
@@ -911,7 +922,7 @@ public class opmetaEditor
 		contextMenu.addMenuListener(this);
 		Menu menu= contextMenu.createContextMenu(viewer.getControl());
 		viewer.getControl().setMenu(menu);
-		getSite().registerContextMenu(contextMenu, viewer);
+		getSite().registerContextMenu(contextMenu, new UnwrappingSelectionProvider(viewer));
 
 		int dndOperations = DND.DROP_COPY | DND.DROP_MOVE | DND.DROP_LINK;
 		Transfer[] transfers = new Transfer[] { LocalTransfer.getInstance() };
@@ -926,10 +937,7 @@ public class opmetaEditor
 	 * @generated
 	 */
 	public void createModel() {
-		// Assumes that the input is a file object.
-		//
-		IFileEditorInput modelFile = (IFileEditorInput)getEditorInput();
-		URI resourceURI = URI.createPlatformResourceURI(modelFile.getFile().getFullPath().toString(), true);
+		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
 		Resource resource = null;
 		try {
@@ -988,6 +996,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void createPages() {
 		// Creates the model from the editor input
 		//
@@ -1001,11 +1010,13 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
 							TreeViewer newTreeViewer = new TreeViewer(tree);
 							return newTreeViewer;
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1033,11 +1044,13 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
 							TreeViewer newTreeViewer = new TreeViewer(tree);
 							return newTreeViewer;
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1060,9 +1073,11 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							return new ListViewer(composite);
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1083,9 +1098,11 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1108,9 +1125,11 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TableViewer(composite);
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1149,9 +1168,11 @@ public class opmetaEditor
 			{
 				ViewerPane viewerPane =
 					new ViewerPane(getSite().getPage(), opmetaEditor.this) {
+						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
 						}
+						@Override
 						public void requestActivation() {
 							super.requestActivation();
 							setCurrentViewerPane(this);
@@ -1199,6 +1220,7 @@ public class opmetaEditor
 		getContainer().addControlListener
 			(new ControlAdapter() {
 				boolean guard = false;
+				@Override
 				public void controlResized(ControlEvent event) {
 					if (!guard) {
 						guard = true;
@@ -1258,6 +1280,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected void pageChange(int pageIndex) {
 		super.pageChange(pageIndex);
 
@@ -1272,6 +1295,8 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
+		@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView() ? getContentOutlinePage() : null;
@@ -1298,6 +1323,7 @@ public class opmetaEditor
 			// The content outline is just a tree.
 			//
 			class MyContentOutlinePage extends ContentOutlinePage {
+				@Override
 				public void createControl(Composite parent) {
 					super.createControl(parent);
 					contentOutlineViewer = getTreeViewer();
@@ -1320,11 +1346,13 @@ public class opmetaEditor
 					}
 				}
 
+				@Override
 				public void makeContributions(IMenuManager menuManager, IToolBarManager toolBarManager, IStatusLineManager statusLineManager) {
 					super.makeContributions(menuManager, toolBarManager, statusLineManager);
 					contentOutlineStatusLineManager = statusLineManager;
 				}
 
+				@Override
 				public void setActionBars(IActionBars actionBars) {
 					super.setActionBars(actionBars);
 					getActionBarContributor().shareGlobalActions(this, actionBars);
@@ -1358,11 +1386,13 @@ public class opmetaEditor
 		if (propertySheetPage == null) {
 			propertySheetPage =
 				new ExtendedPropertySheetPage(editingDomain) {
-					public void setSelectionToViewer(List selection) {
+					@Override
+					public void setSelectionToViewer(List<?> selection) {
 						opmetaEditor.this.setSelectionToViewer(selection);
 						opmetaEditor.this.setFocus();
 					}
 
+					@Override
 					public void setActionBars(IActionBars actionBars) {
 						super.setActionBars(actionBars);
 						getActionBarContributor().shareGlobalActions(this, actionBars);
@@ -1382,7 +1412,7 @@ public class opmetaEditor
 	 */
 	public void handleContentOutlineSelection(ISelection selection) {
 		if (currentViewerPane != null && !selection.isEmpty() && selection instanceof IStructuredSelection) {
-			Iterator selectedElements = ((IStructuredSelection)selection).iterator();
+			Iterator<?> selectedElements = ((IStructuredSelection)selection).iterator();
 			if (selectedElements.hasNext()) {
 				// Get the first selected element.
 				//
@@ -1391,7 +1421,7 @@ public class opmetaEditor
 				// If it's the selection viewer, then we want it to select the same selection as this selection.
 				//
 				if (currentViewerPane.getViewer() == selectionViewer) {
-					ArrayList selectionList = new ArrayList();
+					ArrayList<Object> selectionList = new ArrayList<Object>();
 					selectionList.add(selectedElement);
 					while (selectedElements.hasNext()) {
 						selectionList.add(selectedElements.next());
@@ -1419,6 +1449,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDirty() {
 		return ((BasicCommandStack)editingDomain.getCommandStack()).isSaveNeeded();
 	}
@@ -1429,10 +1460,12 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void doSave(IProgressMonitor progressMonitor) {
 		// Save only resources that have actually changed.
 		//
-		final Map saveOptions = new HashMap();
+		final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+		saveOptions.put(Resource.OPTION_SAVE_ONLY_IF_CHANGED, Resource.OPTION_SAVE_ONLY_IF_CHANGED_MEMORY_BUFFER);
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
@@ -1440,16 +1473,19 @@ public class opmetaEditor
 			new WorkspaceModifyOperation() {
 				// This is the method that gets invoked when the operation runs.
 				//
+				@Override
 				public void execute(IProgressMonitor monitor) {
 					// Save the resources to the file system.
 					//
 					boolean first = true;
-					for (Iterator i = editingDomain.getResourceSet().getResources().iterator(); i.hasNext(); ) {
-						Resource resource = (Resource)i.next();
+					for (Resource resource : editingDomain.getResourceSet().getResources()) {
 						if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
 							try {
+								long timeStamp = resource.getTimeStamp();
 								resource.save(saveOptions);
-								savedResources.add(resource);
+								if (resource.getTimeStamp() != timeStamp) {
+									savedResources.add(resource);
+								}
 							}
 							catch (Exception exception) {
 								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
@@ -1508,6 +1544,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSaveAsAllowed() {
 		return true;
 	}
@@ -1518,6 +1555,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void doSaveAs() {
 		SaveAsDialog saveAsDialog = new SaveAsDialog(getSite().getShell());
 		saveAsDialog.open();
@@ -1536,7 +1574,7 @@ public class opmetaEditor
 	 * @generated
 	 */
 	protected void doSaveAs(URI uri, IEditorInput editorInput) {
-		((Resource)editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
+		(editingDomain.getResourceSet().getResources().get(0)).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
 		IProgressMonitor progressMonitor =
@@ -1575,6 +1613,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void init(IEditorSite site, IEditorInput editorInput) {
 		setSite(site);
 		setInputWithNotify(editorInput);
@@ -1589,6 +1628,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFocus() {
 		if (currentViewerPane != null) {
 			currentViewerPane.setFocus();
@@ -1638,8 +1678,7 @@ public class opmetaEditor
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
-		for (Iterator listeners = selectionChangedListeners.iterator(); listeners.hasNext(); ) {
-			ISelectionChangedListener listener = (ISelectionChangedListener)listeners.next();
+		for (ISelectionChangedListener listener : selectionChangedListeners) {
 			listener.selectionChanged(new SelectionChangedEvent(this, selection));
 		}
 		setStatusLineManager(selection);
@@ -1656,7 +1695,7 @@ public class opmetaEditor
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
-				Collection collection = ((IStructuredSelection)selection).toList();
+				Collection<?> collection = ((IStructuredSelection)selection).toList();
 				switch (collection.size()) {
 					case 0: {
 						statusLineManager.setMessage(getString("_UI_NoObjectSelected"));
@@ -1741,6 +1780,7 @@ public class opmetaEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		updateProblemIndication = false;
 

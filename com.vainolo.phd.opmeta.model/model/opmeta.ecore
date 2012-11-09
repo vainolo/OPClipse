@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="opmeta"
-    nsURI="http://opmeta/1.0" nsPrefix="opmeta">
+    nsURI="www.vainolo.com/phd/opmeta" nsPrefix="opmeta">
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelDiagram">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ElementsDiagram" lowerBound="1"
         eType="#//OPMObjectProcessDiagram"/>

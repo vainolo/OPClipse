@@ -34,7 +34,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 */
 	public static opmetaFactory init() {
 		try {
-			opmetaFactory theopmetaFactory = (opmetaFactory)EPackage.Registry.INSTANCE.getEFactory("http://opmeta/1.0"); 
+			opmetaFactory theopmetaFactory = (opmetaFactory)EPackage.Registry.INSTANCE.getEFactory("www.vainolo.com/phd/opmeta"); 
 			if (theopmetaFactory != null) {
 				return theopmetaFactory;
 			}
@@ -60,6 +60,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM: return createOPMetaModelDiagram();
@@ -75,6 +76,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.OPM_OBJECT_PROCESS_DIAGRAM:
@@ -89,6 +91,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.OPM_OBJECT_PROCESS_DIAGRAM:
@@ -161,6 +164,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 * @deprecated
 	 * @generated
 	 */
+	@Deprecated
 	public static opmetaPackage getPackage() {
 		return opmetaPackage.eINSTANCE;
 	}

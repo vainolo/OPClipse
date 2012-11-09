@@ -12,6 +12,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.Switch;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see com.vainolo.phd.opmeta.model.opmetaPackage
  * @generated
  */
-public class opmetaSwitch {
+public class opmetaSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
@@ -48,14 +50,16 @@ public class opmetaSwitch {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @parameter ePackage the package in question.
+	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
-	public Object doSwitch(EObject theEObject) {
-		return doSwitch(theEObject.eClass(), theEObject);
+	@Override
+	protected boolean isSwitchFor(EPackage ePackage) {
+		return ePackage == modelPackage;
 	}
 
 	/**
@@ -65,43 +69,24 @@ public class opmetaSwitch {
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
-	protected Object doSwitch(EClass theEClass, EObject theEObject) {
-		if (theEClass.eContainer() == modelPackage) {
-			return doSwitch(theEClass.getClassifierID(), theEObject);
-		}
-		else {
-			List eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch((EClass)eSuperTypes.get(0), theEObject);
-		}
-	}
-
-	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the first non-null result returned by a <code>caseXXX</code> call.
-	 * @generated
-	 */
-	protected Object doSwitch(int classifierID, EObject theEObject) {
+	@Override
+	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM: {
 				OPMetaModelDiagram opMetaModelDiagram = (OPMetaModelDiagram)theEObject;
-				Object result = caseOPMetaModelDiagram(opMetaModelDiagram);
+				T result = caseOPMetaModelDiagram(opMetaModelDiagram);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE: {
 				OPMetaModelContaimentValidationRule opMetaModelContaimentValidationRule = (OPMetaModelContaimentValidationRule)theEObject;
-				Object result = caseOPMetaModelContaimentValidationRule(opMetaModelContaimentValidationRule);
+				T result = caseOPMetaModelContaimentValidationRule(opMetaModelContaimentValidationRule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE: {
 				OPMetaModelLinkValidationRule opMetaModelLinkValidationRule = (OPMetaModelLinkValidationRule)theEObject;
-				Object result = caseOPMetaModelLinkValidationRule(opMetaModelLinkValidationRule);
+				T result = caseOPMetaModelLinkValidationRule(opMetaModelLinkValidationRule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,7 +105,7 @@ public class opmetaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOPMetaModelDiagram(OPMetaModelDiagram object) {
+	public T caseOPMetaModelDiagram(OPMetaModelDiagram object) {
 		return null;
 	}
 
@@ -135,7 +120,7 @@ public class opmetaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
+	public T caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
 		return null;
 	}
 
@@ -150,7 +135,7 @@ public class opmetaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public Object caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
+	public T caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
 		return null;
 	}
 
@@ -165,7 +150,8 @@ public class opmetaSwitch {
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
 	 * @generated
 	 */
-	public Object defaultCase(EObject object) {
+	@Override
+	public T defaultCase(EObject object) {
 		return null;
 	}
 

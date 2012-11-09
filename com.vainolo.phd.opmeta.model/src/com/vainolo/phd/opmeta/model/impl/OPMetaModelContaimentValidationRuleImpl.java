@@ -37,6 +37,7 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE;
 	}

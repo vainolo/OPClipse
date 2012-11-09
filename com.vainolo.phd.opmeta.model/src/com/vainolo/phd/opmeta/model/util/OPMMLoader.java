@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.utils.SimpleLoggerFactory;
@@ -33,6 +34,9 @@ public class OPMMLoader {
 	      logger.fine("Exception thrown: " + e);
 	      opd = null;
 	    }
+	    
+	    // TODO: remove at some point:
+	    if (opd != null && opd.getElementsDiagram() == null) opd.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 	    
 	    return opd;
 	  }

@@ -5,8 +5,9 @@
     editorDirectory="/com.vainolo.phd.opmeta.model.editor/src" modelPluginID="com.vainolo.phd.opmeta.model"
     modelName="OPMeta" editPluginClass="com.vainolo.phd.opmeta.model.provider.opmetaEditPlugin"
     editorPluginClass="com.vainolo.phd.opmeta.model.presentation.opmetaEditorPlugin"
-    testSuiteClass="com.vainolo.phd.opmeta.model.tests.opmetaAllTests" importerID="org.eclipse.emf.importer.ecore"
-    copyrightFields="false" editorPluginID="com.vainolo.phd.opmeta.model.editor">
+    suppressEMFTypes="true" testSuiteClass="com.vainolo.phd.opmeta.model.tests.opmetaAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    editorPluginID="com.vainolo.phd.opmeta.model.editor">
   <foreignModel>opmeta.ecore</foreignModel>
   <genPackages prefix="opmeta" basePackage="com.vainolo.phd" disposableProviderFactory="true"
       interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"

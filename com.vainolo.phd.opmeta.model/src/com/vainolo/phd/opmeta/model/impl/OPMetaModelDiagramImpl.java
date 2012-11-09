@@ -87,6 +87,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return opmetaPackage.Literals.OP_META_MODEL_DIAGRAM;
 	}
@@ -138,6 +139,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
@@ -153,6 +155,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
@@ -170,6 +173,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
@@ -187,6 +191,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
@@ -202,6 +207,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 

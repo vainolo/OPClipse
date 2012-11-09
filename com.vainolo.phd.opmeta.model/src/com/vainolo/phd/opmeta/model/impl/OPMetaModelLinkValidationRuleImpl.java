@@ -37,6 +37,7 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	protected EClass eStaticClass() {
 		return opmetaPackage.Literals.OP_META_MODEL_LINK_VALIDATION_RULE;
 	}
