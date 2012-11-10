@@ -12,8 +12,10 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
+import com.vainolo.phd.opmeta.model.opmetaPackage;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
 public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
@@ -41,32 +43,40 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 	  }
 
 	  private void loadInput(IEditorInput input) {
-	    opmetaFactory.eINSTANCE.eClass();
-	    OPMFactory.eINSTANCE.eClass(); // This initializes the OPMPackage singleton implementation. Must be called before
-	                                   // reading the file.
-	    
 	    IFileEditorInput fileInput = (IFileEditorInput) input;
 	    opmmFile = fileInput.getFile();
 	    opmeta = OPMMLoader.loadOPDFile(opmmFile.getLocationURI().toString());
 	      if(opmeta == null) {
 	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
 	      }
+	      
+	   // TODO: remove at some point:
+		    if (opmeta != null && opmeta.getElementsDiagram() == null) opmeta.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		    if (opmeta != null && opmeta.getLinksDiagram() == null) opmeta.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 	  }
 	
 	@Override
 	protected void createPages() {
+		int index;
 		try {
-			addPage(0, new OPMGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getElementsDiagram(), "Elements"));
+			index = addPage(new OPMGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getElementsDiagram()));
+			setPageText(index, "Elements");
 		} catch (PartInitException e) {
-			 ErrorDialog.openError(
-                     getSite().getShell(),
-                     "Error creating nested text editor",
-                     null,
-                     e.getStatus());
+			 ErrorDialog.openError(getSite().getShell(),
+                     "Error creating Elements GEF editor",
+                     null, e.getStatus());
 			e.printStackTrace();
 		}
-		
-		// TODO Auto-generated method stub
+		try {
+			index = addPage(new OPMGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getLinksDiagram()));
+			setPageText(index, "Links");
+		} catch (PartInitException e) {
+			 ErrorDialog.openError(getSite().getShell(),
+                     "Error creating Links GEF editor",
+                     null, e.getStatus());
+			e.printStackTrace();
+		}
+		// TODO continue
 		
 	}
 

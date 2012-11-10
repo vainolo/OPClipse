@@ -9,13 +9,11 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 public class OPMDiagramEditorInput implements IEditorInput {
 
 	private OPMObjectProcessDiagram diagram;
-	private String name;
 	
 	public OPMObjectProcessDiagram getOPD(){ return diagram;}
 	
-	public OPMDiagramEditorInput(OPMObjectProcessDiagram diagram, String name){
+	public OPMDiagramEditorInput(OPMObjectProcessDiagram diagram){
 		this.diagram = diagram;
-		this.name = name;
 	}
 	
 	@Override
@@ -35,7 +33,7 @@ public class OPMDiagramEditorInput implements IEditorInput {
 
 	@Override
 	public String getName() {
-		return name;
+		return null;
 	}
 
 	@Override
