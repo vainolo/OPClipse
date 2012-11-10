@@ -26,6 +26,7 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
@@ -74,7 +75,9 @@ public abstract class OPMThingEditPart extends OPMNodeEditPart {
     else if(req.getType() == RequestConstants.REQ_OPEN) {
       final String thingName = ((OPMThing) getModel()).getName();
       final IEditorPart editorPart = ((DefaultEditDomain) getViewer().getEditDomain()).getEditorPart();
-      final IFileEditorInput input = (IFileEditorInput) editorPart.getEditorInput();
+      IEditorInput editorInput = editorPart.getEditorInput();
+      if (!(editorInput instanceof IFileEditorInput)) return;
+      final IFileEditorInput input = (IFileEditorInput) editorInput;
       final IFile newFile = input.getFile().getParent().getFile(new Path(thingName + ".opm"));
       try {
         if(!newFile.exists()) {

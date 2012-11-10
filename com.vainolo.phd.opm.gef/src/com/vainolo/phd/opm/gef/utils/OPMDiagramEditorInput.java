@@ -16,6 +16,7 @@ public class OPMDiagramEditorInput implements IEditorInput {
 		this.diagram = diagram;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class adapter) {
 	    return null;

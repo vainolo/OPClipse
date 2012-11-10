@@ -9,13 +9,9 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
-import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMFactory;
-import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
-import com.vainolo.phd.opmeta.model.opmetaFactory;
-import com.vainolo.phd.opmeta.model.opmetaPackage;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
 public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
@@ -59,7 +55,7 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 	protected void createPages() {
 		int index;
 		try {
-			index = addPage(new OPMGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getElementsDiagram()));
+			index = addPage(new OPMetaGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getElementsDiagram()));
 			setPageText(index, "Elements");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),
@@ -68,7 +64,7 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 			e.printStackTrace();
 		}
 		try {
-			index = addPage(new OPMGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getLinksDiagram()));
+			index = addPage(new OPMetaGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getLinksDiagram()));
 			setPageText(index, "Links");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),

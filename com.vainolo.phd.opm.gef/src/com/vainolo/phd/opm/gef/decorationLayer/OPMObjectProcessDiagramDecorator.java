@@ -87,7 +87,7 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 	@Override
 	public List<OPMLink> getLinks() {
 		recreateNodesAndLinks();
-		return new ArrayList(links);
+		return new ArrayList<OPMLink>(links);
 	}
 
 	@Override

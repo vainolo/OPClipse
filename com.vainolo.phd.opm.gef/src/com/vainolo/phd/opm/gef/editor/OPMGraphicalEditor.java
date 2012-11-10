@@ -41,7 +41,6 @@ import org.eclipse.ui.views.properties.PropertySheetPage;
 import com.vainolo.phd.opm.gef.action.ResizeToContentsAction;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.editor.part.OPMEditPartFactory;
-import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
@@ -123,20 +122,10 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   private void loadInput(IEditorInput input) {
     OPMPackage.eINSTANCE.eClass(); // This initializes the OPMPackage singleton implementation. Must be called before
                                    // reading the file.
-    if(input instanceof IFileEditorInput) {
-
-      IFileEditorInput fileInput = (IFileEditorInput) input;
-      opdFile = fileInput.getFile();
-      opd = OPDLoader.loadOPDFile(opdFile.getLocationURI().toString());
-      if(opd == null) {
-        throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
-      }
-      
-    }
-    if (input instanceof OPMDiagramEditorInput){
-    	opd = ((OPMDiagramEditorInput) input).getOPD();
-    }
+    
+    opd = getDiagramFromInput(input);
     opd = new OPMObjectProcessDiagramDecorator(opd);
+    
     if(opd.getId() == 0) {
       opd.setId(1);
       opd.setNextId(2);
@@ -144,6 +133,20 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
     OPMIdManager.setId(opd.getNextId());
   }
 
+  protected OPMObjectProcessDiagram getDiagramFromInput(IEditorInput input){
+	  OPMObjectProcessDiagram opmd=null;
+	  if(input instanceof IFileEditorInput) {
+
+	      IFileEditorInput fileInput = (IFileEditorInput) input;
+	      opdFile = fileInput.getFile();
+	      opmd = OPDLoader.loadOPDFile(opdFile.getLocationURI().toString());
+	      if(opmd == null) {
+	        throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
+	      }
+	    }
+	  return opmd;
+  }
+  
   @SuppressWarnings("unchecked")
   @Override
   protected void createActions() {
