@@ -78,7 +78,8 @@ public class OPMObjectProcessDiagramEditPart extends AbstractGraphicalEditPart {
    * Currently the class only adapts to create a {@link SnapToHelper} when the editor is in snapping mode (either to
    * grid or to shapes).
    */
-  @Override
+  @SuppressWarnings("rawtypes")
+@Override
   public Object getAdapter(Class key) {
     if(key == SnapToHelper.class) {
       List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();

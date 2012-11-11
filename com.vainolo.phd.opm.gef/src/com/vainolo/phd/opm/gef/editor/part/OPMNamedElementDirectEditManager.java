@@ -15,7 +15,7 @@ public class OPMNamedElementDirectEditManager extends DirectEditManager {
 
 	Label label;
 	
-	public OPMNamedElementDirectEditManager(GraphicalEditPart source, Class editorType, CellEditorLocator locator, Label label) {
+	public OPMNamedElementDirectEditManager(GraphicalEditPart source, Class<?> editorType, CellEditorLocator locator, Label label) {
 		super(source, editorType, locator);
 		this.label = label;
 	}
