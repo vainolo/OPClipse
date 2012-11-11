@@ -1,6 +1,5 @@
 package com.vainolo.phd.opm.gef.decorationLayer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 

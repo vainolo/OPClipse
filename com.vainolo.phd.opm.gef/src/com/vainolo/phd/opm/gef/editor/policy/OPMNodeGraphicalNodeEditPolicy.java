@@ -10,7 +10,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
@@ -19,10 +18,8 @@ import org.eclipse.gef.requests.ReconnectRequest;
 import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.gef.editor.command.OPMLinkCreateCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
-//import com.vainolo.phd.opm.gef.editor.factory.OPMLinkFactory;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkAggregatorEditPart;
 import com.vainolo.phd.opm.model.OPMLink;
-import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
@@ -55,14 +52,8 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     // non-null value the framework thinks that the link can be created from
     // this host,
     // something that we don't want to happen.
-    if(request.getSourceEditPart() instanceof OPMStructuralLinkAggregatorEditPart) {
+    if(getHost() instanceof OPMStructuralLinkAggregatorEditPart) {
       return null;
-    }
-
-    if(request.getNewObject() instanceof OPMStructuralLinkAggregator) {
-      request.setStartCommand(new Command() {
-      });
-      return request.getStartCommand();
     }
 
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
@@ -92,7 +83,8 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
   protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
     // A null command must be returned (and not the usual UnexecutableCommand), otherwise GEF shows the used a symbol
     // that the connection can be completed but when the used clicks it is not created.
-    if(request.getStartCommand() == null || request.getTargetEditPart() instanceof OPMStructuralLinkAggregatorEditPart) {
+    if(request.getStartCommand() == null || request.getTargetEditPart() instanceof OPMStructuralLinkAggregatorEditPart || 
+    		getHost() instanceof OPMStructuralLinkAggregatorEditPart) {
       return null;
     }
 
@@ -111,85 +103,13 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
   private void setStructuralLinkAggregatorPosition(CreateConnectionRequest request){
 	  OPMStructuralLink structuralLink = (OPMStructuralLink) request.getNewObject();
 	  OPMNode source = (OPMNode) request.getSourceEditPart().getModel();
-	  if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<OPMNode>)source).getDecorated();
+	  if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
 	  OPMNode target = (OPMNode) request.getTargetEditPart().getModel();
-	  if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<OPMNode>)target).getDecorated();
+	  if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<?>)target).getDecorated();
   	structuralLink.setAggregatorPosition(getAggregatorPosition(source,target));
   }
   
   
-  /**
-   * <p>
-   * When the user requests the creation of a structural link, the following is done:
-   * </p>
-   * <ol>
-   * <li>If this is the first structural link of its kind between the source and target nodes, we create a new
-   * aggregator and connect it to the source and target.</li>
-   * <li>If there already is an aggregator of its kind between the nodes, we only add a new link from the aggregator to
-   * the new target.</li>
-   * </ol>
-   * 
-   * @param request
-   *          the user request to create a new strucutral link between the
-   *          nodes.
-   * @return a command that creates the links as stated above.
-   */
-//  private Command handleOPMStructuralLinkRequest(CreateConnectionRequest request) {
-//    Command command = null;
-//
-//    OPMNode sNode = (OPMNode) request.getSourceEditPart().getModel();
-//    OPMNode tNode = (OPMNode) request.getTargetEditPart().getModel();
-//    OPMStructuralLinkAggregator agrNode = (OPMStructuralLinkAggregator) request.getNewObject();
-//
-//    // Search for an outgoing structural link aggregator matching the
-//    // requested kind.
-//    boolean aggregatorFound = false;
-//    for(OPMLink structuralLink : OPDAnalysis.findOutgoingStructuralLinks(sNode)) {
-//      OPMStructuralLinkAggregator existingAggregator = (OPMStructuralLinkAggregator) structuralLink.getTarget();
-//      if(existingAggregator.getKind() == agrNode.getKind()) {
-//        aggregatorFound = true;
-//        agrNode = existingAggregator;
-//      }
-//    }
-//
-//    if(aggregatorFound) {
-//      // Just create a link from the aggregator to the target.
-//      command = createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(agrNode));
-//    } else {
-//      // Create a compound command consisting of three commands.
-//      CompoundCommand cCommand = new CompoundCommand();
-//      cCommand.add(createCreateAggregatorNodeCommand(sNode, tNode, agrNode));
-//      cCommand.add(createCreateOPMLlinkCreateCommand(sNode, agrNode, OPDAnalysis.findOPD(sNode)));
-//      cCommand.add(createCreateOPMLlinkCreateCommand(agrNode, tNode, OPDAnalysis.findOPD(sNode)));
-//
-//      command = cCommand;
-//    }
-//
-//    return command;
-//  }
-  
-  /**
-   * Helper function to create a command that connects two nodes with a
-   * factory generated link.
-   * 
-   * @param source
-   *          the source of the link.
-   * @param target
-   *          the target of the link.
-   * @return
-   */
-//  private OPMLinkCreateCommand createCreateOPMLlinkCreateCommand(OPMNode source, OPMNode target,
-//      OPMObjectProcessDiagram opd) {
-//    OPMLinkCreateCommand command = new OPMLinkCreateCommand();
-//    command.setSource(source);
-//    command.setTarget(target);
-//    command.setOPD(opd);
-//    OPMLink link = OPMLinkFactory.INSTANCE.getNewObject();
-//    link.setRouterKind(OPMLinkRouterKind.MANHATTAN);
-//    command.setLink(link);
-//    return command;
-//  }
-
   /**
    * Create a command that adds the provided {@link OPMStructuralLinkAggregator} to the diagram located between the
    * source and the target {@link OPMNode}.

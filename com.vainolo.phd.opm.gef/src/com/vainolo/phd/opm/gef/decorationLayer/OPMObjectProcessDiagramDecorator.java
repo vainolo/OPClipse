@@ -3,7 +3,6 @@ package com.vainolo.phd.opm.gef.decorationLayer;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.NotificationImpl;
@@ -87,7 +86,7 @@ public class OPMObjectProcessDiagramDecorator extends EObjectDecorator<OPMObject
 	@Override
 	public List<OPMLink> getLinks() {
 		recreateNodesAndLinks();
-		return new ArrayList<OPMLink>(links);
+		return new ArrayList<>(links);
 	}
 
 	@Override
