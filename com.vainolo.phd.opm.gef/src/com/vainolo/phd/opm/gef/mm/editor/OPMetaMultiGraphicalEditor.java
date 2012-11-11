@@ -3,23 +3,29 @@ package com.vainolo.phd.opm.gef.mm.editor;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.dialogs.IPageChangedListener;
+import org.eclipse.jface.dialogs.PageChangedEvent;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
+import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
+import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
-public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
+public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart{
 
 	private IFile opmmFile;
 	private OPMetaModelDiagram opmeta;
+	private PageChangedListener pageChangedListener;
 	
-	public OPMetaModelGraphicalEditor() {
+	public OPMetaMultiGraphicalEditor() {
 		super();
 	}
 	
@@ -28,6 +34,7 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 		if(!(input instanceof IFileEditorInput)) {
 	    	throw new PartInitException("Invalid Input: Must be IFileEditorInput");
 	    }
+		super.addPageChangedListener(pageChangedListener = new PageChangedListener());
 		super.init(site, input);
 	}
 	
@@ -78,7 +85,20 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
+		try {
+			  pageChangedListener.prepareForSave();
+		      opmeta.eResource().save(null);
+		      opmmFile.touch(null);
+		      int count = getPageCount();
+		      for (int i=0;i<count;i++){
+		    	  IEditorPart part = getEditor(i);
+		    	  if (part instanceof OPMetaGraphicalEditor){
+		    		  ((OPMetaGraphicalEditor) part).markSaveLocation();
+		    	  }
+		      }
+		    } catch(Exception e) {
+		      throw new RuntimeException(e);
+		    }
 		
 	}
 
@@ -94,4 +114,26 @@ public class OPMetaModelGraphicalEditor extends MultiPageEditorPart{
 		return false;
 	}
 
+	private class PageChangedListener implements IPageChangedListener{
+		
+		OPMGraphicalEditor currEditor;
+	
+		@Override
+		public void pageChanged(PageChangedEvent event) {
+			if (currEditor != null){
+				currEditor.getOPD().setNextId(OPMIdManager.getNextId());
+			}
+			currEditor = null;
+			if (getSelectedPage() instanceof OPMGraphicalEditor){
+				currEditor = (OPMGraphicalEditor)getSelectedPage();
+				OPMIdManager.setId(currEditor.getOPD().getNextId());
+			}
+		}
+		
+		public void prepareForSave(){
+			if (currEditor != null){
+				currEditor.getOPD().setNextId(OPMIdManager.getNextId());
+			}
+		}
+	}
 }

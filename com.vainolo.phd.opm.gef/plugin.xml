@@ -15,7 +15,7 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="com.vainolo.phd.opm.gef.mm.editor.OPMetaModelGraphicalEditor"
+            class="com.vainolo.phd.opm.gef.mm.editor.OPMetaMultiGraphicalEditor"
             contributorClass="com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorActionBarContributor"
             default="true"
             extensions="opmeta"

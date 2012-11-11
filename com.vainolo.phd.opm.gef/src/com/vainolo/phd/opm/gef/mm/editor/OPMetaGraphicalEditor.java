@@ -22,4 +22,8 @@ public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
 	  protected PaletteRoot getPaletteRoot() {
 	    return new OPMetaGraphicalEditorPalette();
 	  }
+	
+	void markSaveLocation(){
+		getCommandStack().markSaveLocation();
+	}
 }
