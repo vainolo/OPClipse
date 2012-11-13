@@ -192,7 +192,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	 * Create a new model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	protected EObject createInitialModel() {
 		EClass eClass = (EClass)_opmetaPackage.getEClassifier(opmetaEditorPlugin.INSTANCE.getString("_UI_MetaModelEclassName"));
@@ -204,7 +204,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	 * Do the work after everything is specified.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public boolean performFinish() {
@@ -342,7 +342,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	 * This is the page where the type of object to create is selected.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 
 	@Override
