@@ -103,7 +103,7 @@ import org.eclipse.ui.PartInitException;
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * @generated
+ * @generated NOT
  */
 public class OPMModelWizard extends Wizard implements INewWizard {
 	/**
