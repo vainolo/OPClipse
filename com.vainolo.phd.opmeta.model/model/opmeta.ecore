@@ -4,12 +4,13 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="opmeta"
     nsURI="www.vainolo.com/phd/opmeta" nsPrefix="opmeta">
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelDiagram">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ElementsDiagram" lowerBound="1"
-        eType="#//OPMObjectProcessDiagram"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LinksDiagram" lowerBound="1"
-        eType="#//OPMObjectProcessDiagram"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ElementsDiagram" lowerBound="1"
+        eType="ecore:EClass ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LinksDiagram" lowerBound="1"
+        eType="ecore:EClass ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContaimentValidationRule"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="OPMObjectProcessDiagram" instanceClassName="com.vainolo.phd.opm.model.OPMObjectProcessDiagram"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelLinkValidationRule"/>
 </ecore:EPackage>

@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * This is the item provider adapter for a {@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * @generated
+ * @generated NOT
  */
 public class OPMetaModelDiagramItemProvider
 	extends ItemProviderAdapter

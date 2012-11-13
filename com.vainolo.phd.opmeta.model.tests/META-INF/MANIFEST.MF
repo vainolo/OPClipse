@@ -13,3 +13,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Import-Package: com.vainolo.phd.opm.model,
+ com.vainolo.phd.opm.model.tests

@@ -29,52 +29,52 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OPMetaModelDiagram extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Elements Diagram</b></em>' attribute.
+	 * Returns the value of the '<em><b>Elements Diagram</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements Diagram</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements Diagram</em>' attribute.
+	 * @return the value of the '<em>Elements Diagram</em>' containment reference.
 	 * @see #setElementsDiagram(OPMObjectProcessDiagram)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelDiagram_ElementsDiagram()
-	 * @model dataType="com.vainolo.phd.opmeta.model.OPMObjectProcessDiagram" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OPMObjectProcessDiagram getElementsDiagram();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram <em>Elements Diagram</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram <em>Elements Diagram</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Elements Diagram</em>' attribute.
+	 * @param value the new value of the '<em>Elements Diagram</em>' containment reference.
 	 * @see #getElementsDiagram()
 	 * @generated
 	 */
 	void setElementsDiagram(OPMObjectProcessDiagram value);
 
 	/**
-	 * Returns the value of the '<em><b>Links Diagram</b></em>' attribute.
+	 * Returns the value of the '<em><b>Links Diagram</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Links Diagram</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Links Diagram</em>' attribute.
+	 * @return the value of the '<em>Links Diagram</em>' containment reference.
 	 * @see #setLinksDiagram(OPMObjectProcessDiagram)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelDiagram_LinksDiagram()
-	 * @model dataType="com.vainolo.phd.opmeta.model.OPMObjectProcessDiagram" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OPMObjectProcessDiagram getLinksDiagram();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram <em>Links Diagram</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram <em>Links Diagram</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Links Diagram</em>' attribute.
+	 * @param value the new value of the '<em>Links Diagram</em>' containment reference.
 	 * @see #getLinksDiagram()
 	 * @generated
 	 */

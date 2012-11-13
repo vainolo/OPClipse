@@ -6,10 +6,9 @@
  */
 package com.vainolo.phd.opmeta.model;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,7 +69,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_DIAGRAM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Elements Diagram</b></em>' attribute.
+	 * The feature id for the '<em><b>Elements Diagram</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -79,7 +78,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM = 0;
 
 	/**
-	 * The feature id for the '<em><b>Links Diagram</b></em>' attribute.
+	 * The feature id for the '<em><b>Links Diagram</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -135,17 +134,6 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_LINK_VALIDATION_RULE_FEATURE_COUNT = 0;
 
 	/**
-	 * The meta object id for the '<em>OPM Object Process Diagram</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opm.model.OPMObjectProcessDiagram
-	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getOPMObjectProcessDiagram()
-	 * @generated
-	 */
-	int OPM_OBJECT_PROCESS_DIAGRAM = 3;
-
-
-	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram <em>OP Meta Model Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,26 +144,26 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPMetaModelDiagram();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram <em>Elements Diagram</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram <em>Elements Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Elements Diagram</em>'.
+	 * @return the meta object for the containment reference '<em>Elements Diagram</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram()
 	 * @see #getOPMetaModelDiagram()
 	 * @generated
 	 */
-	EAttribute getOPMetaModelDiagram_ElementsDiagram();
+	EReference getOPMetaModelDiagram_ElementsDiagram();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram <em>Links Diagram</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram <em>Links Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Links Diagram</em>'.
+	 * @return the meta object for the containment reference '<em>Links Diagram</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram()
 	 * @see #getOPMetaModelDiagram()
 	 * @generated
 	 */
-	EAttribute getOPMetaModelDiagram_LinksDiagram();
+	EReference getOPMetaModelDiagram_LinksDiagram();
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule <em>OP Meta Model Contaiment Validation Rule</em>}'.
@@ -196,17 +184,6 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOPMetaModelLinkValidationRule();
-
-	/**
-	 * Returns the meta object for data type '{@link com.vainolo.phd.opm.model.OPMObjectProcessDiagram <em>OPM Object Process Diagram</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>OPM Object Process Diagram</em>'.
-	 * @see com.vainolo.phd.opm.model.OPMObjectProcessDiagram
-	 * @model instanceClass="com.vainolo.phd.opm.model.OPMObjectProcessDiagram"
-	 * @generated
-	 */
-	EDataType getOPMObjectProcessDiagram();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -241,20 +218,20 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_META_MODEL_DIAGRAM = eINSTANCE.getOPMetaModelDiagram();
 
 		/**
-		 * The meta object literal for the '<em><b>Elements Diagram</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Elements Diagram</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM = eINSTANCE.getOPMetaModelDiagram_ElementsDiagram();
+		EReference OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM = eINSTANCE.getOPMetaModelDiagram_ElementsDiagram();
 
 		/**
-		 * The meta object literal for the '<em><b>Links Diagram</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Links Diagram</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM = eINSTANCE.getOPMetaModelDiagram_LinksDiagram();
+		EReference OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM = eINSTANCE.getOPMetaModelDiagram_LinksDiagram();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl <em>OP Meta Model Contaiment Validation Rule</em>}' class.
@@ -275,16 +252,6 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OP_META_MODEL_LINK_VALIDATION_RULE = eINSTANCE.getOPMetaModelLinkValidationRule();
-
-		/**
-		 * The meta object literal for the '<em>OPM Object Process Diagram</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opm.model.OPMObjectProcessDiagram
-		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getOPMObjectProcessDiagram()
-		 * @generated
-		 */
-		EDataType OPM_OBJECT_PROCESS_DIAGRAM = eINSTANCE.getOPMObjectProcessDiagram();
 
 	}
 

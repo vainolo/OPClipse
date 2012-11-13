@@ -6,7 +6,8 @@
  */
 package com.vainolo.phd.opmeta.model.impl;
 
-import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
+import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.impl.OPMPackageImpl;
 
 import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
@@ -14,11 +15,10 @@ import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -48,13 +48,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * @generated
 	 */
 	private EClass opMetaModelLinkValidationRuleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType opmObjectProcessDiagramEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -102,11 +95,16 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		OPMPackageImpl theOPMPackage = (OPMPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI) instanceof OPMPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI) : OPMPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theopmetaPackage.createPackageContents();
+		theOPMPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theopmetaPackage.initializePackageContents();
+		theOPMPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theopmetaPackage.freeze();
@@ -131,8 +129,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPMetaModelDiagram_ElementsDiagram() {
-		return (EAttribute)opMetaModelDiagramEClass.getEStructuralFeatures().get(0);
+	public EReference getOPMetaModelDiagram_ElementsDiagram() {
+		return (EReference)opMetaModelDiagramEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -140,8 +138,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPMetaModelDiagram_LinksDiagram() {
-		return (EAttribute)opMetaModelDiagramEClass.getEStructuralFeatures().get(1);
+	public EReference getOPMetaModelDiagram_LinksDiagram() {
+		return (EReference)opMetaModelDiagramEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -160,15 +158,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 */
 	public EClass getOPMetaModelLinkValidationRule() {
 		return opMetaModelLinkValidationRuleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getOPMObjectProcessDiagram() {
-		return opmObjectProcessDiagramEDataType;
 	}
 
 	/**
@@ -200,15 +189,12 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 
 		// Create classes and their features
 		opMetaModelDiagramEClass = createEClass(OP_META_MODEL_DIAGRAM);
-		createEAttribute(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM);
-		createEAttribute(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM);
+		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM);
+		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM);
 
 		opMetaModelContaimentValidationRuleEClass = createEClass(OP_META_MODEL_CONTAIMENT_VALIDATION_RULE);
 
 		opMetaModelLinkValidationRuleEClass = createEClass(OP_META_MODEL_LINK_VALIDATION_RULE);
-
-		// Create data types
-		opmObjectProcessDiagramEDataType = createEDataType(OPM_OBJECT_PROCESS_DIAGRAM);
 	}
 
 	/**
@@ -234,6 +220,9 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		OPMPackage theOPMPackage = (OPMPackage)EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -242,15 +231,12 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(opMetaModelDiagramEClass, OPMetaModelDiagram.class, "OPMetaModelDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOPMetaModelDiagram_ElementsDiagram(), this.getOPMObjectProcessDiagram(), "ElementsDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOPMetaModelDiagram_LinksDiagram(), this.getOPMObjectProcessDiagram(), "LinksDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPMetaModelDiagram_ElementsDiagram(), theOPMPackage.getOPMObjectProcessDiagram(), null, "ElementsDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPMetaModelDiagram_LinksDiagram(), theOPMPackage.getOPMObjectProcessDiagram(), null, "LinksDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(opMetaModelContaimentValidationRuleEClass, OPMetaModelContaimentValidationRule.class, "OPMetaModelContaimentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(opMetaModelLinkValidationRuleEClass, OPMetaModelLinkValidationRule.class, "OPMetaModelLinkValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		// Initialize data types
-		initEDataType(opmObjectProcessDiagramEDataType, OPMObjectProcessDiagram.class, "OPMObjectProcessDiagram", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

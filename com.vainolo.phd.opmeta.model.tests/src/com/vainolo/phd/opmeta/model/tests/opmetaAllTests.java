@@ -6,6 +6,8 @@
  */
 package com.vainolo.phd.opmeta.model.tests;
 
+import com.vainolo.phd.opm.model.tests.OPMTests;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -35,6 +37,7 @@ public class opmetaAllTests extends TestSuite {
 	 */
 	public static Test suite() {
 		TestSuite suite = new opmetaAllTests("OPMeta Tests");
+		suite.addTest(OPMTests.suite());
 		return suite;
 	}
 

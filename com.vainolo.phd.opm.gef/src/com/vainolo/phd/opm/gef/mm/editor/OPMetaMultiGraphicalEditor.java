@@ -16,6 +16,7 @@ import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
@@ -87,6 +88,7 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart{
 	public void doSave(IProgressMonitor monitor) {
 		try {
 			  pageChangedListener.prepareForSave();
+			  opmeta.eResource().getResourceSet().getPackageRegistry().put(OPMPackage.eNS_URI,OPMPackage.eINSTANCE);
 		      opmeta.eResource().save(null);
 		      opmmFile.touch(null);
 		      int count = getPageCount();

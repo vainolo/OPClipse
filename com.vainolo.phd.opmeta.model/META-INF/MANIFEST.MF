@@ -14,5 +14,6 @@ Require-Bundle: org.eclipse.core.runtime,
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Import-Package: com.vainolo.phd.opm.model,
+ com.vainolo.phd.opm.model.impl,
  com.vainolo.utils,
  org.eclipse.emf.ecore.xmi.impl

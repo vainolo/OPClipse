@@ -13,7 +13,7 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
             uri="http://opmeta/1.0"
-            class="opmeta.OpmetaPackage"
+            class="com.vainolo.phd.opmeta.model.opmetaPackage"
             genModel="model/opmeta.genmodel"/>
    </extension>
 

@@ -12,11 +12,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.StringTokenizer;
 
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.URI;
@@ -49,19 +46,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardPage;
-
-import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
-
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -75,7 +59,6 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
-import com.vainolo.phd.opmeta.model.provider.opmetaEditPlugin;
 
 
 import org.eclipse.core.runtime.Path;
@@ -93,7 +76,7 @@ import org.eclipse.ui.PartInitException;
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * @generated
+ * @generated NOT
  */
 public class opmetaModelWizard extends Wizard implements INewWizard {
 	/**

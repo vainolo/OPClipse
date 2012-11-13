@@ -8,9 +8,6 @@ package com.vainolo.phd.opmeta.model.util;
 
 import com.vainolo.phd.opmeta.model.*;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;

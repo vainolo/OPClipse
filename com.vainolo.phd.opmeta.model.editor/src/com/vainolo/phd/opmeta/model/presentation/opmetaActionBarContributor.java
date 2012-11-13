@@ -8,7 +8,6 @@ package com.vainolo.phd.opmeta.model.presentation;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 

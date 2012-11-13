@@ -13,8 +13,10 @@ import com.vainolo.phd.opmeta.model.opmetaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
@@ -34,44 +36,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDiagram {
 	/**
-	 * The default value of the '{@link #getElementsDiagram() <em>Elements Diagram</em>}' attribute.
+	 * The cached value of the '{@link #getElementsDiagram() <em>Elements Diagram</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getElementsDiagram()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final OPMObjectProcessDiagram ELEMENTS_DIAGRAM_EDEFAULT = null;
+	protected OPMObjectProcessDiagram elementsDiagram;
 
 	/**
-	 * The cached value of the '{@link #getElementsDiagram() <em>Elements Diagram</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElementsDiagram()
-	 * @generated
-	 * @ordered
-	 */
-	protected OPMObjectProcessDiagram elementsDiagram = ELEMENTS_DIAGRAM_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getLinksDiagram() <em>Links Diagram</em>}' attribute.
+	 * The cached value of the '{@link #getLinksDiagram() <em>Links Diagram</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLinksDiagram()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final OPMObjectProcessDiagram LINKS_DIAGRAM_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getLinksDiagram() <em>Links Diagram</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLinksDiagram()
-	 * @generated
-	 * @ordered
-	 */
-	protected OPMObjectProcessDiagram linksDiagram = LINKS_DIAGRAM_EDEFAULT;
+	protected OPMObjectProcessDiagram linksDiagram;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,11 +88,33 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setElementsDiagram(OPMObjectProcessDiagram newElementsDiagram) {
+	public NotificationChain basicSetElementsDiagram(OPMObjectProcessDiagram newElementsDiagram, NotificationChain msgs) {
 		OPMObjectProcessDiagram oldElementsDiagram = elementsDiagram;
 		elementsDiagram = newElementsDiagram;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM, oldElementsDiagram, elementsDiagram));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM, oldElementsDiagram, newElementsDiagram);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setElementsDiagram(OPMObjectProcessDiagram newElementsDiagram) {
+		if (newElementsDiagram != elementsDiagram) {
+			NotificationChain msgs = null;
+			if (elementsDiagram != null)
+				msgs = ((InternalEObject)elementsDiagram).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM, null, msgs);
+			if (newElementsDiagram != null)
+				msgs = ((InternalEObject)newElementsDiagram).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM, null, msgs);
+			msgs = basicSetElementsDiagram(newElementsDiagram, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM, newElementsDiagram, newElementsDiagram));
 	}
 
 	/**
@@ -127,11 +131,49 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLinksDiagram(OPMObjectProcessDiagram newLinksDiagram) {
+	public NotificationChain basicSetLinksDiagram(OPMObjectProcessDiagram newLinksDiagram, NotificationChain msgs) {
 		OPMObjectProcessDiagram oldLinksDiagram = linksDiagram;
 		linksDiagram = newLinksDiagram;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM, oldLinksDiagram, linksDiagram));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM, oldLinksDiagram, newLinksDiagram);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLinksDiagram(OPMObjectProcessDiagram newLinksDiagram) {
+		if (newLinksDiagram != linksDiagram) {
+			NotificationChain msgs = null;
+			if (linksDiagram != null)
+				msgs = ((InternalEObject)linksDiagram).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM, null, msgs);
+			if (newLinksDiagram != null)
+				msgs = ((InternalEObject)newLinksDiagram).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM, null, msgs);
+			msgs = basicSetLinksDiagram(newLinksDiagram, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM, newLinksDiagram, newLinksDiagram));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
+				return basicSetElementsDiagram(null, msgs);
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
+				return basicSetLinksDiagram(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -177,10 +219,10 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
-				setElementsDiagram(ELEMENTS_DIAGRAM_EDEFAULT);
+				setElementsDiagram((OPMObjectProcessDiagram)null);
 				return;
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
-				setLinksDiagram(LINKS_DIAGRAM_EDEFAULT);
+				setLinksDiagram((OPMObjectProcessDiagram)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -195,29 +237,11 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM:
-				return ELEMENTS_DIAGRAM_EDEFAULT == null ? elementsDiagram != null : !ELEMENTS_DIAGRAM_EDEFAULT.equals(elementsDiagram);
+				return elementsDiagram != null;
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
-				return LINKS_DIAGRAM_EDEFAULT == null ? linksDiagram != null : !LINKS_DIAGRAM_EDEFAULT.equals(linksDiagram);
+				return linksDiagram != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (ElementsDiagram: ");
-		result.append(elementsDiagram);
-		result.append(", LinksDiagram: ");
-		result.append(linksDiagram);
-		result.append(')');
-		return result.toString();
 	}
 
 } //OPMetaModelDiagramImpl
