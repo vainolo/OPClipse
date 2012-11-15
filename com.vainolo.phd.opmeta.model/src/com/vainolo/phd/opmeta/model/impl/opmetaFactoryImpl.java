@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opmeta.model.impl;
 
+import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opmeta.model.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -75,6 +76,8 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 */
 	public OPMetaModelDiagram createOPMetaModelDiagram() {
 		OPMetaModelDiagramImpl opMetaModelDiagram = new OPMetaModelDiagramImpl();
+		opMetaModelDiagram.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		opMetaModelDiagram.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 		return opMetaModelDiagram;
 	}
 

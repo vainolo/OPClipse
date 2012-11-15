@@ -15,7 +15,6 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
-import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
@@ -60,10 +59,6 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 	      if(opmeta == null) {
 	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
 	      }
-	      
-	   // TODO: remove at some point:
-		    if (opmeta != null && opmeta.getElementsDiagram() == null) opmeta.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
-		    if (opmeta != null && opmeta.getLinksDiagram() == null) opmeta.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 	  }
 	
 	@Override
