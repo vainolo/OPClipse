@@ -18,10 +18,16 @@ import com.vainolo.phd.opm.model.OPMFactory;
  */
 public class OPMAggregationLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMAggregationLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMAggregationLink aggregator = OPMFactory.eINSTANCE.createOPMAggregationLink();
-    aggregator.setId(OPMIdManager.getNextId());
+    aggregator.setId(opmIdManager.getNextId());
     return aggregator;
   }
 

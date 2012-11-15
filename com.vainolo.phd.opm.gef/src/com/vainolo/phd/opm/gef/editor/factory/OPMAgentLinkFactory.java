@@ -19,10 +19,16 @@ import com.vainolo.phd.opm.model.OPMFactory;
  */
 public class OPMAgentLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMAgentLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+	
   @Override
   public Object getNewObject() {
 	  OPMAgentLink link = OPMFactory.eINSTANCE.createOPMAgentLink();
-    link.setId(OPMIdManager.getNextId());
+    link.setId(opmIdManager.getNextId());
     return link;
   }
 

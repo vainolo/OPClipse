@@ -54,6 +54,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
   private IFile opdFile;
   private OPMObjectProcessDiagram opd;
+  private OPMIdManager opmIdManager;
 
   PropertySheetPage propertyPage;
 
@@ -61,6 +62,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
    * Initialize the {@link EditDomain} of the editor.
    */
   public OPMGraphicalEditor() {
+	  opmIdManager = new OPMIdManager();
     setEditDomain(new DefaultEditDomain(this));
   }
 
@@ -93,9 +95,13 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
   @Override
   protected PaletteRoot getPaletteRoot() {
-    return new OPMGraphicalEditorPalette();
+    return new OPMGraphicalEditorPalette(opmIdManager);
   }
 
+  public void prepareForSave(){
+	  opd.setNextId(opmIdManager.getNextId());
+  }
+  
   /**
    * Save the model using the resource from which it was opened, and mark the current location in the
    * {@link CommandStack}.
@@ -103,7 +109,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   @Override
   public void doSave(IProgressMonitor monitor) {
     try {
-      opd.setNextId(OPMIdManager.getNextId());
+    	prepareForSave();
       opd.eResource().save(null);
       opdFile.touch(null);
       getCommandStack().markSaveLocation();
@@ -130,7 +136,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
       opd.setId(1);
       opd.setNextId(2);
     }
-    OPMIdManager.setId(opd.getNextId());
+    opmIdManager.setId(opd.getNextId());
   }
 
   protected OPMObjectProcessDiagram getDiagramFromInput(IEditorInput input){
@@ -277,5 +283,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   
   @Override public void dispose(){
 	  super.dispose();
+  }
+  
+  protected OPMIdManager getOPMIdManager(){
+	  return opmIdManager;
   }
 }

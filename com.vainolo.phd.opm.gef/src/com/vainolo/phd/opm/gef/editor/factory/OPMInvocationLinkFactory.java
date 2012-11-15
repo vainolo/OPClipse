@@ -16,10 +16,16 @@ import com.vainolo.phd.opm.model.OPMInvocationLink;
  */
 public class OPMInvocationLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMInvocationLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMInvocationLink link = OPMFactory.eINSTANCE.createOPMInvocationLink();
-    link.setId(OPMIdManager.getNextId());
+    link.setId(opmIdManager.getNextId());
     return link;
   }
 

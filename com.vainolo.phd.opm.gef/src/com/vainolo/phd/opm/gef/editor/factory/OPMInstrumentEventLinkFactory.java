@@ -17,11 +17,17 @@ import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
  */
 public class OPMInstrumentEventLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMInstrumentEventLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMInstrumentLink link = OPMFactory.eINSTANCE.createOPMInstrumentLink();
     link.setActivationKind(OPMProceduralActivationKind.EVENT);
-    link.setId(OPMIdManager.getNextId());
+    link.setId(opmIdManager.getNextId());
     return link;
   }
 

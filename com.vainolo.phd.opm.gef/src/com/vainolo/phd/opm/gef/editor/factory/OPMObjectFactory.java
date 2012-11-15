@@ -13,10 +13,16 @@ import com.vainolo.phd.opm.model.OPMObject;
 
 public class OPMObjectFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMObjectFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMObject object = OPMFactory.eINSTANCE.createOPMObject();
-    object.setId(OPMIdManager.getNextId());
+    object.setId(opmIdManager.getNextId());
     return object;
   }
 
