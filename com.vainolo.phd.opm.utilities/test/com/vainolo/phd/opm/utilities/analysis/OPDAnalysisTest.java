@@ -22,6 +22,7 @@ import com.vainolo.phd.opm.model.OPMEffectLink;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMInstrumentLink;
 import com.vainolo.phd.opm.model.OPMLink;
+import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagramKind;
@@ -210,12 +211,20 @@ public class OPDAnalysisTest {
 
   @Test
   public void testFindInvocationProcesses() {
-    Set<OPMProcess> result = fixture.findInvocationProcesses(inZoomedProcesses.get(2));
+    Set<OPMProcess> result = OPDAnalysis.findInvocationProcesses(inZoomedProcesses.get(2));
     assertEquals(1, result.size());
     assertTrue(result.contains(inZoomedProcesses.get(3)));
 
   }
 
+  @Test
+  public void testFindNamedNodes(){
+	  Collection<OPMNode> result = OPDAnalysis.findNamedNodes(systemOPD.getNodes(),"1");
+	  assertEquals(2, result.size());
+	  assertTrue(result.contains(systemProcesses.get(1)));
+	  assertTrue(result.contains(systemObjects.get(1)));
+  }
+  
   @Before
   public void setUp() {
     initSystemOPD();

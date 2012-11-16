@@ -13,6 +13,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
@@ -128,6 +129,16 @@ public class OPDAnalysis {
   
   public static Collection<OPMLink> findOutgoingLinks(OPMNode node, EClass eClass){
 	  Collection<OPMLink> filtered =  filter(node.getOutgoingLinks(), new IsOPMLinkofType(eClass));
+	  return filtered;
+  }
+  
+  public static Collection<OPMNode> findNamedNodes(Collection<OPMNode> nodes, final String name){
+	  Collection<OPMNode> filtered =  filter(nodes, new Predicate<OPMNode>() {
+		@Override
+		public boolean apply(OPMNode current) {
+			return current.getName().equalsIgnoreCase(name);
+		}
+	});
 	  return filtered;
   }
 }
