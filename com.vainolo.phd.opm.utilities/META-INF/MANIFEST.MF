@@ -8,7 +8,8 @@ Bundle-Vendor: Arieh "Vainolo" Bibliowicz
 Require-Bundle: org.eclipse.core.runtime,
  com.vainolo.phd.opm.model;bundle-version="1.0.0",
  org.junit;bundle-version="4.8.2",
- org.eclipse.emf.ecore.xmi;bundle-version="2.7.0"
+ org.eclipse.emf.ecore.xmi;bundle-version="2.7.0",
+ org.eclipse.swt;bundle-version="3.7.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: lib/simplelogger.jar,
@@ -23,3 +24,4 @@ Export-Package: com.google.common.base,
  com.vainolo.phd.opm.utilities.analysis,
  com.vainolo.utils,
  org.easymock
+Import-Package: org.eclipse.draw2d.geometry

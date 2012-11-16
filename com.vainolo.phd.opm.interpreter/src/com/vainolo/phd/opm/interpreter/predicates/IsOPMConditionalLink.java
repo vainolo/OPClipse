@@ -6,6 +6,8 @@
 package com.vainolo.phd.opm.interpreter.predicates;
 
 import com.google.common.base.Predicate;
+
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
@@ -20,14 +22,6 @@ public enum IsOPMConditionalLink implements Predicate<OPMProceduralLink> {
 
   @Override
   public boolean apply(final OPMProceduralLink link) {
-    switch(link.getKind()) {
-      case CONSUMPTION_CONDITION:
-      case EFFECT_CONDITION:
-      case INSTRUMENT_CONDITION:
-        return true;
-      default:
-        return false;
+	  return (link.getActivationKind()==OPMProceduralActivationKind.CONDITION);
     }
-  }
-
 }

@@ -45,6 +45,8 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import com.vainolo.phd.opm.utilities.OPDLoader;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMObjectProcessDiagramDecorator;
 
 public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
@@ -128,6 +130,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
       if(opd == null) {
         throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
       }
+      opd = new OPMObjectProcessDiagramDecorator(opd);
       if(opd.getId() == 0) {
         opd.setId(1);
         opd.setNextId(2);
@@ -180,7 +183,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
           public IPropertySource getPropertySource(Object object) {
             IPropertySource source = null;
             if(object instanceof EditPart) {
-              source = modelPropertySourceProvider.getPropertySource(((EditPart) object).getModel());
+            	Object model = ((EditPart) object).getModel();
+            	if (model instanceof OPMDecorated<?>) model = ((OPMDecorated<?>)model).getDecorated();
+              source = modelPropertySourceProvider.getPropertySource(model);
             } else {
               source = modelPropertySourceProvider.getPropertySource(object);
             }
@@ -260,5 +265,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
   public OPMObjectProcessDiagram getOPD() {
     return opd;
+  }
+  
+  @Override public void dispose(){
+	  super.dispose();
   }
 }

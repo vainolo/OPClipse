@@ -22,24 +22,24 @@ import junit.textui.TestRunner;
 public abstract class OPMThingTest extends OPMNodeTest {
 
 	/**
-   * Constructs a new Thing test case with the given name.
-   * <!-- begin-user-doc -->
+	 * Constructs a new Thing test case with the given name.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public OPMThingTest(String name) {
-    super(name);
-  }
+		super(name);
+	}
 
 	/**
-   * Returns the fixture for this Thing test case.
-   * <!-- begin-user-doc -->
+	 * Returns the fixture for this Thing test case.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected OPMThing getFixture() {
-    return (OPMThing)fixture;
-  }
+		return (OPMThing)fixture;
+	}
 
 } //OPMThingTest

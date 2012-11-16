@@ -95,6 +95,10 @@ public final class OPMNodeDeleteCommand extends Command {
    */
   public void setNode(final OPMNode node) {
     this.node = node;
-    this.container = node.getContainer();
+    setContainer(node.getContainer());
+  }
+  
+  public void setContainer(final OPMContainer container){
+	  this.container = container;
   }
 }

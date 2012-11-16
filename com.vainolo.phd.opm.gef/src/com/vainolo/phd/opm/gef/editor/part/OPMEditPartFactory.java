@@ -8,6 +8,7 @@ package com.vainolo.phd.opm.gef.editor.part;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMObject;
@@ -15,7 +16,6 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
 
 public class OPMEditPartFactory implements EditPartFactory {
 

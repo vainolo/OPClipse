@@ -14,11 +14,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.StringTokenizer;
-
+import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.emf.common.CommonPlugin;
-
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.emf.common.util.URI;
 
 import org.eclipse.emf.ecore.EClass;
@@ -40,14 +38,20 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Preferences;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
+import org.eclipse.jface.wizard.IWizard;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 
@@ -55,13 +59,17 @@ import org.eclipse.swt.SWT;
 
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -69,6 +77,8 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
+import org.eclipse.ui.internal.ide.dialogs.CreateLinkedResourceGroup;
 
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
@@ -87,493 +97,357 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
-
+ 
 
 /**
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * @generated
+ * @generated NOT
  */
 public class OPMModelWizard extends Wizard implements INewWizard {
 	/**
-   * The supported extensions for created files.
-   * <!-- begin-user-doc -->
+	 * The supported extensions for created files.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public static final List<String> FILE_EXTENSIONS =
 		Collections.unmodifiableList(Arrays.asList(OPMEditorPlugin.INSTANCE.getString("_UI_OPMEditorFilenameExtensions").split("\\s*,\\s*")));
-
 	/**
-   * A formatted list of supported file extensions, suitable for display.
-   * <!-- begin-user-doc -->
+	 * A formatted list of supported file extensions, suitable for display.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public static final String FORMATTED_FILE_EXTENSIONS =
 		OPMEditorPlugin.INSTANCE.getString("_UI_OPMEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
 	/**
-   * This caches an instance of the model package.
-   * <!-- begin-user-doc -->
+	 * This caches an instance of the model package.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMPackage opmPackage = OPMPackage.eINSTANCE;
 
 	/**
-   * This caches an instance of the model factory.
-   * <!-- begin-user-doc -->
+	 * This caches an instance of the model factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMFactory opmFactory = opmPackage.getOPMFactory();
 
 	/**
-   * This is the file creation page.
-   * <!-- begin-user-doc -->
+	 * This is the file creation page.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMModelWizardNewFileCreationPage newFileCreationPage;
 
 	/**
-   * This is the initial object creation page.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected OPMModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
-	/**
    * Remember the selection during initialization for populating the default container.
    * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected IStructuredSelection selection;
 
 	/**
-   * Remember the workbench during initialization.
-   * <!-- begin-user-doc -->
+	 * Remember the workbench during initialization.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected IWorkbench workbench;
 
 	/**
-   * Caches the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
+	 * Caches the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected List<String> initialObjectNames;
 
 	/**
-   * This just records the information.
-   * <!-- begin-user-doc -->
+	 * This just records the information.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-    this.workbench = workbench;
-    this.selection = selection;
-    setWindowTitle(OPMEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-    setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(OPMEditorPlugin.INSTANCE.getImage("full/wizban/NewOPM")));
-  }
+		this.workbench = workbench;
+		this.selection = selection;
+		setWindowTitle(OPMEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(OPMEditorPlugin.INSTANCE.getImage("full/wizban/NewOPM")));
+	}
 
 	/**
-   * Returns the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
+	 * Returns the names of the types that can be created as the root object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected Collection<String> getInitialObjectNames() {
-    if (initialObjectNames == null) {
-      initialObjectNames = new ArrayList<String>();
-      for (EClassifier eClassifier : opmPackage.getEClassifiers()) {
-        if (eClassifier instanceof EClass) {
-          EClass eClass = (EClass)eClassifier;
-          if (!eClass.isAbstract()) {
-            initialObjectNames.add(eClass.getName());
-          }
-        }
-      }
-      Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
-    }
-    return initialObjectNames;
-  }
+		if (initialObjectNames == null) {
+			initialObjectNames = new ArrayList<String>();
+			for (EClassifier eClassifier : opmPackage.getEClassifiers()) {
+				if (eClassifier instanceof EClass) {
+					EClass eClass = (EClass)eClassifier;
+					if (!eClass.isAbstract()) {
+						initialObjectNames.add(eClass.getName());
+					}
+				}
+			}
+			Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
+		}
+		return initialObjectNames;
+	}
 
 	/**
-   * Create a new model.
-   * <!-- begin-user-doc -->
+	 * Create a new model.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
+
+   * @generated NOT
    */
 	protected EObject createInitialModel() {
-    EClass eClass = (EClass)opmPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+    EClass eClass = (EClass)opmPackage.getEClassifier(OPMEditorPlugin.INSTANCE.getString("_UI_ModelEclassName"));
     EObject rootObject = opmFactory.create(eClass);
     return rootObject;
   }
+	@Override
+	public boolean canFinish() {
+		if ((! getPage("first_page").canFlipToNextPage()) && 
+			(getContainer().getCurrentPage().getTitle() == OPMEditorPlugin.INSTANCE.getString("_UI_OPMModelWizard_label")) && 
+			getPage("first_page").isPageComplete())
+			{
+			return true;
+		}
+		else {
+			return super.canFinish();
+		}
+
+	}
 
 	/**
-   * Do the work after everything is specified.
-   * <!-- begin-user-doc -->
+	 * Do the work after everything is specified.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean performFinish() {
-    try {
-      // Remember the file.
-      //
-      final IFile modelFile = getModelFile();
+		try {
+			// Remember the file.
+			//
+			final IFile modelFile = getModelFile();
 
-      // Do the work within an operation.
-      //
-      WorkspaceModifyOperation operation =
-        new WorkspaceModifyOperation() {
-          @Override
-          protected void execute(IProgressMonitor progressMonitor) {
-            try {
-              // Create a resource set
-              //
-              ResourceSet resourceSet = new ResourceSetImpl();
+			// Do the work within an operation.
+			//
 
-              // Get the URI of the model file.
-              //
-              URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-              // Create a resource for this file.
-              //
-              Resource resource = resourceSet.createResource(fileURI);
 
-              // Add the initial model object to the contents.
-              //
-              EObject rootObject = createInitialModel();
-              if (rootObject != null) {
-                resource.getContents().add(rootObject);
-              }
+			WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+				@Override
+				protected void execute(IProgressMonitor progressMonitor) {
+					try {
+						// Create a resource set
+						//
+						ResourceSet resourceSet = new ResourceSetImpl();
 
-              // Save the contents of the resource to the file system.
-              //
-              Map<Object, Object> options = new HashMap<Object, Object>();
-              options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
-              resource.save(options);
-            }
-            catch (Exception exception) {
-              OPMEditorPlugin.INSTANCE.log(exception);
-            }
-            finally {
-              progressMonitor.done();
-            }
-          }
-        };
+						// Get the URI of the model file.
+						//
+						URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-      getContainer().run(false, false, operation);
+						// Create a resource for this file.
+						//
+						Resource resource = resourceSet.createResource(fileURI);
 
-      // Select the new file resource in the current view.
-      //
-      IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-      IWorkbenchPage page = workbenchWindow.getActivePage();
-      final IWorkbenchPart activePart = page.getActivePart();
-      if (activePart instanceof ISetSelectionTarget) {
-        final ISelection targetSelection = new StructuredSelection(modelFile);
-        getShell().getDisplay().asyncExec
-          (new Runnable() {
-             public void run() {
-               ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-             }
-           });
-      }
+						// Add the initial model object to the contents.
+						//
+						EObject rootObject = createInitialModel();
+						if (rootObject != null) {
+							resource.getContents().add(rootObject);
+						}
 
-      // Open an editor on the new file.
-      //
-      try {
-        page.openEditor
-          (new FileEditorInput(modelFile),
-           workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
-      }
-      catch (PartInitException exception) {
-        MessageDialog.openError(workbenchWindow.getShell(), OPMEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
-        return false;
-      }
+						// Save the contents of the resource to the file system.
+						//
+						Map<Object, Object> options = new HashMap<Object, Object>();
+						options.put(XMLResource.OPTION_ENCODING, OPMEditorPlugin.INSTANCE.getString("_UI_XMLEncodingValue"));
+						resource.save(options);
+					}
+					catch (Exception exception) {
+						OPMEditorPlugin.INSTANCE.log(exception);
+					}
+					finally {
+						progressMonitor.done();
+					}
+				}
+			};
 
-      return true;
-    }
-    catch (Exception exception) {
-      OPMEditorPlugin.INSTANCE.log(exception);
-      return false;
-    }
-  }
+		getContainer().run(false, false, operation);
+
+      	// Select the new file resource in the current view.
+      	//
+      	IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+      	IWorkbenchPage page = workbenchWindow.getActivePage();
+      	final IWorkbenchPart activePart = page.getActivePart();
+      	if (activePart instanceof ISetSelectionTarget) {
+      		final ISelection targetSelection = new StructuredSelection(modelFile);
+      		getShell().getDisplay().asyncExec(
+    			  new Runnable() {
+    				  public void run() {
+    					  ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
+    				  }
+    			  });
+      	}
+
+      	// Open an editor on the new file.
+      	// TODO - maybe load with a new meta model ?!
+      	try {
+      		page.openEditor
+      		(new FileEditorInput(modelFile),
+      				workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());					 	 
+      	}
+      	catch (PartInitException exception) {
+    	  	MessageDialog.openError(workbenchWindow.getShell(), OPMEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+    	  	return false;
+      	}
+
+      	return true;
+		}
+		catch (Exception exception) {
+		  	OPMEditorPlugin.INSTANCE.log(exception);
+		  	return false;
+	  	}
+	}
+	
+	
+	public class SecondPage extends WizardNewFileCreationPage {
+
+		
+	    protected SecondPage(String pageName,IStructuredSelection selection) {
+	        super(pageName,selection);
+	        print_debug("initialized second page's parent");
+	    }
+	    
+		public void print_debug(String msg) {
+			System.out.println(msg);
+		}
+	}
 
 	/**
-   * This is the one page of the wizard.
-   * <!-- begin-user-doc -->
+	 * This is the one page of the wizard.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public class OPMModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 		/**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
+		 * Pass in the selection.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+
      * @generated
      */
+		
+		protected Button MetaModelCheckBox;
+		
 		public OPMModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
-      super(pageId, selection);
-    }
+			super(pageId, selection);
+		}
+		
+		public boolean canFlipToNextPage() {
+			if (super.canFlipToNextPage() ) {
+				if (MetaModelCheckBox.getSelection() == true ) {
+					return true;
+				}
+				return false;
+			}
+			return false;
+		}
 
 		/**
-     * The framework calls this to see if the file is correct.
-     * <!-- begin-user-doc -->
+		 * The framework calls this to see if the file is correct.
+		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+
      * @generated
      */
-		@Override
-		protected boolean validatePage() {
-      if (super.validatePage()) {
-        String extension = new Path(getFileName()).getFileExtension();
-        if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-          String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-          setErrorMessage(OPMEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
-          return false;
-        }
-        return true;
-      }
-      return false;
-    }
+	@Override
+	protected boolean validatePage() {
+		if (super.validatePage()) {
+			String extension = new Path(getFileName()).getFileExtension();
+			if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
+				String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
+				setErrorMessage(OPMEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+				return false;
+			}
+			if (MetaModelCheckBox.getSelection() == false) {
+				print_debug("selection is true - setting the page to complete");
+				setPageComplete(true);
+				print_debug("after set page complete, wizard can finish it " + getWizard().canFinish());
+				getWizard().getContainer().updateButtons();
+			}
+			print_debug("selection is false");
+			return true;
+		}
+		return false;
+	}
+	
+	@Override 
+	public void handleEvent(Event event) {
+	    if (super.canFlipToNextPage() && (MetaModelCheckBox.getSelection() == false ) ) {
+	    	getWizard().getContainer().updateButtons();
+	    }
+	    super.handleEvent(event);
+	}
 
-		/**
+	@Override		
+	protected void createAdvancedControls(Composite parent) {
+		Composite linkedResourceParent = new Composite(parent, SWT.NONE);
+		linkedResourceParent.setFont(parent.getFont());
+		linkedResourceParent.setLayoutData(new GridData(
+				GridData.FILL_HORIZONTAL));
+		GridLayout layout = new GridLayout();
+		layout.marginHeight = 0;
+		layout.marginWidth = 0;
+		linkedResourceParent.setLayout(layout);
+		
+		
+	    MetaModelCheckBox = new Button(linkedResourceParent,SWT.CHECK);
+	    MetaModelCheckBox.setText("Check to load a pre defined meta model");
+	    MetaModelCheckBox.setSelection(true);
+	    MetaModelCheckBox.addListener(SWT.Selection, this);
+	    super.createAdvancedControls(parent);
+	}
+		      
+		      		/**
      * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
      * @generated
      */
 		public IFile getModelFile() {
-      return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
-    }
+			return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+
+		}
 	}
-
 	/**
-   * This is the page where the type of object to create is selected.
-   * <!-- begin-user-doc -->
+	 * The framework calls this to create the contents of the wizard.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public class OPMModelWizardInitialObjectCreationPage extends WizardPage {
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected Combo initialObjectField;
-
-		/**
-     * @generated
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     */
-		protected List<String> encodings;
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected Combo encodingField;
-
-		/**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public OPMModelWizardInitialObjectCreationPage(String pageId) {
-      super(pageId);
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public void createControl(Composite parent) {
-      Composite composite = new Composite(parent, SWT.NONE); {
-        GridLayout layout = new GridLayout();
-        layout.numColumns = 1;
-        layout.verticalSpacing = 12;
-        composite.setLayout(layout);
-
-        GridData data = new GridData();
-        data.verticalAlignment = GridData.FILL;
-        data.grabExcessVerticalSpace = true;
-        data.horizontalAlignment = GridData.FILL;
-        composite.setLayoutData(data);
-      }
-
-      Label containerLabel = new Label(composite, SWT.LEFT);
-      {
-        containerLabel.setText(OPMEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
-
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        containerLabel.setLayoutData(data);
-      }
-
-      initialObjectField = new Combo(composite, SWT.BORDER);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.grabExcessHorizontalSpace = true;
-        initialObjectField.setLayoutData(data);
-      }
-
-      for (String objectName : getInitialObjectNames()) {
-        initialObjectField.add(getLabel(objectName));
-      }
-
-      if (initialObjectField.getItemCount() == 1) {
-        initialObjectField.select(0);
-      }
-      initialObjectField.addModifyListener(validator);
-
-      Label encodingLabel = new Label(composite, SWT.LEFT);
-      {
-        encodingLabel.setText(OPMEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
-
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        encodingLabel.setLayoutData(data);
-      }
-      encodingField = new Combo(composite, SWT.BORDER);
-      {
-        GridData data = new GridData();
-        data.horizontalAlignment = GridData.FILL;
-        data.grabExcessHorizontalSpace = true;
-        encodingField.setLayoutData(data);
-      }
-
-      for (String encoding : getEncodings()) {
-        encodingField.add(encoding);
-      }
-
-      encodingField.select(0);
-      encodingField.addModifyListener(validator);
-
-      setPageComplete(validatePage());
-      setControl(composite);
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected ModifyListener validator =
-			new ModifyListener() {
-        public void modifyText(ModifyEvent e) {
-          setPageComplete(validatePage());
-        }
-      };
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected boolean validatePage() {
-      return getInitialObjectName() != null && getEncodings().contains(encodingField.getText());
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		@Override
-		public void setVisible(boolean visible) {
-      super.setVisible(visible);
-      if (visible) {
-        if (initialObjectField.getItemCount() == 1) {
-          initialObjectField.clearSelection();
-          encodingField.setFocus();
-        }
-        else {
-          encodingField.clearSelection();
-          initialObjectField.setFocus();
-        }
-      }
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public String getInitialObjectName() {
-      String label = initialObjectField.getText();
-
-      for (String name : getInitialObjectNames()) {
-        if (getLabel(name).equals(label)) {
-          return name;
-        }
-      }
-      return null;
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		public String getEncoding() {
-      return encodingField.getText();
-    }
-
-		/**
-     * Returns the label for the specified type name.
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected String getLabel(String typeName) {
-      try {
-        return OPMEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-      }
-      catch(MissingResourceException mre) {
-        OPMEditorPlugin.INSTANCE.log(mre);
-      }
-      return typeName;
-    }
-
-		/**
-     * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-     * @generated
-     */
-		protected Collection<String> getEncodings() {
-      if (encodings == null) {
-        encodings = new ArrayList<String>();
-        for (StringTokenizer stringTokenizer = new StringTokenizer(OPMEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
-          encodings.add(stringTokenizer.nextToken());
-        }
-      }
-      return encodings;
-    }
-	}
-
-	/**
-   * The framework calls this to create the contents of the wizard.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 		@Override
 	public void addPages() {
+
     // Create a page, set the title, and the initial model file name.
     //
-    newFileCreationPage = new OPMModelWizardNewFileCreationPage("Whatever", selection);
+    newFileCreationPage = new OPMModelWizardNewFileCreationPage("first_page", selection);
     newFileCreationPage.setTitle(OPMEditorPlugin.INSTANCE.getString("_UI_OPMModelWizard_label"));
     newFileCreationPage.setDescription(OPMEditorPlugin.INSTANCE.getString("_UI_OPMModelWizard_description"));
     newFileCreationPage.setFileName(OPMEditorPlugin.INSTANCE.getString("_UI_OPMEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
@@ -612,20 +486,25 @@ public class OPMModelWizard extends Wizard implements INewWizard {
         }
       }
     }
-    initialObjectCreationPage = new OPMModelWizardInitialObjectCreationPage("Whatever2");
-    initialObjectCreationPage.setTitle(OPMEditorPlugin.INSTANCE.getString("_UI_OPMModelWizard_label"));
-    initialObjectCreationPage.setDescription(OPMEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
-    addPage(initialObjectCreationPage);
+    print_debug("added first page");
+    SecondPage secondPage = new SecondPage("second page",selection);
+    addPage(secondPage);
+    print_debug("added the second page");
+    
   }
 
 	/**
-   * Get the file from the page.
-   * <!-- begin-user-doc -->
+	 * Get the file from the page.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public IFile getModelFile() {
-    return newFileCreationPage.getModelFile();
-  }
+
+	    return newFileCreationPage.getModelFile();
+	}
+	public void print_debug(String msg) {
+		System.out.println(msg);
+	}
 
 }

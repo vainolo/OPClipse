@@ -7,8 +7,8 @@
 package com.vainolo.phd.opm.model.impl;
 
 import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.model.OPMProceduralLinkKind;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -23,145 +23,102 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opm.model.impl.OPMProceduralLinkImpl#getKind <em>Kind</em>}</li>
+ *   <li>{@link com.vainolo.phd.opm.model.impl.OPMProceduralLinkImpl#getActivationKind <em>Activation Kind</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OPMProceduralLinkImpl extends OPMLinkImpl implements OPMProceduralLink {
+public abstract class OPMProceduralLinkImpl extends OPMLinkImpl implements OPMProceduralLink {
 	/**
-   * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getActivationKind() <em>Activation Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
-	protected static final OPMProceduralLinkKind KIND_EDEFAULT = OPMProceduralLinkKind.AGENT;
+	 * @see #getActivationKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final OPMProceduralActivationKind ACTIVATION_KIND_EDEFAULT = OPMProceduralActivationKind.NORMAL;
+	/**
+	 * The cached value of the '{@link #getActivationKind() <em>Activation Kind</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getActivationKind()
+	 * @generated
+	 * @ordered
+	 */
+	protected OPMProceduralActivationKind activationKind = ACTIVATION_KIND_EDEFAULT;
 
 	/**
-   * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @see #getKind()
-   * @generated
-   * @ordered
-   */
-	protected OPMProceduralLinkKind kind = KIND_EDEFAULT;
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMProceduralLinkImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OPMPackage.Literals.OPM_PROCEDURAL_LINK;
-  }
+		return OPMPackage.Literals.OPM_PROCEDURAL_LINK;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public OPMProceduralLinkKind getKind() {
-    return kind;
-  }
+	 * @generated
+	 */
+	public OPMProceduralActivationKind getActivationKind() {
+		return activationKind;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	public void setKind(OPMProceduralLinkKind newKind) {
-    OPMProceduralLinkKind oldKind = kind;
-    kind = newKind == null ? KIND_EDEFAULT : newKind;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OPMPackage.OPM_PROCEDURAL_LINK__KIND, oldKind, kind));
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case OPMPackage.OPM_PROCEDURAL_LINK__KIND:
-        return getKind();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OPMPackage.OPM_PROCEDURAL_LINK__ACTIVATION_KIND:
+				return getActivationKind();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case OPMPackage.OPM_PROCEDURAL_LINK__KIND:
-        setKind((OPMProceduralLinkKind)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public void eUnset(int featureID) {
-    switch (featureID) {
-      case OPMPackage.OPM_PROCEDURAL_LINK__KIND:
-        setKind(KIND_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-	/**
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case OPMPackage.OPM_PROCEDURAL_LINK__KIND:
-        return kind != KIND_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OPMPackage.OPM_PROCEDURAL_LINK__ACTIVATION_KIND:
+				return activationKind != ACTIVATION_KIND_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (kind: ");
-    result.append(kind);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (ActivationKind: ");
+		result.append(activationKind);
+		result.append(')');
+		return result.toString();
+	}
 
 } //OPMProceduralLinkImpl

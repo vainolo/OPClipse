@@ -13,11 +13,12 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.PolylineDecoration;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkToProceduralLinkKindConverter;
 import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
 import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
-import com.vainolo.phd.opm.model.OPMProceduralLinkKind;
 
 /**
  * An extension of a {@link OPMLinkEditPart} used for {@link OPMProceduralLink} instances. It add endpoint decorations
@@ -46,7 +47,8 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
   @Override
   protected PolylineConnection createFigure() {
     OPMProceduralLink model = (OPMProceduralLink) getModel();
-    PolylineConnection connection = new OPMProceduralLinkFigure(model.getKind());
+    OPMProceduralLinkKind kind =  OPMProceduralLinkToProceduralLinkKindConverter.INSTANCE.convert(model);
+    PolylineConnection connection = new OPMProceduralLinkFigure(kind, model.getActivationKind());
     connection.setLineWidth(OPMFigureConstants.connectionLineWidth);
     // decorateConnection(connection, model.getKind());
     centerDecorationLabel = new Label();
@@ -81,16 +83,12 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
         connection.setTargetDecoration(agentDecoration);
         break;
       case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
         CircleDecoration instrumentDecoration = new CircleDecoration();
         instrumentDecoration.setBackgroundColor(ColorConstants.white);
         instrumentDecoration.setFill(true);
         connection.setTargetDecoration(instrumentDecoration);
         break;
       case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
       case RESULT:
       case INVOCATION:
         connection.setTargetDecoration(new PolylineDecoration());

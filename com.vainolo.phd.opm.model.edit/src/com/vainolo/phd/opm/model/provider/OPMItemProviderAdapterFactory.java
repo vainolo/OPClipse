@@ -38,334 +38,478 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
  */
 public class OPMItemProviderAdapterFactory extends OPMAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable {
 	/**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc -->
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-   * <!-- begin-user-doc -->
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-   * This constructs an instance.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public OPMItemProviderAdapterFactory() {
-    supportedTypes.add(IEditingDomainItemProvider.class);
-    supportedTypes.add(IStructuredItemContentProvider.class);
-    supportedTypes.add(ITreeItemContentProvider.class);
-    supportedTypes.add(IItemLabelProvider.class);
-    supportedTypes.add(IItemPropertySource.class);
-  }
+		supportedTypes.add(IEditingDomainItemProvider.class);
+		supportedTypes.add(IStructuredItemContentProvider.class);
+		supportedTypes.add(ITreeItemContentProvider.class);
+		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemPropertySource.class);
+	}
 
 	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMObjectProcessDiagram} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMObjectProcessDiagram} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMObjectProcessDiagramItemProvider opmObjectProcessDiagramItemProvider;
 
 	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMObjectProcessDiagram}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMObjectProcessDiagram}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Adapter createOPMObjectProcessDiagramAdapter() {
-    if (opmObjectProcessDiagramItemProvider == null) {
-      opmObjectProcessDiagramItemProvider = new OPMObjectProcessDiagramItemProvider(this);
-    }
+		if (opmObjectProcessDiagramItemProvider == null) {
+			opmObjectProcessDiagramItemProvider = new OPMObjectProcessDiagramItemProvider(this);
+		}
 
-    return opmObjectProcessDiagramItemProvider;
-  }
+		return opmObjectProcessDiagramItemProvider;
+	}
 
 	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMObject} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMObject} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMObjectItemProvider opmObjectItemProvider;
 
 	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMObject}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMObject}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Adapter createOPMObjectAdapter() {
-    if (opmObjectItemProvider == null) {
-      opmObjectItemProvider = new OPMObjectItemProvider(this);
-    }
+		if (opmObjectItemProvider == null) {
+			opmObjectItemProvider = new OPMObjectItemProvider(this);
+		}
 
-    return opmObjectItemProvider;
-  }
+		return opmObjectItemProvider;
+	}
 
 	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMProcess} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMProcess} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMProcessItemProvider opmProcessItemProvider;
 
 	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMProcess}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMProcess}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Adapter createOPMProcessAdapter() {
-    if (opmProcessItemProvider == null) {
-      opmProcessItemProvider = new OPMProcessItemProvider(this);
-    }
+		if (opmProcessItemProvider == null) {
+			opmProcessItemProvider = new OPMProcessItemProvider(this);
+		}
 
-    return opmProcessItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMLink} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected OPMLinkItemProvider opmLinkItemProvider;
+		return opmProcessItemProvider;
+	}
 
 	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMLink}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createOPMLinkAdapter() {
-    if (opmLinkItemProvider == null) {
-      opmLinkItemProvider = new OPMLinkItemProvider(this);
-    }
-
-    return opmLinkItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMState} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMState} instances.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
     protected OPMStateItemProvider opmStateItemProvider;
 
     /**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMState}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMState}.
+	 * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
     @Override
     public Adapter createOPMStateAdapter() {
-    if (opmStateItemProvider == null) {
-      opmStateItemProvider = new OPMStateItemProvider(this);
-    }
+		if (opmStateItemProvider == null) {
+			opmStateItemProvider = new OPMStateItemProvider(this);
+		}
 
-    return opmStateItemProvider;
-  }
+		return opmStateItemProvider;
+	}
 
     /**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMStructuralLinkAggregator} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.Label} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected OPMStructuralLinkAggregatorItemProvider opmStructuralLinkAggregatorItemProvider;
-
-	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMStructuralLinkAggregator}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createOPMStructuralLinkAggregatorAdapter() {
-    if (opmStructuralLinkAggregatorItemProvider == null) {
-      opmStructuralLinkAggregatorItemProvider = new OPMStructuralLinkAggregatorItemProvider(this);
-    }
-
-    return opmStructuralLinkAggregatorItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMProceduralLink} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	protected OPMProceduralLinkItemProvider opmProceduralLinkItemProvider;
-
-	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMProceduralLink}.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
-	@Override
-	public Adapter createOPMProceduralLinkAdapter() {
-    if (opmProceduralLinkItemProvider == null) {
-      opmProceduralLinkItemProvider = new OPMProceduralLinkItemProvider(this);
-    }
-
-    return opmProceduralLinkItemProvider;
-  }
-
-	/**
-   * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.Label} instances.
-   * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected LabelItemProvider labelItemProvider;
 
 	/**
-   * This creates an adapter for a {@link com.vainolo.phd.opm.model.Label}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.Label}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Adapter createLabelAdapter() {
-    if (labelItemProvider == null) {
-      labelItemProvider = new LabelItemProvider(this);
-    }
+		if (labelItemProvider == null) {
+			labelItemProvider = new LabelItemProvider(this);
+		}
 
-    return labelItemProvider;
-  }
+		return labelItemProvider;
+	}
 
 	/**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMAgentLink} instances.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
+	protected OPMAgentLinkItemProvider opmAgentLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMAgentLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMAgentLinkAdapter() {
+		if (opmAgentLinkItemProvider == null) {
+			opmAgentLinkItemProvider = new OPMAgentLinkItemProvider(this);
+		}
+
+		return opmAgentLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMEffectLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMEffectLinkItemProvider opmEffectLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMEffectLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMEffectLinkAdapter() {
+		if (opmEffectLinkItemProvider == null) {
+			opmEffectLinkItemProvider = new OPMEffectLinkItemProvider(this);
+		}
+
+		return opmEffectLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMResultLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMResultLinkItemProvider opmResultLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMResultLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMResultLinkAdapter() {
+		if (opmResultLinkItemProvider == null) {
+			opmResultLinkItemProvider = new OPMResultLinkItemProvider(this);
+		}
+
+		return opmResultLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMInvocationLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMInvocationLinkItemProvider opmInvocationLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMInvocationLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMInvocationLinkAdapter() {
+		if (opmInvocationLinkItemProvider == null) {
+			opmInvocationLinkItemProvider = new OPMInvocationLinkItemProvider(this);
+		}
+
+		return opmInvocationLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMInstrumentLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMInstrumentLinkItemProvider opmInstrumentLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMInstrumentLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMInstrumentLinkAdapter() {
+		if (opmInstrumentLinkItemProvider == null) {
+			opmInstrumentLinkItemProvider = new OPMInstrumentLinkItemProvider(this);
+		}
+
+		return opmInstrumentLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMConsumptionLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMConsumptionLinkItemProvider opmConsumptionLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMConsumptionLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMConsumptionLinkAdapter() {
+		if (opmConsumptionLinkItemProvider == null) {
+			opmConsumptionLinkItemProvider = new OPMConsumptionLinkItemProvider(this);
+		}
+
+		return opmConsumptionLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMAggregationLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMAggregationLinkItemProvider opmAggregationLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMAggregationLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMAggregationLinkAdapter() {
+		if (opmAggregationLinkItemProvider == null) {
+			opmAggregationLinkItemProvider = new OPMAggregationLinkItemProvider(this);
+		}
+
+		return opmAggregationLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMExhibitionLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMExhibitionLinkItemProvider opmExhibitionLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMExhibitionLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMExhibitionLinkAdapter() {
+		if (opmExhibitionLinkItemProvider == null) {
+			opmExhibitionLinkItemProvider = new OPMExhibitionLinkItemProvider(this);
+		}
+
+		return opmExhibitionLinkItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opm.model.OPMGeneralizationLink} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPMGeneralizationLinkItemProvider opmGeneralizationLinkItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opm.model.OPMGeneralizationLink}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPMGeneralizationLinkAdapter() {
+		if (opmGeneralizationLinkItemProvider == null) {
+			opmGeneralizationLinkItemProvider = new OPMGeneralizationLinkItemProvider(this);
+		}
+
+		return opmGeneralizationLinkItemProvider;
+	}
+
+	/**
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-  }
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
 
 	/**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-    this.parentAdapterFactory = parentAdapterFactory;
-  }
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public boolean isFactoryForType(Object type) {
-    return supportedTypes.contains(type) || super.isFactoryForType(type);
-  }
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
 
 	/**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc -->
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-    return super.adapt(notifier, this);
-  }
+		return super.adapt(notifier, this);
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	public Object adapt(Object object, Object type) {
-    if (isFactoryForType(type)) {
-      Object adapter = super.adapt(object, type);
-      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-        return adapter;
-      }
-    }
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
 
-    return null;
-  }
+		return null;
+	}
 
 	/**
-   * This adds a listener.
-   * <!-- begin-user-doc -->
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-    changeNotifier.addListener(notifyChangedListener);
-  }
+		changeNotifier.addListener(notifyChangedListener);
+	}
 
 	/**
-   * This removes a listener.
-   * <!-- begin-user-doc -->
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-    changeNotifier.removeListener(notifyChangedListener);
-  }
+		changeNotifier.removeListener(notifyChangedListener);
+	}
 
 	/**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc -->
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void fireNotifyChanged(Notification notification) {
-    changeNotifier.fireNotifyChanged(notification);
+		changeNotifier.fireNotifyChanged(notification);
 
-    if (parentAdapterFactory != null) {
-      parentAdapterFactory.fireNotifyChanged(notification);
-    }
-  }
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
 
 	/**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc -->
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	public void dispose() {
-    if (opmObjectProcessDiagramItemProvider != null) opmObjectProcessDiagramItemProvider.dispose();
-    if (opmStateItemProvider != null) opmStateItemProvider.dispose();
-    if (opmObjectItemProvider != null) opmObjectItemProvider.dispose();
-    if (opmProcessItemProvider != null) opmProcessItemProvider.dispose();
-    if (opmStructuralLinkAggregatorItemProvider != null) opmStructuralLinkAggregatorItemProvider.dispose();
-    if (opmLinkItemProvider != null) opmLinkItemProvider.dispose();
-    if (opmProceduralLinkItemProvider != null) opmProceduralLinkItemProvider.dispose();
-    if (labelItemProvider != null) labelItemProvider.dispose();
-  }
+		if (opmObjectProcessDiagramItemProvider != null) opmObjectProcessDiagramItemProvider.dispose();
+		if (opmStateItemProvider != null) opmStateItemProvider.dispose();
+		if (opmObjectItemProvider != null) opmObjectItemProvider.dispose();
+		if (opmProcessItemProvider != null) opmProcessItemProvider.dispose();
+		if (labelItemProvider != null) labelItemProvider.dispose();
+		if (opmAgentLinkItemProvider != null) opmAgentLinkItemProvider.dispose();
+		if (opmEffectLinkItemProvider != null) opmEffectLinkItemProvider.dispose();
+		if (opmResultLinkItemProvider != null) opmResultLinkItemProvider.dispose();
+		if (opmInvocationLinkItemProvider != null) opmInvocationLinkItemProvider.dispose();
+		if (opmInstrumentLinkItemProvider != null) opmInstrumentLinkItemProvider.dispose();
+		if (opmConsumptionLinkItemProvider != null) opmConsumptionLinkItemProvider.dispose();
+		if (opmAggregationLinkItemProvider != null) opmAggregationLinkItemProvider.dispose();
+		if (opmExhibitionLinkItemProvider != null) opmExhibitionLinkItemProvider.dispose();
+		if (opmGeneralizationLinkItemProvider != null) opmGeneralizationLinkItemProvider.dispose();
+	}
 
 }

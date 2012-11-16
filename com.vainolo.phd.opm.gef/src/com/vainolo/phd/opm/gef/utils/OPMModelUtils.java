@@ -28,7 +28,7 @@ public enum OPMModelUtils {
 		OPMProcess process = factory.createOPMProcess();
 		process.setName("P1");
 		opd.getNodes().add(process);
-		OPMLink link = factory.createOPMLink();
+		OPMLink link = factory.createOPMAgentLink();
 		link.setSource(object1);
 		link.setTarget(process);
 		opd.getLinks().add(link);

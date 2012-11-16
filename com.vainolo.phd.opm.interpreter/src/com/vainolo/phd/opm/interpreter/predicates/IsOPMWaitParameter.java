@@ -5,8 +5,14 @@
  *******************************************************************************/
 package com.vainolo.phd.opm.interpreter.predicates;
 
+import java.util.ArrayList;
+
+import org.eclipse.emf.ecore.EClass;
+
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.interpreter.utils.Parameter;
+import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
  * Predicate that returns true for wait inducing incoming parameters
@@ -14,26 +20,22 @@ import com.vainolo.phd.opm.interpreter.utils.Parameter;
  * @author Arieh 'Vainolo' Bibliowicz
  * @created 10 Jul 2012
  * 
+ * @author Eyal
  */
 public enum IsOPMWaitParameter implements Predicate<Parameter> {
   INSTANCE;
 
+  private ArrayList<EClass> TrueTypes;
+  
+  IsOPMWaitParameter(){
+	  TrueTypes = new ArrayList<>();
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMConsumptionLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMInstrumentLink());
+	  TrueTypes.add(OPMPackage.eINSTANCE.getOPMEffectLink());
+  }
+  
   @Override
   public boolean apply(final Parameter input) {
-    switch(input.getLink().getKind()) {
-      case INSTRUMENT:
-      case INSTRUMENT_CONDITION:
-      case INSTRUMENT_EVENT:
-      case CONSUMPTION:
-      case CONSUMPTION_CONDITION:
-      case CONSUMPTION_EVENT:
-      case EFFECT:
-      case EFFECT_CONDITION:
-      case EFFECT_EVENT:
-        return true;
-      default:
-        return false;
+	  return MultiTypeSelectionHelper.apply(TrueTypes, input.getLink());
     }
-  }
-
 }

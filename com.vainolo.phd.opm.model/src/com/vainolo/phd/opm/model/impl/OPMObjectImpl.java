@@ -24,22 +24,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class OPMObjectImpl extends OPMThingImpl implements OPMObject {
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	protected OPMObjectImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OPMPackage.Literals.OPM_OBJECT;
-  }
+		return OPMPackage.Literals.OPM_OBJECT;
+	}
 
 } //OPMObjectImpl

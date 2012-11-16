@@ -9,8 +9,8 @@ package com.vainolo.phd.opm.gef.editor.part;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.GraphicalEditPart;
 
+import com.vainolo.phd.opm.gef.decorationLayer.OPMStructuralLinkAggregator;
 import com.vainolo.phd.opm.gef.editor.figure.OPMStructuralLinkAggregatorFigure;
-import com.vainolo.phd.opm.model.OPMStructuralLinkAggregator;
 
 public class OPMStructuralLinkAggregatorEditPart extends OPMNodeEditPart {
 

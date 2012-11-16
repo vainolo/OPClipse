@@ -25,6 +25,7 @@ import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMProcess;
 import com.vainolo.phd.opm.model.OPMState;
+import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 /**
  * This class describes the commands that can be used to change the layout and
@@ -73,7 +74,9 @@ public class OPMContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 				constraints.setSize(DEFAULT_THING_DIMENSION);
 			}
 			command.setConstraints(constraints);
-			command.setContainer((OPMContainer) getHost().getModel());
+			OPMContainer container = (OPMContainer) getHost().getModel();
+			if (container instanceof OPMDecorated<?>) container = ((OPMDecorated<OPMContainer>)container).getDecorated();
+			command.setContainer(container);
 			command.setNode((OPMNode) (request.getNewObject()));
 			retVal = command;
 		}
