@@ -1,6 +1,9 @@
 package GenericItems;
 
+import java.util.List;
+
 public interface GenericThing {
 	public Class<?> GetType();
-	public Class<?> GetParentOfType();
+	public List<Class<?>> GetParentsOfType();
+	public List<Class<?>> GetSonsOfType(GenericThing a);
 }
