@@ -2,5 +2,6 @@ package GenericItems;
 
 public interface GenericThing {
 	public Class<?> GetType();
-	public Class<?> GetParentOfType();
+	public Class<?> GetParentsOfType();
+	public Class<?> getSonsOfType();
 }
