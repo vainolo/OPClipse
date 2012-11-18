@@ -48,9 +48,9 @@ public class OpmetaInterpretationTester {
 		link.setTarget(diagNode);
 		
 		OpmetaInterpretation interpretation = OpmetaInterpretation.CreateInterpretation(systemDiagram);
-		Collection<TypeDescriptor> descriptors = interpretation.getTypes();
+		Collection<ElementTypeDescriptor> descriptors = interpretation.getElementTypes();
 		assertEquals(5,descriptors.size());
-		for (TypeDescriptor descriptor:descriptors){
+		for (ElementTypeDescriptor descriptor:descriptors){
 			switch(descriptor.getName()){
 				case "Node":
 					assertTrue(descriptor.isNode());
@@ -83,4 +83,75 @@ public class OpmetaInterpretationTester {
 		}
 	}
 	
+	@Test public void testInheritanceCreationNode(){
+		testInheritanceCreation("Node");
+	}
+	
+	@Test public void testInheritanceCreationContainer(){
+		testInheritanceCreation("Container");
+	}
+	
+	private void testInheritanceCreation(final String mainName){
+		OPMetaModelDiagram systemDiagram=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		OPMObjectProcessDiagram opmDiagram = systemDiagram.getElementsDiagram();
+		OPMNode node = OPMFactory.eINSTANCE.createOPMObject();
+		node.setName(mainName);
+		opmDiagram.getNodes().add(node);
+		OPMNode otherParent = OPMFactory.eINSTANCE.createOPMObject();
+		otherParent.setName("OtherParent");
+		opmDiagram.getNodes().add(otherParent);
+		OPMNode child = OPMFactory.eINSTANCE.createOPMObject();
+		child.setName("Child");
+		opmDiagram.getNodes().add(child);
+		OPMNode otherChild = OPMFactory.eINSTANCE.createOPMObject();
+		otherChild.setName("OtherChild");
+		opmDiagram.getNodes().add(otherChild);
+		
+		
+		OPMLink link = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
+		link.setSource(node);
+		link.setTarget(child);
+		link = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
+		link.setSource(otherParent);
+		link.setTarget(child);
+		link = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
+		link.setSource(otherParent);
+		link.setTarget(otherChild);
+		
+		OpmetaInterpretation interpretation = OpmetaInterpretation.CreateInterpretation(systemDiagram);
+		Collection<ElementTypeDescriptor> descriptors = interpretation.getElementTypes();
+		ElementTypeDescriptor nodeDescriptor = getDescriptor(descriptors,mainName);
+		assertEquals(0,count(nodeDescriptor.getParents()));
+		ElementTypeDescriptor otherDescriptor = getDescriptor(descriptors,"OtherParent");
+		assertEquals(0,count(otherDescriptor.getParents()));
+		ElementTypeDescriptor childDescriptor = getDescriptor(descriptors,"Child");
+		assertEquals(2,count(childDescriptor.getParents()));
+		for(ElementTypeDescriptor parent:childDescriptor.getParents()){
+			if (parent.getName().equals(mainName) || parent.getName().equals("OtherParent")) continue;
+			fail();
+		}
+		ElementTypeDescriptor otherChildDescriptor = getDescriptor(descriptors,"OtherChild");
+		assertEquals(1,count(otherChildDescriptor.getParents()));
+		for(ElementTypeDescriptor parent:otherChildDescriptor.getParents()){
+			switch(parent.getName()){
+				case "OtherParent":
+					break;
+				default: fail();
+			}
+		}
+	}
+	
+	private static ElementTypeDescriptor getDescriptor(Collection<ElementTypeDescriptor> descriptors, String name){
+		for (ElementTypeDescriptor descriptor:descriptors){
+			if (descriptor.getName().equalsIgnoreCase(name)) return descriptor;
+		}
+		return null;
+	}
+	
+	private int count(@SuppressWarnings("rawtypes") Iterable  itr){
+		if (itr == null) return 0;
+		int count = 0;
+		for (@SuppressWarnings("unused") Object it:itr) count++;
+		return count;
+	}
 }

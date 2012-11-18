@@ -132,6 +132,11 @@ public class OPDAnalysis {
 	  return filtered;
   }
   
+  public static Collection<OPMLink> findIncomingLinks(OPMNode node, EClass eClass){
+	  Collection<OPMLink> filtered =  filter(node.getIncomingLinks(), new IsOPMLinkofType(eClass));
+	  return filtered;
+  }
+  
   public static Collection<OPMNode> findNamedNodes(Collection<OPMNode> nodes, final String name){
 	  Collection<OPMNode> filtered =  filter(nodes, new Predicate<OPMNode>() {
 		@Override
