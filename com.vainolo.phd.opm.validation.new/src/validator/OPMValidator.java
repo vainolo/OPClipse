@@ -1,12 +1,16 @@
 package validator;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.eclipse.emf.ecore.util.DelegatingEcoreEList.Generic;
 
 import GenericItems.GenericThing;
 
 public class OPMValidator {
 	
 	private OPMValidator instance;
+	RulesContainer rulesMat;
 	
 	public OPMValidator getInstance() {
 		if (instance == null) {
@@ -14,7 +18,9 @@ public class OPMValidator {
 		}
 		return instance;
 	}
-	private OPMValidator(){};
+	private OPMValidator(){
+		this.rulesMat = new RulesContainer();
+	};
 	
 	public boolean addRule(GenericThing a, GenericThing b, GenericThing c){   //Return 0 if done, 1 otherwise
 		GenericThing[][] RulesMatrix;  //will hold a set of rules in each cell
@@ -32,6 +38,18 @@ public class OPMValidator {
 		return true;
 	};
 	
+	
+	public List<GenericThing> getSonsRecursive(GenericThing link) {
+		// TODO - add a validation that this is indeed a link?
+		List<GenericThing> returnList = new ArrayList<GenericThing>();
+		List<GenericThing> sons = link.GetSonsOfType();
+		for (GenericThing son : sons) {
+			if (! returnList.contains(son)) {
+				returnList.addAll(getSonsRecursive(son));
+			}
+		}		
+		return returnList;
+	}
 }
 
 

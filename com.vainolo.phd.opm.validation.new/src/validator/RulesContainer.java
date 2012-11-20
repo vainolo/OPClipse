@@ -32,6 +32,7 @@ public class RulesContainer {
 			rules.get(from).get(to).add(newRule);
 		}
 //		Class<?> c = itemA.getClass();
+		
 		return true;
 	}
 	
