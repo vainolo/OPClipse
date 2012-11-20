@@ -1,10 +1,8 @@
 package validator;
 
-import GenericItems.GenericThing;
-
 public class Rule {
 	
-	private GenericThing linkType;
+	private Class<?> linkType;
 	private int PositiveParentsCount;
 	private boolean isSepcified;
 	public boolean value;
@@ -34,7 +32,7 @@ public class Rule {
 		return true;
 	}
 	
-	public Rule(GenericThing link, int PositiveParentCount, boolean isSpecified, boolean value) {
+	public Rule(Class<?> link, int PositiveParentCount, boolean isSpecified, boolean value) {
 		this.isSepcified 			= isSpecified;
 		this.linkType 				= link;
 		this.PositiveParentsCount 	= PositiveParentCount;
@@ -45,7 +43,7 @@ public class Rule {
 		return this.isSepcified;
 	}
 	
-	public GenericThing getLinkType() {
+	public Class<?> getLinkType() {
 		return this.linkType;
 	}
 }

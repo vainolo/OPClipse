@@ -2,42 +2,40 @@ package validator;
 
 import java.util.*; 
 
-import GenericItems.GenericThing;
-
 public class RulesContainer {
 	
-	private Map<GenericThing, Map<GenericThing, List<Rule>>> rules = 
-			new  HashMap<GenericThing, Map<GenericThing, List<Rule>>>();
+	private Map<Class<?>, Map<Class<?>, List<Rule>>> rules = 
+			new  HashMap<Class<?>, Map<Class<?>, List<Rule>>>();
 	
 
-	public boolean addRule(GenericThing itemA, GenericThing link, GenericThing itemB, 
+	public boolean insertRule(Class<?> from, Class<?> link, Class<?> to, 
 			boolean value, boolean isSpecified, int PositiveParentCount) {
-		// check if we have a hash entry for itemA
-		if (! rules.containsKey(itemA) ) {
-			HashMap<GenericThing, List<Rule>> newHash = new HashMap<GenericThing, List<Rule>>();
-			rules.put(itemA, newHash);
+		// check if we have a hash entry for from
+		if (! rules.containsKey(from) ) {
+			HashMap<Class<?>, List<Rule>> newHash = new HashMap<Class<?>, List<Rule>>();
+			rules.put(from, newHash);
 		}
 		
-		// check if there is an entry for item b
-		if (! rules.get(itemA).containsKey(itemB) ) {
+		// check if there is an entry for "to"
+		if (! rules.get(from).containsKey(to) ) {
 			Rule newRule = new Rule(link, PositiveParentCount, isSpecified, value);
 			List<Rule> newList = new ArrayList<Rule>();
 			newList.add(newRule);
-			rules.get(itemA).put(itemB, newList);
+			rules.get(from).put(to, newList);
 		}
-		// b exists - add to rule set if doesn't already exists
+		// "to" exists - add to rule set if doesn't already exists
 		else {
-			if (this.contains(itemA,link,itemB)) {
+			if (this.contains(from,link,to)) {
 				return false;
 			}
 			Rule newRule = new Rule(link,PositiveParentCount,isSpecified,value);
-			rules.get(itemA).get(itemB).add(newRule);
+			rules.get(from).get(to).add(newRule);
 		}
-		
+//		Class<?> c = itemA.getClass();
 		return true;
 	}
 	
-	public boolean contains(GenericThing from, GenericThing link, GenericThing to) {
+	public boolean contains(Class<?> from, Class<?> link, Class<?> to) {
 		if (rules.containsKey(from)) {
 			if (rules.get(from).containsKey(to)) {
 				for (Rule rule: rules.get(from).get(to)) {
