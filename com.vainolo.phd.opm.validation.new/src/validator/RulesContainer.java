@@ -1,6 +1,9 @@
 package validator;
 
-import java.util.*; 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RulesContainer {
 	
@@ -49,4 +52,25 @@ public class RulesContainer {
 		return false;
 	}
 	
+	public boolean validate(Class<?> from, Class<?> link, Class<?> to) {
+		if (this.contains(from, link, to)) {
+			for (Rule rule : this.rules.get(from).get(to)) {
+				if (rule.getLinkType() == link) {
+					return rule.getValue();
+				}
+			}
+		}
+		return false;
+	}
+	
+	public boolean validate (Class<?> from, Class<?> link) {
+		if (this.rules.containsKey(from)) {
+			for (Class<?> to : rules.get(from).keySet()) {
+				if (this.validate(from,link,to)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
