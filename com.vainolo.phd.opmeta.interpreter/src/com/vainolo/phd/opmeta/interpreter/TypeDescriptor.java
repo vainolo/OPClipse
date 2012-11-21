@@ -10,7 +10,7 @@ public class TypeDescriptor {
 	private int hashcode;
 	
 	public TypeDescriptor(String name){
-		parents = new LinkedList<>();
+		//parents = new LinkedList<>();
 		children = new LinkedList<>();
 		this.name = name;
 		hashcode = name.hashCode();
@@ -22,12 +22,14 @@ public class TypeDescriptor {
 		return name;
 	}
 	
-	List<TypeDescriptor> parents;
+	TypeDescriptor parent;
+	
+	public TypeDescriptor getParent(){ return  parent;}
 	
 	/*
 	 * Returns an unmodifiableCollection copy of parent Type Descriptors
 	 */
-	public Collection<TypeDescriptor> getParents(){ return Collections.unmodifiableCollection(parents);}
+	//public Collection<TypeDescriptor> getParents(){ return Collections.unmodifiableCollection(parents);}
 	
 	List<TypeDescriptor> children;
 	
@@ -45,9 +47,12 @@ public class TypeDescriptor {
 		if (super.equals(arg0)) return true;
 		if ((arg0 == null) || (!(arg0 instanceof TypeDescriptor))) return false; 
 		TypeDescriptor other = (TypeDescriptor)arg0;
-		return (other.name.equals(name) && 
-				(other.children.equals(children)) && 
-				(other.parents.equals(parents)));
+		if (!(other.name == name) || !(other.children.equals(children))) return false;
+		if (parent == null) return (other.parent ==null);
+		return parent.equals(other.parent);
+//		return (other.name.equals(name) && 
+//				(other.children.equals(children)) && 
+//				(other.parents.equals(parents)));
 	}
 
 	@Override

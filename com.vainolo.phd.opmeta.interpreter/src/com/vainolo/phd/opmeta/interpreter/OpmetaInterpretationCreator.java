@@ -13,9 +13,9 @@ import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
 
 class OpmetaInterpretationCreator {
 	
-	private HashMap<String,TypeDescriptor> existingTypes = new HashMap<>();
+//	private HashMap<String,TypeDescriptor> existingTypes = new HashMap<>();
 
-	public List<TypeDescriptor> CreateGraph(List<OPMNode> origNodes, String rootName){
+	public HashMap<String,TypeDescriptor> CreateGraph(List<OPMNode> origNodes, String rootName){
 		Collection<OPMNode> rootNodes = OPDAnalysis.findNamedNodes(origNodes,rootName);
 		if (rootNodes.size() != 1) throw new RuntimeException("Incorrect number of root nodes in diagram");
 		LinkedList<OPMNode> preprocessedNodes = new LinkedList<OPMNode>();
@@ -39,15 +39,15 @@ class OpmetaInterpretationCreator {
 			getParents(descriptor, currentNode,created);
 			created.put(currKey, descriptor);
 		}
-		return new ArrayList<>(created.values());
+		return created;
 	}
 
 	private TypeDescriptor getDescriptor(String currKey) {
-		if (existingTypes.containsKey(currKey)){
-			return existingTypes.get(currKey);
-		}
+//		if (existingTypes.containsKey(currKey)){
+//			return existingTypes.get(currKey);
+//		}
 		TypeDescriptor 	descriptor= new TypeDescriptor(currKey);
-		existingTypes.put(currKey, descriptor);
+		//existingTypes.put(currKey, descriptor);
 		return descriptor;
 	}
 
@@ -64,12 +64,13 @@ class OpmetaInterpretationCreator {
 	
 	private void setParent(TypeDescriptor descriptor, TypeDescriptor parent) {
 		if (parent.children.contains(descriptor)) return;
-		descriptor.parents.add(parent);
+		//descriptor.parents.add(parent);
+		descriptor.parent = parent;
 		parent.children.add(descriptor);		
 	}
 
-	void clearCache() {
-		existingTypes.clear();
-		
-	}
+//	void clearCache() {
+//		existingTypes.clear();
+//		
+//	}
 }
