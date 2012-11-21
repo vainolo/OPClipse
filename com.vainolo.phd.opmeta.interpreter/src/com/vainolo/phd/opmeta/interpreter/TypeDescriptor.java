@@ -1,14 +1,17 @@
 package com.vainolo.phd.opmeta.interpreter;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TypeDescriptor <TDesc extends TypeDescriptor<TDesc>> {
+public class TypeDescriptor {
 
 	private int hashcode;
 	
 	public TypeDescriptor(String name){
 		parents = new LinkedList<>();
+		children = new LinkedList<>();
 		this.name = name;
 		hashcode = name.hashCode();
 	}
@@ -19,31 +22,31 @@ public class TypeDescriptor <TDesc extends TypeDescriptor<TDesc>> {
 		return name;
 	}
 	
-	private boolean isLeaf;
-
-	public boolean isLeaf() {
-		return isLeaf;
-	}
-
-	void setLeaf(boolean isLeaf) {
-		this.isLeaf = isLeaf;
-	}
-
-	private List<TDesc> parents;
+	List<TypeDescriptor> parents;
 	
-	public Iterable<TDesc> getParents(){ return parents;}
+	/*
+	 * Returns an unmodifiableCollection copy of parent Type Descriptors
+	 */
+	public Collection<TypeDescriptor> getParents(){ return Collections.unmodifiableCollection(parents);}
 	
-	boolean addParent(TDesc parent){
-		if (parent == null) return false;
-		return parents.add(parent);
+	List<TypeDescriptor> children;
+	
+	/*
+	 * Returns an unmodifiableCollection copy of children Type Descriptors
+	 */
+	public Collection<TypeDescriptor> getChildren(){ return Collections.unmodifiableCollection(children);}
+	
+	public boolean isAbstract(){
+		return (!children.isEmpty());
 	}
 	
 	@Override
 	public boolean equals(Object arg0) {
 		if (super.equals(arg0)) return true;
 		if ((arg0 == null) || (!(arg0 instanceof TypeDescriptor))) return false; 
-		TypeDescriptor<?> other = (TypeDescriptor<?>)arg0;
-		return (other.name.equals(name) && (other.isLeaf == isLeaf) && 
+		TypeDescriptor other = (TypeDescriptor)arg0;
+		return (other.name.equals(name) && 
+				(other.children.equals(children)) && 
 				(other.parents.equals(parents)));
 	}
 
