@@ -31,6 +31,10 @@ public class OpmetaInterpretation {
 	}
 		
 	private HashMap<String,ElementTypeDescriptor> elementTypes;
+	
+	private List<TypeDescriptor> nodes;
+	private List<TypeDescriptor> containers;
+	private List<TypeDescriptor> links;
 
 	public Collection<ElementTypeDescriptor> getElementTypes() {
 		return elementTypes.values();
