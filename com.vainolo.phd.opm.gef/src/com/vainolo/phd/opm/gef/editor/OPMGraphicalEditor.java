@@ -62,10 +62,14 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
    * Initialize the {@link EditDomain} of the editor.
    */
   public OPMGraphicalEditor() {
-	  opmIdManager = new OPMIdManager();
-    setEditDomain(new DefaultEditDomain(this));
+	  this(new OPMIdManager());
   }
 
+  protected OPMGraphicalEditor(OPMIdManager opmIdManager) {
+	  this.opmIdManager = opmIdManager;
+    setEditDomain(new DefaultEditDomain(this));
+  }
+  
   @Override
   protected void initializeGraphicalViewer() {
     super.initializeGraphicalViewer();
@@ -136,9 +140,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
       opd.setId(1);
       opd.setNextId(2);
     }
-    opmIdManager.setId(opd.getNextId());
+    afterLoadInput();
   }
-
+  
   protected OPMObjectProcessDiagram getDiagramFromInput(IEditorInput input){
 	  OPMObjectProcessDiagram opmd=null;
 	  if(input instanceof IFileEditorInput) {
@@ -151,6 +155,10 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	      }
 	    }
 	  return opmd;
+  }
+  
+  protected void afterLoadInput(){
+	  opmIdManager.setId(opd.getNextId());  
   }
   
   @SuppressWarnings("unchecked")

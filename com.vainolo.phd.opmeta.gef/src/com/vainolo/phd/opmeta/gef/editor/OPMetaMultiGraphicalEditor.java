@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.gef.mm.editor;
+package com.vainolo.phd.opmeta.gef.editor;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -14,8 +14,9 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.MultiPageEditorPart;
 
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
-import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
+import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opmeta.gef.utils.OPMDiagramEditorInput;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
@@ -23,9 +24,11 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 
 	private IFile opmmFile;
 	private OPMetaModelDiagram opmeta;
+	private OPMIdManager idManager; 
 	
 	public OPMetaMultiGraphicalEditor() {
 		super();
+		idManager = new OPMIdManager();
 	}
 	
 	@Override
@@ -59,13 +62,14 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 	      if(opmeta == null) {
 	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
 	      }
+	    idManager.setId(opmeta.getElementsDiagram().getNextId());
 	  }
 	
 	@Override
 	protected void createPages() {
 		int index;
 		try {
-			index = addPage(new OPMetaGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getElementsDiagram()));
+			index = addPage(new OPMetaGraphicalEditor(idManager), new OPMDiagramEditorInput(opmeta.getElementsDiagram()));
 			setPageText(index, "Elements");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),
@@ -74,7 +78,7 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 			e.printStackTrace();
 		}
 		try {
-			index = addPage(new OPMetaGraphicalEditor(), new OPMDiagramEditorInput(opmeta.getLinksDiagram()));
+			index = addPage(new OPMetaGraphicalEditor(idManager), new OPMDiagramEditorInput(opmeta.getLinksDiagram()));
 			setPageText(index, "Links");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),

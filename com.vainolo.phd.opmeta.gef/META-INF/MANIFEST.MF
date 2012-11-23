@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OPMeta Gef Editor
+Bundle-SymbolicName: com.vainolo.phd.opmeta.gef;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.vainolo.phd.opmeta.gef.Activator
+Bundle-Vendor: VAINOLO
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.gef;bundle-version="3.7.2",
+ com.vainolo.phd.opm.gef;bundle-version="0.1.0",
+ com.vainolo.phd.opm.model;bundle-version="1.0.0",
+ com.vainolo.phd.opmeta.model;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.7.101",
+ org.eclipse.ui.views;bundle-version="3.6.0",
+ org.eclipse.ui.ide;bundle-version="3.7.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy

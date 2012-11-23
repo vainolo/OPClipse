@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.gef.mm.editor;
+package com.vainolo.phd.opmeta.gef.editor;
 
 import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.CreationToolEntry;

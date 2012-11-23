@@ -1,4 +1,4 @@
-package com.vainolo.phd.opm.gef.mm.editor;
+package com.vainolo.phd.opmeta.gef.editor;
 
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.jface.viewers.ISelection;
@@ -6,10 +6,15 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
-import com.vainolo.phd.opm.gef.utils.OPMDiagramEditorInput;
+import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
+import com.vainolo.phd.opmeta.gef.utils.OPMDiagramEditorInput;
 
 public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
+	
+	public OPMetaGraphicalEditor(OPMIdManager idManager){
+		super(idManager);
+	}
 	
 	@Override
 	protected OPMObjectProcessDiagram getDiagramFromInput(IEditorInput input){
@@ -28,6 +33,8 @@ public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
 	void markSaveLocation(){
 		getCommandStack().markSaveLocation();
 	}
+	
+	@Override protected void afterLoadInput() {} // disable reset value of IdManager
 	
 	/**
 	 * @see org.eclipse.ui.ISelectionListener#selectionChanged(IWorkbenchPart,
