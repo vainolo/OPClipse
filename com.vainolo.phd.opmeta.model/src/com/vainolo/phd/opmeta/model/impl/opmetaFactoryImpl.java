@@ -6,7 +6,6 @@
  */
 package com.vainolo.phd.opmeta.model.impl;
 
-import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opmeta.model.*;
 
 import org.eclipse.emf.ecore.EClass;
@@ -64,6 +63,11 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM: return createOPMetaModelDiagram();
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE: return createOPMetaModelContaimentValidationRule();
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE: return createOPMetaModelLinkValidationRule();
+			case opmetaPackage.OP_MODEL: return createOPModel();
+			case opmetaPackage.NODE_INSTANCE_BASE: return createNodeInstanceBase();
+			case opmetaPackage.CONTAINER_INSTANCE_BASE: return createContainerInstanceBase();
+			case opmetaPackage.LINK_INSTANCE_BASE: return createLinkInstanceBase();
+			case opmetaPackage.THING_INSTANCE_BASE: return createThingInstanceBase();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -76,8 +80,6 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 */
 	public OPMetaModelDiagram createOPMetaModelDiagram() {
 		OPMetaModelDiagramImpl opMetaModelDiagram = new OPMetaModelDiagramImpl();
-		opMetaModelDiagram.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
-		opMetaModelDiagram.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 		return opMetaModelDiagram;
 	}
 
@@ -99,6 +101,56 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	public OPMetaModelLinkValidationRule createOPMetaModelLinkValidationRule() {
 		OPMetaModelLinkValidationRuleImpl opMetaModelLinkValidationRule = new OPMetaModelLinkValidationRuleImpl();
 		return opMetaModelLinkValidationRule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OPModel createOPModel() {
+		OPModelImpl opModel = new OPModelImpl();
+		return opModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NodeInstanceBase createNodeInstanceBase() {
+		NodeInstanceBaseImpl nodeInstanceBase = new NodeInstanceBaseImpl();
+		return nodeInstanceBase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContainerInstanceBase createContainerInstanceBase() {
+		ContainerInstanceBaseImpl containerInstanceBase = new ContainerInstanceBaseImpl();
+		return containerInstanceBase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public LinkInstanceBase createLinkInstanceBase() {
+		LinkInstanceBaseImpl linkInstanceBase = new LinkInstanceBaseImpl();
+		return linkInstanceBase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ThingInstanceBase createThingInstanceBase() {
+		ThingInstanceBaseImpl thingInstanceBase = new ThingInstanceBaseImpl();
+		return thingInstanceBase;
 	}
 
 	/**

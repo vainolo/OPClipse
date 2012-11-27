@@ -9,12 +9,19 @@ package com.vainolo.phd.opmeta.model.impl;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.impl.OPMPackageImpl;
 
+import com.vainolo.phd.opmeta.model.ContainerInstanceBase;
+import com.vainolo.phd.opmeta.model.InstanceBase;
+import com.vainolo.phd.opmeta.model.LinkInstanceBase;
+import com.vainolo.phd.opmeta.model.NodeInstanceBase;
 import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
+import com.vainolo.phd.opmeta.model.OPModel;
+import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -48,6 +55,48 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * @generated
 	 */
 	private EClass opMetaModelLinkValidationRuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass opModelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass instanceBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass nodeInstanceBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containerInstanceBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass linkInstanceBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass thingInstanceBaseEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -165,6 +214,168 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getOPModel() {
+		return opModelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOPModel_MetaModel() {
+		return (EReference)opModelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOPModel_Container() {
+		return (EReference)opModelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getInstanceBase() {
+		return instanceBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInstanceBase_TypeName() {
+		return (EAttribute)instanceBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInstanceBase_Id() {
+		return (EAttribute)instanceBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getNodeInstanceBase() {
+		return nodeInstanceBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNodeInstanceBase_Constraints() {
+		return (EAttribute)nodeInstanceBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getNodeInstanceBase_Name() {
+		return (EAttribute)nodeInstanceBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNodeInstanceBase_OutgoingLinks() {
+		return (EReference)nodeInstanceBaseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNodeInstanceBase_IncomingLinks() {
+		return (EReference)nodeInstanceBaseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContainerInstanceBase() {
+		return containerInstanceBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContainerInstanceBase_Nodes() {
+		return (EReference)containerInstanceBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContainerInstanceBase_Links() {
+		return (EReference)containerInstanceBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getLinkInstanceBase() {
+		return linkInstanceBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkInstanceBase_Source() {
+		return (EReference)linkInstanceBaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLinkInstanceBase_Target() {
+		return (EReference)linkInstanceBaseEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getThingInstanceBase() {
+		return thingInstanceBaseEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public opmetaFactory getopmetaFactory() {
 		return (opmetaFactory)getEFactoryInstance();
 	}
@@ -195,6 +406,30 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		opMetaModelContaimentValidationRuleEClass = createEClass(OP_META_MODEL_CONTAIMENT_VALIDATION_RULE);
 
 		opMetaModelLinkValidationRuleEClass = createEClass(OP_META_MODEL_LINK_VALIDATION_RULE);
+
+		opModelEClass = createEClass(OP_MODEL);
+		createEReference(opModelEClass, OP_MODEL__META_MODEL);
+		createEReference(opModelEClass, OP_MODEL__CONTAINER);
+
+		instanceBaseEClass = createEClass(INSTANCE_BASE);
+		createEAttribute(instanceBaseEClass, INSTANCE_BASE__TYPE_NAME);
+		createEAttribute(instanceBaseEClass, INSTANCE_BASE__ID);
+
+		nodeInstanceBaseEClass = createEClass(NODE_INSTANCE_BASE);
+		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__CONSTRAINTS);
+		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__NAME);
+		createEReference(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__OUTGOING_LINKS);
+		createEReference(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__INCOMING_LINKS);
+
+		containerInstanceBaseEClass = createEClass(CONTAINER_INSTANCE_BASE);
+		createEReference(containerInstanceBaseEClass, CONTAINER_INSTANCE_BASE__NODES);
+		createEReference(containerInstanceBaseEClass, CONTAINER_INSTANCE_BASE__LINKS);
+
+		linkInstanceBaseEClass = createEClass(LINK_INSTANCE_BASE);
+		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__SOURCE);
+		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__TARGET);
+
+		thingInstanceBaseEClass = createEClass(THING_INSTANCE_BASE);
 	}
 
 	/**
@@ -228,6 +463,11 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		nodeInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
+		containerInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
+		linkInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
+		thingInstanceBaseEClass.getESuperTypes().add(this.getNodeInstanceBase());
+		thingInstanceBaseEClass.getESuperTypes().add(this.getContainerInstanceBase());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(opMetaModelDiagramEClass, OPMetaModelDiagram.class, "OPMetaModelDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -237,6 +477,30 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		initEClass(opMetaModelContaimentValidationRuleEClass, OPMetaModelContaimentValidationRule.class, "OPMetaModelContaimentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(opMetaModelLinkValidationRuleEClass, OPMetaModelLinkValidationRule.class, "OPMetaModelLinkValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(opModelEClass, OPModel.class, "OPModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getOPModel_MetaModel(), this.getOPMetaModelDiagram(), null, "MetaModel", null, 0, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPModel_Container(), this.getContainerInstanceBase(), null, "Container", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(instanceBaseEClass, InstanceBase.class, "InstanceBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getInstanceBase_TypeName(), ecorePackage.getEString(), "TypeName", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInstanceBase_Id(), ecorePackage.getELong(), "Id", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(nodeInstanceBaseEClass, NodeInstanceBase.class, "NodeInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNodeInstanceBase_Constraints(), theOPMPackage.getRectangle(), "constraints", null, 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeInstanceBase_Name(), ecorePackage.getEString(), "Name", null, 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeInstanceBase_OutgoingLinks(), this.getLinkInstanceBase(), this.getLinkInstanceBase_Source(), "outgoingLinks", null, 0, -1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeInstanceBase_IncomingLinks(), this.getLinkInstanceBase(), this.getLinkInstanceBase_Target(), "incomingLinks", null, 0, -1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(containerInstanceBaseEClass, ContainerInstanceBase.class, "ContainerInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContainerInstanceBase_Nodes(), this.getNodeInstanceBase(), null, "nodes", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainerInstanceBase_Links(), this.getLinkInstanceBase(), null, "links", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(linkInstanceBaseEClass, LinkInstanceBase.class, "LinkInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLinkInstanceBase_Source(), this.getNodeInstanceBase(), this.getNodeInstanceBase_OutgoingLinks(), "source", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkInstanceBase_Target(), this.getNodeInstanceBase(), this.getNodeInstanceBase_IncomingLinks(), "target", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(thingInstanceBaseEClass, ThingInstanceBase.class, "ThingInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

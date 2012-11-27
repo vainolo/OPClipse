@@ -10,10 +10,10 @@ Export-Package: com.vainolo.phd.opmeta.model,
  com.vainolo.phd.opmeta.model.impl,
  com.vainolo.phd.opmeta.model.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ com.vainolo.phd.opm.model;bundle-version="1.0.0",
+ org.eclipse.draw2d;bundle-version="3.7.2"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
-Import-Package: com.vainolo.phd.opm.model,
- com.vainolo.phd.opm.model.impl,
- com.vainolo.utils,
+Import-Package: com.vainolo.utils,
  org.eclipse.emf.ecore.xmi.impl

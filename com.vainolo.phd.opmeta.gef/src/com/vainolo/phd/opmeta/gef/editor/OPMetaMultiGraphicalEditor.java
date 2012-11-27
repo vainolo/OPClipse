@@ -126,13 +126,11 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 	
 	@Override
 	public void doSaveAs() {
-		// TODO Auto-generated method stub
-		
+		throw new RuntimeException("doSaveAs must be overridden"); //$NON-NLS-1$
 	}
 
 	@Override
 	public boolean isSaveAsAllowed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

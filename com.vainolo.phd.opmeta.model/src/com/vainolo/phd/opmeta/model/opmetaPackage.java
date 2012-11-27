@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opmeta.model;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -134,6 +135,354 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_LINK_VALIDATION_RULE_FEATURE_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl <em>OP Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.OPModelImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getOPModel()
+	 * @generated
+	 */
+	int OP_MODEL = 3;
+
+	/**
+	 * The feature id for the '<em><b>Meta Model</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_MODEL__META_MODEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Container</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_MODEL__CONTAINER = 1;
+
+	/**
+	 * The number of structural features of the '<em>OP Model</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_MODEL_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl <em>Instance Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getInstanceBase()
+	 * @generated
+	 */
+	int INSTANCE_BASE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_BASE__TYPE_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_BASE__ID = 1;
+
+	/**
+	 * The number of structural features of the '<em>Instance Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_BASE_FEATURE_COUNT = 2;
+
+	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl <em>Node Instance Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getNodeInstanceBase()
+	 * @generated
+	 */
+	int NODE_INSTANCE_BASE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__TYPE_NAME = INSTANCE_BASE__TYPE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__CONSTRAINTS = INSTANCE_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__NAME = INSTANCE_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__OUTGOING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__INCOMING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Node Instance Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 4;
+
+	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl <em>Container Instance Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getContainerInstanceBase()
+	 * @generated
+	 */
+	int CONTAINER_INSTANCE_BASE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE__TYPE_NAME = INSTANCE_BASE__TYPE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE__NODES = INSTANCE_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE__LINKS = INSTANCE_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Container Instance Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl <em>Link Instance Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getLinkInstanceBase()
+	 * @generated
+	 */
+	int LINK_INSTANCE_BASE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__TYPE_NAME = INSTANCE_BASE__TYPE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__SOURCE = INSTANCE_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__TARGET = INSTANCE_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Link Instance Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getThingInstanceBase()
+	 * @generated
+	 */
+	int THING_INSTANCE_BASE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__TYPE_NAME = NODE_INSTANCE_BASE__TYPE_NAME;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__ID = NODE_INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__CONSTRAINTS = NODE_INSTANCE_BASE__CONSTRAINTS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__NAME = NODE_INSTANCE_BASE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Outgoing Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__OUTGOING_LINKS = NODE_INSTANCE_BASE__OUTGOING_LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__INCOMING_LINKS = NODE_INSTANCE_BASE__INCOMING_LINKS;
+
+	/**
+	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__NODES = NODE_INSTANCE_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__LINKS = NODE_INSTANCE_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Thing Instance Base</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE_FEATURE_COUNT = NODE_INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram <em>OP Meta Model Diagram</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -184,6 +533,198 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOPMetaModelLinkValidationRule();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPModel <em>OP Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>OP Model</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPModel
+	 * @generated
+	 */
+	EClass getOPModel();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Meta Model</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPModel#getMetaModel()
+	 * @see #getOPModel()
+	 * @generated
+	 */
+	EReference getOPModel_MetaModel();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Container</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPModel#getContainer()
+	 * @see #getOPModel()
+	 * @generated
+	 */
+	EReference getOPModel_Container();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.InstanceBase <em>Instance Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Instance Base</em>'.
+	 * @see com.vainolo.phd.opmeta.model.InstanceBase
+	 * @generated
+	 */
+	EClass getInstanceBase();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.InstanceBase#getTypeName <em>Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.InstanceBase#getTypeName()
+	 * @see #getInstanceBase()
+	 * @generated
+	 */
+	EAttribute getInstanceBase_TypeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.InstanceBase#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see com.vainolo.phd.opmeta.model.InstanceBase#getId()
+	 * @see #getInstanceBase()
+	 * @generated
+	 */
+	EAttribute getInstanceBase_Id();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase <em>Node Instance Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Node Instance Base</em>'.
+	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase
+	 * @generated
+	 */
+	EClass getNodeInstanceBase();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getConstraints <em>Constraints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Constraints</em>'.
+	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getConstraints()
+	 * @see #getNodeInstanceBase()
+	 * @generated
+	 */
+	EAttribute getNodeInstanceBase_Constraints();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getName()
+	 * @see #getNodeInstanceBase()
+	 * @generated
+	 */
+	EAttribute getNodeInstanceBase_Name();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks <em>Outgoing Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Outgoing Links</em>'.
+	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks()
+	 * @see #getNodeInstanceBase()
+	 * @generated
+	 */
+	EReference getNodeInstanceBase_OutgoingLinks();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks <em>Incoming Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Incoming Links</em>'.
+	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks()
+	 * @see #getNodeInstanceBase()
+	 * @generated
+	 */
+	EReference getNodeInstanceBase_IncomingLinks();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase <em>Container Instance Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Container Instance Base</em>'.
+	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase
+	 * @generated
+	 */
+	EClass getContainerInstanceBase();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes <em>Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes()
+	 * @see #getContainerInstanceBase()
+	 * @generated
+	 */
+	EReference getContainerInstanceBase_Nodes();
+
+	/**
+	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks <em>Links</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Links</em>'.
+	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks()
+	 * @see #getContainerInstanceBase()
+	 * @generated
+	 */
+	EReference getContainerInstanceBase_Links();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase <em>Link Instance Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Link Instance Base</em>'.
+	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase
+	 * @generated
+	 */
+	EClass getLinkInstanceBase();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getSource <em>Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Source</em>'.
+	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getSource()
+	 * @see #getLinkInstanceBase()
+	 * @generated
+	 */
+	EReference getLinkInstanceBase_Source();
+
+	/**
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getTarget()
+	 * @see #getLinkInstanceBase()
+	 * @generated
+	 */
+	EReference getLinkInstanceBase_Target();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.ThingInstanceBase <em>Thing Instance Base</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Thing Instance Base</em>'.
+	 * @see com.vainolo.phd.opmeta.model.ThingInstanceBase
+	 * @generated
+	 */
+	EClass getThingInstanceBase();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -252,6 +793,162 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OP_META_MODEL_LINK_VALIDATION_RULE = eINSTANCE.getOPMetaModelLinkValidationRule();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl <em>OP Model</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.OPModelImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getOPModel()
+		 * @generated
+		 */
+		EClass OP_MODEL = eINSTANCE.getOPModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Meta Model</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OP_MODEL__META_MODEL = eINSTANCE.getOPModel_MetaModel();
+
+		/**
+		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OP_MODEL__CONTAINER = eINSTANCE.getOPModel_Container();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl <em>Instance Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getInstanceBase()
+		 * @generated
+		 */
+		EClass INSTANCE_BASE = eINSTANCE.getInstanceBase();
+
+		/**
+		 * The meta object literal for the '<em><b>Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INSTANCE_BASE__TYPE_NAME = eINSTANCE.getInstanceBase_TypeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INSTANCE_BASE__ID = eINSTANCE.getInstanceBase_Id();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl <em>Node Instance Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getNodeInstanceBase()
+		 * @generated
+		 */
+		EClass NODE_INSTANCE_BASE = eINSTANCE.getNodeInstanceBase();
+
+		/**
+		 * The meta object literal for the '<em><b>Constraints</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE_INSTANCE_BASE__CONSTRAINTS = eINSTANCE.getNodeInstanceBase_Constraints();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE_INSTANCE_BASE__NAME = eINSTANCE.getNodeInstanceBase_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Outgoing Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE_INSTANCE_BASE__OUTGOING_LINKS = eINSTANCE.getNodeInstanceBase_OutgoingLinks();
+
+		/**
+		 * The meta object literal for the '<em><b>Incoming Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE_INSTANCE_BASE__INCOMING_LINKS = eINSTANCE.getNodeInstanceBase_IncomingLinks();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl <em>Container Instance Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getContainerInstanceBase()
+		 * @generated
+		 */
+		EClass CONTAINER_INSTANCE_BASE = eINSTANCE.getContainerInstanceBase();
+
+		/**
+		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTAINER_INSTANCE_BASE__NODES = eINSTANCE.getContainerInstanceBase_Nodes();
+
+		/**
+		 * The meta object literal for the '<em><b>Links</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTAINER_INSTANCE_BASE__LINKS = eINSTANCE.getContainerInstanceBase_Links();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl <em>Link Instance Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getLinkInstanceBase()
+		 * @generated
+		 */
+		EClass LINK_INSTANCE_BASE = eINSTANCE.getLinkInstanceBase();
+
+		/**
+		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_INSTANCE_BASE__SOURCE = eINSTANCE.getLinkInstanceBase_Source();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LINK_INSTANCE_BASE__TARGET = eINSTANCE.getLinkInstanceBase_Target();
+
+		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getThingInstanceBase()
+		 * @generated
+		 */
+		EClass THING_INSTANCE_BASE = eINSTANCE.getThingInstanceBase();
 
 	}
 

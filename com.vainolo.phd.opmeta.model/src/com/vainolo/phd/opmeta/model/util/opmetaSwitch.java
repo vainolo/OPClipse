@@ -87,6 +87,48 @@ public class opmetaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case opmetaPackage.OP_MODEL: {
+				OPModel opModel = (OPModel)theEObject;
+				T result = caseOPModel(opModel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmetaPackage.INSTANCE_BASE: {
+				InstanceBase instanceBase = (InstanceBase)theEObject;
+				T result = caseInstanceBase(instanceBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmetaPackage.NODE_INSTANCE_BASE: {
+				NodeInstanceBase nodeInstanceBase = (NodeInstanceBase)theEObject;
+				T result = caseNodeInstanceBase(nodeInstanceBase);
+				if (result == null) result = caseInstanceBase(nodeInstanceBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmetaPackage.CONTAINER_INSTANCE_BASE: {
+				ContainerInstanceBase containerInstanceBase = (ContainerInstanceBase)theEObject;
+				T result = caseContainerInstanceBase(containerInstanceBase);
+				if (result == null) result = caseInstanceBase(containerInstanceBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmetaPackage.LINK_INSTANCE_BASE: {
+				LinkInstanceBase linkInstanceBase = (LinkInstanceBase)theEObject;
+				T result = caseLinkInstanceBase(linkInstanceBase);
+				if (result == null) result = caseInstanceBase(linkInstanceBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmetaPackage.THING_INSTANCE_BASE: {
+				ThingInstanceBase thingInstanceBase = (ThingInstanceBase)theEObject;
+				T result = caseThingInstanceBase(thingInstanceBase);
+				if (result == null) result = caseNodeInstanceBase(thingInstanceBase);
+				if (result == null) result = caseContainerInstanceBase(thingInstanceBase);
+				if (result == null) result = caseInstanceBase(thingInstanceBase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -133,6 +175,96 @@ public class opmetaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OP Model</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OP Model</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOPModel(OPModel object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Instance Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Instance Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInstanceBase(InstanceBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Node Instance Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node Instance Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNodeInstanceBase(NodeInstanceBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Container Instance Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Container Instance Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContainerInstanceBase(ContainerInstanceBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Link Instance Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Link Instance Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLinkInstanceBase(LinkInstanceBase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Thing Instance Base</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Thing Instance Base</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseThingInstanceBase(ThingInstanceBase object) {
 		return null;
 	}
 

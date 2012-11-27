@@ -145,6 +145,121 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.OPModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected OPModelItemProvider opModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.OPModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createOPModelAdapter() {
+		if (opModelItemProvider == null) {
+			opModelItemProvider = new OPModelItemProvider(this);
+		}
+
+		return opModelItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.NodeInstanceBase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected NodeInstanceBaseItemProvider nodeInstanceBaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.NodeInstanceBase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createNodeInstanceBaseAdapter() {
+		if (nodeInstanceBaseItemProvider == null) {
+			nodeInstanceBaseItemProvider = new NodeInstanceBaseItemProvider(this);
+		}
+
+		return nodeInstanceBaseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.ContainerInstanceBase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ContainerInstanceBaseItemProvider containerInstanceBaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.ContainerInstanceBase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createContainerInstanceBaseAdapter() {
+		if (containerInstanceBaseItemProvider == null) {
+			containerInstanceBaseItemProvider = new ContainerInstanceBaseItemProvider(this);
+		}
+
+		return containerInstanceBaseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.LinkInstanceBase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LinkInstanceBaseItemProvider linkInstanceBaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.LinkInstanceBase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLinkInstanceBaseAdapter() {
+		if (linkInstanceBaseItemProvider == null) {
+			linkInstanceBaseItemProvider = new LinkInstanceBaseItemProvider(this);
+		}
+
+		return linkInstanceBaseItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.ThingInstanceBase} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ThingInstanceBaseItemProvider thingInstanceBaseItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.ThingInstanceBase}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createThingInstanceBaseAdapter() {
+		if (thingInstanceBaseItemProvider == null) {
+			thingInstanceBaseItemProvider = new ThingInstanceBaseItemProvider(this);
+		}
+
+		return thingInstanceBaseItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,6 +361,11 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 		if (opMetaModelDiagramItemProvider != null) opMetaModelDiagramItemProvider.dispose();
 		if (opMetaModelContaimentValidationRuleItemProvider != null) opMetaModelContaimentValidationRuleItemProvider.dispose();
 		if (opMetaModelLinkValidationRuleItemProvider != null) opMetaModelLinkValidationRuleItemProvider.dispose();
+		if (opModelItemProvider != null) opModelItemProvider.dispose();
+		if (nodeInstanceBaseItemProvider != null) nodeInstanceBaseItemProvider.dispose();
+		if (containerInstanceBaseItemProvider != null) containerInstanceBaseItemProvider.dispose();
+		if (linkInstanceBaseItemProvider != null) linkInstanceBaseItemProvider.dispose();
+		if (thingInstanceBaseItemProvider != null) thingInstanceBaseItemProvider.dispose();
 	}
 
 }
