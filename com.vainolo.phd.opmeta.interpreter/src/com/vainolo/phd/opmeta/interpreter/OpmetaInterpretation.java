@@ -50,6 +50,11 @@ public class OpmetaInterpretation {
 		return Collections.unmodifiableCollection(links.values());
 	}
 
+	public TypeDescriptor getNodeDescriptor(String name){
+		if (!nodes.containsKey(name)) return null;
+		return nodes.get(name);
+	}
+	
 	private HashMap<String,TypeDescriptor> nodes;
 	private HashMap<String,TypeDescriptor> containers;
 	private HashMap<String,TypeDescriptor> links;

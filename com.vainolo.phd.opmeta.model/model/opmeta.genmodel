@@ -19,6 +19,29 @@
     </genClasses>
     <genClasses ecoreClass="opmeta.ecore#//OPMetaModelContaimentValidationRule"/>
     <genClasses ecoreClass="opmeta.ecore#//OPMetaModelLinkValidationRule"/>
+    <genClasses ecoreClass="opmeta.ecore#//OPModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPModel/MetaModel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPModel/Container"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="opmeta.ecore#//InstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//InstanceBase/TypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//InstanceBase/Id"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//NodeInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//NodeInstanceBase/constraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//NodeInstanceBase/Name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//NodeInstanceBase/outgoingLinks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//NodeInstanceBase/incomingLinks"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//ContainerInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//ContainerInstanceBase/nodes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//ContainerInstanceBase/links"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//LinkInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//LinkInstanceBase/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//LinkInstanceBase/target"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//ThingInstanceBase" labelFeature="#//opmeta/InstanceBase/Id"/>
   </genPackages>
   <genPackages prefix="OPM" basePackage="com.vainolo.phd" interfacePackageSuffix="model"
       metaDataPackageSuffix="model" classPackageSuffix="model.impl" utilityPackageSuffix="model.util"
