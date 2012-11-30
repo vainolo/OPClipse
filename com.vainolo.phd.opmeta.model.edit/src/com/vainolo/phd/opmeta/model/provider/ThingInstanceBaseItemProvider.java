@@ -128,10 +128,8 @@ public class ThingInstanceBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ThingInstanceBase)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ThingInstanceBase_type") :
-			getString("_UI_ThingInstanceBase_type") + " " + label;
+		ThingInstanceBase thingInstanceBase = (ThingInstanceBase)object;
+		return getString("_UI_ThingInstanceBase_type") + " " + thingInstanceBase.getId();
 	}
 
 	/**

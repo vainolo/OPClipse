@@ -128,10 +128,8 @@ public class LinkInstanceBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((LinkInstanceBase)object).getTypeName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_LinkInstanceBase_type") :
-			getString("_UI_LinkInstanceBase_type") + " " + label;
+		LinkInstanceBase linkInstanceBase = (LinkInstanceBase)object;
+		return getString("_UI_LinkInstanceBase_type") + " " + linkInstanceBase.getId();
 	}
 
 	/**

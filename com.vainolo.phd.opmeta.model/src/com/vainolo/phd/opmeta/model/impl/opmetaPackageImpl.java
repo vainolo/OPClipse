@@ -241,6 +241,15 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOPModel_NextId() {
+		return (EAttribute)opModelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInstanceBase() {
 		return instanceBaseEClass;
 	}
@@ -410,6 +419,7 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		opModelEClass = createEClass(OP_MODEL);
 		createEReference(opModelEClass, OP_MODEL__META_MODEL);
 		createEReference(opModelEClass, OP_MODEL__CONTAINER);
+		createEAttribute(opModelEClass, OP_MODEL__NEXT_ID);
 
 		instanceBaseEClass = createEClass(INSTANCE_BASE);
 		createEAttribute(instanceBaseEClass, INSTANCE_BASE__TYPE_NAME);
@@ -481,6 +491,7 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		initEClass(opModelEClass, OPModel.class, "OPModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOPModel_MetaModel(), this.getOPMetaModelDiagram(), null, "MetaModel", null, 0, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPModel_Container(), this.getContainerInstanceBase(), null, "Container", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOPModel_NextId(), ecorePackage.getELong(), "NextId", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(instanceBaseEClass, InstanceBase.class, "InstanceBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getInstanceBase_TypeName(), ecorePackage.getEString(), "TypeName", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

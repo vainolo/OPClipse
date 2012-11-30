@@ -163,13 +163,22 @@ public interface opmetaPackage extends EPackage {
 	int OP_MODEL__CONTAINER = 1;
 
 	/**
+	 * The feature id for the '<em><b>Next Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_MODEL__NEXT_ID = 2;
+
+	/**
 	 * The number of structural features of the '<em>OP Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_MODEL_FEATURE_COUNT = 2;
+	int OP_MODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl <em>Instance Base</em>}' class.
@@ -567,6 +576,17 @@ public interface opmetaPackage extends EPackage {
 	EReference getOPModel_Container();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPModel#getNextId <em>Next Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Next Id</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPModel#getNextId()
+	 * @see #getOPModel()
+	 * @generated
+	 */
+	EAttribute getOPModel_NextId();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.InstanceBase <em>Instance Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -819,6 +839,14 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference OP_MODEL__CONTAINER = eINSTANCE.getOPModel_Container();
+
+		/**
+		 * The meta object literal for the '<em><b>Next Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_MODEL__NEXT_ID = eINSTANCE.getOPModel_NextId();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.InstanceBaseImpl <em>Instance Base</em>}' class.

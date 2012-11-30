@@ -17,6 +17,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="MetaModel" eType="#//OPMetaModelDiagram"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Container" lowerBound="1"
         eType="#//ContainerInstanceBase"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NextId" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InstanceBase" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TypeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

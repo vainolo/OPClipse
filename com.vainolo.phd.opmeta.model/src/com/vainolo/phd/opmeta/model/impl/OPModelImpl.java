@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl#getMetaModel <em>Meta Model</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl#getNextId <em>Next Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,6 +54,26 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @ordered
 	 */
 	protected ContainerInstanceBase container;
+
+	/**
+	 * The default value of the '{@link #getNextId() <em>Next Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNextId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final long NEXT_ID_EDEFAULT = 0L;
+
+	/**
+	 * The cached value of the '{@link #getNextId() <em>Next Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNextId()
+	 * @generated
+	 * @ordered
+	 */
+	protected long nextId = NEXT_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -154,6 +175,27 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public long getNextId() {
+		return nextId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setNextId(long newNextId) {
+		long oldNextId = nextId;
+		nextId = newNextId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__NEXT_ID, oldNextId, nextId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -163,6 +205,8 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 			case opmetaPackage.OP_MODEL__CONTAINER:
 				if (resolve) return getContainer();
 				return basicGetContainer();
+			case opmetaPackage.OP_MODEL__NEXT_ID:
+				return getNextId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -180,6 +224,9 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 				return;
 			case opmetaPackage.OP_MODEL__CONTAINER:
 				setContainer((ContainerInstanceBase)newValue);
+				return;
+			case opmetaPackage.OP_MODEL__NEXT_ID:
+				setNextId((Long)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -199,6 +246,9 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 			case opmetaPackage.OP_MODEL__CONTAINER:
 				setContainer((ContainerInstanceBase)null);
 				return;
+			case opmetaPackage.OP_MODEL__NEXT_ID:
+				setNextId(NEXT_ID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -215,8 +265,26 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 				return metaModel != null;
 			case opmetaPackage.OP_MODEL__CONTAINER:
 				return container != null;
+			case opmetaPackage.OP_MODEL__NEXT_ID:
+				return nextId != NEXT_ID_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (NextId: ");
+		result.append(nextId);
+		result.append(')');
+		return result.toString();
 	}
 
 } //OPModelImpl

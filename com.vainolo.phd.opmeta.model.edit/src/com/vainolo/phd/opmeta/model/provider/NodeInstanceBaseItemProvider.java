@@ -176,10 +176,8 @@ public class NodeInstanceBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((NodeInstanceBase)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_NodeInstanceBase_type") :
-			getString("_UI_NodeInstanceBase_type") + " " + label;
+		NodeInstanceBase nodeInstanceBase = (NodeInstanceBase)object;
+		return getString("_UI_NodeInstanceBase_type") + " " + nodeInstanceBase.getId();
 	}
 
 	/**

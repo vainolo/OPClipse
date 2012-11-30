@@ -122,10 +122,8 @@ public class InstanceBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((InstanceBase)object).getTypeName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_InstanceBase_type") :
-			getString("_UI_InstanceBase_type") + " " + label;
+		InstanceBase instanceBase = (InstanceBase)object;
+		return getString("_UI_InstanceBase_type") + " " + instanceBase.getId();
 	}
 
 	/**

@@ -7,6 +7,7 @@
 package com.vainolo.phd.opmeta.model.provider;
 
 
+import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
 import java.util.Collection;
@@ -24,7 +25,9 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link com.vainolo.phd.opmeta.model.OPModel} object.
@@ -63,6 +66,7 @@ public class OPModelItemProvider
 
 			addMetaModelPropertyDescriptor(object);
 			addContainerPropertyDescriptor(object);
+			addNextIdPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,6 +116,28 @@ public class OPModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Next Id feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNextIdPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPModel_NextId_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPModel_NextId_feature", "_UI_OPModel_type"),
+				 opmetaPackage.Literals.OP_MODEL__NEXT_ID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns OPModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,7 +156,8 @@ public class OPModelItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_OPModel_type");
+		OPModel opModel = (OPModel)object;
+		return getString("_UI_OPModel_type") + " " + opModel.getNextId();
 	}
 
 	/**
@@ -143,6 +170,12 @@ public class OPModelItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(OPModel.class)) {
+			case opmetaPackage.OP_MODEL__NEXT_ID:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

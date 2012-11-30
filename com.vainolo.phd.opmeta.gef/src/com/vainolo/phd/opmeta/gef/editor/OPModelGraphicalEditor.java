@@ -16,6 +16,8 @@ import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
+import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
+import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
 public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
@@ -23,6 +25,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	  private Logger logger = Logger.getLogger(OPMGraphicalEditor.class.getName());
 	  private OPMIdManager opmIdManager;
 	  private OpmetaInterpretation interpretation;
+	  private OPModel opmodel;
 	  private IFile opmmFile;
 	  
 	  public OPModelGraphicalEditor() {
@@ -32,7 +35,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	  protected OPModelGraphicalEditor(OPMIdManager opmIdManager) {
 		  super();
 		  this.opmIdManager = opmIdManager;
-		  setEditDomain(new DefaultEditDomain(this));
+		  setEditDomain(new DefaultEditDomain(this)); // TODO: need to move this!!!
 	  }
 
 	  @Override
@@ -53,11 +56,13 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	private void loadInput(IEditorInput input) {
 	    IFileEditorInput fileInput = (IFileEditorInput) input;
 	    opmmFile = fileInput.getFile();
-//	    opmeta = OPMMLoader.loadOPMetaFile(opmmFile.getLocationURI().toString());
-//	      if(opmeta == null) {
-//	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
-//	      }
-//	      opmIdManager.setId(opmeta.getElementsDiagram().getNextId());
+	    opmodel = OPMMLoader.loadOPModelFile(opmmFile.getLocationURI().toString());
+	      if(opmodel == null) {
+	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
+	      }
+	      opmIdManager.setId(opmodel.getNextId());
+	      
+	      interpretation = OpmetaInterpretation.CreateInterpretation(opmodel.getMetaModel());
 	  }
 	
 	@Override

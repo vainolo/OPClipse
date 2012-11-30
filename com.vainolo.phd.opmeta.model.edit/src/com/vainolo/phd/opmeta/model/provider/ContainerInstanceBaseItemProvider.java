@@ -128,10 +128,8 @@ public class ContainerInstanceBaseItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ContainerInstanceBase)object).getTypeName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ContainerInstanceBase_type") :
-			getString("_UI_ContainerInstanceBase_type") + " " + label;
+		ContainerInstanceBase containerInstanceBase = (ContainerInstanceBase)object;
+		return getString("_UI_ContainerInstanceBase_type") + " " + containerInstanceBase.getId();
 	}
 
 	/**
