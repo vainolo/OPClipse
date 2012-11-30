@@ -18,7 +18,7 @@ public class OPMMLoader {
 
 	private static final Logger logger = SimpleLoggerFactory.createLogger(OPMMLoader.class.getName());
 
-	  public static OPMetaModelDiagram loadOPDFile(String uri) {
+	  public static OPMetaModelDiagram loadOPMetaFile(String uri) {
 		  OPMetaModelDiagram opmeta;
 	    final ResourceSet resourceSet = new ResourceSetImpl();
 	    resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()

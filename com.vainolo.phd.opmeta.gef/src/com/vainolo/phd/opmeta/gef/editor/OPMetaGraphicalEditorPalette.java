@@ -7,6 +7,7 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.palette.SelectionToolEntry;
 import org.eclipse.jface.resource.ImageDescriptor;
 
+import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.LabelFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMAggregationLinkFactory;
 import com.vainolo.phd.opm.gef.editor.factory.OPMExhibitionLinkFactory;
@@ -18,7 +19,8 @@ import com.vainolo.phd.opm.gef.editor.tool.CreationAndDirectEditTool;
 
 public class OPMetaGraphicalEditorPalette extends PaletteRoot {
 	
-	String iconsPath = "../../editor/icons/";
+	Class<?> iconsClassLocation=OPMGraphicalEditor.class;
+	String iconsPath = "icons/";
 	PaletteGroup group;
 	OPMIdManager opmIdManager;
 
@@ -43,21 +45,21 @@ public class OPMetaGraphicalEditorPalette extends PaletteRoot {
 
 	private void addNodeTools() {
 		CreationToolEntry entry = new CreationToolEntry("Label", "Create new Label", new LabelFactory(opmIdManager),
-														ImageDescriptor.createFromFile(	this.getClass(),
+														ImageDescriptor.createFromFile(iconsClassLocation,
 																iconsPath+"label.ico"),
-														ImageDescriptor.createFromFile(	this.getClass(),
+														ImageDescriptor.createFromFile(iconsClassLocation,
 																iconsPath+"label.ico"));
 		group.add(entry);
 
 		entry = new CreationToolEntry("OPMObject", "Create a new Object", new OPMObjectFactory(opmIdManager),
-										ImageDescriptor.createFromFile(this.getClass(), iconsPath+"object.ico"),
-										ImageDescriptor.createFromFile(this.getClass(), iconsPath+"object.ico"));
+										ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"object.ico"),
+										ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"object.ico"));
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		group.add(entry);
 
 		entry = new CreationToolEntry("OPMState", "Create a new State", new OPMStateFactory(opmIdManager),
-										ImageDescriptor.createFromFile(this.getClass(), iconsPath+"state.ico"),
-										ImageDescriptor.createFromFile(this.getClass(), iconsPath+"state.ico"));
+										ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"state.ico"),
+										ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"state.ico"));
 		entry.setToolClass(CreationAndDirectEditTool.class);
 		group.add(entry);
 
@@ -72,23 +74,23 @@ public class OPMetaGraphicalEditorPalette extends PaletteRoot {
 												"Aggregation",
 												"Create a new Aggregation link",
 												new OPMAggregationLinkFactory(opmIdManager),
-												ImageDescriptor.createFromFile(this.getClass(), iconsPath+"aggregation.ico"),
-												ImageDescriptor.createFromFile(this.getClass(), iconsPath+"aggregation.ico"));
+												ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"aggregation.ico"),
+												ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"aggregation.ico"));
 		group.add(entry);
 
 		entry = new ConnectionCreationToolEntry(
 												"Exhibition",
 												"Create a new Exhibition link",
 												new OPMExhibitionLinkFactory(opmIdManager),
-												ImageDescriptor.createFromFile(this.getClass(), iconsPath+"exhibition.ico"),
-												ImageDescriptor.createFromFile(this.getClass(), iconsPath+"exhibition.ico"));
+												ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"exhibition.ico"),
+												ImageDescriptor.createFromFile(iconsClassLocation, iconsPath+"exhibition.ico"));
 		group.add(entry);
 
 		entry = new ConnectionCreationToolEntry("Generalization", "Create a new Generalization link",
 												new OPMGeneralizationLinkFactory(opmIdManager),
-												ImageDescriptor.createFromFile(	this.getClass(),
+												ImageDescriptor.createFromFile(iconsClassLocation,
 														iconsPath+"generalization.ico"),
-												ImageDescriptor.createFromFile(	this.getClass(),
+												ImageDescriptor.createFromFile(iconsClassLocation,
 														iconsPath+"generalization.ico"));
 		group.add(entry);
 	}

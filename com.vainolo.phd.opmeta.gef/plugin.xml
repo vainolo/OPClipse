@@ -12,4 +12,14 @@
             name="OP Meta Model GEF Editor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.vainolo.phd.opmeta.gef.editor.OPModelGraphicalEditor"
+            default="true"
+            extensions="opmodel"
+            id="com.vainolo.phd.opmeta.gef.opmodel.editorID"
+            name="OP Model GEF Editor">
+      </editor>
+   </extension>
 </plugin>

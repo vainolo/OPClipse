@@ -5,13 +5,11 @@ Bundle-SymbolicName: com.vainolo.phd.opmeta.interpreter
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: VAINOLO
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Import-Package: com.vainolo.phd.opm.model,
- com.vainolo.phd.opm.utilities,
- com.vainolo.phd.opm.utilities.analysis,
- com.vainolo.phd.opmeta.model,
- org.eclipse.emf.common.notify,
- org.eclipse.emf.ecore
 Require-Bundle: com.vainolo.phd.opm.model;bundle-version="1.0.0",
  com.vainolo.phd.opm.utilities;bundle-version="0.1.0",
  org.eclipse.core.runtime;bundle-version="3.7.0",
- org.junit;bundle-version="4.8.2"
+ org.junit;bundle-version="4.8.2",
+ com.vainolo.phd.opmeta.model;bundle-version="1.0.0",
+ org.eclipse.emf;bundle-version="2.6.0"
+Export-Package: com.vainolo.phd.opmeta.interpreter,
+ com.vainolo.phd.opmeta.interpreter.opmodel

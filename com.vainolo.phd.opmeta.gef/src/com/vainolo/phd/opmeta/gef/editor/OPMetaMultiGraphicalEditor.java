@@ -58,7 +58,7 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 	  private void loadInput(IEditorInput input) {
 	    IFileEditorInput fileInput = (IFileEditorInput) input;
 	    opmmFile = fileInput.getFile();
-	    opmeta = OPMMLoader.loadOPDFile(opmmFile.getLocationURI().toString());
+	    opmeta = OPMMLoader.loadOPMetaFile(opmmFile.getLocationURI().toString());
 	      if(opmeta == null) {
 	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
 	      }
