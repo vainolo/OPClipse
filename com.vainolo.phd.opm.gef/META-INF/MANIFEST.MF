@@ -22,4 +22,5 @@ Bundle-ActivationPolicy: lazy
 Export-Package: com.vainolo.phd.opm.gef.decorationLayer,
  com.vainolo.phd.opm.gef.editor,
  com.vainolo.phd.opm.gef.editor.factory,
+ com.vainolo.phd.opm.gef.editor.part,
  com.vainolo.phd.opm.gef.editor.tool
