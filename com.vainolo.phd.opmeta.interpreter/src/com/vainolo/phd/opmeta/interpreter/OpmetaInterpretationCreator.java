@@ -17,7 +17,8 @@ class OpmetaInterpretationCreator {
 
 	public HashMap<String,TypeDescriptor> CreateGraph(List<OPMNode> origNodes, String rootName){
 		Collection<OPMNode> rootNodes = OPDAnalysis.findNamedNodes(origNodes,rootName);
-		if (rootNodes.size() != 1) throw new RuntimeException("Incorrect number of root nodes in diagram");
+		if (rootNodes.size() != 1) 
+			throw new RuntimeException("Incorrect number of root nodes in diagram");
 		LinkedList<OPMNode> preprocessedNodes = new LinkedList<OPMNode>();
 		for (OPMNode rootNode:rootNodes){
 			preprocessedNodes.add(rootNode);

@@ -1,7 +1,5 @@
 package com.vainolo.phd.opmeta.gef.editor;
 
-import java.util.logging.Logger;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
@@ -12,17 +10,15 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 
-import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
-import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
 public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
-	  private Logger logger = Logger.getLogger(OPMGraphicalEditor.class.getName());
+	  //private Logger logger = Logger.getLogger(OPModelGraphicalEditor.class.getName());
 	  private OPMIdManager opmIdManager;
 	  private OpmetaInterpretation interpretation;
 	  private OPModel opmodel;
@@ -35,7 +31,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	  protected OPModelGraphicalEditor(OPMIdManager opmIdManager) {
 		  super();
 		  this.opmIdManager = opmIdManager;
-		  setEditDomain(new DefaultEditDomain(this)); // TODO: need to move this!!!
+		  
 	  }
 
 	  @Override
@@ -63,6 +59,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	      opmIdManager.setId(opmodel.getNextId());
 	      
 	      interpretation = OpmetaInterpretation.CreateInterpretation(opmodel.getMetaModel());
+	      setEditDomain(new DefaultEditDomain(this));
 	  }
 	
 	@Override

@@ -57,6 +57,8 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
+import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
@@ -195,8 +197,10 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	 * @generated NOT
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)_opmetaPackage.getEClassifier(opmetaEditorPlugin.INSTANCE.getString("_UI_MetaModelEclassName"));
-		EObject rootObject = _opmetaFactory.create(eClass);
+		//EClass eClass = (EClass)_opmetaPackage.getEClassifier(opmetaEditorPlugin.INSTANCE.getString("_UI_MetaModelEclassName"));
+		OPMetaModelDiagram rootObject = _opmetaFactory.createOPMetaModelDiagram();
+		rootObject .setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		rootObject .setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 		return rootObject;
 	}
 
