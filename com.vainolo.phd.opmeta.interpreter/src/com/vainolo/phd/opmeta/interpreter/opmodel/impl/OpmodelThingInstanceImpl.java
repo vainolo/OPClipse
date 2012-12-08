@@ -6,12 +6,16 @@ import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelThingInstance;
+import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 
 public class OpmodelThingInstanceImpl extends OpmodelNodeInstanceImpl implements
 		OpmodelThingInstance {
 
-	public OpmodelThingInstanceImpl(TypeDescriptor descriptor) {
-		super(descriptor);
+	protected ThingInstanceBase instanceBase;
+	
+	public OpmodelThingInstanceImpl(TypeDescriptor descriptor, ThingInstanceBase instanceBase) {
+		super(descriptor,instanceBase);
+		this.instanceBase = instanceBase;
 	}
 
 	private List<OpmodelNodeInstance> nodes;

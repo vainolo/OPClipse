@@ -1,6 +1,6 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel;
 
-import java.awt.Rectangle;
+import org.eclipse.draw2d.geometry.Rectangle;
 
 public interface OpmodelNodeInstance extends OpmodelInstance {
 

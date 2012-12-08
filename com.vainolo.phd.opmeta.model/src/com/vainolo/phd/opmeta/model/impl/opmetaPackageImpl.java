@@ -21,8 +21,10 @@ import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.EReference;
@@ -97,6 +99,13 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * @generated
 	 */
 	private EClass thingInstanceBaseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType rectangleEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -304,24 +313,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getNodeInstanceBase_OutgoingLinks() {
-		return (EReference)nodeInstanceBaseEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getNodeInstanceBase_IncomingLinks() {
-		return (EReference)nodeInstanceBaseEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getContainerInstanceBase() {
 		return containerInstanceBaseEClass;
 	}
@@ -385,6 +376,15 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EDataType getRectangle() {
+		return rectangleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public opmetaFactory getopmetaFactory() {
 		return (opmetaFactory)getEFactoryInstance();
 	}
@@ -428,8 +428,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		nodeInstanceBaseEClass = createEClass(NODE_INSTANCE_BASE);
 		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__CONSTRAINTS);
 		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__NAME);
-		createEReference(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__OUTGOING_LINKS);
-		createEReference(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__INCOMING_LINKS);
 
 		containerInstanceBaseEClass = createEClass(CONTAINER_INSTANCE_BASE);
 		createEReference(containerInstanceBaseEClass, CONTAINER_INSTANCE_BASE__NODES);
@@ -440,6 +438,9 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__TARGET);
 
 		thingInstanceBaseEClass = createEClass(THING_INSTANCE_BASE);
+
+		// Create data types
+		rectangleEDataType = createEDataType(RECTANGLE);
 	}
 
 	/**
@@ -498,20 +499,21 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		initEAttribute(getInstanceBase_Id(), ecorePackage.getELong(), "Id", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeInstanceBaseEClass, NodeInstanceBase.class, "NodeInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNodeInstanceBase_Constraints(), theOPMPackage.getRectangle(), "constraints", null, 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getNodeInstanceBase_Constraints(), theOPMPackage.getRectangle(), "constraints", "0,0,50,50", 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNodeInstanceBase_Name(), ecorePackage.getEString(), "Name", null, 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeInstanceBase_OutgoingLinks(), this.getLinkInstanceBase(), this.getLinkInstanceBase_Source(), "outgoingLinks", null, 0, -1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeInstanceBase_IncomingLinks(), this.getLinkInstanceBase(), this.getLinkInstanceBase_Target(), "incomingLinks", null, 0, -1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(containerInstanceBaseEClass, ContainerInstanceBase.class, "ContainerInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContainerInstanceBase_Nodes(), this.getNodeInstanceBase(), null, "nodes", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContainerInstanceBase_Links(), this.getLinkInstanceBase(), null, "links", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(linkInstanceBaseEClass, LinkInstanceBase.class, "LinkInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLinkInstanceBase_Source(), this.getNodeInstanceBase(), this.getNodeInstanceBase_OutgoingLinks(), "source", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getLinkInstanceBase_Target(), this.getNodeInstanceBase(), this.getNodeInstanceBase_IncomingLinks(), "target", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkInstanceBase_Source(), this.getNodeInstanceBase(), null, "source", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLinkInstanceBase_Target(), this.getNodeInstanceBase(), null, "target", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(thingInstanceBaseEClass, ThingInstanceBase.class, "ThingInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		// Initialize data types
+		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

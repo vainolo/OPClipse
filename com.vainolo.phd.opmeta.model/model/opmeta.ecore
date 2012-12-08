@@ -25,12 +25,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeInstanceBase" eSuperTypes="#//InstanceBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType ../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType ../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"
+        defaultValueLiteral="0,0,50,50"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLinks" upperBound="-1"
-        eType="#//LinkInstanceBase" eOpposite="#//LinkInstanceBase/source"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLinks" upperBound="-1"
-        eType="#//LinkInstanceBase" eOpposite="#//LinkInstanceBase/target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerInstanceBase" eSuperTypes="#//InstanceBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
@@ -39,10 +36,9 @@
         eType="#//LinkInstanceBase"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LinkInstanceBase" eSuperTypes="#//InstanceBase">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//NodeInstanceBase"
-        eOpposite="#//NodeInstanceBase/outgoingLinks"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//NodeInstanceBase"
-        eOpposite="#//NodeInstanceBase/incomingLinks"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//NodeInstanceBase"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//NodeInstanceBase"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThingInstanceBase" eSuperTypes="#//NodeInstanceBase #//ContainerInstanceBase"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
 </ecore:EPackage>

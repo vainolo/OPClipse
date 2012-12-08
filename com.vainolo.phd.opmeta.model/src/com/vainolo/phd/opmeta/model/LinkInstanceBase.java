@@ -27,7 +27,6 @@ package com.vainolo.phd.opmeta.model;
 public interface LinkInstanceBase extends InstanceBase {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks <em>Outgoing Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
@@ -37,8 +36,7 @@ public interface LinkInstanceBase extends InstanceBase {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(NodeInstanceBase)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getLinkInstanceBase_Source()
-	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks
-	 * @model opposite="outgoingLinks"
+	 * @model
 	 * @generated
 	 */
 	NodeInstanceBase getSource();
@@ -55,7 +53,6 @@ public interface LinkInstanceBase extends InstanceBase {
 
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
-	 * It is bidirectional and its opposite is '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks <em>Incoming Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Target</em>' reference isn't clear,
@@ -65,8 +62,7 @@ public interface LinkInstanceBase extends InstanceBase {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(NodeInstanceBase)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getLinkInstanceBase_Target()
-	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks
-	 * @model opposite="incomingLinks"
+	 * @model
 	 * @generated
 	 */
 	NodeInstanceBase getTarget();

@@ -6,13 +6,14 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 public class OPModelNodeOnlyFigure extends Figure{
-	private final RoundedRectangle rectangle;
+	private final RectangleFigure rectangle;
 	  private ConnectionAnchor connectionAnchor;
 	  private final Label nameLabel;
 
@@ -20,10 +21,10 @@ public class OPModelNodeOnlyFigure extends Figure{
 	    super();
 	    setLayoutManager(new XYLayout());
 	    nameLabel = new Label();
-	    nameLabel.setForegroundColor(ColorConstants.black);
-	    add(nameLabel);
-	    rectangle = new RoundedRectangle();
-	    rectangle.setFill(false);
+	    //nameLabel.setForegroundColor(ColorConstants.black);
+	    //add(nameLabel);
+	    rectangle = new RectangleFigure();
+	    //rectangle.setFill(false);
 	    rectangle.setForegroundColor(ColorConstants.black);
 	    rectangle.setLineWidth(2);
 	    add(rectangle);
@@ -75,10 +76,10 @@ public class OPModelNodeOnlyFigure extends Figure{
 	  protected void paintFigure(Graphics graphics) {
 	    Rectangle r = getBounds().getCopy();
 	    int insets = 2;
-	    setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
+	    //setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
 	    setConstraint(rectangle, new Rectangle(0, 0, r.width(), r.height()));
 	   
 	    rectangle.invalidate();
-	    getNameLabel().invalidate();
+	    //getNameLabel().invalidate();
 	  }
 }

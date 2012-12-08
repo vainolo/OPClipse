@@ -3,12 +3,16 @@ package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmeta.model.LinkInstanceBase;
 
 public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 		OpmodelLinkInstance {
 
-	public OpmodelLinkInstanceImpl(TypeDescriptor descriptor) {
+	protected LinkInstanceBase linkInstanceBase;
+	
+	public OpmodelLinkInstanceImpl(TypeDescriptor descriptor, LinkInstanceBase instanceBase) {
 		super(descriptor);
+		linkInstanceBase = instanceBase;
 	}
 
 	OpmodelNodeInstance source;

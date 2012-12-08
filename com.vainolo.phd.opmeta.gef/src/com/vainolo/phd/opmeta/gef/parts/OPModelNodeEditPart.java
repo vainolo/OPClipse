@@ -3,11 +3,13 @@ package com.vainolo.phd.opmeta.gef.parts;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.vainolo.phd.opmeta.gef.figure.OPModelNodeOnlyFigure;
+import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
 public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	implements NodeEditPart {
@@ -45,4 +47,12 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 		
 	}
 
+	@Override protected void refreshVisuals() {
+		OPModelNodeOnlyFigure figure = (OPModelNodeOnlyFigure)getFigure();
+	    OpmodelNodeInstance model = (OpmodelNodeInstance)getModel();
+	    final GraphicalEditPart parent = (GraphicalEditPart) getParent();
+	     
+	    parent.setLayoutConstraint(this, figure, model.getConstraints());
+	    
+	  }
 }

@@ -18,6 +18,8 @@ import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opmeta.gef.parts.OPModelEditPartFactory;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
+import com.vainolo.phd.opmeta.interpreter.OpmodelInterpretationCreator;
+import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
@@ -27,6 +29,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	  private OPMIdManager opmIdManager;
 	  private OpmetaInterpretation interpretation;
 	  private OPModel opmodel;
+	  private OpmodelContainerInstance rootContainer;
 	  private IFile opmmFile;
 	  
 	  public OPModelGraphicalEditor() {
@@ -67,6 +70,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	      opmIdManager.setId(opmodel.getNextId());
 	      
 	      interpretation = OpmetaInterpretation.CreateInterpretation(opmodel.getMetaModel());
+	      rootContainer =  OpmodelInterpretationCreator.Create(interpretation, opmodel.getContainer());
 	      setEditDomain(new DefaultEditDomain(this));
 	  }
 	
@@ -89,7 +93,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	@Override
 	  protected void initializeGraphicalViewer() {
 	    super.initializeGraphicalViewer();
-	    getGraphicalViewer().setContents(opmodel.getContainer());
+	    getGraphicalViewer().setContents(rootContainer);
 	    getGraphicalControl().setFont(new Font(null, "Consolas", 10, SWT.NORMAL));
 	  }
 	

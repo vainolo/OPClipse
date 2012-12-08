@@ -8,7 +8,9 @@ package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opmeta.model.*;
 
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -70,6 +72,36 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 			case opmetaPackage.THING_INSTANCE_BASE: return createThingInstanceBase();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case opmetaPackage.RECTANGLE:
+				return createRectangleFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case opmetaPackage.RECTANGLE:
+				return convertRectangleToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -155,6 +187,51 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * Create a <code>Rectangle</code> instance from a <code>String</code>. The expected
+	 * representation is "x,y,width,height". Illegal representations will return a null
+	 * value. 
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Rectangle createRectangleFromString(EDataType eDataType, String initialValue) {
+		if(initialValue == null) {
+			return null;
+		}
+		initialValue.replaceAll("\\s", "");
+		String[] values = initialValue.split(",");
+		if(values.length != 4) {
+			return null;
+		}
+
+		Rectangle rect = new Rectangle();
+		try {
+			rect.setLocation(Integer.parseInt(values[0]), Integer.parseInt(values[1]));
+			rect.setSize(Integer.parseInt(values[2]), Integer.parseInt(values[3]));
+		} catch(NumberFormatException e) {
+			EcorePlugin.INSTANCE.log(e);
+			rect = null;
+		}
+		return rect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Convert a <code>Rectangle</code> to a <code>String</code> representation. The
+	 * <code>Rectangle</code> is represented as "x,y,width,height". 
+	 * <!-- end-user-doc -->
+	 * @generated NOT 
+	 */
+	public String convertRectangleToString(EDataType eDataType, Object instanceValue) {
+		if(instanceValue == null) {
+			return null;
+		}
+		Rectangle rect = (Rectangle) instanceValue;
+		return rect.x+","+rect.y+","+rect.width+","+rect.height;
+	}
+
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -172,5 +249,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	public static opmetaPackage getPackage() {
 		return opmetaPackage.eINSTANCE;
 	}
+	
+	
 
 } //opmetaFactoryImpl

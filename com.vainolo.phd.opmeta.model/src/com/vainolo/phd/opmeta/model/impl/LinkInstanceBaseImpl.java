@@ -103,33 +103,11 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSource(NodeInstanceBase newSource, NotificationChain msgs) {
+	public void setSource(NodeInstanceBase newSource) {
 		NodeInstanceBase oldSource = source;
 		source = newSource;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__SOURCE, oldSource, newSource);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSource(NodeInstanceBase newSource) {
-		if (newSource != source) {
-			NotificationChain msgs = null;
-			if (source != null)
-				msgs = ((InternalEObject)source).eInverseRemove(this, opmetaPackage.NODE_INSTANCE_BASE__OUTGOING_LINKS, NodeInstanceBase.class, msgs);
-			if (newSource != null)
-				msgs = ((InternalEObject)newSource).eInverseAdd(this, opmetaPackage.NODE_INSTANCE_BASE__OUTGOING_LINKS, NodeInstanceBase.class, msgs);
-			msgs = basicSetSource(newSource, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__SOURCE, newSource, newSource));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__SOURCE, oldSource, source));
 	}
 
 	/**
@@ -163,69 +141,11 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetTarget(NodeInstanceBase newTarget, NotificationChain msgs) {
+	public void setTarget(NodeInstanceBase newTarget) {
 		NodeInstanceBase oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__TARGET, oldTarget, newTarget);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTarget(NodeInstanceBase newTarget) {
-		if (newTarget != target) {
-			NotificationChain msgs = null;
-			if (target != null)
-				msgs = ((InternalEObject)target).eInverseRemove(this, opmetaPackage.NODE_INSTANCE_BASE__INCOMING_LINKS, NodeInstanceBase.class, msgs);
-			if (newTarget != null)
-				msgs = ((InternalEObject)newTarget).eInverseAdd(this, opmetaPackage.NODE_INSTANCE_BASE__INCOMING_LINKS, NodeInstanceBase.class, msgs);
-			msgs = basicSetTarget(newTarget, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__TARGET, newTarget, newTarget));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case opmetaPackage.LINK_INSTANCE_BASE__SOURCE:
-				if (source != null)
-					msgs = ((InternalEObject)source).eInverseRemove(this, opmetaPackage.NODE_INSTANCE_BASE__OUTGOING_LINKS, NodeInstanceBase.class, msgs);
-				return basicSetSource((NodeInstanceBase)otherEnd, msgs);
-			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
-				if (target != null)
-					msgs = ((InternalEObject)target).eInverseRemove(this, opmetaPackage.NODE_INSTANCE_BASE__INCOMING_LINKS, NodeInstanceBase.class, msgs);
-				return basicSetTarget((NodeInstanceBase)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case opmetaPackage.LINK_INSTANCE_BASE__SOURCE:
-				return basicSetSource(null, msgs);
-			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
-				return basicSetTarget(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.LINK_INSTANCE_BASE__TARGET, oldTarget, target));
 	}
 
 	/**

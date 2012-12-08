@@ -1,27 +1,30 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 
-import java.awt.Rectangle;
+
+import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmeta.model.NodeInstanceBase;
 
 public class OpmodelNodeInstanceImpl extends OpmodelInstanceImpl implements
 		OpmodelNodeInstance {
 
-	public OpmodelNodeInstanceImpl(TypeDescriptor descriptor) {
+	protected NodeInstanceBase nodeInstanceBase;
+	
+	public OpmodelNodeInstanceImpl(TypeDescriptor descriptor, NodeInstanceBase instanceBase) {
 		super(descriptor);
+		nodeInstanceBase = instanceBase;
 	}
-
-	Rectangle constraints;
 	
 	@Override
 	public void setConstraints(Rectangle constraints) {
-		this.constraints = constraints;
+		nodeInstanceBase.setConstraints(constraints);
 	}
 
 	@Override
 	public Rectangle getConstraints() { 
-		return constraints;
+		return nodeInstanceBase.getConstraints();
 	}
 
 }
