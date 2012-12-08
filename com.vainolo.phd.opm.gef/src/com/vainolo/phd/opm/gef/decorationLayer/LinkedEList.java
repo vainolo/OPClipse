@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import org.eclipse.emf.common.util.EList;
 
 @SuppressWarnings("serial")
-class MyEList<E> extends LinkedList<E> implements EList<E> {
+class LinkedEList<E> extends LinkedList<E> implements EList<E> {
 
 	@Override
 	public void move(int newPosition, E object) {

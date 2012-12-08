@@ -36,7 +36,7 @@ public class OPMStructuralLinkAggregator implements OPMNode{
 	private DecorationsBank decorationsBank;
 	protected OPMStructuralLinkKind kind;
 	private final Dimension dimension = new Dimension(15,15);
-	MyEList<Adapter> eAdapters = new MyEList<>();
+	LinkedEList<Adapter> eAdapters = new LinkedEList<>();
 	HashSet<OPMStructuralLink> originals = new HashSet<>();
 	HashSet<OPMLink> incomingLinks = new HashSet<>();
 	HashSet<OPMLink> outgoingLinks = new HashSet<>();

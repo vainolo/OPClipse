@@ -3,6 +3,7 @@ package com.vainolo.phd.opmeta.gef.editor;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gef.ui.actions.ToggleGridAction;
 import org.eclipse.gef.ui.actions.ToggleSnapToGeometryAction;
@@ -17,6 +18,7 @@ import org.eclipse.ui.PartInitException;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opmeta.gef.editor.parts.OPModelEditPartFactory;
+import com.vainolo.phd.opmeta.gef.editor.policy.OPContainerXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
 import com.vainolo.phd.opmeta.interpreter.OpmodelInterpretationCreator;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
@@ -94,6 +96,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	  protected void initializeGraphicalViewer() {
 	    super.initializeGraphicalViewer();
 	    getGraphicalViewer().setContents(rootContainer);
+	    getGraphicalViewer().getContents().installEditPolicy(EditPolicy.LAYOUT_ROLE, new OPContainerXYLayoutEditPolicy());
 	    getGraphicalControl().setFont(new Font(null, "Consolas", 10, SWT.NORMAL));
 	  }
 	

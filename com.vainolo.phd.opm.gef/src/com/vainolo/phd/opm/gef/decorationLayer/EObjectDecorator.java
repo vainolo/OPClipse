@@ -112,7 +112,7 @@ public class EObjectDecorator<T extends EObject> implements EObject, OPMDecorate
 		for (Adapter adapter:eAdapters) adapter.notifyChanged(notification);
 	}
 	
-	private MyEList<Adapter> eAdapters = new MyEList<>();
+	private LinkedEList<Adapter> eAdapters = new LinkedEList<>();
 	
 	@Override
 	public EList<Adapter> eAdapters(){

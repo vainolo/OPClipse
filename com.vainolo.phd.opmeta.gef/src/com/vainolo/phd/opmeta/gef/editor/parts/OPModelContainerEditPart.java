@@ -7,10 +7,12 @@ import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.FreeformLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
-import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.CompoundSnapToHelper;
+import org.eclipse.gef.SnapToGeometry;
+import org.eclipse.gef.SnapToGrid;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
-import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
@@ -27,7 +29,6 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
 	@Override
 	protected void createEditPolicies() {
-		//installEditPolicy(EditPolicy.LAYOUT_ROLE, new XYLayoutEditPolicy());
 		installEditPolicy("Snap Feedback", new SnapFeedbackPolicy());
 	}
 
@@ -37,4 +38,29 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>(continer.getNodes());
 	    return nodes;
 	}
+	
+	/**
+	 * Currently the class only adapts to create a {@link SnapToHelper} when the editor is in snapping mode (either to
+	 * grid or to shapes).
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Object getAdapter(Class key) {
+		if(key == SnapToHelper.class) {
+			List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();
+			if(Boolean.TRUE.equals(getViewer().getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED))) {
+				helpers.add(new SnapToGeometry(this));
+			}
+			if(Boolean.TRUE.equals(getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED))) {
+				helpers.add(new SnapToGrid(this));
+			}
+			if(helpers.size() == 0) {
+				return null;
+			} else {
+				return new CompoundSnapToHelper(helpers.toArray(new SnapToHelper[0]));
+			}
+	    }
+	    return super.getAdapter(key);
+	}
+	
 }

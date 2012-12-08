@@ -131,7 +131,7 @@ public class OPMSimpleLink implements OPMLink{
 		eNotify(new NotificationImpl(NotificationImpl.PRIMITIVE_TYPE_OBJECT,old,value));
 	}
 
-	private MyEList<Adapter> adapters = new MyEList<>();
+	private LinkedEList<Adapter> adapters = new LinkedEList<>();
 	
 	@Override
 	public EList<Adapter> eAdapters() {
