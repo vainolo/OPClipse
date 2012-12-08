@@ -7,7 +7,7 @@ import org.eclipse.gef.palette.SelectionToolEntry;
 
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.editor.tool.CreationAndDirectEditTool;
-import com.vainolo.phd.opmeta.gef.factory.OpmodelCreationFactory;
+import com.vainolo.phd.opmeta.gef.editor.factory.OpmodelCreationFactory;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelFactory;

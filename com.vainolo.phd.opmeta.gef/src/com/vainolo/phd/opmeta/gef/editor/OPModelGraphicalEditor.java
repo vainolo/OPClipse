@@ -16,7 +16,7 @@ import org.eclipse.ui.PartInitException;
 
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
-import com.vainolo.phd.opmeta.gef.parts.OPModelEditPartFactory;
+import com.vainolo.phd.opmeta.gef.editor.parts.OPModelEditPartFactory;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
 import com.vainolo.phd.opmeta.interpreter.OpmodelInterpretationCreator;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;

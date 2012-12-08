@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.parts;
+package com.vainolo.phd.opmeta.gef.editor.parts;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
 //import org.eclipse.draw2d.Connection;

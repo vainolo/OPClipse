@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.figure;
+package com.vainolo.phd.opmeta.gef.editor.figure;
 
 import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ColorConstants;

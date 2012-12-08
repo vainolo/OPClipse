@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.parts;
+package com.vainolo.phd.opmeta.gef.editor.parts;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.vainolo.phd.opmeta.gef.figure.OPModelNodeOnlyFigure;
+import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeOnlyFigure;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
