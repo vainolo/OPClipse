@@ -27,7 +27,7 @@ import java.util.List;
  */
 public interface ContainerInstanceBase extends InstanceBase {
 	/**
-	 * Returns the value of the '<em><b>Nodes</b></em>' reference list.
+	 * Returns the value of the '<em><b>Nodes</b></em>' containment reference list.
 	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.NodeInstanceBase}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -35,9 +35,9 @@ public interface ContainerInstanceBase extends InstanceBase {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Nodes</em>' reference list.
+	 * @return the value of the '<em>Nodes</em>' containment reference list.
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getContainerInstanceBase_Nodes()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	List<NodeInstanceBase> getNodes();

@@ -94,7 +94,7 @@ public class OpmodelInterpretationCreator {
 		OpmodelNodeInstance source = nodeMap.get(linkBase.getSource());
 		OpmodelNodeInstance target = nodeMap.get(linkBase.getTarget());
 		if (source == null || null==target){
-			System.out.println("Link " + linkBase.getId() + "Is missing source or target.");
+			System.out.println("Link " + linkBase.getId() + " Is missing source or target.");
 			return null;
 		}
 		link.setSource(source);

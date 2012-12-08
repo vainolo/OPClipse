@@ -63,7 +63,7 @@ public interface InstanceBase extends EObject {
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(long)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getInstanceBase_Id()
-	 * @model
+	 * @model id="true"
 	 * @generated
 	 */
 	long getId();

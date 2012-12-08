@@ -1,5 +1,7 @@
 package com.vainolo.phd.opmeta.gef.parts;
 
+import java.util.List;
+
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.ConnectionEditPart;
@@ -9,6 +11,7 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
 import com.vainolo.phd.opmeta.gef.figure.OPModelNodeOnlyFigure;
+import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
 public class OPModelNodeEditPart extends AbstractGraphicalEditPart
@@ -36,6 +39,18 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 		return ((OPModelNodeOnlyFigure)getFigure()).getTargetConnectionAnchor();
 	}
 
+	@Override
+	protected List<OpmodelLinkInstance> getModelSourceConnections() {
+		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
+		return model.getOutgoingLinks();
+	} 
+	
+	@Override
+	protected List<OpmodelLinkInstance> getModelTargetConnections() {
+		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
+		return model.getIncomingLinks();
+	}
+	
 	@Override
 	protected IFigure createFigure() {
 		return new OPModelNodeOnlyFigure();

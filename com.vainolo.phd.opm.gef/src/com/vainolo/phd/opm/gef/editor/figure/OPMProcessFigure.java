@@ -13,6 +13,8 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
+
 public class OPMProcessFigure extends OPMThingFigure {
   private final Ellipse ellipse;
   private ConnectionAnchor connectionAnchor;

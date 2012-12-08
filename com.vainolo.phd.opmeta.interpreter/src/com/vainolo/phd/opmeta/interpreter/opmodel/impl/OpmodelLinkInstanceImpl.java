@@ -19,7 +19,13 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 	
 	@Override
 	public void setSource(OpmodelNodeInstance source) {
+		if (this.source != null){
+			this.source.getOutgoingLinks().remove(this);
+		}
 		this.source = source;
+		if (this.source != null){
+			this.source.getOutgoingLinks().add(this);
+		}
 	}
 
 	@Override
@@ -31,7 +37,13 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 	
 	@Override
 	public void setTarget(OpmodelNodeInstance target) {
-		this.target =  target;
+		if (this.target != null){
+			this.target.getIncomingLinks().remove(this);
+		}
+		this.target = target;
+		if (this.target != null){
+			this.target.getIncomingLinks().add(this);
+		}
 	}
 
 	@Override

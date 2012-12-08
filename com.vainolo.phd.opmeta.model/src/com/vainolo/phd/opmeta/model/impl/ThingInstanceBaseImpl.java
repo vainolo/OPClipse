@@ -15,11 +15,15 @@ import com.vainolo.phd.opmeta.model.opmetaPackage;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,7 +41,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements ThingInstanceBase {
 	/**
-	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' reference list.
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNodes()
@@ -82,7 +86,7 @@ public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements Thing
 	 */
 	public List<NodeInstanceBase> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectResolvingEList<NodeInstanceBase>(NodeInstanceBase.class, this, opmetaPackage.THING_INSTANCE_BASE__NODES);
+			nodes = new EObjectContainmentEList<NodeInstanceBase>(NodeInstanceBase.class, this, opmetaPackage.THING_INSTANCE_BASE__NODES);
 		}
 		return nodes;
 	}
@@ -97,6 +101,20 @@ public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements Thing
 			links = new EObjectResolvingEList<LinkInstanceBase>(LinkInstanceBase.class, this, opmetaPackage.THING_INSTANCE_BASE__LINKS);
 		}
 		return links;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case opmetaPackage.THING_INSTANCE_BASE__NODES:
+				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

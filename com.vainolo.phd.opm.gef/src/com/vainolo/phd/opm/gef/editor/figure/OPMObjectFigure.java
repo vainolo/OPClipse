@@ -13,6 +13,8 @@ import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
+
 public class OPMObjectFigure extends OPMThingFigure {
   private final RectangleFigure rectangle;
   private ConnectionAnchor connectionAnchor;

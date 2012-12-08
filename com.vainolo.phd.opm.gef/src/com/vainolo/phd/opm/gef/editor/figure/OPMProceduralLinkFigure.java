@@ -14,6 +14,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
 import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 public class OPMProceduralLinkFigure extends PolylineConnection {

@@ -36,7 +36,7 @@ public interface LinkInstanceBase extends InstanceBase {
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(NodeInstanceBase)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getLinkInstanceBase_Source()
-	 * @model
+	 * @model keys="Id"
 	 * @generated
 	 */
 	NodeInstanceBase getSource();
@@ -62,7 +62,7 @@ public interface LinkInstanceBase extends InstanceBase {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(NodeInstanceBase)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getLinkInstanceBase_Target()
-	 * @model
+	 * @model keys="Id"
 	 * @generated
 	 */
 	NodeInstanceBase getTarget();

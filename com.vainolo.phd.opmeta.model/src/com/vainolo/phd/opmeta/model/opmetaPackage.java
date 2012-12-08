@@ -146,7 +146,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_MODEL = 3;
 
 	/**
-	 * The feature id for the '<em><b>Meta Model</b></em>' reference.
+	 * The feature id for the '<em><b>Meta Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -155,7 +155,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_MODEL__META_MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
+	 * The feature id for the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -302,7 +302,7 @@ public interface opmetaPackage extends EPackage {
 	int CONTAINER_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -430,7 +430,7 @@ public interface opmetaPackage extends EPackage {
 	int THING_INSTANCE_BASE__NAME = NODE_INSTANCE_BASE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -529,10 +529,10 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Meta Model</em>'.
+	 * @return the meta object for the containment reference '<em>Meta Model</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPModel#getMetaModel()
 	 * @see #getOPModel()
 	 * @generated
@@ -540,10 +540,10 @@ public interface opmetaPackage extends EPackage {
 	EReference getOPModel_MetaModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Container</em>'.
+	 * @return the meta object for the containment reference '<em>Container</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPModel#getContainer()
 	 * @see #getOPModel()
 	 * @generated
@@ -636,10 +636,10 @@ public interface opmetaPackage extends EPackage {
 	EClass getContainerInstanceBase();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
 	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes()
 	 * @see #getContainerInstanceBase()
 	 * @generated
@@ -789,7 +789,7 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_MODEL = eINSTANCE.getOPModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Meta Model</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Meta Model</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -797,7 +797,7 @@ public interface opmetaPackage extends EPackage {
 		EReference OP_MODEL__META_MODEL = eINSTANCE.getOPModel_MetaModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -875,7 +875,7 @@ public interface opmetaPackage extends EPackage {
 		EClass CONTAINER_INSTANCE_BASE = eINSTANCE.getContainerInstanceBase();
 
 		/**
-		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

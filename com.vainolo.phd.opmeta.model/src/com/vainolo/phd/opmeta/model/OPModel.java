@@ -28,52 +28,52 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OPModel extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Meta Model</b></em>' reference.
+	 * Returns the value of the '<em><b>Meta Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Meta Model</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Meta Model</em>' reference.
+	 * @return the value of the '<em>Meta Model</em>' containment reference.
 	 * @see #setMetaModel(OPMetaModelDiagram)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPModel_MetaModel()
-	 * @model
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	OPMetaModelDiagram getMetaModel();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}' reference.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Meta Model</em>' reference.
+	 * @param value the new value of the '<em>Meta Model</em>' containment reference.
 	 * @see #getMetaModel()
 	 * @generated
 	 */
 	void setMetaModel(OPMetaModelDiagram value);
 
 	/**
-	 * Returns the value of the '<em><b>Container</b></em>' reference.
+	 * Returns the value of the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Container</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Container</em>' reference.
+	 * @return the value of the '<em>Container</em>' containment reference.
 	 * @see #setContainer(ContainerInstanceBase)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPModel_Container()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ContainerInstanceBase getContainer();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}' reference.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Container</em>' reference.
+	 * @param value the new value of the '<em>Container</em>' containment reference.
 	 * @see #getContainer()
 	 * @generated
 	 */

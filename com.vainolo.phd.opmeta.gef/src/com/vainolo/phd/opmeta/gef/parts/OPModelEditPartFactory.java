@@ -20,7 +20,7 @@ public class OPModelEditPartFactory implements EditPartFactory{
 		} else if (model instanceof OpmodelContainerInstance){
 			part = new OPModelContainerEditPart();
 		} else if (model instanceof OpmodelLinkInstance){
-			
+			part = new OPModelLinkEditPart();
 		}
 		
 		if (part!=null) part.setModel(model);
