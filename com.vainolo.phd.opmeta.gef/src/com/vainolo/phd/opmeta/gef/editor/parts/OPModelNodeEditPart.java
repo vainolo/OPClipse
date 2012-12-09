@@ -1,5 +1,6 @@
 package com.vainolo.phd.opmeta.gef.editor.parts;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -42,13 +43,13 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	@Override
 	protected List<OpmodelLinkInstance> getModelSourceConnections() {
 		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
-		return model.getOutgoingLinks();
+		return new ArrayList<OpmodelLinkInstance>(model.getOutgoingLinks());
 	} 
 	
 	@Override
 	protected List<OpmodelLinkInstance> getModelTargetConnections() {
 		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
-		return model.getIncomingLinks();
+		return new ArrayList<OpmodelLinkInstance>(model.getIncomingLinks());
 	}
 	
 	@Override

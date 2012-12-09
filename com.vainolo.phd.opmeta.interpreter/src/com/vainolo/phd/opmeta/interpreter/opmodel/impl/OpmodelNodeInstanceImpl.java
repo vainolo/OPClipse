@@ -20,7 +20,7 @@ public class OpmodelNodeInstanceImpl extends OpmodelInstanceImpl implements
 	
 	
 	public OpmodelNodeInstanceImpl(TypeDescriptor descriptor, NodeInstanceBase instanceBase) {
-		super(descriptor);
+		super(descriptor, instanceBase);
 		nodeInstanceBase = instanceBase;
 		incomingLinks = new LinkedList<>();
 		outgoingLinks = new LinkedList<>();

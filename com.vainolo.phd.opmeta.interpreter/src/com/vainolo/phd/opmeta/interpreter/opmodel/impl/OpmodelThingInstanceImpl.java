@@ -11,11 +11,11 @@ import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 public class OpmodelThingInstanceImpl extends OpmodelNodeInstanceImpl implements
 		OpmodelThingInstance {
 
-	protected ThingInstanceBase instanceBase;
+	protected ThingInstanceBase thingInstanceBase;
 	
 	public OpmodelThingInstanceImpl(TypeDescriptor descriptor, ThingInstanceBase instanceBase) {
 		super(descriptor,instanceBase);
-		this.instanceBase = instanceBase;
+		this.thingInstanceBase = instanceBase;
 	}
 
 	private List<OpmodelNodeInstance> nodes;

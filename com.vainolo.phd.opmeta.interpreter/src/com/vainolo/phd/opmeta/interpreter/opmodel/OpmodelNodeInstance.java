@@ -1,6 +1,6 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel;
 
-import java.util.List;
+import java.util.Collection;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
@@ -10,7 +10,7 @@ public interface OpmodelNodeInstance extends OpmodelInstance {
 	
 	public Rectangle getConstraints();
 	
-	public List<OpmodelLinkInstance> getIncomingLinks();
+	public Collection<OpmodelLinkInstance> getIncomingLinks();
 	
-	public List<OpmodelLinkInstance> getOutgoingLinks();
+	public Collection<OpmodelLinkInstance> getOutgoingLinks();
 }

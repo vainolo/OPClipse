@@ -504,7 +504,7 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 
 		initEClass(containerInstanceBaseEClass, ContainerInstanceBase.class, "ContainerInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContainerInstanceBase_Nodes(), this.getNodeInstanceBase(), null, "nodes", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainerInstanceBase_Links(), this.getLinkInstanceBase(), null, "links", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainerInstanceBase_Links(), this.getLinkInstanceBase(), null, "links", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(linkInstanceBaseEClass, LinkInstanceBase.class, "LinkInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLinkInstanceBase_Source(), this.getNodeInstanceBase(), null, "source", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -51,7 +51,7 @@ public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements Thing
 	protected EList<NodeInstanceBase> nodes;
 
 	/**
-	 * The cached value of the '{@link #getLinks() <em>Links</em>}' reference list.
+	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLinks()
@@ -98,7 +98,7 @@ public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements Thing
 	 */
 	public List<LinkInstanceBase> getLinks() {
 		if (links == null) {
-			links = new EObjectResolvingEList<LinkInstanceBase>(LinkInstanceBase.class, this, opmetaPackage.THING_INSTANCE_BASE__LINKS);
+			links = new EObjectContainmentEList<LinkInstanceBase>(LinkInstanceBase.class, this, opmetaPackage.THING_INSTANCE_BASE__LINKS);
 		}
 		return links;
 	}
@@ -113,6 +113,8 @@ public class ThingInstanceBaseImpl extends NodeInstanceBaseImpl implements Thing
 		switch (featureID) {
 			case opmetaPackage.THING_INSTANCE_BASE__NODES:
 				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case opmetaPackage.THING_INSTANCE_BASE__LINKS:
+				return ((InternalEList<?>)getLinks()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

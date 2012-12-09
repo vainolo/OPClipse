@@ -1,5 +1,7 @@
 package com.vainolo.phd.opmeta.gef.editor;
 
+import java.util.EventObject;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
@@ -11,6 +13,7 @@ import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
@@ -102,7 +105,23 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	
 	@Override
 	public void doSave(IProgressMonitor monitor) {
-		// TODO Auto-generated method stub
+		try {
+			opmodel.setNextId(opmIdManager.getNextId());
+			opmodel.eResource().save(null);
+			opmmFile.touch(null);
+			getCommandStack().markSaveLocation();
+	    } catch(Exception e) {
+	    	throw new RuntimeException(e);
+	    }
 		
 	}
+	
+	/**
+	   * Fire a {@link IEditorPart#PROP_DIRTY} property change and call super implementation.
+	   */
+	  @Override
+	  public void commandStackChanged(EventObject event) {
+	    firePropertyChange(PROP_DIRTY);
+	    super.commandStackChanged(event);
+	  }
 }

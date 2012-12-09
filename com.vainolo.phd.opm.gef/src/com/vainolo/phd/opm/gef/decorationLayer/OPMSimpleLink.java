@@ -22,6 +22,7 @@ import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
+import com.vainolo.phd.opm.model.util.LinkedEList;
 
 public class OPMSimpleLink implements OPMLink{
 	private OPMStructuralLink link;

@@ -11,7 +11,7 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 	protected LinkInstanceBase linkInstanceBase;
 	
 	public OpmodelLinkInstanceImpl(TypeDescriptor descriptor, LinkInstanceBase instanceBase) {
-		super(descriptor);
+		super(descriptor, instanceBase);
 		linkInstanceBase = instanceBase;
 	}
 

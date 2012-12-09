@@ -1,11 +1,11 @@
-package com.vainolo.phd.opm.gef.decorationLayer;
+package com.vainolo.phd.opm.model.util;
 
 import java.util.LinkedList;
 
 import org.eclipse.emf.common.util.EList;
 
 @SuppressWarnings("serial")
-class LinkedEList<E> extends LinkedList<E> implements EList<E> {
+public class LinkedEList<E> extends LinkedList<E> implements EList<E> {
 
 	@Override
 	public void move(int newPosition, E object) {

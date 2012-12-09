@@ -7,6 +7,9 @@ import org.eclipse.draw2d.FreeformLayer;
 import org.eclipse.draw2d.FreeformLayout;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.gef.CompoundSnapToHelper;
 import org.eclipse.gef.SnapToGeometry;
 import org.eclipse.gef.SnapToGrid;
@@ -14,11 +17,19 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
+import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
 public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
+	private OPModelContainerAdapter adapter;
+	
+	public OPModelContainerEditPart(){
+		super();
+		adapter = new OPModelContainerAdapter();
+	}
+	
 	@Override
 	protected IFigure createFigure() {
 		FreeformLayer layer = new FreeformLayer();
@@ -34,10 +45,29 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
 	@Override
 	protected List<OpmodelNodeInstance> getModelChildren() {
-		OpmodelContainerInstance continer = (OpmodelContainerInstance) getModel();
-	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>(continer.getNodes());
+		OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
+	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>(container.getNodes());
 	    return nodes;
 	}
+	
+	@Override
+	  public void activate() {
+	    if(!isActive()) {
+	    	OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
+	    	container.eAdapters().add(adapter);
+	    }
+	    super.activate();
+	  }
+
+	  @Override
+	  public void deactivate() {
+	    if(isActive()) {
+	    	OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
+	    	container.eAdapters().remove(adapter);
+	    }
+	    super.deactivate();
+	  }
+
 	
 	/**
 	 * Currently the class only adapts to create a {@link SnapToHelper} when the editor is in snapping mode (either to
@@ -63,4 +93,26 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	    return super.getAdapter(key);
 	}
 	
+	public class OPModelContainerAdapter implements Adapter {
+
+	    @Override
+	    public void notifyChanged(Notification notification) {
+	      refreshChildren();
+	    }
+
+	    @Override
+	    public Notifier getTarget() {
+	      return (OPMObjectProcessDiagram) getModel();
+	    }
+
+	    @Override
+	    public void setTarget(Notifier newTarget) {
+	      // Do nothing.
+	    }
+
+	    @Override
+	    public boolean isAdapterForType(Object type) {
+	      return type.equals(OPMObjectProcessDiagram.class);
+	    }
+	}
 }

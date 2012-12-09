@@ -311,7 +311,7 @@ public interface opmetaPackage extends EPackage {
 	int CONTAINER_INSTANCE_BASE__NODES = INSTANCE_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -439,7 +439,7 @@ public interface opmetaPackage extends EPackage {
 	int THING_INSTANCE_BASE__NODES = NODE_INSTANCE_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -647,10 +647,10 @@ public interface opmetaPackage extends EPackage {
 	EReference getContainerInstanceBase_Nodes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks <em>Links</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks <em>Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Links</em>'.
+	 * @return the meta object for the containment reference list '<em>Links</em>'.
 	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks()
 	 * @see #getContainerInstanceBase()
 	 * @generated
@@ -883,7 +883,7 @@ public interface opmetaPackage extends EPackage {
 		EReference CONTAINER_INSTANCE_BASE__NODES = eINSTANCE.getContainerInstanceBase_Nodes();
 
 		/**
-		 * The meta object literal for the '<em><b>Links</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

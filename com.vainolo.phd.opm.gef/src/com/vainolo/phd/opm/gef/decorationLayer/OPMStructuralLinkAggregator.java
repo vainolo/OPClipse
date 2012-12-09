@@ -29,6 +29,7 @@ import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.VerticalAlignment;
+import com.vainolo.phd.opm.model.util.LinkedEList;
 import com.vainolo.phd.opm.utilities.OPMDecorated;
 
 public class OPMStructuralLinkAggregator implements OPMNode{

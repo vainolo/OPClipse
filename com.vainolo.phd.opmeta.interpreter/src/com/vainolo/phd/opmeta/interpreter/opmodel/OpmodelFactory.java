@@ -89,21 +89,29 @@ public class OpmodelFactory {
 		if (descriptor.isAbstract()) return null;
 		
 		OpmodelInstance instance=null; 
-		if (interpretation.getLinks().contains(descriptor)) 
-			instance = new OpmodelLinkInstanceImpl(descriptor,opmetaFactory.eINSTANCE.createLinkInstanceBase());
-		else if (interpretation.isNode(descriptor.getName()))
-			{
-				if (interpretation.isContainer(descriptor.getName()))
-					instance = new OpmodelThingInstanceImpl(descriptor,opmetaFactory.eINSTANCE.createThingInstanceBase()); // TODO : re-think this shit!
-				else
-					instance = new OpmodelNodeInstanceImpl(descriptor,opmetaFactory.eINSTANCE.createNodeInstanceBase());
+		if (interpretation.getLinks().contains(descriptor)) {
+			LinkInstanceBase instanceBase = opmetaFactory.eINSTANCE.createLinkInstanceBase();
+			instanceBase.setTypeName(descriptor.getName());
+			instance = new OpmodelLinkInstanceImpl(descriptor,instanceBase);
+		} else if (interpretation.isNode(descriptor.getName()))	{
+			if (interpretation.isContainer(descriptor.getName())){
+				ThingInstanceBase instanceBase = opmetaFactory.eINSTANCE.createThingInstanceBase();// TODO : re-think this shit!
+				instanceBase.setTypeName(descriptor.getName());
+				instance = new OpmodelThingInstanceImpl(descriptor,instanceBase);
+			} else {
+				NodeInstanceBase instanceBase = opmetaFactory.eINSTANCE.createNodeInstanceBase();
+				instanceBase.setTypeName(descriptor.getName());
+				instance = new OpmodelNodeInstanceImpl(descriptor,instanceBase);
 			}
-		else if (interpretation.getContainers().contains(descriptor))
-			instance = new OpmodelContainerInstanceImpl(descriptor,opmetaFactory.eINSTANCE.createContainerInstanceBase());
+		} else if (interpretation.getContainers().contains(descriptor)){
+			ContainerInstanceBase instanceBase = opmetaFactory.eINSTANCE.createContainerInstanceBase();
+			instanceBase.setTypeName(descriptor.getName());
+			instance = new OpmodelContainerInstanceImpl(descriptor,instanceBase);
+		}
 		
 		return instance;
 	}
-
+	
 	public Object getInstanceType(TypeDescriptor descriptor){
 		if (interpretation.getLinks().contains(descriptor)) return OpmodelLinkInstance.class; 
 		else if (interpretation.isNode(descriptor.getName()))
