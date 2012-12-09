@@ -52,7 +52,7 @@ public class OPModelNodeCreateCommand extends Command {
 	@Override
 	public void execute() {
 		node.setConstraints(constraints);
-		container.getNodes().add(node);
+		container.addNode(node);
 	}
 	
 	/**
@@ -60,6 +60,6 @@ public class OPModelNodeCreateCommand extends Command {
 	 */
 	@Override
 	public void undo() {
-		container.getNodes().remove(node);
+		container.removeNode(node);
 	}
 }

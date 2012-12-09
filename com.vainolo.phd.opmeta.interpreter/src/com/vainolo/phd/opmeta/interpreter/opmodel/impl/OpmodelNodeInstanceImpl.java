@@ -16,8 +16,7 @@ public class OpmodelNodeInstanceImpl extends OpmodelInstanceImpl implements
 
 	protected NodeInstanceBase nodeInstanceBase;
 	private LinkedList<OpmodelLinkInstance> incomingLinks;
-	private LinkedList<OpmodelLinkInstance> outgoingLinks;
-	
+	private LinkedList<OpmodelLinkInstance> outgoingLinks;	
 	
 	public OpmodelNodeInstanceImpl(TypeDescriptor descriptor, NodeInstanceBase instanceBase) {
 		super(descriptor, instanceBase);
@@ -43,5 +42,5 @@ public class OpmodelNodeInstanceImpl extends OpmodelInstanceImpl implements
 	public List<OpmodelLinkInstance> getOutgoingLinks(){
 		return outgoingLinks;
 	}
-	
+
 }

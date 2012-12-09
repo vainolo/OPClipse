@@ -1,72 +1,74 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 
-import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.NotificationImpl;
 
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 import com.vainolo.phd.opmeta.model.ContainerInstanceBase;
-import com.vainolo.phd.opmeta.model.util.NotifiableLinkedCollection;
 
 public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		OpmodelContainerInstance {
 
+	private final static int NotifyEventId=NotificationImpl.EVENT_TYPE_COUNT+1;
 	private ContainerInstanceBase containerInstanceBase;
 	
 	public OpmodelContainerInstanceImpl(TypeDescriptor descriptor, ContainerInstanceBase instanceBase) {
 		super(descriptor, instanceBase);
 		containerInstanceBase = instanceBase;
-		nodes = new NotifiableLinkedCollection<>();
-		nodes.eAdapters().add(new containerAdapter(this));
-		links = new NotifiableLinkedCollection<>();
-		links.eAdapters().add(new containerAdapter(this));
+		nodes = new LinkedList<>();
+		
+		links = new LinkedList<>();
+		
 	}
 
-	private NotifiableLinkedCollection<OpmodelNodeInstance> nodes;
+	private List<OpmodelNodeInstance> nodes;
 	
 	@Override
-	public Collection<OpmodelNodeInstance> getNodes() {
+	public Iterable<OpmodelNodeInstance> getNodes() {
 		return nodes;
 	}
 
-	private NotifiableLinkedCollection<OpmodelLinkInstance> links;
+	public void addNode(OpmodelNodeInstance node){
+		nodes.add(node);
+		if (node instanceof OpmodelNodeInstanceImpl){
+			containerInstanceBase.getNodes().add(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
+		}
+		eNotify(new NotificationImpl(NotifyEventId, null, null));
+	}
+	
+	public void removeNode(OpmodelNodeInstance node){
+		nodes.remove(node);
+		if (node instanceof OpmodelNodeInstanceImpl){
+			containerInstanceBase.getNodes().remove(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
+		}
+		eNotify(new NotificationImpl(NotifyEventId, null, null));
+	}
+	
+	private LinkedList<OpmodelLinkInstance> links;
 	
 	@Override
-	public Collection<OpmodelLinkInstance> getLinks() {
+	public Iterable<OpmodelLinkInstance> getLinks() {
 		return links;
 	}
 
-	private class containerAdapter implements Adapter{
-
-		private Notifier notifier;
-		public containerAdapter(Notifier notifier){
-			this.notifier = notifier;
+	public void addLink(OpmodelLinkInstance link){
+		links.add(link);
+		if (link instanceof OpmodelLinkInstanceImpl){
+			containerInstanceBase.getLinks().add(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
 		}
-		
-		@Override
-		public void notifyChanged(Notification notification) {
-			eNotify(notification);
-		}
-
-		@Override
-		public Notifier getTarget() {
-			return notifier;
-		}
-
-		@Override
-		public void setTarget(Notifier newTarget) {
-		}
-
-		@Override
-		public boolean isAdapterForType(Object type) {
-			return OpmodelContainerInstanceImpl.class.equals(type);
-		}
-		
+		eNotify(new NotificationImpl(NotifyEventId, null, null));
 	}
 	
+	public void removeLink(OpmodelLinkInstance link){
+		links.remove(link);
+		if (link instanceof OpmodelLinkInstanceImpl){
+			containerInstanceBase.getLinks().remove(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
+		}
+		eNotify(new NotificationImpl(NotifyEventId, null, null));
+	}
 }

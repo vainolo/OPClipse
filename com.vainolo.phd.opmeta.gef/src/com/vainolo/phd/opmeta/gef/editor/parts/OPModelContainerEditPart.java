@@ -46,7 +46,10 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected List<OpmodelNodeInstance> getModelChildren() {
 		OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
-	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>(container.getNodes());
+	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>();
+	    for(OpmodelNodeInstance item:container.getNodes()){
+	    	nodes.add(item);
+	    }
 	    return nodes;
 	}
 	

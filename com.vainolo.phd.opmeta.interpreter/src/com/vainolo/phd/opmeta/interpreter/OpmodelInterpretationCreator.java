@@ -70,14 +70,14 @@ public class OpmodelInterpretationCreator {
 	private void fillContainer(ContainerInstanceBase baseContainer,	OpmodelContainerInstance container) {
 		for (NodeInstanceBase nodeBase:baseContainer.getNodes()){
 			OpmodelNodeInstance node =  Create(nodeBase);
-			container.getNodes().add(node);
+			container.addNode(node);
 			nodeMap.put(nodeBase, node);
 		}
 		
 		for (LinkInstanceBase linkBase:baseContainer.getLinks()){
 			OpmodelLinkInstance link = Create(linkBase);
 			if (link!=null)
-				container.getLinks().add(link);
+				container.addLink(link);
 		}
 	}
 
