@@ -6,6 +6,7 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -13,17 +14,18 @@ import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
 
-public class OPModelNodeOnlyFigure extends Figure{
+public class OPModelNodeRectangleFigure extends Figure{
 	private final RectangleFigure rectangle;
 	  private ConnectionAnchor connectionAnchor;
 	  private final Label nameLabel;
 
-	  public OPModelNodeOnlyFigure() {
+	  public OPModelNodeRectangleFigure() {
 	    super();
 	    setLayoutManager(new XYLayout());
 	    nameLabel = new Label();
-	    //nameLabel.setForegroundColor(ColorConstants.black);
-	    //add(nameLabel);
+	    nameLabel.setForegroundColor(ColorConstants.black);
+	    nameLabel.setTextAlignment(PositionConstants.MIDDLE);
+	    add(nameLabel);
 	    rectangle = new RectangleFigure();
 	    rectangle.setForegroundColor(ColorConstants.black);
 	    rectangle.setLineWidth(OPMFigureConstants.entityBorderWidth);
@@ -70,13 +72,20 @@ public class OPModelNodeOnlyFigure extends Figure{
 	  }
 
 	  @Override
+	  protected final boolean useLocalCoordinates() {
+	    return true;
+	  }
+	  
+	  @Override
 	  protected void paintFigure(Graphics graphics) {
 	    Rectangle r = getBounds().getCopy();
-	    ///int insets = OPMFigureConstants.opmNodeInsets;
-	    //setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
+	    int insets = OPMFigureConstants.opmNodeInsets;
+	    setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
+	    
 	    setConstraint(rectangle, new Rectangle(0, 0, r.width(), r.height()));
-	   
 	    rectangle.invalidate();
-	    //getNameLabel().invalidate();
+	    nameLabel.invalidate();
 	  }
+	  
+	  
 }

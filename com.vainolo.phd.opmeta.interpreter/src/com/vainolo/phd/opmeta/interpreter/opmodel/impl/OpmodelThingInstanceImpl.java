@@ -17,9 +17,12 @@ public class OpmodelThingInstanceImpl extends OpmodelNodeInstanceImpl implements
 	public OpmodelThingInstanceImpl(TypeDescriptor descriptor, ThingInstanceBase instanceBase) {
 		super(descriptor,instanceBase);
 		this.thingInstanceBase = instanceBase;
+		nodes = new LinkedList<>();
+		
+		links = new LinkedList<>();
 	}
 
-private List<OpmodelNodeInstance> nodes;
+	private List<OpmodelNodeInstance> nodes;
 	
 	@Override
 	public Iterable<OpmodelNodeInstance> getNodes() {

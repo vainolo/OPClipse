@@ -44,6 +44,7 @@ public class OPModelGraphicalEditorPlatte extends PaletteRoot {
 	private void addNodeTools(){
 		CreationToolEntry entry;
 		for (TypeDescriptor descriptor:interpretation.getNodes()){
+			if (descriptor.isAbstract()) continue;
 			entry = new CreationToolEntry(descriptor.getName(), "Create a new " + descriptor.getName(), 
 					new OpmodelCreationFactory(factory,descriptor,opmIdManager),
 					null, null); // TODO : get images?
@@ -55,6 +56,7 @@ public class OPModelGraphicalEditorPlatte extends PaletteRoot {
 	private void addLinkTools(){
 		CreationToolEntry entry;
 		for (TypeDescriptor descriptor:interpretation.getLinks()){
+			if (descriptor.isAbstract()) continue;
 			entry = new ConnectionCreationToolEntry(descriptor.getName(), "Create a new " + descriptor.getName(), 
 					new OpmodelCreationFactory(factory,descriptor,opmIdManager),
 					null, null); // TODO : get images?

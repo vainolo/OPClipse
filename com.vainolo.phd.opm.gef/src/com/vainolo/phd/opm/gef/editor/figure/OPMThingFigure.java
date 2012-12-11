@@ -69,7 +69,6 @@ public abstract class OPMThingFigure extends Figure implements OPMNodeFigure, OP
   protected void paintFigure(Graphics graphics) {
     super.paintFigure(graphics);
     Rectangle r = getBounds().getCopy();
-    Label label = getNameLabel();
     int insets = OPMFigureConstants.opmNodeInsets;
     setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
     nameLabel.invalidate();

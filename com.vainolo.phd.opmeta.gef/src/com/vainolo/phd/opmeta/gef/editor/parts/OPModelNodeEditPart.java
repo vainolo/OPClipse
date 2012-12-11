@@ -15,7 +15,7 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeOnlyFigure;
+import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeRectangleFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OPModelNodeComponentEditPolicy;
@@ -35,23 +35,23 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(
 			ConnectionEditPart connection) {
-		return ((OPModelNodeOnlyFigure)getFigure()).getSourceConnectionAnchor();
+		return ((OPModelNodeRectangleFigure)getFigure()).getSourceConnectionAnchor();
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(
 			ConnectionEditPart connection) {
-		return ((OPModelNodeOnlyFigure)getFigure()).getTargetConnectionAnchor();
+		return ((OPModelNodeRectangleFigure)getFigure()).getTargetConnectionAnchor();
 	}
 
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		return ((OPModelNodeOnlyFigure)getFigure()).getSourceConnectionAnchor();
+		return ((OPModelNodeRectangleFigure)getFigure()).getSourceConnectionAnchor();
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		return ((OPModelNodeOnlyFigure)getFigure()).getTargetConnectionAnchor();
+		return ((OPModelNodeRectangleFigure)getFigure()).getTargetConnectionAnchor();
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	
 	@Override
 	protected IFigure createFigure() {
-		return new OPModelNodeOnlyFigure();
+		return new OPModelNodeRectangleFigure();
 	}
 
 	@Override
@@ -79,12 +79,16 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	}
 
 	@Override protected void refreshVisuals() {
-		OPModelNodeOnlyFigure figure = (OPModelNodeOnlyFigure)getFigure();
+		OPModelNodeRectangleFigure figure = (OPModelNodeRectangleFigure)getFigure();
 	    OpmodelNodeInstance model = (OpmodelNodeInstance)getModel();
 	    final GraphicalEditPart parent = (GraphicalEditPart) getParent();
 	     
 	    parent.setLayoutConstraint(this, figure, model.getConstraints());
-	    
+	 
+	    figure.getNameLabel().setText(model.getName());
+	    //figure.getNameLabel().setTextAlignment(model.getAlignment().getValue());
+	    figure.getNameLabel().revalidate();
+	    figure.getNameLabel().repaint();
 	  }
 	
 	@Override
