@@ -55,6 +55,7 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		links.add(link);
 		if (link instanceof OpmodelLinkInstanceImpl){
 			containerInstanceBase.getLinks().add(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
+			((OpmodelLinkInstanceImpl)link).setContainer(this);
 		}
 	}
 	
@@ -62,6 +63,19 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		links.remove(link);
 		if (link instanceof OpmodelLinkInstanceImpl){
 			containerInstanceBase.getLinks().remove(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
+			((OpmodelLinkInstanceImpl)link).setContainer(null);
 		}
 	}
+
+	@Override
+	public boolean containsNode(OpmodelNodeInstance node) {
+		return nodes.contains(node);
+	}
+
+	@Override
+	public boolean containsLink(OpmodelLinkInstance link) {
+		return links.contains(link);
+	}
+	
+	
 }

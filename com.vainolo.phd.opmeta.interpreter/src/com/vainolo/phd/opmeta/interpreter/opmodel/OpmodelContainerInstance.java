@@ -8,9 +8,13 @@ public interface OpmodelContainerInstance extends OpmodelInstance{
 	
 	void removeNode(OpmodelNodeInstance node);
 	
+	boolean containsNode(OpmodelNodeInstance node); 
+	
 	Iterable<OpmodelLinkInstance> getLinks();
 	
 	void addLink(OpmodelLinkInstance link);
 	
 	void removeLink(OpmodelLinkInstance link);
+	
+	boolean containsLink(OpmodelLinkInstance link);
 }

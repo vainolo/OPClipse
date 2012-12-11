@@ -60,4 +60,14 @@ private List<OpmodelNodeInstance> nodes;
 			thingInstanceBase.getLinks().remove(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
 		}
 	}
+	
+	@Override
+	public boolean containsNode(OpmodelNodeInstance node) {
+		return nodes.contains(node);
+	}
+
+	@Override
+	public boolean containsLink(OpmodelLinkInstance link) {
+		return links.contains(link);
+	}
 }

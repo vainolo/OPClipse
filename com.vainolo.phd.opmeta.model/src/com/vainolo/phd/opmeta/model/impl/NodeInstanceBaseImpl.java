@@ -8,27 +8,16 @@ package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opmeta.model.LinkInstanceBase;
 import com.vainolo.phd.opmeta.model.NodeInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
-
-import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -167,7 +156,6 @@ public class NodeInstanceBaseImpl extends InstanceBaseImpl implements NodeInstan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {

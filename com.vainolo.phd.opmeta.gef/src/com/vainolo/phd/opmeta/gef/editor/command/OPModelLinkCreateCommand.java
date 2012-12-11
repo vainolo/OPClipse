@@ -9,7 +9,7 @@ import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
-public class OPLinkCreateCommand extends Command {
+public class OPModelLinkCreateCommand extends Command {
 
 	private OpmodelNodeInstance source;
 	private OpmodelNodeInstance target;

@@ -6,7 +6,7 @@ import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 
-import com.vainolo.phd.opmeta.gef.editor.command.OPLinkCreateCommand;
+import com.vainolo.phd.opmeta.gef.editor.command.OPModelLinkCreateCommand;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
@@ -14,7 +14,7 @@ import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 public class OpNodeEditPolicy extends GraphicalNodeEditPolicy {
 
 	@Override protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
-		OPLinkCreateCommand result = new OPLinkCreateCommand();
+		OPModelLinkCreateCommand result = new OPModelLinkCreateCommand();
 		OpmodelNodeInstance source = (OpmodelNodeInstance) getHost().getModel();
 	    result.setSource(source);
 	    result.setContainer((OpmodelContainerInstance)getHost().getParent().getModel());
@@ -24,7 +24,7 @@ public class OpNodeEditPolicy extends GraphicalNodeEditPolicy {
 	}
 	
 	@Override protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
-		OPLinkCreateCommand linkCreateCommand = (OPLinkCreateCommand) request.getStartCommand();
+		OPModelLinkCreateCommand linkCreateCommand = (OPModelLinkCreateCommand) request.getStartCommand();
 		OpmodelNodeInstance target = (OpmodelNodeInstance) getHost().getModel();
 		if (target == linkCreateCommand.getSource()) return UnexecutableCommand.INSTANCE;
 	    linkCreateCommand.setTarget(target);

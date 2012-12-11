@@ -17,3 +17,4 @@ Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Import-Package: com.vainolo.utils,
  org.eclipse.emf.ecore.xmi.impl
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

@@ -18,3 +18,4 @@ Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
 Import-Package: com.vainolo.phd.opm.model,
  com.vainolo.phd.opm.model.provider
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

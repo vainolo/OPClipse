@@ -10,4 +10,6 @@ public interface OpmodelLinkInstance extends OpmodelInstance {
 	
 	public OpmodelNodeInstance getTarget();
 	
+	public OpmodelContainerInstance getContainer();
+	
 }

@@ -6,8 +6,6 @@
  */
 package com.vainolo.phd.opmeta.model;
 
-import java.util.List;
-
 import org.eclipse.draw2d.geometry.Rectangle;
 
 /**

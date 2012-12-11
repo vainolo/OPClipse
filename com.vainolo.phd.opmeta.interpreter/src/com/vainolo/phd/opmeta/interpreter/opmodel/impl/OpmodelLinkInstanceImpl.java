@@ -1,6 +1,7 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
+import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 import com.vainolo.phd.opmeta.model.LinkInstanceBase;
@@ -60,4 +61,13 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 		return target;
 	}
 
+	private OpmodelContainerInstance contianer;
+	
+	public OpmodelContainerInstance getContainer(){
+		return contianer;
+	}
+	
+	void setContainer(OpmodelContainerInstance contianer){
+		this.contianer = contianer;
+	}
 }

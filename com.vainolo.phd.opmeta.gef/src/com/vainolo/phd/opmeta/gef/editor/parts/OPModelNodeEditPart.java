@@ -18,6 +18,7 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeOnlyFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
+import com.vainolo.phd.opmeta.gef.editor.policy.OPModelNodeComponentEditPolicy;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
@@ -74,6 +75,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	protected void createEditPolicies() {
 		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,new OpNodeEditPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new OPModelNodeComponentEditPolicy());
 	}
 
 	@Override protected void refreshVisuals() {
