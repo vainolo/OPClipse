@@ -16,6 +16,7 @@
          point="org.eclipse.ui.editors">
       <editor
             class="com.vainolo.phd.opmeta.gef.editor.OPModelGraphicalEditor"
+            contributorClass="com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorActionBarContributor"
             default="true"
             extensions="opmodel"
             id="com.vainolo.phd.opmeta.gef.opmodel.editorID"

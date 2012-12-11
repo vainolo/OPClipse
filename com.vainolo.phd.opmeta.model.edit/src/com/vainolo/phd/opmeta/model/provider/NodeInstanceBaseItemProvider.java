@@ -63,8 +63,6 @@ public class NodeInstanceBaseItemProvider
 
 			addConstraintsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
-			addOutgoingLinksPropertyDescriptor(object);
-			addIncomingLinksPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -109,50 +107,6 @@ public class NodeInstanceBaseItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Outgoing Links feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addOutgoingLinksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NodeInstanceBase_outgoingLinks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeInstanceBase_outgoingLinks_feature", "_UI_NodeInstanceBase_type"),
-				 opmetaPackage.Literals.NODE_INSTANCE_BASE__OUTGOING_LINKS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Incoming Links feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addIncomingLinksPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_NodeInstanceBase_incomingLinks_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeInstanceBase_incomingLinks_feature", "_UI_NodeInstanceBase_type"),
-				 opmetaPackage.Literals.NODE_INSTANCE_BASE__INCOMING_LINKS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}

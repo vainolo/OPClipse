@@ -21,9 +21,9 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 
-import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.policy.OPMLinkBendpointEditPolicy;
 import com.vainolo.phd.opm.gef.editor.policy.OPMLinkConnectionEditPolicy;
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
 import com.vainolo.phd.opm.model.OPMLink;
 
 /**
@@ -99,16 +99,6 @@ public class OPMLinkEditPart extends AbstractConnectionEditPart {
       ((OPMLink) getModel()).eAdapters().remove(adapter);
     }
     super.deactivate();
-  }
-
-  @Override
-  public void setSource(EditPart editPart){
-	  super.setSource(editPart);
-  }
-  
-  @Override
-  public void setTarget(EditPart editPart){
-	  super.setTarget(editPart);
   }
   
   /**

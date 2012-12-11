@@ -50,13 +50,36 @@ public class OpmetaInterpretation {
 		return Collections.unmodifiableCollection(links.values());
 	}
 
+	public boolean isLink(String typeName){
+		return links.containsKey(typeName);
+	}
+	
 	public TypeDescriptor getNodeDescriptor(String name){
 		if (!nodes.containsKey(name)) return null;
 		return nodes.get(name);
+	}
+	
+	public TypeDescriptor getLinkDescriptor(String name){
+		if (!links.containsKey(name)) return null;
+		return links.get(name);
+	}
+	
+	public TypeDescriptor getContainerDescriptor(String name){
+		if (!containers.containsKey(name)) return null;
+		return containers.get(name);
 	}
 	
 	private HashMap<String,TypeDescriptor> nodes;
 	private HashMap<String,TypeDescriptor> containers;
 	private HashMap<String,TypeDescriptor> links;
 
+	public TypeDescriptor getDescriptorByName(String typeName){
+		if (nodes.containsKey(typeName))
+			return nodes.get(typeName);
+		else if (containers.containsKey(typeName))
+			return containers.get(typeName);
+		else if (links.containsKey(typeName))
+			return links.get(typeName);
+		return null;
+	}
 }

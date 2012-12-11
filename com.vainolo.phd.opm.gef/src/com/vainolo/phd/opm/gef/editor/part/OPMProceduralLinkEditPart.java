@@ -16,8 +16,8 @@ import org.eclipse.draw2d.PolylineDecoration;
 import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
 import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkToProceduralLinkKindConverter;
 import com.vainolo.phd.opm.gef.editor.figure.CircleDecoration;
-import com.vainolo.phd.opm.gef.editor.figure.OPMFigureConstants;
 import com.vainolo.phd.opm.gef.editor.figure.OPMProceduralLinkFigure;
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**

@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.factory;
+package com.vainolo.phd.opmeta.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 

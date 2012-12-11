@@ -20,8 +20,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getName <em>Name</em>}</li>
- *   <li>{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks <em>Outgoing Links</em>}</li>
- *   <li>{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks <em>Incoming Links</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,6 +30,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 public interface NodeInstanceBase extends InstanceBase {
 	/**
 	 * Returns the value of the '<em><b>Constraints</b></em>' attribute.
+	 * The default value is <code>"0,0,50,50"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Constraints</em>' attribute isn't clear,
@@ -41,7 +40,7 @@ public interface NodeInstanceBase extends InstanceBase {
 	 * @return the value of the '<em>Constraints</em>' attribute.
 	 * @see #setConstraints(Rectangle)
 	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getNodeInstanceBase_Constraints()
-	 * @model dataType="com.vainolo.phd.opm.model.Rectangle"
+	 * @model default="0,0,50,50" dataType="com.vainolo.phd.opm.model.Rectangle"
 	 * @generated
 	 */
 	Rectangle getConstraints();
@@ -81,41 +80,5 @@ public interface NodeInstanceBase extends InstanceBase {
 	 * @generated
 	 */
 	void setName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Outgoing Links</b></em>' reference list.
-	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.LinkInstanceBase}.
-	 * It is bidirectional and its opposite is '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Outgoing Links</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Links</em>' reference list.
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getNodeInstanceBase_OutgoingLinks()
-	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getSource
-	 * @model opposite="source"
-	 * @generated
-	 */
-	List<LinkInstanceBase> getOutgoingLinks();
-
-	/**
-	 * Returns the value of the '<em><b>Incoming Links</b></em>' reference list.
-	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.LinkInstanceBase}.
-	 * It is bidirectional and its opposite is '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Incoming Links</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Incoming Links</em>' reference list.
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getNodeInstanceBase_IncomingLinks()
-	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getTarget
-	 * @model opposite="target"
-	 * @generated
-	 */
-	List<LinkInstanceBase> getIncomingLinks();
 
 } // NodeInstanceBase

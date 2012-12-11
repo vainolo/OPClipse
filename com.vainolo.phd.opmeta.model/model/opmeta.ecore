@@ -14,35 +14,35 @@
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContaimentValidationRule"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelLinkValidationRule"/>
   <eClassifiers xsi:type="ecore:EClass" name="OPModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="MetaModel" eType="#//OPMetaModelDiagram"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MetaModel" lowerBound="1"
+        eType="#//OPMetaModelDiagram" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Container" lowerBound="1"
-        eType="#//ContainerInstanceBase"/>
+        eType="#//ContainerInstanceBase" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="NextId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InstanceBase" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TypeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
+        iD="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeInstanceBase" eSuperTypes="#//InstanceBase">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType ../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType ../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"
+        defaultValueLiteral="0,0,50,50"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLinks" upperBound="-1"
-        eType="#//LinkInstanceBase" eOpposite="#//LinkInstanceBase/source"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLinks" upperBound="-1"
-        eType="#//LinkInstanceBase" eOpposite="#//LinkInstanceBase/target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerInstanceBase" eSuperTypes="#//InstanceBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
-        eType="#//NodeInstanceBase"/>
+        eType="#//NodeInstanceBase" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="links" upperBound="-1"
-        eType="#//LinkInstanceBase"/>
+        eType="#//LinkInstanceBase" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LinkInstanceBase" eSuperTypes="#//InstanceBase">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//NodeInstanceBase"
-        eOpposite="#//NodeInstanceBase/outgoingLinks"/>
+        eKeys="#//InstanceBase/Id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//NodeInstanceBase"
-        eOpposite="#//NodeInstanceBase/incomingLinks"/>
+        eKeys="#//InstanceBase/Id"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThingInstanceBase" eSuperTypes="#//NodeInstanceBase #//ContainerInstanceBase"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
 </ecore:EPackage>

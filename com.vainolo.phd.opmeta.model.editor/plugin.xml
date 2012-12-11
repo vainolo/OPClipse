@@ -30,7 +30,7 @@
             id="com.vainolo.phd.opmeta.model.presentation.opmetaEditorID"
             name="%_UI_opmetaEditor_label"
             icon="icons/full/obj16/opmetaModelFile.gif"
-            extensions="opmeta"
+            extensions="opmeta, opmodel"
             class="com.vainolo.phd.opmeta.model.presentation.opmetaEditor"
             contributorClass="com.vainolo.phd.opmeta.model.presentation.opmetaActionBarContributor">
       </editor>

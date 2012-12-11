@@ -7,28 +7,61 @@ import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmeta.model.ContainerInstanceBase;
 
 public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		OpmodelContainerInstance {
 
-	public OpmodelContainerInstanceImpl(TypeDescriptor descriptor) {
-		super(descriptor);
+	private ContainerInstanceBase containerInstanceBase;
+	
+	public OpmodelContainerInstanceImpl(TypeDescriptor descriptor, ContainerInstanceBase instanceBase) {
+		super(descriptor, instanceBase);
+		containerInstanceBase = instanceBase;
 		nodes = new LinkedList<>();
+		
 		links = new LinkedList<>();
+		
 	}
 
 	private List<OpmodelNodeInstance> nodes;
 	
 	@Override
-	public List<OpmodelNodeInstance> getNodes() {
+	public Iterable<OpmodelNodeInstance> getNodes() {
 		return nodes;
 	}
 
-	private List<OpmodelLinkInstance> links;
+	public void addNode(OpmodelNodeInstance node){
+		nodes.add(node);
+		if (node instanceof OpmodelNodeInstanceImpl){
+			containerInstanceBase.getNodes().add(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
+		}
+	}
+	
+	public void removeNode(OpmodelNodeInstance node){
+		nodes.remove(node);
+		if (node instanceof OpmodelNodeInstanceImpl){
+			containerInstanceBase.getNodes().remove(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
+		}
+	}
+	
+	private LinkedList<OpmodelLinkInstance> links;
 	
 	@Override
-	public List<OpmodelLinkInstance> getLinks() {
+	public Iterable<OpmodelLinkInstance> getLinks() {
 		return links;
 	}
 
+	public void addLink(OpmodelLinkInstance link){
+		links.add(link);
+		if (link instanceof OpmodelLinkInstanceImpl){
+			containerInstanceBase.getLinks().add(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
+		}
+	}
+	
+	public void removeLink(OpmodelLinkInstance link){
+		links.remove(link);
+		if (link instanceof OpmodelLinkInstanceImpl){
+			containerInstanceBase.getLinks().remove(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
+		}
+	}
 }

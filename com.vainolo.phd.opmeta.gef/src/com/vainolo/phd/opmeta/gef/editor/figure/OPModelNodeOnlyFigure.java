@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.figure;
+package com.vainolo.phd.opmeta.gef.editor.figure;
 
 import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ColorConstants;
@@ -6,13 +6,15 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
+
 public class OPModelNodeOnlyFigure extends Figure{
-	private final RoundedRectangle rectangle;
+	private final RectangleFigure rectangle;
 	  private ConnectionAnchor connectionAnchor;
 	  private final Label nameLabel;
 
@@ -20,12 +22,11 @@ public class OPModelNodeOnlyFigure extends Figure{
 	    super();
 	    setLayoutManager(new XYLayout());
 	    nameLabel = new Label();
-	    nameLabel.setForegroundColor(ColorConstants.black);
-	    add(nameLabel);
-	    rectangle = new RoundedRectangle();
-	    rectangle.setFill(false);
+	    //nameLabel.setForegroundColor(ColorConstants.black);
+	    //add(nameLabel);
+	    rectangle = new RectangleFigure();
 	    rectangle.setForegroundColor(ColorConstants.black);
-	    rectangle.setLineWidth(2);
+	    rectangle.setLineWidth(OPMFigureConstants.entityBorderWidth);
 	    add(rectangle);
 	  }
 
@@ -34,7 +35,6 @@ public class OPModelNodeOnlyFigure extends Figure{
 	   * 
 	   * @return the label where the name of the state is shown.
 	   */
-	  //@Override
 	  public Label getNameLabel() {
 	    return nameLabel;
 	  }
@@ -51,12 +51,10 @@ public class OPModelNodeOnlyFigure extends Figure{
 	    return connectionAnchor;
 	  }
 
-	  //@Override
 	  public ConnectionAnchor getSourceConnectionAnchor() {
 	    return getConnectionAnchor();
 	  }
 
-	  //@Override
 	  public ConnectionAnchor getTargetConnectionAnchor() {
 	    return getConnectionAnchor();
 	  }
@@ -74,11 +72,11 @@ public class OPModelNodeOnlyFigure extends Figure{
 	  @Override
 	  protected void paintFigure(Graphics graphics) {
 	    Rectangle r = getBounds().getCopy();
-	    int insets = 2;
-	    setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
+	    ///int insets = OPMFigureConstants.opmNodeInsets;
+	    //setConstraint(nameLabel, new Rectangle(insets, insets, r.width() - insets, r.height() - insets));
 	    setConstraint(rectangle, new Rectangle(0, 0, r.width(), r.height()));
 	   
 	    rectangle.invalidate();
-	    getNameLabel().invalidate();
+	    //getNameLabel().invalidate();
 	  }
 }

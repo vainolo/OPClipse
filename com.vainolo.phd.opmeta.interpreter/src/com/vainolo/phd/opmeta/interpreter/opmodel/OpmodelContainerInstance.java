@@ -1,10 +1,16 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel;
 
-import java.util.List;
-
 public interface OpmodelContainerInstance extends OpmodelInstance{
 
-	List<OpmodelNodeInstance> getNodes();
+	Iterable<OpmodelNodeInstance> getNodes();
 	
-	List<OpmodelLinkInstance> getLinks();
+	void addNode(OpmodelNodeInstance node);
+	
+	void removeNode(OpmodelNodeInstance node);
+	
+	Iterable<OpmodelLinkInstance> getLinks();
+	
+	void addLink(OpmodelLinkInstance link);
+	
+	void removeLink(OpmodelLinkInstance link);
 }

@@ -1,5 +1,6 @@
 package com.vainolo.phd.opmeta.gef.editor;
 
+import org.eclipse.gef.palette.ConnectionCreationToolEntry;
 import org.eclipse.gef.palette.CreationToolEntry;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
@@ -7,7 +8,7 @@ import org.eclipse.gef.palette.SelectionToolEntry;
 
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.editor.tool.CreationAndDirectEditTool;
-import com.vainolo.phd.opmeta.gef.factory.OpmodelCreationFactory;
+import com.vainolo.phd.opmeta.gef.editor.factory.OpmodelCreationFactory;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelFactory;
@@ -41,21 +42,28 @@ public class OPModelGraphicalEditorPlatte extends PaletteRoot {
 	}
 	
 	private void addNodeTools(){
-		addDescritonTools(interpretation.getNodes());
-	}
-	
-	private void addLinkTools(){
-		addDescritonTools(interpretation.getLinks());
-	}
-
-	private void addDescritonTools(Iterable<TypeDescriptor> descriptions) {
 		CreationToolEntry entry;
-		for (TypeDescriptor descriptor:descriptions){
+		for (TypeDescriptor descriptor:interpretation.getNodes()){
 			entry = new CreationToolEntry(descriptor.getName(), "Create a new " + descriptor.getName(), 
 					new OpmodelCreationFactory(factory,descriptor,opmIdManager),
 					null, null); // TODO : get images?
 			entry.setToolClass(CreationAndDirectEditTool.class);
 			group.add(entry);
 		}
+	}
+	
+	private void addLinkTools(){
+		CreationToolEntry entry;
+		for (TypeDescriptor descriptor:interpretation.getLinks()){
+			entry = new ConnectionCreationToolEntry(descriptor.getName(), "Create a new " + descriptor.getName(), 
+					new OpmodelCreationFactory(factory,descriptor,opmIdManager),
+					null, null); // TODO : get images?
+			group.add(entry);
+		}
+		addDescritonTools(interpretation.getLinks());
+	}
+
+	private void addDescritonTools(Iterable<TypeDescriptor> descriptions) {
+		
 	}
 }

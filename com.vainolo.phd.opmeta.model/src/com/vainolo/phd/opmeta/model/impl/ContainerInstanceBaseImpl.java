@@ -14,11 +14,15 @@ import com.vainolo.phd.opmeta.model.opmetaPackage;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,7 +40,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  */
 public class ContainerInstanceBaseImpl extends InstanceBaseImpl implements ContainerInstanceBase {
 	/**
-	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' reference list.
+	 * The cached value of the '{@link #getNodes() <em>Nodes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNodes()
@@ -46,7 +50,7 @@ public class ContainerInstanceBaseImpl extends InstanceBaseImpl implements Conta
 	protected EList<NodeInstanceBase> nodes;
 
 	/**
-	 * The cached value of the '{@link #getLinks() <em>Links</em>}' reference list.
+	 * The cached value of the '{@link #getLinks() <em>Links</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLinks()
@@ -81,7 +85,7 @@ public class ContainerInstanceBaseImpl extends InstanceBaseImpl implements Conta
 	 */
 	public List<NodeInstanceBase> getNodes() {
 		if (nodes == null) {
-			nodes = new EObjectResolvingEList<NodeInstanceBase>(NodeInstanceBase.class, this, opmetaPackage.CONTAINER_INSTANCE_BASE__NODES);
+			nodes = new EObjectContainmentEList<NodeInstanceBase>(NodeInstanceBase.class, this, opmetaPackage.CONTAINER_INSTANCE_BASE__NODES);
 		}
 		return nodes;
 	}
@@ -93,9 +97,25 @@ public class ContainerInstanceBaseImpl extends InstanceBaseImpl implements Conta
 	 */
 	public List<LinkInstanceBase> getLinks() {
 		if (links == null) {
-			links = new EObjectResolvingEList<LinkInstanceBase>(LinkInstanceBase.class, this, opmetaPackage.CONTAINER_INSTANCE_BASE__LINKS);
+			links = new EObjectContainmentEList<LinkInstanceBase>(LinkInstanceBase.class, this, opmetaPackage.CONTAINER_INSTANCE_BASE__LINKS);
 		}
 		return links;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case opmetaPackage.CONTAINER_INSTANCE_BASE__NODES:
+				return ((InternalEList<?>)getNodes()).basicRemove(otherEnd, msgs);
+			case opmetaPackage.CONTAINER_INSTANCE_BASE__LINKS:
+				return ((InternalEList<?>)getLinks()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

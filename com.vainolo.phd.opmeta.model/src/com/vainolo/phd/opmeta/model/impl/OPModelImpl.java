@@ -13,6 +13,7 @@ import com.vainolo.phd.opmeta.model.opmetaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -36,7 +37,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPModelImpl extends EObjectImpl implements OPModel {
 	/**
-	 * The cached value of the '{@link #getMetaModel() <em>Meta Model</em>}' reference.
+	 * The cached value of the '{@link #getMetaModel() <em>Meta Model</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMetaModel()
@@ -46,7 +47,7 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	protected OPMetaModelDiagram metaModel;
 
 	/**
-	 * The cached value of the '{@link #getContainer() <em>Container</em>}' reference.
+	 * The cached value of the '{@link #getContainer() <em>Container</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContainer()
@@ -100,14 +101,6 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @generated
 	 */
 	public OPMetaModelDiagram getMetaModel() {
-		if (metaModel != null && metaModel.eIsProxy()) {
-			InternalEObject oldMetaModel = (InternalEObject)metaModel;
-			metaModel = (OPMetaModelDiagram)eResolveProxy(oldMetaModel);
-			if (metaModel != oldMetaModel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmetaPackage.OP_MODEL__META_MODEL, oldMetaModel, metaModel));
-			}
-		}
 		return metaModel;
 	}
 
@@ -116,8 +109,14 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OPMetaModelDiagram basicGetMetaModel() {
-		return metaModel;
+	public NotificationChain basicSetMetaModel(OPMetaModelDiagram newMetaModel, NotificationChain msgs) {
+		OPMetaModelDiagram oldMetaModel = metaModel;
+		metaModel = newMetaModel;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__META_MODEL, oldMetaModel, newMetaModel);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -126,10 +125,17 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @generated
 	 */
 	public void setMetaModel(OPMetaModelDiagram newMetaModel) {
-		OPMetaModelDiagram oldMetaModel = metaModel;
-		metaModel = newMetaModel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__META_MODEL, oldMetaModel, metaModel));
+		if (newMetaModel != metaModel) {
+			NotificationChain msgs = null;
+			if (metaModel != null)
+				msgs = ((InternalEObject)metaModel).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_MODEL__META_MODEL, null, msgs);
+			if (newMetaModel != null)
+				msgs = ((InternalEObject)newMetaModel).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_MODEL__META_MODEL, null, msgs);
+			msgs = basicSetMetaModel(newMetaModel, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__META_MODEL, newMetaModel, newMetaModel));
 	}
 
 	/**
@@ -138,14 +144,6 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @generated
 	 */
 	public ContainerInstanceBase getContainer() {
-		if (container != null && container.eIsProxy()) {
-			InternalEObject oldContainer = (InternalEObject)container;
-			container = (ContainerInstanceBase)eResolveProxy(oldContainer);
-			if (container != oldContainer) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmetaPackage.OP_MODEL__CONTAINER, oldContainer, container));
-			}
-		}
 		return container;
 	}
 
@@ -154,8 +152,14 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ContainerInstanceBase basicGetContainer() {
-		return container;
+	public NotificationChain basicSetContainer(ContainerInstanceBase newContainer, NotificationChain msgs) {
+		ContainerInstanceBase oldContainer = container;
+		container = newContainer;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__CONTAINER, oldContainer, newContainer);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -164,10 +168,17 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @generated
 	 */
 	public void setContainer(ContainerInstanceBase newContainer) {
-		ContainerInstanceBase oldContainer = container;
-		container = newContainer;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__CONTAINER, oldContainer, container));
+		if (newContainer != container) {
+			NotificationChain msgs = null;
+			if (container != null)
+				msgs = ((InternalEObject)container).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_MODEL__CONTAINER, null, msgs);
+			if (newContainer != null)
+				msgs = ((InternalEObject)newContainer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - opmetaPackage.OP_MODEL__CONTAINER, null, msgs);
+			msgs = basicSetContainer(newContainer, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_MODEL__CONTAINER, newContainer, newContainer));
 	}
 
 	/**
@@ -197,14 +208,28 @@ public class OPModelImpl extends EObjectImpl implements OPModel {
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case opmetaPackage.OP_MODEL__META_MODEL:
+				return basicSetMetaModel(null, msgs);
+			case opmetaPackage.OP_MODEL__CONTAINER:
+				return basicSetContainer(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case opmetaPackage.OP_MODEL__META_MODEL:
-				if (resolve) return getMetaModel();
-				return basicGetMetaModel();
+				return getMetaModel();
 			case opmetaPackage.OP_MODEL__CONTAINER:
-				if (resolve) return getContainer();
-				return basicGetContainer();
+				return getContainer();
 			case opmetaPackage.OP_MODEL__NEXT_ID:
 				return getNextId();
 		}

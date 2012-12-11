@@ -8,6 +8,7 @@ package com.vainolo.phd.opmeta.model;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -145,7 +146,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_MODEL = 3;
 
 	/**
-	 * The feature id for the '<em><b>Meta Model</b></em>' reference.
+	 * The feature id for the '<em><b>Meta Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -154,7 +155,7 @@ public interface opmetaPackage extends EPackage {
 	int OP_MODEL__META_MODEL = 0;
 
 	/**
-	 * The feature id for the '<em><b>Container</b></em>' reference.
+	 * The feature id for the '<em><b>Container</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -264,31 +265,13 @@ public interface opmetaPackage extends EPackage {
 	int NODE_INSTANCE_BASE__NAME = INSTANCE_BASE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_INSTANCE_BASE__OUTGOING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_INSTANCE_BASE__INCOMING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Node Instance Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 4;
+	int NODE_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl <em>Container Instance Base</em>}' class.
@@ -319,7 +302,7 @@ public interface opmetaPackage extends EPackage {
 	int CONTAINER_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -328,7 +311,7 @@ public interface opmetaPackage extends EPackage {
 	int CONTAINER_INSTANCE_BASE__NODES = INSTANCE_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -447,25 +430,7 @@ public interface opmetaPackage extends EPackage {
 	int THING_INSTANCE_BASE__NAME = NODE_INSTANCE_BASE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THING_INSTANCE_BASE__OUTGOING_LINKS = NODE_INSTANCE_BASE__OUTGOING_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THING_INSTANCE_BASE__INCOMING_LINKS = NODE_INSTANCE_BASE__INCOMING_LINKS;
-
-	/**
-	 * The feature id for the '<em><b>Nodes</b></em>' reference list.
+	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -474,7 +439,7 @@ public interface opmetaPackage extends EPackage {
 	int THING_INSTANCE_BASE__NODES = NODE_INSTANCE_BASE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Links</b></em>' reference list.
+	 * The feature id for the '<em><b>Links</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -490,6 +455,16 @@ public interface opmetaPackage extends EPackage {
 	 * @ordered
 	 */
 	int THING_INSTANCE_BASE_FEATURE_COUNT = NODE_INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
+	 * The meta object id for the '<em>Rectangle</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.draw2d.geometry.Rectangle
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getRectangle()
+	 * @generated
+	 */
+	int RECTANGLE = 9;
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram <em>OP Meta Model Diagram</em>}'.
@@ -554,10 +529,10 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPModel#getMetaModel <em>Meta Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Meta Model</em>'.
+	 * @return the meta object for the containment reference '<em>Meta Model</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPModel#getMetaModel()
 	 * @see #getOPModel()
 	 * @generated
@@ -565,10 +540,10 @@ public interface opmetaPackage extends EPackage {
 	EReference getOPModel_MetaModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}'.
+	 * Returns the meta object for the containment reference '{@link com.vainolo.phd.opmeta.model.OPModel#getContainer <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Container</em>'.
+	 * @return the meta object for the containment reference '<em>Container</em>'.
 	 * @see com.vainolo.phd.opmeta.model.OPModel#getContainer()
 	 * @see #getOPModel()
 	 * @generated
@@ -651,28 +626,6 @@ public interface opmetaPackage extends EPackage {
 	EAttribute getNodeInstanceBase_Name();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks <em>Outgoing Links</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outgoing Links</em>'.
-	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getOutgoingLinks()
-	 * @see #getNodeInstanceBase()
-	 * @generated
-	 */
-	EReference getNodeInstanceBase_OutgoingLinks();
-
-	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks <em>Incoming Links</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Incoming Links</em>'.
-	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase#getIncomingLinks()
-	 * @see #getNodeInstanceBase()
-	 * @generated
-	 */
-	EReference getNodeInstanceBase_IncomingLinks();
-
-	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase <em>Container Instance Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -683,10 +636,10 @@ public interface opmetaPackage extends EPackage {
 	EClass getContainerInstanceBase();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes <em>Nodes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes <em>Nodes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Nodes</em>'.
+	 * @return the meta object for the containment reference list '<em>Nodes</em>'.
 	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getNodes()
 	 * @see #getContainerInstanceBase()
 	 * @generated
@@ -694,10 +647,10 @@ public interface opmetaPackage extends EPackage {
 	EReference getContainerInstanceBase_Nodes();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks <em>Links</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks <em>Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Links</em>'.
+	 * @return the meta object for the containment reference list '<em>Links</em>'.
 	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase#getLinks()
 	 * @see #getContainerInstanceBase()
 	 * @generated
@@ -745,6 +698,17 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getThingInstanceBase();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Rectangle</em>'.
+	 * @see org.eclipse.draw2d.geometry.Rectangle
+	 * @model instanceClass="org.eclipse.draw2d.geometry.Rectangle"
+	 * @generated
+	 */
+	EDataType getRectangle();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -825,7 +789,7 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_MODEL = eINSTANCE.getOPModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Meta Model</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Meta Model</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -833,7 +797,7 @@ public interface opmetaPackage extends EPackage {
 		EReference OP_MODEL__META_MODEL = eINSTANCE.getOPModel_MetaModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Container</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Container</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -901,22 +865,6 @@ public interface opmetaPackage extends EPackage {
 		EAttribute NODE_INSTANCE_BASE__NAME = eINSTANCE.getNodeInstanceBase_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Outgoing Links</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NODE_INSTANCE_BASE__OUTGOING_LINKS = eINSTANCE.getNodeInstanceBase_OutgoingLinks();
-
-		/**
-		 * The meta object literal for the '<em><b>Incoming Links</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NODE_INSTANCE_BASE__INCOMING_LINKS = eINSTANCE.getNodeInstanceBase_IncomingLinks();
-
-		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.ContainerInstanceBaseImpl <em>Container Instance Base</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -927,7 +875,7 @@ public interface opmetaPackage extends EPackage {
 		EClass CONTAINER_INSTANCE_BASE = eINSTANCE.getContainerInstanceBase();
 
 		/**
-		 * The meta object literal for the '<em><b>Nodes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Nodes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -935,7 +883,7 @@ public interface opmetaPackage extends EPackage {
 		EReference CONTAINER_INSTANCE_BASE__NODES = eINSTANCE.getContainerInstanceBase_Nodes();
 
 		/**
-		 * The meta object literal for the '<em><b>Links</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Links</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -977,6 +925,16 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass THING_INSTANCE_BASE = eINSTANCE.getThingInstanceBase();
+
+		/**
+		 * The meta object literal for the '<em>Rectangle</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.draw2d.geometry.Rectangle
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getRectangle()
+		 * @generated
+		 */
+		EDataType RECTANGLE = eINSTANCE.getRectangle();
 
 	}
 
