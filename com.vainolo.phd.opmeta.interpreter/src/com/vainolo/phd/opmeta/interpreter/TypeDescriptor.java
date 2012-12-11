@@ -4,16 +4,36 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import com.vainolo.phd.opmeta.interpreter.propertyDescriptor;
 
 public class TypeDescriptor {
 
 	private int hashcode;
 	
+	private List<propertyDescriptor> propertyList;
+	
 	public TypeDescriptor(String name){
 		//parents = new LinkedList<>();
 		children = new LinkedList<>();
+		this.propertyList = new LinkedList<>();
 		this.name = name;
 		hashcode = name.hashCode();
+	}
+	
+	boolean addProperty (propertyDescriptor property){
+		// TODO: check property list by name
+		for (propertyDescriptor propertyinlist : propertyList){
+			if(propertyinlist.getPropertyName().equals(property.getPropertyName()))
+					return false;
+		}
+			propertyList.add(property);
+			
+		
+			return true;
+	}
+	
+	public Iterable<propertyDescriptor> getProperties(){
+		return propertyList;
 	}
 	
 	private String name;

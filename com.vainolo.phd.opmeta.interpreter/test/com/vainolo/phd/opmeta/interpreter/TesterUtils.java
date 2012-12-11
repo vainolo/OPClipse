@@ -1,5 +1,6 @@
 package com.vainolo.phd.opmeta.interpreter;
 
+import com.vainolo.phd.opm.model.OPMAggregationLink;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMGeneralizationLink;
 import com.vainolo.phd.opm.model.OPMNode;
@@ -24,6 +25,18 @@ public class TesterUtils {
 		return link;
 	}
 	
+	
+	// properties test
+	
+	public static OPMAggregationLink createAggregationLink(OPMNode parent, OPMNode child){
+		OPMAggregationLink link = OPMFactory.eINSTANCE.createOPMAggregationLink();
+		link.setSource(parent);
+		link.setTarget(child);
+		return link;
+	}
+	
+	
+	
 	public static OPMetaModelDiagram createBasicMetaModelDiag(){
 		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
 		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
@@ -35,6 +48,13 @@ public class TesterUtils {
 		OPMNode diagNode = TesterUtils.createObject("Diagram",opmDiagram);
 		OPMNode nodeInheritNode = TesterUtils.createObject("State",opmDiagram);
 		
+		//kobi&alex
+		OPMNode prop1 = TesterUtils.createObject("Prop1:int",opmDiagram);
+		OPMNode prop2 = TesterUtils.createObject("Prop2:String",opmDiagram);
+		OPMNode prop3 = TesterUtils.createObject("Prop3:int",opmDiagram);
+		OPMNode prop4 = TesterUtils.createObject("Prop4:String",opmDiagram);
+		OPMNode prop5 = TesterUtils.createObject("Prop1:String",opmDiagram);
+		
 		OPMObjectProcessDiagram linkDiagram = basicDiag.getLinksDiagram();
 		OPMNode linkNode = TesterUtils.createObject("Link",linkDiagram);
 		OPMNode linkSonNode = TesterUtils.createObject("LinkSon",linkDiagram);
@@ -45,6 +65,14 @@ public class TesterUtils {
 		TesterUtils.createGeneralizationLink(container, diagNode);
 		TesterUtils.createGeneralizationLink(linkNode, linkSonNode);
 		
+		
+		//alex&kobi
+		TesterUtils.createAggregationLink(node,prop1);
+		TesterUtils.createAggregationLink(node,prop2);
+		TesterUtils.createAggregationLink(thingNode,prop5);
+		TesterUtils.createAggregationLink(thingNode,prop3);
+		TesterUtils.createAggregationLink(thingNode,prop4);
+
 		return basicDiag;
 	}
 }

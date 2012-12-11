@@ -3,6 +3,7 @@ package com.vainolo.phd.opmeta.interpreter;
 import static org.junit.Assert.*;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.junit.Test;
 
@@ -36,10 +37,16 @@ public class OpmetaInterpretationTester {
 			switch(descriptor.getName()){
 				case "Node":
 					assertTrue(descriptor.isAbstract());
+					
+					for (Iterator<propertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
+						System.out.println(it.next().getPropertyName());
 					break;
 				case "State":
+					break;
 				case "Thing":
 					assertFalse(descriptor.isAbstract());
+					for (Iterator<propertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
+						System.out.println(it.next().getPropertyName());	
 					break;
 				default:
 					fail();
