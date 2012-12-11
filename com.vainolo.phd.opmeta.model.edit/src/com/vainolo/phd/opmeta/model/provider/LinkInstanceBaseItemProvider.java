@@ -23,6 +23,8 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link com.vainolo.phd.opmeta.model.LinkInstanceBase} object.
@@ -61,6 +63,7 @@ public class LinkInstanceBaseItemProvider
 
 			addSourcePropertyDescriptor(object);
 			addTargetPropertyDescriptor(object);
+			addBendpointsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -110,6 +113,28 @@ public class LinkInstanceBaseItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Bendpoints feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBendpointsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LinkInstanceBase_bendpoints_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LinkInstanceBase_bendpoints_feature", "_UI_LinkInstanceBase_type"),
+				 opmetaPackage.Literals.LINK_INSTANCE_BASE__BENDPOINTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns LinkInstanceBase.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,6 +167,12 @@ public class LinkInstanceBaseItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(LinkInstanceBase.class)) {
+			case opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

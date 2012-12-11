@@ -21,6 +21,7 @@ import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -106,6 +107,13 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * @generated
 	 */
 	private EDataType rectangleEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType pointEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -367,6 +375,15 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLinkInstanceBase_Bendpoints() {
+		return (EAttribute)linkInstanceBaseEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getThingInstanceBase() {
 		return thingInstanceBaseEClass;
 	}
@@ -378,6 +395,15 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 */
 	public EDataType getRectangle() {
 		return rectangleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getPoint() {
+		return pointEDataType;
 	}
 
 	/**
@@ -436,11 +462,13 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		linkInstanceBaseEClass = createEClass(LINK_INSTANCE_BASE);
 		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__SOURCE);
 		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__TARGET);
+		createEAttribute(linkInstanceBaseEClass, LINK_INSTANCE_BASE__BENDPOINTS);
 
 		thingInstanceBaseEClass = createEClass(THING_INSTANCE_BASE);
 
 		// Create data types
 		rectangleEDataType = createEDataType(RECTANGLE);
+		pointEDataType = createEDataType(POINT);
 	}
 
 	/**
@@ -511,11 +539,13 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		getLinkInstanceBase_Source().getEKeys().add(this.getInstanceBase_Id());
 		initEReference(getLinkInstanceBase_Target(), this.getNodeInstanceBase(), null, "target", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getLinkInstanceBase_Target().getEKeys().add(this.getInstanceBase_Id());
+		initEAttribute(getLinkInstanceBase_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(thingInstanceBaseEClass, ThingInstanceBase.class, "ThingInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(pointEDataType, Point.class, "Point", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

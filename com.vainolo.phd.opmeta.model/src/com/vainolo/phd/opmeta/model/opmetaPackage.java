@@ -375,13 +375,22 @@ public interface opmetaPackage extends EPackage {
 	int LINK_INSTANCE_BASE__TARGET = INSTANCE_BASE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__BENDPOINTS = INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Link Instance Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 2;
+	int LINK_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
@@ -465,6 +474,16 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	int RECTANGLE = 9;
+
+	/**
+	 * The meta object id for the '<em>Point</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getPoint()
+	 * @generated
+	 */
+	int POINT = 10;
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram <em>OP Meta Model Diagram</em>}'.
@@ -690,6 +709,17 @@ public interface opmetaPackage extends EPackage {
 	EReference getLinkInstanceBase_Target();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getBendpoints <em>Bendpoints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Bendpoints</em>'.
+	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getBendpoints()
+	 * @see #getLinkInstanceBase()
+	 * @generated
+	 */
+	EAttribute getLinkInstanceBase_Bendpoints();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.ThingInstanceBase <em>Thing Instance Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,6 +739,17 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getRectangle();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Point <em>Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Point</em>'.
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @model instanceClass="org.eclipse.draw2d.geometry.Point"
+	 * @generated
+	 */
+	EDataType getPoint();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -917,6 +958,14 @@ public interface opmetaPackage extends EPackage {
 		EReference LINK_INSTANCE_BASE__TARGET = eINSTANCE.getLinkInstanceBase_Target();
 
 		/**
+		 * The meta object literal for the '<em><b>Bendpoints</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK_INSTANCE_BASE__BENDPOINTS = eINSTANCE.getLinkInstanceBase_Bendpoints();
+
+		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -935,6 +984,16 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType RECTANGLE = eINSTANCE.getRectangle();
+
+		/**
+		 * The meta object literal for the '<em>Point</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.draw2d.geometry.Point
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getPoint()
+		 * @generated
+		 */
+		EDataType POINT = eINSTANCE.getPoint();
 
 	}
 

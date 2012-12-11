@@ -8,6 +8,7 @@ package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opmeta.model.*;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -85,6 +86,8 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.RECTANGLE:
 				return createRectangleFromString(eDataType, initialValue);
+			case opmetaPackage.POINT:
+				return createPointFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -100,6 +103,8 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.RECTANGLE:
 				return convertRectangleToString(eDataType, instanceValue);
+			case opmetaPackage.POINT:
+				return convertPointToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -229,6 +234,24 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		return rect.x+","+rect.y+","+rect.width+","+rect.height;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Point createPointFromString(EDataType eDataType, String initialValue) {
+		return (Point)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPointToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

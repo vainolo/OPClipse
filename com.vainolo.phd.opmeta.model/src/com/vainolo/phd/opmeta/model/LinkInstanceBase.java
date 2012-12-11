@@ -6,6 +6,9 @@
  */
 package com.vainolo.phd.opmeta.model;
 
+import java.util.List;
+import org.eclipse.draw2d.geometry.Point;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -17,6 +20,7 @@ package com.vainolo.phd.opmeta.model;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getSource <em>Source</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getTarget <em>Target</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getBendpoints <em>Bendpoints</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,5 +80,21 @@ public interface LinkInstanceBase extends InstanceBase {
 	 * @generated
 	 */
 	void setTarget(NodeInstanceBase value);
+
+	/**
+	 * Returns the value of the '<em><b>Bendpoints</b></em>' attribute list.
+	 * The list contents are of type {@link org.eclipse.draw2d.geometry.Point}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Bendpoints</em>' attribute list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Bendpoints</em>' attribute list.
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getLinkInstanceBase_Bendpoints()
+	 * @model dataType="com.vainolo.phd.opmeta.model.Point"
+	 * @generated
+	 */
+	List<Point> getBendpoints();
 
 } // LinkInstanceBase
