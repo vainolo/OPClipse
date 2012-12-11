@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.gef.CompoundSnapToHelper;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.SnapToGeometry;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.SnapToHelper;
@@ -18,6 +19,7 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
+import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 
@@ -41,6 +43,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy("Snap Feedback", new SnapFeedbackPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy());
 	}
 
 	@Override

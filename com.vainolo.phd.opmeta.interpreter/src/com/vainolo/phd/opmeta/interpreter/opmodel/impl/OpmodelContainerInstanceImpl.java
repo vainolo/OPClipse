@@ -3,8 +3,6 @@ package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.impl.NotificationImpl;
-
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
@@ -14,7 +12,6 @@ import com.vainolo.phd.opmeta.model.ContainerInstanceBase;
 public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		OpmodelContainerInstance {
 
-	private final static int NotifyEventId=NotificationImpl.EVENT_TYPE_COUNT+1;
 	private ContainerInstanceBase containerInstanceBase;
 	
 	public OpmodelContainerInstanceImpl(TypeDescriptor descriptor, ContainerInstanceBase instanceBase) {
@@ -38,7 +35,6 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		if (node instanceof OpmodelNodeInstanceImpl){
 			containerInstanceBase.getNodes().add(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
 		}
-		eNotify(new NotificationImpl(NotifyEventId, null, null));
 	}
 	
 	public void removeNode(OpmodelNodeInstance node){
@@ -46,7 +42,6 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		if (node instanceof OpmodelNodeInstanceImpl){
 			containerInstanceBase.getNodes().remove(((OpmodelNodeInstanceImpl)node).nodeInstanceBase);
 		}
-		eNotify(new NotificationImpl(NotifyEventId, null, null));
 	}
 	
 	private LinkedList<OpmodelLinkInstance> links;
@@ -61,7 +56,6 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		if (link instanceof OpmodelLinkInstanceImpl){
 			containerInstanceBase.getLinks().add(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
 		}
-		eNotify(new NotificationImpl(NotifyEventId, null, null));
 	}
 	
 	public void removeLink(OpmodelLinkInstance link){
@@ -69,6 +63,5 @@ public class OpmodelContainerInstanceImpl extends OpmodelInstanceImpl implements
 		if (link instanceof OpmodelLinkInstanceImpl){
 			containerInstanceBase.getLinks().remove(((OpmodelLinkInstanceImpl)link).linkInstanceBase);
 		}
-		eNotify(new NotificationImpl(NotifyEventId, null, null));
 	}
 }

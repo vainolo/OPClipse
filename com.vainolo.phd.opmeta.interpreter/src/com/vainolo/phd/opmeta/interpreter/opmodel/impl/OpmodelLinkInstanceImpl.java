@@ -25,7 +25,12 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 		this.source = source;
 		if (this.source != null){
 			this.source.getOutgoingLinks().add(this);
+			if (source instanceof OpmodelNodeInstanceImpl)
+				linkInstanceBase.setSource(((OpmodelNodeInstanceImpl)source).nodeInstanceBase);
+		}else{
+			linkInstanceBase.setSource(null);
 		}
+		
 	}
 
 	@Override
@@ -43,6 +48,10 @@ public class OpmodelLinkInstanceImpl extends OpmodelInstanceImpl implements
 		this.target = target;
 		if (this.target != null){
 			this.target.getIncomingLinks().add(this);
+			if (target instanceof OpmodelNodeInstanceImpl)
+				linkInstanceBase.setTarget(((OpmodelNodeInstanceImpl)target).nodeInstanceBase);
+		}else{
+			linkInstanceBase.setTarget(null);
 		}
 	}
 

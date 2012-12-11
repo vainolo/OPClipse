@@ -2,6 +2,7 @@ package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 
 import com.vainolo.phd.opm.model.util.LinkedEList;
@@ -21,6 +22,7 @@ public class OpmodelInstanceImpl implements OpmodelInstance {
 		super();
 		this.descriptor = descriptor;
 		this.instanceBase = instanceBase;
+		instanceBase.eAdapters().add(new InstanceBaseAdapter());
 	}
 
 	private TypeDescriptor descriptor;
@@ -56,5 +58,26 @@ public class OpmodelInstanceImpl implements OpmodelInstance {
 		}
 	}
 	
-	
+	protected class InstanceBaseAdapter implements Adapter{
+
+		@Override
+		public void notifyChanged(Notification notification) {
+			eNotify(notification);
+		}
+
+		@Override
+		public Notifier getTarget() {
+			return instanceBase;
+		}
+
+		@Override
+		public void setTarget(Notifier newTarget) {
+		}
+
+		@Override
+		public boolean isAdapterForType(Object type) {
+			return InstanceBase.class.equals(type);
+		}
+		
+	}
 }
