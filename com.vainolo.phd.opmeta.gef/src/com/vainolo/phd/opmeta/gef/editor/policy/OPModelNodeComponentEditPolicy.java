@@ -23,25 +23,24 @@ public class OPModelNodeComponentEditPolicy extends ComponentEditPolicy {
 	  @Override
 	  protected Command createDeleteCommand(GroupRequest deleteRequest) {
 	    OpmodelNodeInstance nodeToDelete = (OpmodelNodeInstance) getHost().getModel();
-	    return createRecursiveDeleteNodeCommand(nodeToDelete);
+	    return createRecursiveDeleteNodeCommand(nodeToDelete,(OpmodelContainerInstance)getHost().getParent().getModel());
 	  }
 
-	private Command createRecursiveDeleteNodeCommand(OpmodelNodeInstance nodeToDelete) {
+	private Command createRecursiveDeleteNodeCommand(OpmodelNodeInstance nodeToDelete, OpmodelContainerInstance nodeContainer) {
 		CompoundCommand compoundCommand = new CompoundCommand();
 
 	    if(nodeToDelete instanceof OpmodelContainerInstance) {
 	    	OpmodelContainerInstance container = (OpmodelContainerInstance) nodeToDelete;
 	      for(OpmodelNodeInstance node : container.getNodes()) {
-	        Command containedNodeDelete = createRecursiveDeleteNodeCommand(node);
+	        Command containedNodeDelete = createRecursiveDeleteNodeCommand(node,container);
 	        compoundCommand.add(containedNodeDelete);
 	      }
 	    }
 	    	
 		OPModelNodeDeleteCommand deleteCommand = new OPModelNodeDeleteCommand();
 		deleteCommand.setNode(nodeToDelete);
-		deleteCommand.setContainer((OpmodelContainerInstance)getHost().getParent().getModel());
+		deleteCommand.setContainer(nodeContainer);
 		compoundCommand.add(deleteCommand);
-		
 		
 		return compoundCommand;
 	}

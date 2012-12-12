@@ -22,14 +22,17 @@ public class OPModelNodeRectangleFigure extends Figure{
 	  public OPModelNodeRectangleFigure() {
 	    super();
 	    setLayoutManager(new XYLayout());
+	    rectangle = new RectangleFigure();
+	    rectangle.setLayoutManager(new XYLayout());
+	    rectangle.setForegroundColor(ColorConstants.black);
+	    rectangle.setLineWidth(OPMFigureConstants.entityBorderWidth);
+	    rectangle.setFill(false);
+	    add(rectangle);
 	    nameLabel = new Label();
 	    nameLabel.setForegroundColor(ColorConstants.black);
 	    nameLabel.setTextAlignment(PositionConstants.MIDDLE);
 	    add(nameLabel);
-	    rectangle = new RectangleFigure();
-	    rectangle.setForegroundColor(ColorConstants.black);
-	    rectangle.setLineWidth(OPMFigureConstants.entityBorderWidth);
-	    add(rectangle);
+	    
 	  }
 
 	  /**
