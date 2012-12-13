@@ -1,7 +1,5 @@
 package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 
-import java.util.HashMap;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,12 +7,8 @@ import org.eclipse.emf.common.util.EList;
 
 import com.vainolo.phd.opm.model.util.LinkedEList;
 import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
-import com.vainolo.phd.opmeta.interpreter.propertyDescriptor;
 import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 import com.vainolo.phd.opmeta.model.InstanceBase;
-import com.vainolo.phd.opmeta.model.NodeInstanceBase;
-import com.vainolo.phd.opmeta.interpreter.propertyDescriptor;;
 
 public class OpmodelInstanceImpl implements OpmodelInstance {
 

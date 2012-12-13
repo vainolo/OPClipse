@@ -8,17 +8,24 @@ package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 
+import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
+import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +36,8 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelDiagramImpl#getElementsDiagram <em>Elements Diagram</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelDiagramImpl#getLinksDiagram <em>Links Diagram</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelDiagramImpl#getLinkValidations <em>Link Validations</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelDiagramImpl#getContaimentValidations <em>Contaiment Validations</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +63,26 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * @ordered
 	 */
 	protected OPMObjectProcessDiagram linksDiagram;
+
+	/**
+	 * The cached value of the '{@link #getLinkValidations() <em>Link Validations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLinkValidations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OPMetaModelLinkValidationRule> linkValidations;
+
+	/**
+	 * The cached value of the '{@link #getContaimentValidations() <em>Contaiment Validations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContaimentValidations()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OPMetaModelContaimentValidationRule> contaimentValidations;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -165,6 +194,30 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public List<OPMetaModelLinkValidationRule> getLinkValidations() {
+		if (linkValidations == null) {
+			linkValidations = new EObjectContainmentEList<OPMetaModelLinkValidationRule>(OPMetaModelLinkValidationRule.class, this, opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS);
+		}
+		return linkValidations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<OPMetaModelContaimentValidationRule> getContaimentValidations() {
+		if (contaimentValidations == null) {
+			contaimentValidations = new EObjectContainmentEList<OPMetaModelContaimentValidationRule>(OPMetaModelContaimentValidationRule.class, this, opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS);
+		}
+		return contaimentValidations;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -172,6 +225,10 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 				return basicSetElementsDiagram(null, msgs);
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
 				return basicSetLinksDiagram(null, msgs);
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS:
+				return ((InternalEList<?>)getLinkValidations()).basicRemove(otherEnd, msgs);
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS:
+				return ((InternalEList<?>)getContaimentValidations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -188,6 +245,10 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 				return getElementsDiagram();
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
 				return getLinksDiagram();
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS:
+				return getLinkValidations();
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS:
+				return getContaimentValidations();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -197,6 +258,7 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -205,6 +267,14 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 				return;
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
 				setLinksDiagram((OPMObjectProcessDiagram)newValue);
+				return;
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS:
+				getLinkValidations().clear();
+				getLinkValidations().addAll((Collection<? extends OPMetaModelLinkValidationRule>)newValue);
+				return;
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS:
+				getContaimentValidations().clear();
+				getContaimentValidations().addAll((Collection<? extends OPMetaModelContaimentValidationRule>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,6 +294,12 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
 				setLinksDiagram((OPMObjectProcessDiagram)null);
 				return;
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS:
+				getLinkValidations().clear();
+				return;
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS:
+				getContaimentValidations().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -240,6 +316,10 @@ public class OPMetaModelDiagramImpl extends EObjectImpl implements OPMetaModelDi
 				return elementsDiagram != null;
 			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM:
 				return linksDiagram != null;
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS:
+				return linkValidations != null && !linkValidations.isEmpty();
+			case opmetaPackage.OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS:
+				return contaimentValidations != null && !contaimentValidations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

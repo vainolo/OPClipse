@@ -7,6 +7,8 @@
 package com.vainolo.phd.opmeta.model.provider;
 
 
+import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.opmetaPackage;
 import java.util.Collection;
 import java.util.List;
 
@@ -15,13 +17,16 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
  * This is the item provider adapter for a {@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule} object.
@@ -58,8 +63,77 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addIsValidPropertyDescriptor(object);
+			addContainerTypeNamePropertyDescriptor(object);
+			addNodeTypeNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Valid feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIsValidPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPMetaModelContaimentValidationRule_IsValid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelContaimentValidationRule_IsValid_feature", "_UI_OPMetaModelContaimentValidationRule_type"),
+				 opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Container Type Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addContainerTypeNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPMetaModelContaimentValidationRule_ContainerTypeName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelContaimentValidationRule_ContainerTypeName_feature", "_UI_OPMetaModelContaimentValidationRule_type"),
+				 opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Node Type Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNodeTypeNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPMetaModelContaimentValidationRule_NodeTypeName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelContaimentValidationRule_NodeTypeName_feature", "_UI_OPMetaModelContaimentValidationRule_type"),
+				 opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -81,7 +155,10 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_OPMetaModelContaimentValidationRule_type");
+		String label = ((OPMetaModelContaimentValidationRule)object).getContainerTypeName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_OPMetaModelContaimentValidationRule_type") :
+			getString("_UI_OPMetaModelContaimentValidationRule_type") + " " + label;
 	}
 
 	/**
@@ -94,6 +171,14 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(OPMetaModelContaimentValidationRule.class)) {
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

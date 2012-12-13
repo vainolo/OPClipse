@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opmeta.model;
 
+import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.InstanceBase#getTypeName <em>Type Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.InstanceBase#getId <em>Id</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.InstanceBase#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -77,5 +79,21 @@ public interface InstanceBase extends EObject {
 	 * @generated
 	 */
 	void setId(long value);
+
+	/**
+	 * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.KeyValuePair}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Properties</em>' containment reference list.
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getInstanceBase_Properties()
+	 * @model containment="true"
+	 * @generated
+	 */
+	List<KeyValuePair> getProperties();
 
 } // InstanceBase

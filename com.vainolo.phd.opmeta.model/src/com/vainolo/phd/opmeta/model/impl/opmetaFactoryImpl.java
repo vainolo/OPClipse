@@ -71,6 +71,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 			case opmetaPackage.CONTAINER_INSTANCE_BASE: return createContainerInstanceBase();
 			case opmetaPackage.LINK_INSTANCE_BASE: return createLinkInstanceBase();
 			case opmetaPackage.THING_INSTANCE_BASE: return createThingInstanceBase();
+			case opmetaPackage.KEY_VALUE_PAIR: return createKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -188,6 +189,16 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	public ThingInstanceBase createThingInstanceBase() {
 		ThingInstanceBaseImpl thingInstanceBase = new ThingInstanceBaseImpl();
 		return thingInstanceBase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KeyValuePair createKeyValuePair() {
+		KeyValuePairImpl keyValuePair = new KeyValuePairImpl();
+		return keyValuePair;
 	}
 
 	/**
