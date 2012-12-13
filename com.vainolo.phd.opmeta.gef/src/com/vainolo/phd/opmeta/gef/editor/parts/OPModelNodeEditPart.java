@@ -83,10 +83,8 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	    OpmodelNodeInstance model = (OpmodelNodeInstance)getModel();
 	    final GraphicalEditPart parent = (GraphicalEditPart) getParent();
 	    
-	    figure.getNameLabel().setText(model.getName());
-	    //figure.getNameLabel().setTextAlignment(model.getAlignment().getValue());
-	    figure.getNameLabel().revalidate();
-	    figure.getNameLabel().repaint();
+	    figure.setText(model.getName());
+	    figure.repaint();
 	    parent.setLayoutConstraint(this, figure, model.getConstraints());
 	  }
 	
