@@ -16,7 +16,9 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opmeta.gef.utils.OPMDiagramEditorInput;
+import com.vainolo.phd.opmeta.gef.editor.input.ContaimentValidationListEditorInput;
+import com.vainolo.phd.opmeta.gef.editor.input.LinkValidationListEditorInput;
+import com.vainolo.phd.opmeta.gef.editor.input.OPMDiagramEditorInput;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 
@@ -62,6 +64,14 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 	      if(opmeta == null) {
 	        throw new RuntimeException("Could not load OPMeta file " + opmmFile.getLocationURI().toString());
 	      }
+	      
+	      if (opmeta.getElementsDiagram().getId() == 0){
+	    	  opmeta.getElementsDiagram().setId(1);
+	    	  opmeta.getLinksDiagram().setId(2);
+	    	  opmeta.getElementsDiagram().setNextId(3);
+	    	  opmeta.getLinksDiagram().setNextId(3);
+	      }
+	      
 	    idManager.setId(opmeta.getElementsDiagram().getNextId());
 	  }
 	
@@ -83,6 +93,24 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),
                      "Error creating Links GEF editor",
+                     null, e.getStatus());
+			e.printStackTrace();
+		}
+		try {
+			index = addPage(new LinkValidationTableEditorPart(), new LinkValidationListEditorInput(opmeta.getLinkValidations()));
+			setPageText(index, "Link Validation Rules");
+		} catch (PartInitException e) {
+			 ErrorDialog.openError(getSite().getShell(),
+                     "Error creating Link Validation Rules editor",
+                     null, e.getStatus());
+			e.printStackTrace();
+		}
+		try {
+			index = addPage(new ContaimentValidationTableEditorPart(), new ContaimentValidationListEditorInput(opmeta.getContaimentValidations()));
+			setPageText(index, "Contaiment Validation Rules");
+		} catch (PartInitException e) {
+			 ErrorDialog.openError(getSite().getShell(),
+                     "Error creating Contaiment Validation Rules editor",
                      null, e.getStatus());
 			e.printStackTrace();
 		}

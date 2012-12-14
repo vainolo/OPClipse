@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.utils;
+package com.vainolo.phd.opmeta.gef.editor.input;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.IEditorInput;

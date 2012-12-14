@@ -8,7 +8,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opmeta.gef.utils.OPMDiagramEditorInput;
+import com.vainolo.phd.opmeta.gef.editor.input.OPMDiagramEditorInput;
 
 public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
 	
