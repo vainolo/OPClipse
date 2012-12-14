@@ -3,6 +3,7 @@ package com.vainolo.phd.opmeta.interpreter.opmodel.impl;
 import java.util.Collection;
 import java.util.HashMap;
 
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;

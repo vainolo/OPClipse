@@ -10,12 +10,17 @@ import com.vainolo.phd.opmeta.model.LinkInstanceBase;
 import com.vainolo.phd.opmeta.model.NodeInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
+import java.util.Collection;
+import java.util.List;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +31,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl#getSource <em>Source</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl#getTarget <em>Target</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.LinkInstanceBaseImpl#getBendpoints <em>Bendpoints</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,6 +57,16 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 	 * @ordered
 	 */
 	protected NodeInstanceBase target;
+
+	/**
+	 * The cached value of the '{@link #getBendpoints() <em>Bendpoints</em>}' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBendpoints()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Point> bendpoints;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +168,18 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public List<Point> getBendpoints() {
+		if (bendpoints == null) {
+			bendpoints = new EDataTypeUniqueEList<Point>(Point.class, this, opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS);
+		}
+		return bendpoints;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -161,6 +189,8 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
+			case opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS:
+				return getBendpoints();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -170,6 +200,7 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -178,6 +209,10 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 				return;
 			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
 				setTarget((NodeInstanceBase)newValue);
+				return;
+			case opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS:
+				getBendpoints().clear();
+				getBendpoints().addAll((Collection<? extends Point>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,6 +232,9 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
 				setTarget((NodeInstanceBase)null);
 				return;
+			case opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS:
+				getBendpoints().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -213,8 +251,26 @@ public class LinkInstanceBaseImpl extends InstanceBaseImpl implements LinkInstan
 				return source != null;
 			case opmetaPackage.LINK_INSTANCE_BASE__TARGET:
 				return target != null;
+			case opmetaPackage.LINK_INSTANCE_BASE__BENDPOINTS:
+				return bendpoints != null && !bendpoints.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (bendpoints: ");
+		result.append(bendpoints);
+		result.append(')');
+		return result.toString();
 	}
 
 } //LinkInstanceBaseImpl

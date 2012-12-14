@@ -89,13 +89,31 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM = 1;
 
 	/**
+	 * The feature id for the '<em><b>Link Validations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Contaiment Validations</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS = 3;
+
+	/**
 	 * The number of structural features of the '<em>OP Meta Model Diagram</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_META_MODEL_DIAGRAM_FEATURE_COUNT = 2;
+	int OP_META_MODEL_DIAGRAM_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl <em>OP Meta Model Contaiment Validation Rule</em>}' class.
@@ -108,13 +126,40 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Container Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Node Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME = 2;
+
+	/**
 	 * The number of structural features of the '<em>OP Meta Model Contaiment Validation Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE_FEATURE_COUNT = 0;
+	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl <em>OP Meta Model Link Validation Rule</em>}' class.
@@ -127,13 +172,49 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_LINK_VALIDATION_RULE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID = 0;
+
+	/**
+	 * The feature id for the '<em><b>Source Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Target Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME = 2;
+
+	/**
+	 * The feature id for the '<em><b>Link Type Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OP_META_MODEL_LINK_VALIDATION_RULE__LINK_TYPE_NAME = 3;
+
+	/**
 	 * The number of structural features of the '<em>OP Meta Model Link Validation Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_META_MODEL_LINK_VALIDATION_RULE_FEATURE_COUNT = 0;
+	int OP_META_MODEL_LINK_VALIDATION_RULE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl <em>OP Model</em>}' class.
@@ -210,13 +291,22 @@ public interface opmetaPackage extends EPackage {
 	int INSTANCE_BASE__ID = 1;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INSTANCE_BASE__PROPERTIES = 2;
+
+	/**
 	 * The number of structural features of the '<em>Instance Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INSTANCE_BASE_FEATURE_COUNT = 2;
+	int INSTANCE_BASE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl <em>Node Instance Base</em>}' class.
@@ -245,6 +335,15 @@ public interface opmetaPackage extends EPackage {
 	 * @ordered
 	 */
 	int NODE_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE_BASE__PROPERTIES = INSTANCE_BASE__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
@@ -302,6 +401,15 @@ public interface opmetaPackage extends EPackage {
 	int CONTAINER_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_INSTANCE_BASE__PROPERTIES = INSTANCE_BASE__PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -357,6 +465,15 @@ public interface opmetaPackage extends EPackage {
 	int LINK_INSTANCE_BASE__ID = INSTANCE_BASE__ID;
 
 	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__PROPERTIES = INSTANCE_BASE__PROPERTIES;
+
+	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -375,13 +492,22 @@ public interface opmetaPackage extends EPackage {
 	int LINK_INSTANCE_BASE__TARGET = INSTANCE_BASE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Bendpoints</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LINK_INSTANCE_BASE__BENDPOINTS = INSTANCE_BASE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Link Instance Base</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LINK_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 2;
+	int LINK_INSTANCE_BASE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
@@ -410,6 +536,15 @@ public interface opmetaPackage extends EPackage {
 	 * @ordered
 	 */
 	int THING_INSTANCE_BASE__ID = NODE_INSTANCE_BASE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE_BASE__PROPERTIES = NODE_INSTANCE_BASE__PROPERTIES;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
@@ -457,6 +592,43 @@ public interface opmetaPackage extends EPackage {
 	int THING_INSTANCE_BASE_FEATURE_COUNT = NODE_INSTANCE_BASE_FEATURE_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link com.vainolo.phd.opmeta.model.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmeta.model.impl.KeyValuePairImpl
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getKeyValuePair()
+	 * @generated
+	 */
+	int KEY_VALUE_PAIR = 9;
+
+	/**
+	 * The feature id for the '<em><b>Key</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR__KEY = 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR__VALUE = 1;
+
+	/**
+	 * The number of structural features of the '<em>Key Value Pair</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int KEY_VALUE_PAIR_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '<em>Rectangle</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,7 +636,17 @@ public interface opmetaPackage extends EPackage {
 	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getRectangle()
 	 * @generated
 	 */
-	int RECTANGLE = 9;
+	int RECTANGLE = 10;
+
+	/**
+	 * The meta object id for the '<em>Point</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getPoint()
+	 * @generated
+	 */
+	int POINT = 11;
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram <em>OP Meta Model Diagram</em>}'.
@@ -499,6 +681,28 @@ public interface opmetaPackage extends EPackage {
 	EReference getOPMetaModelDiagram_LinksDiagram();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinkValidations <em>Link Validations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Link Validations</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinkValidations()
+	 * @see #getOPMetaModelDiagram()
+	 * @generated
+	 */
+	EReference getOPMetaModelDiagram_LinkValidations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getContaimentValidations <em>Contaiment Validations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contaiment Validations</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getContaimentValidations()
+	 * @see #getOPMetaModelDiagram()
+	 * @generated
+	 */
+	EReference getOPMetaModelDiagram_ContaimentValidations();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule <em>OP Meta Model Contaiment Validation Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -509,6 +713,39 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPMetaModelContaimentValidationRule();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid <em>Is Valid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Valid</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid()
+	 * @see #getOPMetaModelContaimentValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelContaimentValidationRule_IsValid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName <em>Container Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Container Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName()
+	 * @see #getOPMetaModelContaimentValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelContaimentValidationRule_ContainerTypeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getNodeTypeName <em>Node Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Node Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getNodeTypeName()
+	 * @see #getOPMetaModelContaimentValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelContaimentValidationRule_NodeTypeName();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule <em>OP Meta Model Link Validation Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -517,6 +754,50 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getOPMetaModelLinkValidationRule();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isIsValid <em>Is Valid</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Valid</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isIsValid()
+	 * @see #getOPMetaModelLinkValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelLinkValidationRule_IsValid();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getSourceTypeName <em>Source Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Source Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getSourceTypeName()
+	 * @see #getOPMetaModelLinkValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelLinkValidationRule_SourceTypeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getTargetTypeName <em>Target Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Target Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getTargetTypeName()
+	 * @see #getOPMetaModelLinkValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelLinkValidationRule_TargetTypeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getLinkTypeName <em>Link Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Link Type Name</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getLinkTypeName()
+	 * @see #getOPMetaModelLinkValidationRule()
+	 * @generated
+	 */
+	EAttribute getOPMetaModelLinkValidationRule_LinkTypeName();
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.OPModel <em>OP Model</em>}'.
@@ -592,6 +873,17 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getInstanceBase_Id();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmeta.model.InstanceBase#getProperties <em>Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Properties</em>'.
+	 * @see com.vainolo.phd.opmeta.model.InstanceBase#getProperties()
+	 * @see #getInstanceBase()
+	 * @generated
+	 */
+	EReference getInstanceBase_Properties();
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase <em>Node Instance Base</em>}'.
@@ -690,6 +982,17 @@ public interface opmetaPackage extends EPackage {
 	EReference getLinkInstanceBase_Target();
 
 	/**
+	 * Returns the meta object for the attribute list '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase#getBendpoints <em>Bendpoints</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Bendpoints</em>'.
+	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase#getBendpoints()
+	 * @see #getLinkInstanceBase()
+	 * @generated
+	 */
+	EAttribute getLinkInstanceBase_Bendpoints();
+
+	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.ThingInstanceBase <em>Thing Instance Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -698,6 +1001,38 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getThingInstanceBase();
+
+	/**
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmeta.model.KeyValuePair <em>Key Value Pair</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Key Value Pair</em>'.
+	 * @see com.vainolo.phd.opmeta.model.KeyValuePair
+	 * @generated
+	 */
+	EClass getKeyValuePair();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.KeyValuePair#getKey <em>Key</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Key</em>'.
+	 * @see com.vainolo.phd.opmeta.model.KeyValuePair#getKey()
+	 * @see #getKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getKeyValuePair_Key();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.KeyValuePair#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see com.vainolo.phd.opmeta.model.KeyValuePair#getValue()
+	 * @see #getKeyValuePair()
+	 * @generated
+	 */
+	EAttribute getKeyValuePair_Value();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Rectangle <em>Rectangle</em>}'.
@@ -709,6 +1044,17 @@ public interface opmetaPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getRectangle();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.draw2d.geometry.Point <em>Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Point</em>'.
+	 * @see org.eclipse.draw2d.geometry.Point
+	 * @model instanceClass="org.eclipse.draw2d.geometry.Point"
+	 * @generated
+	 */
+	EDataType getPoint();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -759,6 +1105,22 @@ public interface opmetaPackage extends EPackage {
 		EReference OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM = eINSTANCE.getOPMetaModelDiagram_LinksDiagram();
 
 		/**
+		 * The meta object literal for the '<em><b>Link Validations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS = eINSTANCE.getOPMetaModelDiagram_LinkValidations();
+
+		/**
+		 * The meta object literal for the '<em><b>Contaiment Validations</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS = eINSTANCE.getOPMetaModelDiagram_ContaimentValidations();
+
+		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl <em>OP Meta Model Contaiment Validation Rule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -769,6 +1131,30 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_META_MODEL_CONTAIMENT_VALIDATION_RULE = eINSTANCE.getOPMetaModelContaimentValidationRule();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Valid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID = eINSTANCE.getOPMetaModelContaimentValidationRule_IsValid();
+
+		/**
+		 * The meta object literal for the '<em><b>Container Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME = eINSTANCE.getOPMetaModelContaimentValidationRule_ContainerTypeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Node Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME = eINSTANCE.getOPMetaModelContaimentValidationRule_NodeTypeName();
+
+		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl <em>OP Meta Model Link Validation Rule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -777,6 +1163,38 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EClass OP_META_MODEL_LINK_VALIDATION_RULE = eINSTANCE.getOPMetaModelLinkValidationRule();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Valid</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID = eINSTANCE.getOPMetaModelLinkValidationRule_IsValid();
+
+		/**
+		 * The meta object literal for the '<em><b>Source Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME = eINSTANCE.getOPMetaModelLinkValidationRule_SourceTypeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME = eINSTANCE.getOPMetaModelLinkValidationRule_TargetTypeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Link Type Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__LINK_TYPE_NAME = eINSTANCE.getOPMetaModelLinkValidationRule_LinkTypeName();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.OPModelImpl <em>OP Model</em>}' class.
@@ -837,6 +1255,14 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INSTANCE_BASE__ID = eINSTANCE.getInstanceBase_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INSTANCE_BASE__PROPERTIES = eINSTANCE.getInstanceBase_Properties();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.NodeInstanceBaseImpl <em>Node Instance Base</em>}' class.
@@ -917,6 +1343,14 @@ public interface opmetaPackage extends EPackage {
 		EReference LINK_INSTANCE_BASE__TARGET = eINSTANCE.getLinkInstanceBase_Target();
 
 		/**
+		 * The meta object literal for the '<em><b>Bendpoints</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LINK_INSTANCE_BASE__BENDPOINTS = eINSTANCE.getLinkInstanceBase_Bendpoints();
+
+		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.ThingInstanceBaseImpl <em>Thing Instance Base</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -927,6 +1361,32 @@ public interface opmetaPackage extends EPackage {
 		EClass THING_INSTANCE_BASE = eINSTANCE.getThingInstanceBase();
 
 		/**
+		 * The meta object literal for the '{@link com.vainolo.phd.opmeta.model.impl.KeyValuePairImpl <em>Key Value Pair</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.vainolo.phd.opmeta.model.impl.KeyValuePairImpl
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getKeyValuePair()
+		 * @generated
+		 */
+		EClass KEY_VALUE_PAIR = eINSTANCE.getKeyValuePair();
+
+		/**
+		 * The meta object literal for the '<em><b>Key</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_VALUE_PAIR__KEY = eINSTANCE.getKeyValuePair_Key();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute KEY_VALUE_PAIR__VALUE = eINSTANCE.getKeyValuePair_Value();
+
+		/**
 		 * The meta object literal for the '<em>Rectangle</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -935,6 +1395,16 @@ public interface opmetaPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType RECTANGLE = eINSTANCE.getRectangle();
+
+		/**
+		 * The meta object literal for the '<em>Point</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.draw2d.geometry.Point
+		 * @see com.vainolo.phd.opmeta.model.impl.opmetaPackageImpl#getPoint()
+		 * @generated
+		 */
+		EDataType POINT = eINSTANCE.getPoint();
 
 	}
 

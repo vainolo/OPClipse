@@ -8,6 +8,7 @@ package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opmeta.model.*;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -70,6 +71,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 			case opmetaPackage.CONTAINER_INSTANCE_BASE: return createContainerInstanceBase();
 			case opmetaPackage.LINK_INSTANCE_BASE: return createLinkInstanceBase();
 			case opmetaPackage.THING_INSTANCE_BASE: return createThingInstanceBase();
+			case opmetaPackage.KEY_VALUE_PAIR: return createKeyValuePair();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -85,6 +87,8 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.RECTANGLE:
 				return createRectangleFromString(eDataType, initialValue);
+			case opmetaPackage.POINT:
+				return createPointFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -100,6 +104,8 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		switch (eDataType.getClassifierID()) {
 			case opmetaPackage.RECTANGLE:
 				return convertRectangleToString(eDataType, instanceValue);
+			case opmetaPackage.POINT:
+				return convertPointToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -187,6 +193,16 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public KeyValuePair createKeyValuePair() {
+		KeyValuePairImpl keyValuePair = new KeyValuePairImpl();
+		return keyValuePair;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
 	 * Create a <code>Rectangle</code> instance from a <code>String</code>. The expected
 	 * representation is "x,y,width,height". Illegal representations will return a null
 	 * value. 
@@ -229,6 +245,24 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 		return rect.x+","+rect.y+","+rect.width+","+rect.height;
 	}
 
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Point createPointFromString(EDataType eDataType, String initialValue) {
+		return (Point)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertPointToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
 
 	/**
 	 * <!-- begin-user-doc -->

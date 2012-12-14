@@ -44,4 +44,5 @@ public class OpmodelNodeInstanceImpl extends OpmodelInstanceImpl implements
 		return outgoingLinks;
 	}
 
+	public String getName() {return nodeInstanceBase.getName();}
 }

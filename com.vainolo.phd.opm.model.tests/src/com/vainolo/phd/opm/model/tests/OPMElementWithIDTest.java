@@ -7,11 +7,8 @@
 package com.vainolo.phd.opm.model.tests;
 
 import com.vainolo.phd.opm.model.OPMElementWithID;
-import com.vainolo.phd.opm.model.OPMFactory;
 
 import junit.framework.TestCase;
-
-import junit.textui.TestRunner;
 
 /**
  * <!-- begin-user-doc -->

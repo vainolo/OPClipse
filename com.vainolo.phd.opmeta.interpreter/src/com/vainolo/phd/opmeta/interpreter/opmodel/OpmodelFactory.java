@@ -54,8 +54,9 @@ public class OpmodelFactory {
 	}
 	
 	public OpmodelInstance createOpmodelInstance(ThingInstanceBase instance){
-		TypeDescriptor descriptor=interpretation.getDescriptorByName(instance.getTypeName());
-		if (!interpretation.getContainers().contains(descriptor) || !interpretation.getNodes().contains(descriptor)){
+		String typeName = instance.getTypeName();
+		TypeDescriptor descriptor=interpretation.getDescriptorByName(typeName);
+		if (!interpretation.isContainer(typeName) || !interpretation.isNode(typeName)){
 			logger.warning("Thing instance had illegal type: "+instance.getTypeName());
 			return null;
 		}

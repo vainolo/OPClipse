@@ -10,9 +10,29 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="LinksDiagram" lowerBound="1"
         eType="ecore:EClass ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="LinkValidations" upperBound="-1"
+        eType="#//OPMetaModelLinkValidationRule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ContaimentValidations"
+        upperBound="-1" eType="#//OPMetaModelContaimentValidationRule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContaimentValidationRule"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelLinkValidationRule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContaimentValidationRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="IsValid" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ContainerTypeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="NodeTypeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelLinkValidationRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="IsValid" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="SourceTypeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="TargetTypeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LinkTypeName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OPModel">
     <eStructuralFeatures xsi:type="ecore:EReference" name="MetaModel" lowerBound="1"
         eType="#//OPMetaModelDiagram" containment="true"/>
@@ -25,6 +45,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="TypeName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"
         iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//KeyValuePair" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodeInstanceBase" eSuperTypes="#//InstanceBase">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" eType="ecore:EDataType ../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"
@@ -42,7 +64,14 @@
         eKeys="#//InstanceBase/Id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//NodeInstanceBase"
         eKeys="#//InstanceBase/Id"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="bendpoints" upperBound="-1"
+        eType="#//Point"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ThingInstanceBase" eSuperTypes="#//NodeInstanceBase #//ContainerInstanceBase"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Point" instanceClassName="org.eclipse.draw2d.geometry.Point"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KeyValuePair">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Key" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

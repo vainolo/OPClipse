@@ -6,8 +6,6 @@
  */
 package com.vainolo.phd.opm.model.provider;
 
-
-import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralLink;
 

@@ -13,4 +13,6 @@ public interface OpmodelNodeInstance extends OpmodelInstance {
 	public Collection<OpmodelLinkInstance> getIncomingLinks();
 	
 	public Collection<OpmodelLinkInstance> getOutgoingLinks();
+	
+	public String getName();
 }

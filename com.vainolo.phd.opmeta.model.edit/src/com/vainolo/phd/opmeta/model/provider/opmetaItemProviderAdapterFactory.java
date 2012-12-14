@@ -260,6 +260,29 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link com.vainolo.phd.opmeta.model.KeyValuePair} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected KeyValuePairItemProvider keyValuePairItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link com.vainolo.phd.opmeta.model.KeyValuePair}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createKeyValuePairAdapter() {
+		if (keyValuePairItemProvider == null) {
+			keyValuePairItemProvider = new KeyValuePairItemProvider(this);
+		}
+
+		return keyValuePairItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -366,6 +389,7 @@ public class opmetaItemProviderAdapterFactory extends opmetaAdapterFactory imple
 		if (containerInstanceBaseItemProvider != null) containerInstanceBaseItemProvider.dispose();
 		if (linkInstanceBaseItemProvider != null) linkInstanceBaseItemProvider.dispose();
 		if (thingInstanceBaseItemProvider != null) thingInstanceBaseItemProvider.dispose();
+		if (keyValuePairItemProvider != null) keyValuePairItemProvider.dispose();
 	}
 
 }

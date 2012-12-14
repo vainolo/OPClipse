@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.emf.common.util.URI;
@@ -38,38 +37,23 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Preferences;
 
 import org.eclipse.jface.dialogs.MessageDialog;
 
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
-import org.eclipse.jface.wizard.IWizard;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardPage;
 
 import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
-import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
@@ -77,15 +61,12 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-import org.eclipse.ui.internal.ide.IDEWorkbenchMessages;
-import org.eclipse.ui.internal.ide.dialogs.CreateLinkedResourceGroup;
 
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opm.model.provider.OPMEditPlugin;
 
 
 import org.eclipse.core.runtime.Path;

@@ -7,23 +7,9 @@
 package com.vainolo.phd.opm.model.impl;
 
 import com.vainolo.phd.opm.model.Label;
-import com.vainolo.phd.opm.model.OPMNamedElement;
-import com.vainolo.phd.opm.model.OPMFactory;
-import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;
 
-import com.vainolo.phd.opm.model.VerticalAlignment;
-import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->

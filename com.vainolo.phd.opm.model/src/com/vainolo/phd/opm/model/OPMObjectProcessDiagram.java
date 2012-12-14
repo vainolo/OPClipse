@@ -7,9 +7,6 @@
 package com.vainolo.phd.opm.model;
 
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

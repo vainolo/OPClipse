@@ -14,7 +14,7 @@ public class OPModelEditPartFactory implements EditPartFactory{
 	public EditPart createEditPart(EditPart context, Object model) {
 		EditPart part=null;
 		if (model instanceof OpmodelThingInstance){
-			
+			part = new OPModelThingEditPart();
 		} else if (model instanceof OpmodelNodeInstance){
 			part = new OPModelNodeEditPart();
 		} else if (model instanceof OpmodelContainerInstance){
