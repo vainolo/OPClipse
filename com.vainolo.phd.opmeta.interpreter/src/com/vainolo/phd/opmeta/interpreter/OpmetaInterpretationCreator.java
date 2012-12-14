@@ -47,14 +47,14 @@ class OpmetaInterpretationCreator {
 			for (OPMLink link:links){
 				propertyDescriptor propertyDescriptor =  new propertyDescriptor(link.getTarget().getName());
 				if(!descriptor.addProperty(propertyDescriptor))
-					System.err.print("doplicate property");	
+					System.err.print("duplicate property");	
 			}
 			
 			// multiple parents: for (TypeDescriptor parent : blabla multiple parents thingy){ 
 			if (parent!=null){
 				for (propertyDescriptor property : parent.getProperties())
 					if(!descriptor.addProperty(property))
-						System.err.print("doplicate property");	
+						System.err.print("duplicate property");	
 			}
 			
 			
