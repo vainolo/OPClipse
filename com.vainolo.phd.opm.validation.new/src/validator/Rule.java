@@ -4,7 +4,8 @@ public class Rule {
 	
 	private Class<?> linkType;
 	private int PositiveParentsCount;
-	private boolean isSepcified;
+	private int NegativeParentsCount;
+	private boolean isSpecified;
 	public boolean value;
 	
 	public boolean getValue() {
@@ -22,7 +23,7 @@ public class Rule {
 	
 	public boolean decrementPositiveParents() {
 		if (PositiveParentsCount > 0 ) {
-			PositiveParentsCount++;
+			PositiveParentsCount--;
 		}
 		return true;
 	}
@@ -32,15 +33,32 @@ public class Rule {
 		return true;
 	}
 	
-	public Rule(Class<?> link, int PositiveParentCount, boolean isSpecified, boolean value) {
-		this.isSepcified 			= isSpecified;
+	public int getNegativeParentsCount() {
+		return NegativeParentsCount;
+	}
+	
+	public boolean decrementNegativeParents() {
+		if (NegativeParentsCount > 0 ) {
+			NegativeParentsCount--;
+		}
+		return true;
+	}
+	
+	public boolean incrementNegativeParents() {
+		NegativeParentsCount++;
+		return true;
+	}
+	
+	public Rule(Class<?> link, int PositiveParentCount, int NegativeParentCount, boolean isSpecified, boolean value) {
+		this.isSpecified 			= isSpecified;
 		this.linkType 				= link;
 		this.PositiveParentsCount 	= PositiveParentCount;
+		this.NegativeParentsCount 	= NegativeParentCount;
 		this.value					= value;
 	}
 	
 	public boolean getrIsSpecified(){
-		return this.isSepcified;
+		return this.isSpecified;
 	}
 	
 	public Class<?> getLinkType() {

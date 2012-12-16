@@ -7,12 +7,13 @@ import java.util.Map;
 
 public class RulesContainer {
 	
+	
 	private Map<Class<?>, Map<Class<?>, List<Rule>>> rules = 
 			new  HashMap<Class<?>, Map<Class<?>, List<Rule>>>();
 	
 
 	public boolean insertRule(Class<?> from, Class<?> link, Class<?> to, 
-			boolean value, boolean isSpecified, int PositiveParentCount) {
+			boolean value, boolean isSpecified, int PositiveParentCount, int negativeParentsCount) {
 		// check if we have a hash entry for from
 		if (! rules.containsKey(from) ) {
 			HashMap<Class<?>, List<Rule>> newHash = new HashMap<Class<?>, List<Rule>>();
@@ -21,20 +22,19 @@ public class RulesContainer {
 		
 		// check if there is an entry for "to"
 		if (! rules.get(from).containsKey(to) ) {
-			Rule newRule = new Rule(link, PositiveParentCount, isSpecified, value);
+			Rule newRule = new Rule(link, PositiveParentCount, negativeParentsCount, isSpecified, value);
 			List<Rule> newList = new ArrayList<Rule>();
 			newList.add(newRule);
 			rules.get(from).put(to, newList);
 		}
 		// "to" exists - add to rule set if doesn't already exists
 		else {
-			if (this.contains(from,link,to)) {
+			if (this.getSpecificRule(from, link, to).getrIsSpecified() == true) {
 				return false;
 			}
-			Rule newRule = new Rule(link,PositiveParentCount,isSpecified,value);
+			Rule newRule = new Rule(link,PositiveParentCount,negativeParentsCount, isSpecified,value);
 			rules.get(from).get(to).add(newRule);
 		}
-//		Class<?> c = itemA.getClass();
 		
 		return true;
 	}
@@ -53,14 +53,11 @@ public class RulesContainer {
 	}
 	
 	public boolean validate(Class<?> from, Class<?> link, Class<?> to) {
-		if (this.contains(from, link, to)) {
-			for (Rule rule : this.rules.get(from).get(to)) {
-				if (rule.getLinkType() == link) {
-					return rule.getValue();
-				}
-			}
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null) {
+			return false;
 		}
-		return false;
+		return rule.getValue();
 	}
 	
 	public boolean validate (Class<?> from, Class<?> link) {
@@ -72,5 +69,100 @@ public class RulesContainer {
 			}
 		}
 		return false;
+	}
+	
+	public boolean isSpecified(Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		return rule.getrIsSpecified();
+	}
+	
+	public boolean getValue(Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		return rule.getValue();
+	}
+	
+	public boolean setValue(Class<?> from, Class<?> link, Class<?> to, boolean value) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		return rule.setValue(value);
+	}
+	
+	public int getPositiveParentsCount(Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return -1;
+		}
+		return rule.getPositiveParentsCount();
+	}
+	
+	public boolean incrementPositiveParentsCount (Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		else if (rule.getrIsSpecified()){
+			return false;
+		}
+		return rule.incrementPositiveParents();	
+	}
+	
+	public boolean decrementPositiveParentsCount (Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		else if (rule.getrIsSpecified()){
+			return false;
+		}
+		return rule.decrementPositiveParents();	
+	}
+	
+	public int getNegativeParentsCount(Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return -1;
+		}
+		return rule.getNegativeParentsCount();
+	}
+	
+	public boolean incrementNegativeParentsCount (Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		else if (rule.getrIsSpecified()){
+			return false;
+		}
+		return rule.incrementNegativeParents();	
+	}
+	
+	public boolean decrementNegativeParentsCount (Class<?> from, Class<?> link, Class<?> to) {
+		Rule rule = getSpecificRule(from, link, to);
+		if (rule == null ) {
+			return false;
+		}
+		else if (rule.getrIsSpecified()){
+			return false;
+		}
+		return rule.decrementNegativeParents();	
+	}
+		
+	private Rule getSpecificRule(Class<?> from, Class<?> link, Class<?> to) {
+		if (this.contains(from, link, to)) {
+			for (Rule rule : this.rules.get(from).get(to)) {
+				if (rule.getLinkType() == link) {
+					return rule;
+				}
+			}
+		}
+		return null;
 	}
 }
