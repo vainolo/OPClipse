@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName <em>Container Type Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getNodeTypeName <em>Node Type Name</em>}</li>
  * </ul>
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface OPMetaModelContaimentValidationRule extends EObject {
 
 	/**
-	 * Returns the value of the '<em><b>Is Valid</b></em>' attribute.
+	 * Returns the value of the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Valid</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Valid</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Valid</em>' attribute.
-	 * @see #setIsValid(boolean)
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule_IsValid()
+	 * @return the value of the '<em>Valid</em>' attribute.
+	 * @see #setValid(boolean)
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule_Valid()
 	 * @model required="true"
 	 * @generated
 	 */
-	boolean isIsValid();
+	boolean isValid();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid <em>Is Valid</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Valid</em>' attribute.
-	 * @see #isIsValid()
+	 * @param value the new value of the '<em>Valid</em>' attribute.
+	 * @see #isValid()
 	 * @generated
 	 */
-	void setIsValid(boolean value);
+	void setValid(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Container Type Name</b></em>' attribute.

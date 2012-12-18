@@ -114,8 +114,6 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
                      null, e.getStatus());
 			e.printStackTrace();
 		}
-		// TODO continue
-		
 	}
 
 	@Override
@@ -136,8 +134,8 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 		int count = getPageCount();
 		for (int i=0;i<count;i++){
 	    	  IEditorPart part = getEditor(i);
-	    	  if (part instanceof OPMetaGraphicalEditor){
-	    		  ((OPMetaGraphicalEditor) part).prepareForSave();
+	    	  if (part instanceof IOuterSavable){
+	    		  ((IOuterSavable) part).beforeSave();
 	    	  }
 	      }
 	}
@@ -146,8 +144,8 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 		int count = getPageCount();
 	      for (int i=0;i<count;i++){
 	    	  IEditorPart part = getEditor(i);
-	    	  if (part instanceof OPMetaGraphicalEditor){
-	    		  ((OPMetaGraphicalEditor) part).markSaveLocation();
+	    	  if (part instanceof IOuterSavable){
+	    		  ((IOuterSavable) part).afterSave();
 	    	  }
 	      }
 	}

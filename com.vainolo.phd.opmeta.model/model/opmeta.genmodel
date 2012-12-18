@@ -18,16 +18,17 @@
     <genClasses ecoreClass="opmeta.ecore#//OPMetaModelDiagram">
       <genFeatures children="true" createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/ElementsDiagram"/>
       <genFeatures children="true" createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/LinksDiagram"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/LinkValidations"/>
+      <genFeatures children="true" createChild="true" propertyMultiLine="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/LinkValidations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/ContaimentValidations"/>
     </genClasses>
     <genClasses ecoreClass="opmeta.ecore#//OPMetaModelContaimentValidationRule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/IsValid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/Valid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/ContainerTypeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/NodeTypeName"/>
     </genClasses>
     <genClasses ecoreClass="opmeta.ecore#//OPMetaModelLinkValidationRule">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/IsValid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/Valid"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/SourceTypeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/TargetTypeName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/LinkTypeName"/>

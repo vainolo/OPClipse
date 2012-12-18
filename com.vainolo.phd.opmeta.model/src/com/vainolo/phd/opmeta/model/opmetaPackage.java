@@ -126,13 +126,13 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID = 0;
+	int OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Container Type Name</b></em>' attribute.
@@ -172,13 +172,13 @@ public interface opmetaPackage extends EPackage {
 	int OP_META_MODEL_LINK_VALIDATION_RULE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Is Valid</b></em>' attribute.
+	 * The feature id for the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID = 0;
+	int OP_META_MODEL_LINK_VALIDATION_RULE__VALID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Source Type Name</b></em>' attribute.
@@ -713,15 +713,15 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPMetaModelContaimentValidationRule();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid <em>Is Valid</em>}'.
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid <em>Valid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Valid</em>'.
-	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isIsValid()
+	 * @return the meta object for the attribute '<em>Valid</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid()
 	 * @see #getOPMetaModelContaimentValidationRule()
 	 * @generated
 	 */
-	EAttribute getOPMetaModelContaimentValidationRule_IsValid();
+	EAttribute getOPMetaModelContaimentValidationRule_Valid();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName <em>Container Type Name</em>}'.
@@ -756,15 +756,15 @@ public interface opmetaPackage extends EPackage {
 	EClass getOPMetaModelLinkValidationRule();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isIsValid <em>Is Valid</em>}'.
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isValid <em>Valid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Valid</em>'.
-	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isIsValid()
+	 * @return the meta object for the attribute '<em>Valid</em>'.
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#isValid()
 	 * @see #getOPMetaModelLinkValidationRule()
 	 * @generated
 	 */
-	EAttribute getOPMetaModelLinkValidationRule_IsValid();
+	EAttribute getOPMetaModelLinkValidationRule_Valid();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule#getSourceTypeName <em>Source Type Name</em>}'.
@@ -1131,12 +1131,12 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_META_MODEL_CONTAIMENT_VALIDATION_RULE = eINSTANCE.getOPMetaModelContaimentValidationRule();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Valid</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Valid</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID = eINSTANCE.getOPMetaModelContaimentValidationRule_IsValid();
+		EAttribute OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID = eINSTANCE.getOPMetaModelContaimentValidationRule_Valid();
 
 		/**
 		 * The meta object literal for the '<em><b>Container Type Name</b></em>' attribute feature.
@@ -1165,12 +1165,12 @@ public interface opmetaPackage extends EPackage {
 		EClass OP_META_MODEL_LINK_VALIDATION_RULE = eINSTANCE.getOPMetaModelLinkValidationRule();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Valid</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Valid</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID = eINSTANCE.getOPMetaModelLinkValidationRule_IsValid();
+		EAttribute OP_META_MODEL_LINK_VALIDATION_RULE__VALID = eINSTANCE.getOPMetaModelLinkValidationRule_Valid();
 
 		/**
 		 * The meta object literal for the '<em><b>Source Type Name</b></em>' attribute feature.

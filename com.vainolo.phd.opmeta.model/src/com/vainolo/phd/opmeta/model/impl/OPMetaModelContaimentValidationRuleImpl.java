@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl#getContainerTypeName <em>Container Type Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelContaimentValidationRuleImpl#getNodeTypeName <em>Node Type Name</em>}</li>
  * </ul>
@@ -32,23 +32,23 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl implements OPMetaModelContaimentValidationRule {
 	/**
-	 * The default value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The default value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_VALID_EDEFAULT = false;
+	protected static final boolean VALID_EDEFAULT = false;
 	/**
-	 * The cached value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The cached value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isValid = IS_VALID_EDEFAULT;
+	protected boolean valid = VALID_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getContainerTypeName() <em>Container Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -110,8 +110,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsValid() {
-		return isValid;
+	public boolean isValid() {
+		return valid;
 	}
 
 	/**
@@ -119,11 +119,11 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsValid(boolean newIsValid) {
-		boolean oldIsValid = isValid;
-		isValid = newIsValid;
+	public void setValid(boolean newValid) {
+		boolean oldValid = valid;
+		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID, oldIsValid, isValid));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID, oldValid, valid));
 	}
 
 	/**
@@ -176,8 +176,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				return isIsValid();
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				return isValid();
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
 				return getContainerTypeName();
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME:
@@ -194,8 +194,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				setIsValid((Boolean)newValue);
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				setValid((Boolean)newValue);
 				return;
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
 				setContainerTypeName((String)newValue);
@@ -215,8 +215,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				setIsValid(IS_VALID_EDEFAULT);
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				setValid(VALID_EDEFAULT);
 				return;
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
 				setContainerTypeName(CONTAINER_TYPE_NAME_EDEFAULT);
@@ -236,8 +236,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				return isValid != IS_VALID_EDEFAULT;
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				return valid != VALID_EDEFAULT;
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
 				return CONTAINER_TYPE_NAME_EDEFAULT == null ? containerTypeName != null : !CONTAINER_TYPE_NAME_EDEFAULT.equals(containerTypeName);
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME:
@@ -256,8 +256,8 @@ public class OPMetaModelContaimentValidationRuleImpl extends EObjectImpl impleme
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (IsValid: ");
-		result.append(isValid);
+		result.append(" (Valid: ");
+		result.append(valid);
 		result.append(", ContainerTypeName: ");
 		result.append(containerTypeName);
 		result.append(", NodeTypeName: ");

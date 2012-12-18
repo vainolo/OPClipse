@@ -1,8 +1,11 @@
 package com.vainolo.phd.opmeta.gef.editor;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.widgets.Composite;
@@ -10,11 +13,13 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelLinkValidationRuleAddCommand;
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelLinkValidationRuleRemoveCommand;
+import com.vainolo.phd.opmeta.gef.editor.dialogs.AddLinkValidationRuleDialog;
 import com.vainolo.phd.opmeta.gef.editor.input.LinkValidationListEditorInput;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 
 public class LinkValidationTableEditorPart extends TableEditorPart {
-	
 	
 	private List<OPMetaModelLinkValidationRule> list;
 	
@@ -74,11 +79,43 @@ public class LinkValidationTableEditorPart extends TableEditorPart {
 	      @Override
 	      public String getText(Object element) {
 	    	  OPMetaModelLinkValidationRule p = (OPMetaModelLinkValidationRule) element;
-	    	  if (p.isIsValid()) return "True";
+	    	  if (p.isValid()) return "True";
 	    	  return "False";
 	      }
 	    });
 	  }
 	
-	 @Override protected List<OPMetaModelLinkValidationRule> getData() {return list;} 
+	 @Override protected List<OPMetaModelLinkValidationRule> getData() {return list;}
+	
+	@Override
+	protected void addNewLineRequest(){
+		AddLinkValidationRuleDialog dialog = new AddLinkValidationRuleDialog(getSite().getShell());
+		dialog.open();
+		OPMetaModelLinkValidationRule rule = dialog.getRule();
+		commandStack.execute(new OPMetaModelLinkValidationRuleAddCommand(list,rule));
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override protected void deleteLineRequest(){
+		ISelection selection = getSite().getSelectionProvider()
+		        .getSelection();
+		if (selection == null) return;
+		if (selection instanceof OPMetaModelLinkValidationRule){
+			OPMetaModelLinkValidationRule rule = (OPMetaModelLinkValidationRule)selection;
+			commandStack.execute(new OPMetaModelLinkValidationRuleRemoveCommand(list,rule));
+		}
+		if (selection instanceof IStructuredSelection){
+			IStructuredSelection sel = (IStructuredSelection)selection;
+			for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
+				OPMetaModelLinkValidationRule rule = iterator.next();
+				commandStack.execute(new OPMetaModelLinkValidationRuleRemoveCommand(list,rule));
+		      }
+		}
+	}
+
+	@Override
+	protected void editLineRequest() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -10,7 +10,7 @@ import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opmeta.gef.editor.input.OPMDiagramEditorInput;
 
-public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
+public class OPMetaGraphicalEditor extends OPMGraphicalEditor implements IOuterSavable{
 	
 	public OPMetaGraphicalEditor(OPMIdManager idManager){
 		super(idManager);
@@ -30,10 +30,6 @@ public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
 	    return new OPMetaGraphicalEditorPalette(getOPMIdManager());
 	  }
 	
-	void markSaveLocation(){
-		getCommandStack().markSaveLocation();
-	}
-	
 	@Override protected void afterLoadInput() {} // disable reset value of IdManager
 	
 	/**
@@ -45,5 +41,13 @@ public class OPMetaGraphicalEditor extends OPMGraphicalEditor {
 		// If not the active editor, ignore selection changed.
 		if (this.equals(part))
 			updateActions(getSelectionActions());
+	}
+
+	@Override public void beforeSave() {
+		prepareForSave();
+	}
+
+	@Override public void afterSave() {
+		getCommandStack().markSaveLocation();
 	}
 }

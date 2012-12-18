@@ -63,7 +63,7 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsValidPropertyDescriptor(object);
+			addValidPropertyDescriptor(object);
 			addContainerTypeNamePropertyDescriptor(object);
 			addNodeTypeNamePropertyDescriptor(object);
 		}
@@ -71,19 +71,19 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Valid feature.
+	 * This adds a property descriptor for the Valid feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsValidPropertyDescriptor(Object object) {
+	protected void addValidPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OPMetaModelContaimentValidationRule_IsValid_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelContaimentValidationRule_IsValid_feature", "_UI_OPMetaModelContaimentValidationRule_type"),
-				 opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID,
+				 getString("_UI_OPMetaModelContaimentValidationRule_Valid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelContaimentValidationRule_Valid_feature", "_UI_OPMetaModelContaimentValidationRule_type"),
+				 opmetaPackage.Literals.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID,
 				 true,
 				 false,
 				 false,
@@ -173,7 +173,7 @@ public class OPMetaModelContaimentValidationRuleItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OPMetaModelContaimentValidationRule.class)) {
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
+			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID:
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME:
 			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

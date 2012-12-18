@@ -63,13 +63,29 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 	      @Override
 	      public String getText(Object element) {
 	    	  OPMetaModelContaimentValidationRule p = (OPMetaModelContaimentValidationRule) element;
-	    	  if (p.isIsValid()) return "True";
+	    	  if (p.isValid()) return "True";
 	    	  return "False";
 	      }
 	    });
 	  }
 	
-	 @Override protected List<OPMetaModelContaimentValidationRule> getData() {return list;} 
+	 @Override protected List<OPMetaModelContaimentValidationRule> getData() {return list;}
 
+	@Override
+	protected void addNewLineRequest(){
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	protected void deleteLineRequest() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void editLineRequest() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

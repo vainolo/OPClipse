@@ -63,7 +63,7 @@ public class OPMetaModelLinkValidationRuleItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addIsValidPropertyDescriptor(object);
+			addValidPropertyDescriptor(object);
 			addSourceTypeNamePropertyDescriptor(object);
 			addTargetTypeNamePropertyDescriptor(object);
 			addLinkTypeNamePropertyDescriptor(object);
@@ -72,19 +72,19 @@ public class OPMetaModelLinkValidationRuleItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Is Valid feature.
+	 * This adds a property descriptor for the Valid feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addIsValidPropertyDescriptor(Object object) {
+	protected void addValidPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_OPMetaModelLinkValidationRule_IsValid_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelLinkValidationRule_IsValid_feature", "_UI_OPMetaModelLinkValidationRule_type"),
-				 opmetaPackage.Literals.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID,
+				 getString("_UI_OPMetaModelLinkValidationRule_Valid_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMetaModelLinkValidationRule_Valid_feature", "_UI_OPMetaModelLinkValidationRule_type"),
+				 opmetaPackage.Literals.OP_META_MODEL_LINK_VALIDATION_RULE__VALID,
 				 true,
 				 false,
 				 false,
@@ -196,7 +196,7 @@ public class OPMetaModelLinkValidationRuleItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OPMetaModelLinkValidationRule.class)) {
-			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID:
+			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID:
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME:
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME:
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__LINK_TYPE_NAME:

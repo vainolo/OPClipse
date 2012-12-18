@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl#getSourceTypeName <em>Source Type Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl#getTargetTypeName <em>Target Type Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.impl.OPMetaModelLinkValidationRuleImpl#getLinkTypeName <em>Link Type Name</em>}</li>
@@ -33,23 +33,23 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OPMetaModelLinkValidationRule {
 	/**
-	 * The default value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The default value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_VALID_EDEFAULT = false;
+	protected static final boolean VALID_EDEFAULT = false;
 	/**
-	 * The cached value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The cached value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isValid = IS_VALID_EDEFAULT;
+	protected boolean valid = VALID_EDEFAULT;
 	/**
 	 * The default value of the '{@link #getSourceTypeName() <em>Source Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -129,8 +129,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsValid() {
-		return isValid;
+	public boolean isValid() {
+		return valid;
 	}
 
 	/**
@@ -138,11 +138,11 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsValid(boolean newIsValid) {
-		boolean oldIsValid = isValid;
-		isValid = newIsValid;
+	public void setValid(boolean newValid) {
+		boolean oldValid = valid;
+		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID, oldIsValid, isValid));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID, oldValid, valid));
 	}
 
 	/**
@@ -216,8 +216,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID:
-				return isIsValid();
+			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID:
+				return isValid();
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME:
 				return getSourceTypeName();
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME:
@@ -236,8 +236,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID:
-				setIsValid((Boolean)newValue);
+			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID:
+				setValid((Boolean)newValue);
 				return;
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME:
 				setSourceTypeName((String)newValue);
@@ -260,8 +260,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID:
-				setIsValid(IS_VALID_EDEFAULT);
+			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID:
+				setValid(VALID_EDEFAULT);
 				return;
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME:
 				setSourceTypeName(SOURCE_TYPE_NAME_EDEFAULT);
@@ -284,8 +284,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__IS_VALID:
-				return isValid != IS_VALID_EDEFAULT;
+			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__VALID:
+				return valid != VALID_EDEFAULT;
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME:
 				return SOURCE_TYPE_NAME_EDEFAULT == null ? sourceTypeName != null : !SOURCE_TYPE_NAME_EDEFAULT.equals(sourceTypeName);
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME:
@@ -306,8 +306,8 @@ public class OPMetaModelLinkValidationRuleImpl extends EObjectImpl implements OP
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (IsValid: ");
-		result.append(isValid);
+		result.append(" (Valid: ");
+		result.append(valid);
 		result.append(", SourceTypeName: ");
 		result.append(sourceTypeName);
 		result.append(", TargetTypeName: ");
