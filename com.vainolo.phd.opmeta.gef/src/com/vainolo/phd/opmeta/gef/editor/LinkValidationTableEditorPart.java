@@ -14,8 +14,10 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
 import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelLinkValidationRuleAddCommand;
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelLinkValidationRuleEditCommand;
 import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelLinkValidationRuleRemoveCommand;
 import com.vainolo.phd.opmeta.gef.editor.dialogs.AddLinkValidationRuleDialog;
+import com.vainolo.phd.opmeta.gef.editor.dialogs.EditLinkValidationRuleDialog;
 import com.vainolo.phd.opmeta.gef.editor.input.LinkValidationListEditorInput;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 
@@ -100,10 +102,6 @@ public class LinkValidationTableEditorPart extends TableEditorPart {
 		ISelection selection = getSite().getSelectionProvider()
 		        .getSelection();
 		if (selection == null) return;
-		if (selection instanceof OPMetaModelLinkValidationRule){
-			OPMetaModelLinkValidationRule rule = (OPMetaModelLinkValidationRule)selection;
-			commandStack.execute(new OPMetaModelLinkValidationRuleRemoveCommand(list,rule));
-		}
 		if (selection instanceof IStructuredSelection){
 			IStructuredSelection sel = (IStructuredSelection)selection;
 			for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
@@ -113,9 +111,20 @@ public class LinkValidationTableEditorPart extends TableEditorPart {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void editLineRequest() {
-		// TODO Auto-generated method stub
+		ISelection selection = getSite().getSelectionProvider()
+		        .getSelection();
+		if ((selection == null) || !(selection instanceof IStructuredSelection)) return;
+		IStructuredSelection sel = (IStructuredSelection)selection;
+		for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
+			OPMetaModelLinkValidationRule orig = iterator.next(); 
+			EditLinkValidationRuleDialog dialog = new EditLinkValidationRuleDialog(getSite().getShell(),orig);
+			dialog.open();
+			OPMetaModelLinkValidationRule rule = dialog.getRule();
+			commandStack.execute(new OPMetaModelLinkValidationRuleEditCommand(orig,rule));
+		}
 		
 	}
 }

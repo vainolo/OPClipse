@@ -16,26 +16,25 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 
-public class AddLinkValidationRuleDialog extends TitleAreaDialog {
+public class AddContaimentValidationRuleDialog extends TitleAreaDialog {
 
-	protected Text sourceTypeNameTxt;
-	protected Text targetTypeNameTxt;
-	protected Text linkTypeNameTxt;
+	protected Text containerTypeNameTxt;
+	protected Text nodeTypeNameTxt;
 	protected Combo cmbIsValid;
-	private OPMetaModelLinkValidationRule rule;
+	private OPMetaModelContaimentValidationRule rule;
 	
-	public AddLinkValidationRuleDialog(Shell parentShell) {
+	public AddContaimentValidationRuleDialog(Shell parentShell) {
 		super(parentShell);
 	}
 	
 	@Override
 	  protected Control createContents(Composite parent) {
 	    Control contents = super.createContents(parent);
-	    setTitle("Add a new Link Validation Rule");
-	    setMessage("Please enter the data of the new Link Validation Rule",
+	    setTitle("Add a new Contaiment Validation Rule");
+	    setMessage("Please enter the data of the new Contaiment Validation Rule",
 	        IMessageProvider.INFORMATION);
 	    return contents;
 	  }
@@ -46,14 +45,12 @@ public class AddLinkValidationRuleDialog extends TitleAreaDialog {
 	    layout.numColumns = 2;
 	    parent.setLayout(layout);
 	    Label label1 = new Label(parent, SWT.NONE);
-	    label1.setText("Source Type Name");
-	    sourceTypeNameTxt = new Text(parent, SWT.BORDER);
+	    label1.setText("Container Type Name");
+	    containerTypeNameTxt = new Text(parent, SWT.BORDER);
 	    Label label2 = new Label(parent, SWT.NONE);
-	    label2.setText("Target Type Name");
-	    targetTypeNameTxt = new Text(parent, SWT.BORDER);
-	    Label label3 = new Label(parent, SWT.NONE);
-	    label3.setText("Link Type Name");
-	    linkTypeNameTxt = new Text(parent, SWT.BORDER);
+	    label2.setText("Node Type Name");
+	    nodeTypeNameTxt = new Text(parent, SWT.BORDER);
+	    
 	    Label label4 = new Label(parent, SWT.NONE);
 	    label4.setText("Is Valid");
 	    GridData gd = new GridData(GridData.HORIZONTAL_ALIGN_END);
@@ -73,13 +70,11 @@ public class AddLinkValidationRuleDialog extends TitleAreaDialog {
 	    button.setFont(JFaceResources.getDialogFont());
 	    button.addSelectionListener(new SelectionAdapter() {
 	      public void widgetSelected(SelectionEvent e) {
-	        if (sourceTypeNameTxt.getText().length() != 0
-	            && targetTypeNameTxt.getText().length() != 0
-	            && linkTypeNameTxt.getText().length() != 0) {
-	        	rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-	        	rule.setSourceTypeName(sourceTypeNameTxt.getText());
-	        	rule.setTargetTypeName(targetTypeNameTxt.getText());
-	        	rule.setLinkTypeName(linkTypeNameTxt.getText());
+	        if (containerTypeNameTxt.getText().length() != 0
+	            && nodeTypeNameTxt.getText().length() != 0) {
+	        	rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+	        	rule.setContainerTypeName(containerTypeNameTxt.getText());
+	        	rule.setNodeTypeName(nodeTypeNameTxt.getText());
 	        	rule.setValid(cmbIsValid.getSelectionIndex()==0);
 	          close();
 	        } else {
@@ -89,6 +84,6 @@ public class AddLinkValidationRuleDialog extends TitleAreaDialog {
 	    });
 	  }
 
-	public OPMetaModelLinkValidationRule getRule(){return rule;}
+	public OPMetaModelContaimentValidationRule getRule(){return rule;}
 	
 }
