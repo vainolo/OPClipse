@@ -22,8 +22,7 @@ public class OpmetaInterpretation {
 	 	
 		OpmetaInterpretationCreator creator = new OpmetaInterpretationCreator();
 		interpretation.nodes = creator.CreateGraph(elementsDiagramNodes, "node");
-		interpretation.containers = creator.CreateGraph(elementsDiagramNodes, "container");
-		//creator.clearCache();
+		interpretation.containers = creator.CreateGraph(elementsDiagramNodes, "container",interpretation.nodes);
 		interpretation.links = creator.CreateGraph(linksDiagramNodes, "link");
 	 	
 		return interpretation;

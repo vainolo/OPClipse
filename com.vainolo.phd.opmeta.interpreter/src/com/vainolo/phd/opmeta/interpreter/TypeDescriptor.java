@@ -13,7 +13,7 @@ public class TypeDescriptor {
 	private List<propertyDescriptor> propertyList;
 	
 	public TypeDescriptor(String name){
-		//parents = new LinkedList<>();
+		parents = new LinkedList<>();
 		children = new LinkedList<>();
 		this.propertyList = new LinkedList<>();
 		this.name = name;
@@ -21,15 +21,12 @@ public class TypeDescriptor {
 	}
 	
 	boolean addProperty (propertyDescriptor property){
-		// TODO: check property list by name
 		for (propertyDescriptor propertyinlist : propertyList){
 			if(propertyinlist.getPropertyName().equals(property.getPropertyName()))
 					return false;
 		}
-			propertyList.add(property);
-			
-		
-			return true;
+		propertyList.add(property);
+		return true;
 	}
 	
 	public Iterable<propertyDescriptor> getProperties(){
@@ -42,14 +39,14 @@ public class TypeDescriptor {
 		return name;
 	}
 	
-	TypeDescriptor parent;
+	LinkedList<TypeDescriptor> parents;
 	
-	public TypeDescriptor getParent(){ return  parent;}
+	//public TypeDescriptor getParent(){ return  parent;}
 	
 	/*
 	 * Returns an unmodifiableCollection copy of parent Type Descriptors
 	 */
-	//public Collection<TypeDescriptor> getParents(){ return Collections.unmodifiableCollection(parents);}
+	public Collection<TypeDescriptor> getParents(){ return Collections.unmodifiableCollection(parents);}
 	
 	List<TypeDescriptor> children;
 	
@@ -68,11 +65,9 @@ public class TypeDescriptor {
 		if ((arg0 == null) || (!(arg0 instanceof TypeDescriptor))) return false; 
 		TypeDescriptor other = (TypeDescriptor)arg0;
 		if (!(other.name == name) || !(other.children.equals(children))) return false;
-		if (parent == null) return (other.parent ==null);
-		return parent.equals(other.parent);
-//		return (other.name.equals(name) && 
-//				(other.children.equals(children)) && 
-//				(other.parents.equals(parents)));
+		if (!other.parents.equals(parents)) return false;
+		return true;
+
 	}
 
 	@Override
