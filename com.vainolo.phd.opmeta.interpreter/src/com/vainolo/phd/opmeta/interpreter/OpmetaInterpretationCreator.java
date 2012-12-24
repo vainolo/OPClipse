@@ -46,6 +46,15 @@ class OpmetaInterpretationCreator {
 			
 			// copying properties from a single parent (duplicates check inside addProperty)
 			TypeDescriptor parent=current.parent;
+			
+			// multiple parents: for (TypeDescriptor parent : blabla multiple parents thingy){ 
+			if (parent!=null){
+				for (propertyDescriptor property : parent.getProperties())
+					if(!descriptor.addProperty(property))
+						System.err.print("duplicate property: " + property.getPropertyName());	
+			}
+			
+			
 			// adding this nodes properties
 			links = OPDAnalysis.findOutgoingLinks(current.node,OPMPackage.eINSTANCE.getOPMAggregationLink());
 			for (OPMLink link:links){
@@ -54,12 +63,7 @@ class OpmetaInterpretationCreator {
 					System.err.print("duplicate property" + propertyDescriptor.getPropertyName());	
 			}
 			
-			// multiple parents: for (TypeDescriptor parent : blabla multiple parents thingy){ 
-			if (parent!=null){
-				for (propertyDescriptor property : parent.getProperties())
-					if(!descriptor.addProperty(property))
-						System.err.print("duplicate property: " + property.getPropertyName());	
-			}
+
 
 			// create children
 			links = OPDAnalysis.findOutgoingLinks(current.node,OPMPackage.eINSTANCE.getOPMGeneralizationLink());

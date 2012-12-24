@@ -9,7 +9,13 @@ public class OpmodelIntPropertyInstanceImpl extends OpmodelPropertyInstanceImpl 
 	}
 	
 	public boolean setValue(String val){
-		if (val.equals("0") || val.equals("1") || val.equals("true") || val.equals("false")) {	
+		if (val.length()<=MAX_LEN){
+			try {
+				Integer.parseInt(val);
+			} catch (NumberFormatException e) {
+				return false;
+			}
+			this.value=val;
 			return true;
 		} else {
 			return false;

@@ -42,16 +42,17 @@ public class OpmetaInterpretationTester {
 			switch(descriptor.getName()){
 				case "Node":
 					assertTrue(descriptor.isAbstract());
-					
+					System.out.println("Node");
 					for (Iterator<propertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
-						System.out.println(it.next().getPropertyName());
+						System.out.println(it.next().getPropertyType());
 					break;
 				case "State":
 					break;
 				case "Thing":
 					assertFalse(descriptor.isAbstract());
+					System.out.println("Thing");
 					for (Iterator<propertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
-						System.out.println(it.next().getPropertyName());	
+						System.out.println(it.next().getPropertyType());	
 					break;
 				default:
 					fail();
