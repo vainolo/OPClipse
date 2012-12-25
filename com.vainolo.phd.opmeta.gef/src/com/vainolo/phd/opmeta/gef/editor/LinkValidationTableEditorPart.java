@@ -3,6 +3,8 @@ package com.vainolo.phd.opmeta.gef.editor;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -89,42 +91,42 @@ public class LinkValidationTableEditorPart extends TableEditorPart {
 	
 	 @Override protected List<OPMetaModelLinkValidationRule> getData() {return list;}
 	
-	@Override
-	protected void addNewLineRequest(){
+	public Command getAddCommand(){
 		AddLinkValidationRuleDialog dialog = new AddLinkValidationRuleDialog(getSite().getShell());
 		dialog.open();
 		OPMetaModelLinkValidationRule rule = dialog.getRule();
-		commandStack.execute(new OPMetaModelLinkValidationRuleAddCommand(list,rule));
+		return new OPMetaModelLinkValidationRuleAddCommand(list,rule);
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Override protected void deleteLineRequest(){
+	public Command getEditCommand(){
+		CompoundCommand ccmd = new CompoundCommand();
 		ISelection selection = getSite().getSelectionProvider()
 		        .getSelection();
-		if (selection == null) return;
-		if (selection instanceof IStructuredSelection){
+		if ((selection != null) || (selection instanceof IStructuredSelection)){
+			IStructuredSelection sel = (IStructuredSelection)selection;
+			for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
+				OPMetaModelLinkValidationRule orig = iterator.next(); 
+				EditLinkValidationRuleDialog dialog = new EditLinkValidationRuleDialog(getSite().getShell(),orig);
+				dialog.open();
+				OPMetaModelLinkValidationRule rule = dialog.getRule();
+				ccmd.add(new OPMetaModelLinkValidationRuleEditCommand(orig,rule));
+			}
+		}
+		return ccmd;
+	}
+		
+	@SuppressWarnings("unchecked")
+	public Command getDeleteCommand(){
+		ISelection selection = getSite().getSelectionProvider().getSelection();
+		CompoundCommand ccmd = new CompoundCommand();
+		if (selection instanceof IStructuredSelection && selection != null){
 			IStructuredSelection sel = (IStructuredSelection)selection;
 			for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
 				OPMetaModelLinkValidationRule rule = iterator.next();
-				commandStack.execute(new OPMetaModelLinkValidationRuleRemoveCommand(list,rule));
+				ccmd.add(new OPMetaModelLinkValidationRuleRemoveCommand(list,rule));
 		      }
 		}
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	protected void editLineRequest() {
-		ISelection selection = getSite().getSelectionProvider()
-		        .getSelection();
-		if ((selection == null) || !(selection instanceof IStructuredSelection)) return;
-		IStructuredSelection sel = (IStructuredSelection)selection;
-		for (Iterator<OPMetaModelLinkValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
-			OPMetaModelLinkValidationRule orig = iterator.next(); 
-			EditLinkValidationRuleDialog dialog = new EditLinkValidationRuleDialog(getSite().getShell(),orig);
-			dialog.open();
-			OPMetaModelLinkValidationRule rule = dialog.getRule();
-			commandStack.execute(new OPMetaModelLinkValidationRuleEditCommand(orig,rule));
-		}
-		
+		return ccmd;
 	}
 }

@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.gef.editor;
+package com.vainolo.phd.opmeta.gef.actions;
 
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.ui.IActionBars;
@@ -9,11 +9,14 @@ import org.eclipse.ui.part.EditorActionBarContributor;
 import org.eclipse.ui.part.MultiPageEditorActionBarContributor;
 
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorActionBarContributor;
+import com.vainolo.phd.opmeta.gef.editor.OPMetaGraphicalEditor;
+import com.vainolo.phd.opmeta.gef.editor.TableEditorPart;
 
 public class OPMetaMultiPageEditorActionBarContributor extends
 		MultiPageEditorActionBarContributor {
 
-	private OPMGraphicalEditorActionBarContributor opmBarContributor = new OPMGraphicalEditorActionBarContributor(); 
+	private OPMGraphicalEditorActionBarContributor opmBarContributor = new OPMGraphicalEditorActionBarContributor();
+	private OPTableEditorActionBarContributor tableBarContributor = new OPTableEditorActionBarContributor(); 
 	
 	private EditorActionBarContributor activeBarContributor=null;
 	
@@ -24,6 +27,8 @@ public class OPMetaMultiPageEditorActionBarContributor extends
 		activeBarContributor = null;
 		if (activeEditor instanceof OPMetaGraphicalEditor)
 			activeBarContributor = opmBarContributor;
+		if (activeEditor instanceof TableEditorPart)
+			activeBarContributor = tableBarContributor;
 		
 		if (activeBarContributor != null)
 			activeBarContributor.setActiveEditor(activeEditor);
@@ -50,12 +55,13 @@ public class OPMetaMultiPageEditorActionBarContributor extends
 		actionBars = bars;
 		super.init(bars, page); 
 		opmBarContributor.init(bars, getPage());
-		
+		tableBarContributor.init(bars, getPage());
 	}
 
 	public void dispose(){
 		super.dispose();
 		opmBarContributor.dispose();
+		tableBarContributor.dispose();
 	}
 
 }

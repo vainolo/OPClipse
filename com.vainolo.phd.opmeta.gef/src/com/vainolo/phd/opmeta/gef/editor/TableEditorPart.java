@@ -9,26 +9,23 @@ import org.eclipse.gef.commands.CommandStackEvent;
 import org.eclipse.gef.commands.CommandStackEventListener;
 import org.eclipse.gef.commands.CommandStackListener;
 import org.eclipse.jface.viewers.ArrayContentProvider;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.ToolBar;
-import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.part.EditorPart;
 
-public abstract class TableEditorPart extends EditorPart implements CommandStackListener,CommandStackEventListener, IOuterSavable {
+public abstract class TableEditorPart extends EditorPart implements IListEditor,CommandStackListener,CommandStackEventListener, IOuterSavable {
 
 	private TableViewer viewer;
-	private ToolBar toolBar;
-	protected CommandStack commandStack;
+	private CommandStack commandStack;
 	
 	public TableEditorPart(){
 		super();
@@ -57,45 +54,10 @@ public abstract class TableEditorPart extends EditorPart implements CommandStack
 	
 	protected abstract void createColumns(final Composite parent, final TableViewer viewer);
 	
-	protected abstract void addNewLineRequest();
-	
-	protected abstract void deleteLineRequest();
-	
-	protected abstract void editLineRequest();
-	
 	@Override
 	public void createPartControl(Composite parent) {
 		GridLayout layout = new GridLayout(1, false);
 	    parent.setLayout(layout);
-	    
-	    // create toolbar
-	    toolBar = new ToolBar(parent, SWT.FLAT);
-	    ToolItem itemPush = new ToolItem(toolBar, SWT.PUSH);
-	    itemPush.setText("Add item");
-	    itemPush.addSelectionListener(new SelectionAdapter(){
-	    	@Override
-		    public void widgetSelected(SelectionEvent e) {
-	    		addNewLineRequest();
-	    	}
-	    });
-	    
-	    itemPush = new ToolItem(toolBar, SWT.PUSH);
-	    itemPush.setText("Edit item");
-	    itemPush.addSelectionListener(new SelectionAdapter(){
-	    	@Override
-		    public void widgetSelected(SelectionEvent e) {
-	    		editLineRequest();
-	    	}
-	    });
-	    
-	    itemPush = new ToolItem(toolBar, SWT.PUSH);
-	    itemPush.setText("Remove item");
-	    itemPush.addSelectionListener(new SelectionAdapter(){
-	    	@Override
-		    public void widgetSelected(SelectionEvent e) {
-	    		deleteLineRequest();
-	    	}
-	    });
 	    
 	    // create table
 	    viewer = new TableViewer(parent, SWT.MULTI | SWT.H_SCROLL
@@ -120,8 +82,6 @@ public abstract class TableEditorPart extends EditorPart implements CommandStack
 	        gridData.horizontalAlignment = GridData.FILL;
 	        viewer.getControl().setLayoutData(gridData);
 	        
-	     // Make selection available via the SelectionProvider
-	        getSite().setSelectionProvider(viewer);
 	}
 
 	 protected TableViewerColumn createTableViewerColumn(String title, int bound, final int colNumber) {
@@ -165,4 +125,24 @@ public abstract class TableEditorPart extends EditorPart implements CommandStack
 	@Override public void afterSave() {
 		commandStack.markSaveLocation();
 	}
+	
+	public CommandStack getCommandStack(){
+		return commandStack;
+	}
+	
+    public void addSelectionChangedListener(ISelectionChangedListener listener){
+    	viewer.addSelectionChangedListener(listener);
+    }
+
+    public ISelection getSelection(){
+    	return viewer.getSelection();
+    }
+
+    public void removeSelectionChangedListener(ISelectionChangedListener listener){
+    	viewer.removeSelectionChangedListener(listener);
+    }
+
+    public void setSelection(ISelection selection){
+    	viewer.setSelection(selection);
+    }
 }
