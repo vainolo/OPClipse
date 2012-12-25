@@ -11,12 +11,7 @@ public class OpmodelBooleanPropertyInstanceImpl extends OpmodelPropertyInstanceI
 	}
 	
 	public boolean setValue(String val){
-		if (val.length()<=MAX_LEN){
-			try {
-				Integer.parseInt(val);
-			} catch (NumberFormatException e) {
-				return false;
-			}
+		if (val.equals("0") || val.equals("1") || val.equals("true") || val.equals("false")) {
 			this.value=val;
 			return true;
 		} else {

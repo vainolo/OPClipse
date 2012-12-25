@@ -13,7 +13,7 @@ public class OpmodelFloatPropertyInstanceImpl extends OpmodelPropertyInstanceImp
 	public boolean setValue(String val){
 		if (val.length()<=MAX_LEN){
 			try {
-				Integer.parseInt(val);
+				Float.parseFloat(val);
 			} catch (NumberFormatException e) {
 				return false;
 			}

@@ -36,6 +36,8 @@ public class TesterUtils {
 	}
 	
 	
+	// create model
+	
 	
 	public static OPMetaModelDiagram createBasicMetaModelDiag(){
 		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
@@ -49,8 +51,8 @@ public class TesterUtils {
 		OPMNode nodeInheritNode = TesterUtils.createObject("State",opmDiagram);
 		
 		//kobi&alex
-		OPMNode prop1 = TesterUtils.createObject("Prop1:int",opmDiagram);
-		OPMNode prop2 = TesterUtils.createObject("Prop2:String",opmDiagram);
+		OPMNode prop1 = TesterUtils.createObject("Prop1:float",opmDiagram);
+		OPMNode prop2 = TesterUtils.createObject("Prop2:Boolean",opmDiagram);
 		OPMNode prop3 = TesterUtils.createObject("Prop3:int",opmDiagram);
 		OPMNode prop4 = TesterUtils.createObject("Prop4:String",opmDiagram);
 		OPMNode prop5 = TesterUtils.createObject("Prop1:String",opmDiagram);

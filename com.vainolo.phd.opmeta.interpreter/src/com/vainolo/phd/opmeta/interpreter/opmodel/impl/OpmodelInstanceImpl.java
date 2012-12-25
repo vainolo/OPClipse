@@ -82,7 +82,7 @@ public class OpmodelInstanceImpl implements OpmodelInstance {
 	}
 	
 	public Collection<OpmodelPropertyInstance> getPropertyCollection(){
-		return properties.values();
+			return properties.values();
 	}
 	
 	

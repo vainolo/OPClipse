@@ -86,5 +86,39 @@ public class OpmodelFactoryTest {
 		Object type = factory.getInstanceType(temp);
 		assertNull(type);
 	}
+	
+	
+	@Test
+	public void testSettingProperties() {
+		// print ALL the stuff and modify and shit
+		Collection<TypeDescriptor> nodes = interpretation.getNodes();
+		for (TypeDescriptor descriptor:nodes){
+			 OpmodelInstance instance = factory.createOpmodelInstance(descriptor);
+			 System.out.println("");
+			 System.out.println("Node name: " + descriptor.getName());
+			 try {
+				 Collection<OpmodelPropertyInstance> propertyCollection = instance.getPropertyCollection();
+				 for (OpmodelPropertyInstance property : propertyCollection) {
+					 System.out.println("Property name: "+ property.getPropertyName());
+					 System.out.println("Property type: "+ property.getPropertyType());
+					 System.out.println("Property value: "+property.getValue());
+					 if (property.getPropertyType().equals("int")){
+						 property.setValue("10");
+					 } else if (property.getPropertyType().equals("float")){
+						 property.setValue("10.1");
+					 } else if (property.getPropertyType().equals("String")){
+						 property.setValue("success!");
+					 } else if (property.getPropertyType().equals("Boolean")){
+						 property.setValue("true");
+					 }
+					 System.out.println("Updated value from lookup result: "+instance.lookupProperty(property.getPropertyName()).getValue());
+				 }
+			 }
+			 catch (NullPointerException e)
+			 {
+				 System.out.println("Node name: " + descriptor.getName());
 
-}
+			 }
+		}
+	}	
+	}
