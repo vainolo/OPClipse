@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import org.eclipse.emf.ecore.EObject;
 
+import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObject;
@@ -29,21 +30,35 @@ class DecorationsBank {
 	}
 	
 	EObjectDecorator<?> getOrCreateDecorator(EObject opmOrig){
-		if (opmOrig == null)return null;
-		if (opmOrig instanceof EObjectDecorator) return (EObjectDecorator<?>)opmOrig;
+		if (opmOrig == null){
+			return null;
+		}
+		if (opmOrig instanceof EObjectDecorator){
+			return (EObjectDecorator<?>)opmOrig;
+		}	
 		EObjectDecorator<?> wrapper = getDecorator(opmOrig);
-		if (wrapper != null) return wrapper;
-		if (opmOrig instanceof OPMObjectProcessDiagram)
+		if (wrapper != null){ 
+			return wrapper;
+			}
+		if (opmOrig instanceof OPMObjectProcessDiagram){
 			return putDecorator(opmOrig, new OPMObjectProcessDiagramDecorator((OPMObjectProcessDiagram)opmOrig));
-		if (opmOrig instanceof OPMObject)
+		}
+		if (opmOrig instanceof OPMObject){
 			return putDecorator(opmOrig, new OPMObjectDecorator((OPMObject)opmOrig, this));
-		if (opmOrig instanceof OPMProcess)
+		}
+		if (opmOrig instanceof OPMProcess){
 			return putDecorator(opmOrig, new OPMProcessDecorator((OPMProcess)opmOrig, this));
-		if (opmOrig instanceof OPMState)
+		}
+		if (opmOrig instanceof OPMState){
 			return putDecorator(opmOrig, new OPMStateDecorator((OPMState)opmOrig,this));
-		if (opmOrig instanceof OPMProceduralLink)
+		}
+		if (opmOrig instanceof OPMProceduralLink){
 			return putDecorator(opmOrig, new OPMProceduralLinkDecorator((OPMProceduralLink)opmOrig, this));
-		
+		}
+		if (opmOrig instanceof Label){
+			return putDecorator(opmOrig, new LabelDecorator((Label)opmOrig, this));
+		}
+			
 		return null;
 	}
 	
