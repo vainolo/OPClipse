@@ -19,7 +19,6 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-import com.vainolo.phd.opm.gef.editor.figure.LabelFigure;
 import com.vainolo.phd.opm.gef.editor.figure.OPMNodeFigure;
 import com.vainolo.phd.opm.gef.editor.policy.OPMNodeComponentEditPolicy;
 import com.vainolo.phd.opm.gef.editor.policy.OPMNodeGraphicalNodeEditPolicy;
@@ -78,6 +77,7 @@ public abstract class OPMNodeEditPart extends AbstractGraphicalEditPart
 				new OPMNodeGraphicalNodeEditPolicy());
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected List getModelChildren() {
 		OPMNode model = (OPMNode) getModel();
@@ -92,38 +92,38 @@ public abstract class OPMNodeEditPart extends AbstractGraphicalEditPart
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(
 			ConnectionEditPart connection) {
-		if (getFigure() instanceof LabelFigure) {
-			return null;
-		} else {
+		if (getFigure() instanceof OPMNodeFigure) {
 			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
 		}
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(
 			ConnectionEditPart connection) {
-		if (getFigure() instanceof LabelFigure) {
-			return null;
-		} else {
+		if (getFigure() instanceof OPMNodeFigure) {
 			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
 		}
 	}
 
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		if (getFigure() instanceof LabelFigure) {
-			return null;
+		if (getFigure() instanceof OPMNodeFigure) {
+			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
 		} else {
-			return ((OPMNodeFigure) getFigure()).getSourceConnectionAnchor();
+			return null;
 		}	
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		if (getFigure() instanceof LabelFigure) {
-			return null;
-		} else {
+		if (getFigure() instanceof OPMNodeFigure) {
 			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
 		}
 	}
 

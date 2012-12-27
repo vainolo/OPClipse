@@ -7,7 +7,7 @@
 package com.vainolo.phd.opm.gef.editor.part;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
-import org.eclipse.draw2d.ColorConstants;
+//import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PolylineConnection;
@@ -74,7 +74,7 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
    * @param kind
    *          the {@link OPMProceduralLinkKind} of the model entity.
    */
-  private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
+  /*private void decorateConnection(PolylineConnection connection, OPMProceduralLinkKind kind) {
     switch(kind) {
       case AGENT:
         CircleDecoration agentDecoration = new CircleDecoration();
@@ -100,5 +100,5 @@ public class OPMProceduralLinkEditPart extends OPMLinkEditPart {
       default:
         throw new IllegalArgumentException("No case for kind " + kind);
     }
-  }
+  }*/
 }
