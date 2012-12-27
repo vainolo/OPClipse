@@ -42,7 +42,7 @@ public class OPMEditPartFactory implements EditPartFactory {
     } else if(model instanceof Label) {
       part = new LabelEditPart();
     } else {
-      throw new IllegalArgumentException("Model class " + model.getClass() + " not supported yet.");
+    	throw new IllegalArgumentException("Model class " + model.getClass() + " not supported yet.");
     }
 
     if(part != null) {
