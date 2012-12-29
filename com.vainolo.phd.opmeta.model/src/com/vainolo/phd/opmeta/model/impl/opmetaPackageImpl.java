@@ -7,29 +7,20 @@
 package com.vainolo.phd.opmeta.model.impl;
 
 import com.vainolo.phd.opm.model.OPMPackage;
+
 import com.vainolo.phd.opm.model.impl.OPMPackageImpl;
 
-import com.vainolo.phd.opmeta.model.ContainerInstanceBase;
-import com.vainolo.phd.opmeta.model.InstanceBase;
-import com.vainolo.phd.opmeta.model.KeyValuePair;
-import com.vainolo.phd.opmeta.model.LinkInstanceBase;
-import com.vainolo.phd.opmeta.model.NodeInstanceBase;
 import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
-import com.vainolo.phd.opmeta.model.OPModel;
-import com.vainolo.phd.opmeta.model.ThingInstanceBase;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
 
-import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.EReference;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
@@ -59,69 +50,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * @generated
 	 */
 	private EClass opMetaModelLinkValidationRuleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass opModelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass instanceBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass nodeInstanceBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass containerInstanceBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass linkInstanceBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass thingInstanceBaseEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass keyValuePairEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType rectangleEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType pointEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -320,222 +248,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPModel() {
-		return opModelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOPModel_MetaModel() {
-		return (EReference)opModelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getOPModel_Container() {
-		return (EReference)opModelEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOPModel_NextId() {
-		return (EAttribute)opModelEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getInstanceBase() {
-		return instanceBaseEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInstanceBase_TypeName() {
-		return (EAttribute)instanceBaseEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getInstanceBase_Id() {
-		return (EAttribute)instanceBaseEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getInstanceBase_Properties() {
-		return (EReference)instanceBaseEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getNodeInstanceBase() {
-		return nodeInstanceBaseEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNodeInstanceBase_Constraints() {
-		return (EAttribute)nodeInstanceBaseEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getNodeInstanceBase_Name() {
-		return (EAttribute)nodeInstanceBaseEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getContainerInstanceBase() {
-		return containerInstanceBaseEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getContainerInstanceBase_Nodes() {
-		return (EReference)containerInstanceBaseEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getContainerInstanceBase_Links() {
-		return (EReference)containerInstanceBaseEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLinkInstanceBase() {
-		return linkInstanceBaseEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLinkInstanceBase_Source() {
-		return (EReference)linkInstanceBaseEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getLinkInstanceBase_Target() {
-		return (EReference)linkInstanceBaseEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLinkInstanceBase_Bendpoints() {
-		return (EAttribute)linkInstanceBaseEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getThingInstanceBase() {
-		return thingInstanceBaseEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getKeyValuePair() {
-		return keyValuePairEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getKeyValuePair_Key() {
-		return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getKeyValuePair_Value() {
-		return (EAttribute)keyValuePairEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getRectangle() {
-		return rectangleEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getPoint() {
-		return pointEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public opmetaFactory getopmetaFactory() {
 		return (opmetaFactory)getEFactoryInstance();
 	}
@@ -575,39 +287,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		createEAttribute(opMetaModelLinkValidationRuleEClass, OP_META_MODEL_LINK_VALIDATION_RULE__SOURCE_TYPE_NAME);
 		createEAttribute(opMetaModelLinkValidationRuleEClass, OP_META_MODEL_LINK_VALIDATION_RULE__TARGET_TYPE_NAME);
 		createEAttribute(opMetaModelLinkValidationRuleEClass, OP_META_MODEL_LINK_VALIDATION_RULE__LINK_TYPE_NAME);
-
-		opModelEClass = createEClass(OP_MODEL);
-		createEReference(opModelEClass, OP_MODEL__META_MODEL);
-		createEReference(opModelEClass, OP_MODEL__CONTAINER);
-		createEAttribute(opModelEClass, OP_MODEL__NEXT_ID);
-
-		instanceBaseEClass = createEClass(INSTANCE_BASE);
-		createEAttribute(instanceBaseEClass, INSTANCE_BASE__TYPE_NAME);
-		createEAttribute(instanceBaseEClass, INSTANCE_BASE__ID);
-		createEReference(instanceBaseEClass, INSTANCE_BASE__PROPERTIES);
-
-		nodeInstanceBaseEClass = createEClass(NODE_INSTANCE_BASE);
-		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__CONSTRAINTS);
-		createEAttribute(nodeInstanceBaseEClass, NODE_INSTANCE_BASE__NAME);
-
-		containerInstanceBaseEClass = createEClass(CONTAINER_INSTANCE_BASE);
-		createEReference(containerInstanceBaseEClass, CONTAINER_INSTANCE_BASE__NODES);
-		createEReference(containerInstanceBaseEClass, CONTAINER_INSTANCE_BASE__LINKS);
-
-		linkInstanceBaseEClass = createEClass(LINK_INSTANCE_BASE);
-		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__SOURCE);
-		createEReference(linkInstanceBaseEClass, LINK_INSTANCE_BASE__TARGET);
-		createEAttribute(linkInstanceBaseEClass, LINK_INSTANCE_BASE__BENDPOINTS);
-
-		thingInstanceBaseEClass = createEClass(THING_INSTANCE_BASE);
-
-		keyValuePairEClass = createEClass(KEY_VALUE_PAIR);
-		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__KEY);
-		createEAttribute(keyValuePairEClass, KEY_VALUE_PAIR__VALUE);
-
-		// Create data types
-		rectangleEDataType = createEDataType(RECTANGLE);
-		pointEDataType = createEDataType(POINT);
 	}
 
 	/**
@@ -641,11 +320,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		nodeInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
-		containerInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
-		linkInstanceBaseEClass.getESuperTypes().add(this.getInstanceBase());
-		thingInstanceBaseEClass.getESuperTypes().add(this.getNodeInstanceBase());
-		thingInstanceBaseEClass.getESuperTypes().add(this.getContainerInstanceBase());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(opMetaModelDiagramEClass, OPMetaModelDiagram.class, "OPMetaModelDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -664,41 +338,6 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		initEAttribute(getOPMetaModelLinkValidationRule_SourceTypeName(), ecorePackage.getEString(), "SourceTypeName", null, 1, 1, OPMetaModelLinkValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOPMetaModelLinkValidationRule_TargetTypeName(), ecorePackage.getEString(), "TargetTypeName", null, 1, 1, OPMetaModelLinkValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOPMetaModelLinkValidationRule_LinkTypeName(), ecorePackage.getEString(), "LinkTypeName", null, 1, 1, OPMetaModelLinkValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(opModelEClass, OPModel.class, "OPModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOPModel_MetaModel(), this.getOPMetaModelDiagram(), null, "MetaModel", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPModel_Container(), this.getContainerInstanceBase(), null, "Container", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOPModel_NextId(), ecorePackage.getELong(), "NextId", null, 1, 1, OPModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(instanceBaseEClass, InstanceBase.class, "InstanceBase", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getInstanceBase_TypeName(), ecorePackage.getEString(), "TypeName", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getInstanceBase_Id(), ecorePackage.getELong(), "Id", null, 0, 1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getInstanceBase_Properties(), this.getKeyValuePair(), null, "properties", null, 0, -1, InstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(nodeInstanceBaseEClass, NodeInstanceBase.class, "NodeInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNodeInstanceBase_Constraints(), theOPMPackage.getRectangle(), "constraints", "0,0,50,50", 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNodeInstanceBase_Name(), ecorePackage.getEString(), "Name", null, 0, 1, NodeInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(containerInstanceBaseEClass, ContainerInstanceBase.class, "ContainerInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContainerInstanceBase_Nodes(), this.getNodeInstanceBase(), null, "nodes", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainerInstanceBase_Links(), this.getLinkInstanceBase(), null, "links", null, 0, -1, ContainerInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(linkInstanceBaseEClass, LinkInstanceBase.class, "LinkInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLinkInstanceBase_Source(), this.getNodeInstanceBase(), null, "source", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getLinkInstanceBase_Source().getEKeys().add(this.getInstanceBase_Id());
-		initEReference(getLinkInstanceBase_Target(), this.getNodeInstanceBase(), null, "target", null, 0, 1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getLinkInstanceBase_Target().getEKeys().add(this.getInstanceBase_Id());
-		initEAttribute(getLinkInstanceBase_Bendpoints(), this.getPoint(), "bendpoints", null, 0, -1, LinkInstanceBase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(thingInstanceBaseEClass, ThingInstanceBase.class, "ThingInstanceBase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(keyValuePairEClass, KeyValuePair.class, "KeyValuePair", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getKeyValuePair_Key(), ecorePackage.getEString(), "Key", null, 1, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getKeyValuePair_Value(), ecorePackage.getEString(), "Value", null, 1, 1, KeyValuePair.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize data types
-		initEDataType(rectangleEDataType, Rectangle.class, "Rectangle", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(pointEDataType, Point.class, "Point", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

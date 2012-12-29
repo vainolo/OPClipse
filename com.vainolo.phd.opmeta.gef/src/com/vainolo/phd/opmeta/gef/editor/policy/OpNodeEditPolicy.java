@@ -7,25 +7,25 @@ import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 
 import com.vainolo.phd.opmeta.gef.editor.command.OPModelLinkCreateCommand;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.LinkInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OpNodeEditPolicy extends GraphicalNodeEditPolicy {
 
 	@Override protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
 		OPModelLinkCreateCommand result = new OPModelLinkCreateCommand();
-		OpmodelNodeInstance source = (OpmodelNodeInstance) getHost().getModel();
+		NodeInstance source = (NodeInstance) getHost().getModel();
 	    result.setSource(source);
-	    result.setContainer((OpmodelContainerInstance)getHost().getParent().getModel());
-	    result.setLink((OpmodelLinkInstance) request.getNewObject());
+	    result.setContainer((ContainerInstance)getHost().getParent().getModel());
+	    result.setLink((LinkInstance) request.getNewObject());
 	    request.setStartCommand(result);
 	    return result;
 	}
 	
 	@Override protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
 		OPModelLinkCreateCommand linkCreateCommand = (OPModelLinkCreateCommand) request.getStartCommand();
-		OpmodelNodeInstance target = (OpmodelNodeInstance) getHost().getModel();
+		NodeInstance target = (NodeInstance) getHost().getModel();
 		if (target == linkCreateCommand.getSource()) return UnexecutableCommand.INSTANCE;
 	    linkCreateCommand.setTarget(target);
 	    return linkCreateCommand;

@@ -5,9 +5,9 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.editpolicies.ComponentEditPolicy;
 import org.eclipse.gef.requests.GroupRequest;
 
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
 import com.vainolo.phd.opmeta.gef.editor.command.OPModelNodeDeleteCommand;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelNodeComponentEditPolicy extends ComponentEditPolicy {
 
@@ -22,16 +22,16 @@ public class OPModelNodeComponentEditPolicy extends ComponentEditPolicy {
 	   */
 	  @Override
 	  protected Command createDeleteCommand(GroupRequest deleteRequest) {
-	    OpmodelNodeInstance nodeToDelete = (OpmodelNodeInstance) getHost().getModel();
-	    return createRecursiveDeleteNodeCommand(nodeToDelete,(OpmodelContainerInstance)getHost().getParent().getModel());
+	    NodeInstance nodeToDelete = (NodeInstance) getHost().getModel();
+	    return createRecursiveDeleteNodeCommand(nodeToDelete,(ContainerInstance)getHost().getParent().getModel());
 	  }
 
-	private Command createRecursiveDeleteNodeCommand(OpmodelNodeInstance nodeToDelete, OpmodelContainerInstance nodeContainer) {
+	private Command createRecursiveDeleteNodeCommand(NodeInstance nodeToDelete, ContainerInstance nodeContainer) {
 		CompoundCommand compoundCommand = new CompoundCommand();
 
-	    if(nodeToDelete instanceof OpmodelContainerInstance) {
-	    	OpmodelContainerInstance container = (OpmodelContainerInstance) nodeToDelete;
-	      for(OpmodelNodeInstance node : container.getNodes()) {
+	    if(nodeToDelete instanceof ContainerInstance) {
+	    	ContainerInstance container = (ContainerInstance) nodeToDelete;
+	      for(NodeInstance node : container.getNodes()) {
 	        Command containedNodeDelete = createRecursiveDeleteNodeCommand(node,container);
 	        compoundCommand.add(containedNodeDelete);
 	      }

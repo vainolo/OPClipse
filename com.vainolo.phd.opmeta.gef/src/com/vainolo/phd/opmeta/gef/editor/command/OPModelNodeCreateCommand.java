@@ -5,14 +5,14 @@ import org.eclipse.gef.commands.Command;
 
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelNodeCreateCommand extends Command {
 
-	private OpmodelContainerInstance container;
+	private ContainerInstance container;
 	private Rectangle constraints;
-	private OpmodelNodeInstance node;
+	private NodeInstance node;
 	
 	public Rectangle getConstraints() {
 		return constraints;
@@ -22,19 +22,19 @@ public class OPModelNodeCreateCommand extends Command {
 		this.constraints = constraints;
 	}
 	
-	public OpmodelContainerInstance getContainer() {
+	public ContainerInstance getContainer() {
 		return container;
 	}
 
-	public void setContainer(OpmodelContainerInstance container) {
+	public void setContainer(ContainerInstance container) {
 		this.container = container;
 	}
 
-	public OpmodelNodeInstance getNode() {
+	public NodeInstance getNode() {
 		return node;
 	}
 
-	public void setNode(OpmodelNodeInstance node) {
+	public void setNode(NodeInstance node) {
 		this.node = node;
 	}
 	
@@ -52,7 +52,7 @@ public class OPModelNodeCreateCommand extends Command {
 	@Override
 	public void execute() {
 		node.setConstraints(constraints);
-		container.addNode(node);
+		container.getNodes().add(node);
 	}
 	
 	/**
@@ -60,6 +60,6 @@ public class OPModelNodeCreateCommand extends Command {
 	 */
 	@Override
 	public void undo() {
-		container.removeNode(node);
+		container.getNodes().remove(node);
 	}
 }

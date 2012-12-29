@@ -6,8 +6,6 @@
  */
 package com.vainolo.phd.opm.model.tests;
 
-import com.vainolo.phd.opm.model.OPMElementWithID;
-import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opm.model.OPMPackage;

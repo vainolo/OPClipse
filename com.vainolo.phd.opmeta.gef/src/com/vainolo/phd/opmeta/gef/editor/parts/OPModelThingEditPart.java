@@ -6,16 +6,16 @@ import java.util.List;
 import org.eclipse.draw2d.IFigure;
 
 import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeFigure;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelThingEditPart extends OPModelNodeEditPart{
 
 	@Override
-	protected List<OpmodelNodeInstance> getModelChildren() {
-		OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
-	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>();
-	    for(OpmodelNodeInstance item:container.getNodes()){
+	protected List<NodeInstance> getModelChildren() {
+		ContainerInstance container = (ContainerInstance) getModel();
+	    List<NodeInstance> nodes = new ArrayList<NodeInstance>();
+	    for(NodeInstance item:container.getNodes()){
 	    	nodes.add(item);
 	    }
 	    return nodes;

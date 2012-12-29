@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.vainolo.phd.opmeta.model/src"
+    modelPluginID="com.vainolo.phd.opmodel.model" modelName="OPModel" editPluginClass="com.vainolo.phd.opmodel.model.provider.OPModelEditPlugin"
+    editorPluginClass="com.vainolo.phd.opmodel.model.presentation.OPModelEditorPlugin"
+    suppressEMFTypes="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" editPluginID="com.vainolo.phd.opmodel.model.edit" editorPluginID="com.vainolo.phd.opmodel.model.editor">
+  <foreignModel>opmodel.ecore</foreignModel>
+  <genPackages prefix="opmodel" basePackage="com.vainolo.phd" disposableProviderFactory="true"
+      interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
+      utilityPackageSuffix="model.util" providerPackageSuffix="model.provider" presentationPackageSuffix="model.presentation"
+      testsPackageSuffix="model.tests" generateExampleClass="false" ecorePackage="opmodel.ecore#/">
+    <genDataTypes ecoreDataType="opmodel.ecore#//Rectangle"/>
+    <genDataTypes ecoreDataType="opmodel.ecore#//Point"/>
+    <genClasses ecoreClass="opmodel.ecore#//keyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//keyValuePair/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//keyValuePair/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="opmodel.ecore#//InstanceBase">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//InstanceBase/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//InstanceBase/TypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//InstanceBase/id"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//NodeInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//NodeInstance/constraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//NodeInstance/name"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//LinkInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//LinkInstance/bendpoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//LinkInstance/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//LinkInstance/source"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//ContainerInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//ContainerInstance/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//ContainerInstance/links"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//ThingInstance"/>
+    <genClasses ecoreClass="opmodel.ecore#//TypeDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//TypeDescriptor/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//TypeDescriptor/Name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//TypeDescriptor/properties"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//TypeDescriptor/parents"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//TypeDescriptor/children"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//PropertyDescriptor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//PropertyDescriptor/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//PropertyDescriptor/value"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//OPmodelHolder">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmodelHolder/container"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmodelHolder/metaDefinition"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmodel.ecore#//OPmodelHolder/NextId"/>
+    </genClasses>
+    <genClasses ecoreClass="opmodel.ecore#//OPmetaDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmetaDefinition/types"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmetaDefinition/nodes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmetaDefinition/containers"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmodel.ecore#//OPmetaDefinition/links"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -23,9 +23,8 @@ import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeRectangleFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OPModelNodeComponentEditPolicy;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.LinkInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	implements NodeEditPart {
@@ -59,15 +58,15 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	}
 
 	@Override
-	protected List<OpmodelLinkInstance> getModelSourceConnections() {
-		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
-		return new ArrayList<OpmodelLinkInstance>(model.getOutgoingLinks());
+	protected List<LinkInstance> getModelSourceConnections() {
+		NodeInstance model = (NodeInstance) getModel();
+		return new ArrayList<LinkInstance>(model.getOutgoingLinks());
 	} 
 	
 	@Override
-	protected List<OpmodelLinkInstance> getModelTargetConnections() {
-		OpmodelNodeInstance model = (OpmodelNodeInstance) getModel();
-		return new ArrayList<OpmodelLinkInstance>(model.getIncomingLinks());
+	protected List<LinkInstance> getModelTargetConnections() {
+		NodeInstance model = (NodeInstance) getModel();
+		return new ArrayList<LinkInstance>(model.getIncomingLinks());
 	}
 	
 	@Override
@@ -84,7 +83,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 
 	@Override protected void refreshVisuals() {
 		OPModelNodeRectangleFigure figure = (OPModelNodeRectangleFigure)getFigure();
-	    OpmodelNodeInstance model = (OpmodelNodeInstance)getModel();
+	    NodeInstance model = (NodeInstance)getModel();
 	    final GraphicalEditPart parent = (GraphicalEditPart) getParent();
 	    
 	    figure.setText(model.getName());
@@ -95,7 +94,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	@Override
 	public void activate() {
 		if (!isActive()) {
-			((OpmodelInstance) getModel()).eAdapters().add(adapter);
+			((NodeInstance) getModel()).eAdapters().add(adapter);
 		}
 		super.activate();
 	}
@@ -103,7 +102,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	@Override
 	public void deactivate() {
 		if (isActive()) {
-			((OpmodelInstance) getModel()).eAdapters().remove(adapter);
+			((NodeInstance) getModel()).eAdapters().remove(adapter);
 		}
 		super.deactivate();
 	}
@@ -152,7 +151,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 
 		@Override
 		public Notifier getTarget() {
-			return (OpmodelNodeInstance) getModel();
+			return (NodeInstance) getModel();
 		}
 
 		@Override
@@ -162,7 +161,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 
 		@Override
 		public boolean isAdapterForType(Object type) {
-			return OpmodelNodeInstance.class.equals(type);
+			return NodeInstance.class.equals(type);
 		}
 	}
 }

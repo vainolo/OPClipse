@@ -8,7 +8,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: com.vainolo.phd.opmeta.model,
  com.vainolo.phd.opmeta.model.impl,
- com.vainolo.phd.opmeta.model.util
+ com.vainolo.phd.opmeta.model.util,
+ com.vainolo.phd.opmodel.model,
+ com.vainolo.phd.opmodel.model.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  com.vainolo.phd.opm.model;bundle-version="1.0.0",

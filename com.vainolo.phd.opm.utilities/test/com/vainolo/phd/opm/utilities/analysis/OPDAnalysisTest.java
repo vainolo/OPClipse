@@ -85,7 +85,7 @@ public class OPDAnalysisTest {
   @Test
   public void testFindInZoomedProcess_IllegalCall() {
     try {
-      OPMProcess result = OPDAnalysis.findInZoomedProcess(systemOPD);
+      OPDAnalysis.findInZoomedProcess(systemOPD);
       fail("Should not get here.");
     } catch(RuntimeException e) {}
   }

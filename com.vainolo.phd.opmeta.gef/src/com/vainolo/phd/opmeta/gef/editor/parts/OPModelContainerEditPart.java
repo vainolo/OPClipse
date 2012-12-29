@@ -18,10 +18,9 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
-import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
@@ -47,10 +46,10 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	}
 
 	@Override
-	protected List<OpmodelNodeInstance> getModelChildren() {
-		OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
-	    List<OpmodelNodeInstance> nodes = new ArrayList<OpmodelNodeInstance>();
-	    for(OpmodelNodeInstance item:container.getNodes()){
+	protected List<NodeInstance> getModelChildren() {
+		ContainerInstance container = (ContainerInstance) getModel();
+	    List<NodeInstance> nodes = new ArrayList<NodeInstance>();
+	    for(NodeInstance item:container.getNodes()){
 	    	nodes.add(item);
 	    }
 	    return nodes;
@@ -59,7 +58,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	@Override
 	  public void activate() {
 	    if(!isActive()) {
-	    	OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
+	    	ContainerInstance container = (ContainerInstance) getModel();
 	    	container.eAdapters().add(adapter);
 	    }
 	    super.activate();
@@ -68,7 +67,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	  @Override
 	  public void deactivate() {
 	    if(isActive()) {
-	    	OpmodelContainerInstance container = (OpmodelContainerInstance) getModel();
+	    	ContainerInstance container = (ContainerInstance) getModel();
 	    	container.eAdapters().remove(adapter);
 	    }
 	    super.deactivate();
@@ -108,7 +107,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
 	    @Override
 	    public Notifier getTarget() {
-	      return (OPMObjectProcessDiagram) getModel();
+	      return (ContainerInstance) getModel();
 	    }
 
 	    @Override
@@ -118,7 +117,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
 	    @Override
 	    public boolean isAdapterForType(Object type) {
-	      return type.equals(OPMObjectProcessDiagram.class);
+	      return type.equals(ContainerInstance.class);
 	    }
 	}
 }

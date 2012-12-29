@@ -5,16 +5,16 @@ import org.eclipse.gef.commands.Command;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.LinkInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelLinkCreateCommand extends Command {
 
-	private OpmodelNodeInstance source;
-	private OpmodelNodeInstance target;
-	private OpmodelLinkInstance link;
-	private OpmodelContainerInstance container;
+	private NodeInstance source;
+	private NodeInstance target;
+	private LinkInstance link;
+	private ContainerInstance container;
 	
 	/**
 	   * The command can be executed when all parameters have been set.
@@ -31,7 +31,7 @@ public class OPModelLinkCreateCommand extends Command {
 	  public void execute() {
 	    link.setSource(source);
 	    link.setTarget(target);
-	    container.addLink(link);
+	    container.getLinks().add(link);
 	  }
 
 	  /**
@@ -42,34 +42,34 @@ public class OPModelLinkCreateCommand extends Command {
 	  public void undo() {
 	    link.setSource(null);
 	    link.setTarget(null);
-	    container.removeLink(link);
+	    container.getLinks().remove(link);
 	  }
 
 	
-	public OpmodelNodeInstance getSource() {
+	public NodeInstance getSource() {
 		return source;
 	}
-	public void setSource(OpmodelNodeInstance source) {
+	public void setSource(NodeInstance source) {
 		this.source = source;
 	}
-	public OpmodelNodeInstance getTarget() {
+	public NodeInstance getTarget() {
 		return target;
 	}
-	public void setTarget(OpmodelNodeInstance target) {
+	public void setTarget(NodeInstance target) {
 		this.target = target;
 	}
-	public OpmodelLinkInstance getLink() {
+	public LinkInstance getLink() {
 		return link;
 	}
-	public void setLink(OpmodelLinkInstance link) {
+	public void setLink(LinkInstance link) {
 		this.link = link;
 	}
 
-	public OpmodelContainerInstance getContainer() {
+	public ContainerInstance getContainer() {
 		return container;
 	}
 
-	public void setContainer(OpmodelContainerInstance container) {
+	public void setContainer(ContainerInstance container) {
 		this.container = container;
 	}
 }

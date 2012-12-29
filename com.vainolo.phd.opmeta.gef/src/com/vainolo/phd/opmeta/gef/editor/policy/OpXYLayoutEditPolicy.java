@@ -10,9 +10,9 @@ import org.eclipse.gef.requests.CreateRequest;
 
 import com.vainolo.phd.opmeta.gef.editor.command.OPModelNodeChangeConstraintCommand;
 import com.vainolo.phd.opmeta.gef.editor.command.OPModelNodeCreateCommand;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelThingInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
+import com.vainolo.phd.opmodel.model.ThingInstance;
 
 public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
@@ -25,7 +25,7 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 	protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
 		if (!canGetChildCommand()) return UnexecutableCommand.INSTANCE;
 		OPModelNodeChangeConstraintCommand command = new OPModelNodeChangeConstraintCommand();
-		command.setNode((OpmodelNodeInstance) child.getModel());
+		command.setNode((NodeInstance) child.getModel());
 		command.setConstraint((Rectangle) constraint);
 		return command;
 	}
@@ -37,11 +37,11 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 	protected Command getCreateCommand(CreateRequest request) {
 		if (!canGetChildCommand()) return UnexecutableCommand.INSTANCE;
 		
-		OpmodelContainerInstance model = (OpmodelContainerInstance) getHost().getModel();
+		ContainerInstance model = (ContainerInstance) getHost().getModel();
 		
 		Command retVal = null;
 
-		if (request.getNewObjectType().equals(OpmodelNodeInstance.class) || request.getNewObjectType().equals(OpmodelThingInstance.class)) {
+		if (request.getNewObjectType().equals(NodeInstance.class) || request.getNewObjectType().equals(ThingInstance.class)) {
 			
 			// TODO : here should go some kind of validation
 			OPModelNodeCreateCommand command = new OPModelNodeCreateCommand();
@@ -51,13 +51,13 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 			}
 			command.setConstraints(constraints);
 			command.setContainer(model);
-			command.setNode((OpmodelNodeInstance) request.getNewObject());
+			command.setNode((NodeInstance) request.getNewObject());
 			retVal = command;
 		}
 		return retVal;		
 	}
 
 	private boolean canGetChildCommand(){
-		return (getHost().getModel() instanceof OpmodelContainerInstance);
+		return (getHost().getModel() instanceof ContainerInstance);
 	}
 }

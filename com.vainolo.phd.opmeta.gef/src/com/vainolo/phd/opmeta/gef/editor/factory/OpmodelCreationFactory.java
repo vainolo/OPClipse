@@ -3,9 +3,9 @@ package com.vainolo.phd.opmeta.gef.editor.factory;
 import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
-import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelFactory;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelInstance;
+import com.vainolo.phd.opmodel.model.InstanceBase;
+import com.vainolo.phd.opmodel.model.TypeDescriptor;
+import com.vainolo.phd.opmeta.interpreter.OpmodelFactory;
 
 public class OpmodelCreationFactory implements CreationFactory{
 
@@ -24,7 +24,7 @@ public class OpmodelCreationFactory implements CreationFactory{
 	
 	@Override
 	public Object getNewObject() {
-		OpmodelInstance instance =  factory.createOpmodelInstance(descriptor);
+		InstanceBase instance =  factory.createOpmodelInstance(descriptor);
 		instance.setId(opmIdManager.getNextId());
 		return instance;
 	}

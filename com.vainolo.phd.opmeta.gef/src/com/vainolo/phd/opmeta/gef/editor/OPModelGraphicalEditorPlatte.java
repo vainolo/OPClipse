@@ -9,18 +9,18 @@ import org.eclipse.gef.palette.SelectionToolEntry;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.gef.editor.tool.CreationAndDirectEditTool;
 import com.vainolo.phd.opmeta.gef.editor.factory.OpmodelCreationFactory;
-import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
-import com.vainolo.phd.opmeta.interpreter.TypeDescriptor;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelFactory;
+import com.vainolo.phd.opmeta.interpreter.OpmodelFactory;
+import com.vainolo.phd.opmodel.model.TypeDescriptor;
+import com.vainolo.phd.opmodel.model.OPmetaDefinition;
 
 public class OPModelGraphicalEditorPlatte extends PaletteRoot {
 
 	private PaletteGroup group;
 	private OPMIdManager opmIdManager;
-	private OpmetaInterpretation interpretation;
+	private OPmetaDefinition interpretation;
 	private OpmodelFactory factory;
 
-	public OPModelGraphicalEditorPlatte(OpmetaInterpretation interpretation,OPMIdManager opmIdManager){
+	public OPModelGraphicalEditorPlatte(OPmetaDefinition interpretation,OPMIdManager opmIdManager){
 		this.opmIdManager = opmIdManager;
 		this.interpretation = interpretation;
 		factory = new OpmodelFactory(interpretation);

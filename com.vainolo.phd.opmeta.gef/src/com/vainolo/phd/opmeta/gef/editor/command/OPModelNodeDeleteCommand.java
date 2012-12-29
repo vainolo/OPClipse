@@ -5,16 +5,16 @@ import java.util.List;
 
 import org.eclipse.gef.commands.Command;
 
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.LinkInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelNodeDeleteCommand extends Command {
 
 	 /** Node to be deleted. */
-	  private OpmodelNodeInstance node;
+	  private NodeInstance node;
 	  /** Container of the node. */
-	  private OpmodelContainerInstance container;
+	  private ContainerInstance container;
 	  /** Incoming and outgoing links. */
 	  private List<LinkDataStorage> linksDs;
 
@@ -23,20 +23,19 @@ public class OPModelNodeDeleteCommand extends Command {
 		 */
 		@Override
 		public boolean canExecute() {
-			return node != null && container != null && container.containsNode(node);
+			return node != null && container != null && container.getNodes().contains(node);
 		}
-
 	  
 	  @Override
 	  public void execute() {
 	    detachLinks();
-	    container.removeNode(node);
+	    container.getNodes().remove(node);
 	  }
 
 	  @Override
 	  public void undo() {
 	    reattachLinks();
-	    container.addNode(node);
+	    container.getNodes().add(node);
 	  }
 
 	  /**
@@ -45,14 +44,14 @@ public class OPModelNodeDeleteCommand extends Command {
 	   */
 	  private void detachLinks() {
 		  linksDs = new ArrayList<>();
-		  ArrayList<OpmodelLinkInstance> links = new ArrayList<>();
+		  ArrayList<LinkInstance> links = new ArrayList<>();
 		  links.addAll(node.getIncomingLinks());
 		  links.addAll(node.getOutgoingLinks());
-		  for (OpmodelLinkInstance link:links){
-			  LinkDataStorage ds =new LinkDataStorage(link);
+		  for (LinkInstance link:links){
+			  LinkDataStorage ds = new LinkDataStorage(link);
 			  link.setSource(null);
 			  link.setTarget(null);
-			  ds.container.removeLink(link);
+			  ds.container.getLinks().remove(link);
 			  linksDs.add(ds);
 		  }
 	  }
@@ -62,10 +61,10 @@ public class OPModelNodeDeleteCommand extends Command {
 	   */
 	  private void reattachLinks() {
 	    for(LinkDataStorage linkds : linksDs) {
-	    	OpmodelLinkInstance link = linkds.link;
+	    	LinkInstance link = linkds.link;
 	      link.setSource(linkds.source);
 	      link.setTarget(linkds.target);
-	      linkds.container.addLink(link);
+	      linkds.container.getLinks().add(link);
 
 	    }
 	  }
@@ -76,26 +75,26 @@ public class OPModelNodeDeleteCommand extends Command {
 	   * @param node
 	   *          the Node to delete from the diagram.
 	   */
-	  public void setNode(final OpmodelNodeInstance node) {
+	  public void setNode(final NodeInstance node) {
 	    this.node = node;
 	  }
 	  
-	  public void setContainer(final OpmodelContainerInstance container){
+	  public void setContainer(final ContainerInstance container){
 		  this.container = container;
 	  }
 	  
 	  private class LinkDataStorage{
-		  public LinkDataStorage(final OpmodelLinkInstance link){
+		  public LinkDataStorage(final LinkInstance link){
 			  this.link = link;
 			  this.source = link.getSource();
 			  target = link.getTarget();
 			  container = link.getContainer();
 		  }
 		  
-		  final OpmodelLinkInstance link;
-		  final OpmodelNodeInstance source;
-		  final OpmodelNodeInstance target;
-		  final OpmodelContainerInstance container;
+		  final LinkInstance link;
+		  final NodeInstance source;
+		  final NodeInstance target;
+		  final ContainerInstance container;
 		  
 	  }
 }

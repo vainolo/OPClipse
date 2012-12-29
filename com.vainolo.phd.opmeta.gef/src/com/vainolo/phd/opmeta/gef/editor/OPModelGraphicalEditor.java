@@ -20,19 +20,18 @@ import org.eclipse.ui.PartInitException;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opmeta.gef.editor.parts.OPModelEditPartFactory;
-import com.vainolo.phd.opmeta.interpreter.OpmetaInterpretation;
-import com.vainolo.phd.opmeta.interpreter.OpmodelInterpretationCreator;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.OPmetaDefinition;
+import com.vainolo.phd.opmodel.model.OPmodelHolder;
 
 public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
 	  //private Logger logger = Logger.getLogger(OPModelGraphicalEditor.class.getName());
 	  private OPMIdManager opmIdManager;
-	  private OpmetaInterpretation interpretation;
-	  private OPModel opmodel;
-	  private OpmodelContainerInstance rootContainer;
+	  private OPmetaDefinition interpretation;
+	  private OPmodelHolder opmodel;
+	  private ContainerInstance rootContainer;
 	  private IFile opmmFile;
 	  
 	  public OPModelGraphicalEditor() {
@@ -72,8 +71,8 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	      }
 	      opmIdManager.setId(opmodel.getNextId());
 	      
-	      interpretation = OpmetaInterpretation.CreateInterpretation(opmodel.getMetaModel());
-	      rootContainer =  OpmodelInterpretationCreator.Create(interpretation, opmodel.getContainer());
+	      interpretation = opmodel.getMetaDefinition();
+	      rootContainer = opmodel.getContainer();
 	      setEditDomain(new DefaultEditDomain(this));
 	  }
 	
@@ -110,7 +109,6 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	    } catch(Exception e) {
 	    	throw new RuntimeException(e);
 	    }
-		
 	}
 	
 	/**

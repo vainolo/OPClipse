@@ -84,34 +84,6 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 				return createOPMetaModelLinkValidationRuleAdapter();
 			}
 			@Override
-			public Adapter caseOPModel(OPModel object) {
-				return createOPModelAdapter();
-			}
-			@Override
-			public Adapter caseInstanceBase(InstanceBase object) {
-				return createInstanceBaseAdapter();
-			}
-			@Override
-			public Adapter caseNodeInstanceBase(NodeInstanceBase object) {
-				return createNodeInstanceBaseAdapter();
-			}
-			@Override
-			public Adapter caseContainerInstanceBase(ContainerInstanceBase object) {
-				return createContainerInstanceBaseAdapter();
-			}
-			@Override
-			public Adapter caseLinkInstanceBase(LinkInstanceBase object) {
-				return createLinkInstanceBaseAdapter();
-			}
-			@Override
-			public Adapter caseThingInstanceBase(ThingInstanceBase object) {
-				return createThingInstanceBaseAdapter();
-			}
-			@Override
-			public Adapter caseKeyValuePair(KeyValuePair object) {
-				return createKeyValuePairAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -170,104 +142,6 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOPMetaModelLinkValidationRuleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.OPModel <em>OP Model</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.OPModel
-	 * @generated
-	 */
-	public Adapter createOPModelAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.InstanceBase <em>Instance Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.InstanceBase
-	 * @generated
-	 */
-	public Adapter createInstanceBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.NodeInstanceBase <em>Node Instance Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.NodeInstanceBase
-	 * @generated
-	 */
-	public Adapter createNodeInstanceBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.ContainerInstanceBase <em>Container Instance Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.ContainerInstanceBase
-	 * @generated
-	 */
-	public Adapter createContainerInstanceBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.LinkInstanceBase <em>Link Instance Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.LinkInstanceBase
-	 * @generated
-	 */
-	public Adapter createLinkInstanceBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.ThingInstanceBase <em>Thing Instance Base</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.ThingInstanceBase
-	 * @generated
-	 */
-	public Adapter createThingInstanceBaseAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.KeyValuePair <em>Key Value Pair</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.KeyValuePair
-	 * @generated
-	 */
-	public Adapter createKeyValuePairAdapter() {
 		return null;
 	}
 

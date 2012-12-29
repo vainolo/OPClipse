@@ -14,3 +14,4 @@ Require-Bundle: com.vainolo.phd.opm.model;bundle-version="1.0.0",
  org.eclipse.draw2d;bundle-version="3.7.2"
 Export-Package: com.vainolo.phd.opmeta.interpreter,
  com.vainolo.phd.opmeta.interpreter.opmodel
+Import-Package: org.eclipse.emf.ecore.xmi.impl

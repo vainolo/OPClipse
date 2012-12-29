@@ -12,8 +12,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
-import com.vainolo.phd.opmeta.model.OPModel;
 import com.vainolo.phd.opmeta.model.opmetaPackage;
+import com.vainolo.phd.opmodel.model.OPmodelHolder;
+import com.vainolo.phd.opmodel.model.opmodelPackage;
 import com.vainolo.utils.SimpleLoggerFactory;
 
 public class OPMMLoader {
@@ -32,10 +33,10 @@ public class OPMMLoader {
 			return null;
 	  }
 
-	  public static OPModel loadOPModelFile(String uri){
-		  OPModel opmodel;
+	  public static OPmodelHolder loadOPModelFile(String uri){
+		  OPmodelHolder opmodel;
 		  try {
-		    opmodel = (OPModel)readObject(uri);
+		    opmodel = (OPmodelHolder)readObject(uri);
 		    return opmodel;
 		  } catch(final IOException e) {
 			  logger.warning("OP Model File " + uri + " could not be loaded. Please check the path.");
@@ -50,6 +51,7 @@ public class OPMMLoader {
 		    .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		resourceSet.getPackageRegistry().put(OPMPackage.eNS_URI,OPMPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(opmetaPackage.eNS_URI,opmetaPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(opmetaPackage.eNS_URI,opmodelPackage.eINSTANCE);
 		Resource opmmResource = resourceSet.createResource(URI.createURI(uri));
 		
 		  opmmResource.load(null);

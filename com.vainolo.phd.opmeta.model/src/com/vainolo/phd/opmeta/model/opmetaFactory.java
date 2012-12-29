@@ -53,60 +53,6 @@ public interface opmetaFactory extends EFactory {
 	OPMetaModelLinkValidationRule createOPMetaModelLinkValidationRule();
 
 	/**
-	 * Returns a new object of class '<em>OP Model</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OP Model</em>'.
-	 * @generated
-	 */
-	OPModel createOPModel();
-
-	/**
-	 * Returns a new object of class '<em>Node Instance Base</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Node Instance Base</em>'.
-	 * @generated
-	 */
-	NodeInstanceBase createNodeInstanceBase();
-
-	/**
-	 * Returns a new object of class '<em>Container Instance Base</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Container Instance Base</em>'.
-	 * @generated
-	 */
-	ContainerInstanceBase createContainerInstanceBase();
-
-	/**
-	 * Returns a new object of class '<em>Link Instance Base</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Link Instance Base</em>'.
-	 * @generated
-	 */
-	LinkInstanceBase createLinkInstanceBase();
-
-	/**
-	 * Returns a new object of class '<em>Thing Instance Base</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Thing Instance Base</em>'.
-	 * @generated
-	 */
-	ThingInstanceBase createThingInstanceBase();
-
-	/**
-	 * Returns a new object of class '<em>Key Value Pair</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Key Value Pair</em>'.
-	 * @generated
-	 */
-	KeyValuePair createKeyValuePair();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

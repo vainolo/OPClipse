@@ -2,15 +2,15 @@ package com.vainolo.phd.opmeta.gef.editor.command;
 
 import org.eclipse.gef.commands.Command;
 
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelContainerInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelLinkInstance;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.LinkInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelLinkDeleteCommand extends Command {
-	private OpmodelNodeInstance source;
-	private OpmodelNodeInstance target;
-	private OpmodelLinkInstance link;
-	private OpmodelContainerInstance container;
+	private NodeInstance source;
+	private NodeInstance target;
+	private LinkInstance link;
+	private ContainerInstance container;
 	
 	/**
 	 * {@inheritDoc}
@@ -31,7 +31,7 @@ public class OPModelLinkDeleteCommand extends Command {
 
 		link.setSource(null);
 		link.setTarget(null);
-		container.removeLink(link);
+		container.getLinks().remove(link);
 	}
 
 	/**
@@ -41,14 +41,14 @@ public class OPModelLinkDeleteCommand extends Command {
 	public void undo() {
 		link.setSource(source);
 	    link.setTarget(target);
-	    container.addLink(link);
+	    container.getLinks().add(link);
 	}
 	
 	
-	public OpmodelLinkInstance getLink() {
+	public LinkInstance getLink() {
 		return link;
 	}
-	public void setLink(OpmodelLinkInstance link) {
+	public void setLink(LinkInstance link) {
 		this.link = link;
 	}
 	

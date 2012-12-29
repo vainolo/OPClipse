@@ -4,15 +4,15 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.commands.Command;
 
 import com.vainolo.phd.opm.model.OPMNode;
-import com.vainolo.phd.opmeta.interpreter.opmodel.OpmodelNodeInstance;
+import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelNodeChangeConstraintCommand extends Command {
 
-	private OpmodelNodeInstance node;
-	public OpmodelNodeInstance getNode() {
+	private NodeInstance node;
+	public NodeInstance getNode() {
 		return node;
 	}
-	public void setNode(OpmodelNodeInstance node) {
+	public void setNode(NodeInstance node) {
 		this.node = node;
 	}
 	public Rectangle getConstraint() {
