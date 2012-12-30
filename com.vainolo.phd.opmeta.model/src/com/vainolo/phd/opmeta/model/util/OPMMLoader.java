@@ -50,8 +50,8 @@ public class OPMMLoader {
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
 		    .put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		resourceSet.getPackageRegistry().put(OPMPackage.eNS_URI,OPMPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(opmetaPackage.eNS_URI,opmetaPackage.eINSTANCE);
 		resourceSet.getPackageRegistry().put(opmetaPackage.eNS_URI,opmodelPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(opmetaPackage.eNS_URI,opmetaPackage.eINSTANCE);
 		Resource opmmResource = resourceSet.createResource(URI.createURI(uri));
 		
 		  opmmResource.load(null);
