@@ -18,6 +18,9 @@ import org.eclipse.gef.SnapToGeometry;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.ui.views.properties.IPropertyDescriptor;
+import org.eclipse.ui.views.properties.IPropertySource;
+import org.eclipse.ui.views.properties.TextPropertyDescriptor;
 
 import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeRectangleFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
@@ -25,6 +28,7 @@ import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OPModelNodeComponentEditPolicy;
 import com.vainolo.phd.opmodel.model.LinkInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
+import com.vainolo.phd.opmodel.model.PropertyInstance;
 
 public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	implements NodeEditPart {
@@ -114,6 +118,7 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class key) {
+
 		if (key == SnapToHelper.class) {
 			List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();
 			if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED))) {
@@ -127,10 +132,53 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 			} else {
 				return new CompoundSnapToHelper(helpers.toArray(new SnapToHelper[0]));
 			}
+			
+		} else if (key == IPropertySource.class) {
+				return new IPropertySheetPageInstanceImpl();
 		}
 
 		return super.getAdapter(key);
 	}
+	
+	public class IPropertySheetPageInstanceImpl implements IPropertySource {
+				
+		public IPropertyDescriptor[] getPropertyDescriptors() {
+			int i=1;
+			IPropertyDescriptor [] ret= new IPropertyDescriptor[((NodeInstance) getModel()).getProperties().size()+1];
+			ret[0]=new TextPropertyDescriptor("name","name");
+			for (PropertyInstance property:((NodeInstance) getModel()).getProperties()){
+				ret[i]=new TextPropertyDescriptor(property.getName(), property.getName() +" : " + property.getType());
+				i++;
+			}
+			return ret;			
+		}
+
+		public Object getPropertyValue(Object id) {
+			if (id=="name") return "echinda";
+			return ((NodeInstance) getModel()).getProperty((String)id).getValue();
+		}
+
+		public void setPropertyValue(Object id, Object value) {
+			if (id=="name") return;
+			((NodeInstance) getModel()).getProperty((String)id).setValue((String)value);
+		}
+
+		public boolean isPropertySet(Object id) {
+			return false;
+		}
+		
+		public void resetPropertyValue(Object id) {
+		}
+
+		@Override
+		public Object getEditableValue() {
+			// TODO Auto-generated method stub
+			return null;
+		}	
+	}
+	
+	
+	
 	
 	/**
 	 * Receives notifications of changes in the model and refreshed the view
