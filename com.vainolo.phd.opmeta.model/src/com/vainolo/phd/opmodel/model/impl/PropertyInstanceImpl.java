@@ -65,15 +65,6 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 	protected String value = VALUE_EDEFAULT;
 
 	/**
-	 * This is true if the Value attribute has been set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean valueESet;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -144,8 +135,12 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSetValue() {
-		return valueESet;
+	public boolean setValue(String val) {
+		String oldValue = value;
+		value = val;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.PROPERTY_INSTANCE__VALUE, oldValue, value));
+		return true;
 	}
 
 	/**
@@ -153,12 +148,8 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean setValue(String val) {
-		String oldValue = value;
-		value = val;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.PROPERTY_INSTANCE__VALUE, oldValue, value));
-		return true;
+	public void unsetValue() {
+		value =VALUE_EDEFAULT;
 	}
 
 	/**
@@ -198,14 +189,18 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 
 	/**
 	 * <!-- begin-user-doc -->
+	 * NOTE : this will not be overridden from now on.
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case opmodelPackage.PROPERTY_INSTANCE__DESCRIPTOR:
 				setDescriptor((PropertyDescriptor)newValue);
+				return;
+			case opmodelPackage.PROPERTY_INSTANCE__VALUE:
+				setValue((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -237,7 +232,7 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 			case opmodelPackage.PROPERTY_INSTANCE__DESCRIPTOR:
 				return descriptor != null;
 			case opmodelPackage.PROPERTY_INSTANCE__VALUE:
-				return isSetValue();
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -253,7 +248,7 @@ public class PropertyInstanceImpl extends EObjectImpl implements PropertyInstanc
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");
-		if (valueESet) result.append(value); else result.append("<unset>");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}

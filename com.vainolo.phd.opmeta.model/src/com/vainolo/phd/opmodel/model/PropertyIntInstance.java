@@ -21,7 +21,7 @@ public interface PropertyIntInstance extends PropertyInstance {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model valRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tInteger.parseInt(val);\r\n} catch (NumberFormatException e) {\r\n\treturn false;\r\n}\r\nthis.value=val;\r\nreturn true;\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='try {\r\n\tInteger.parseInt(val);\r\n} catch (NumberFormatException e) {\r\n\treturn false;\r\n}\r\nsuper.setValue(val);\r\nreturn true;\r\n'"
 	 * @generated
 	 */
 	boolean setValue(String val);

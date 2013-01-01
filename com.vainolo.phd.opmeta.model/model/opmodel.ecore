@@ -22,10 +22,9 @@
         eKeys="#//TypeDescriptor/id"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Rectangle" instanceClassName="org.eclipse.draw2d.geometry.Rectangle"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NodeInstance" eSuperTypes="#//InstanceBase">
+  <eClassifiers xsi:type="ecore:EClass" name="NodeInstance" eSuperTypes="#//InstanceBase ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="constraints" lowerBound="1"
         eType="#//Rectangle" defaultValueLiteral="0,0,50,50"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingLinks" upperBound="-1"
         eType="#//LinkInstance" eOpposite="#//LinkInstance/target" eKeys="#//InstanceBase/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingLinks" upperBound="-1"
@@ -115,15 +114,21 @@
       </eAnnotations>
       <eParameters name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="unsetValue" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="value =VALUE_EDEFAULT;"/>
+      </eAnnotations>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="descriptor" eType="#//PropertyDescriptor"
         eKeys="#//PropertyDescriptor/id"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        changeable="false" defaultValueLiteral="" unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertyIntInstance" eSuperTypes="#//PropertyInstance">
     <eOperations name="setValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="try {&#xD;&#xA;&#x9;Integer.parseInt(val);&#xD;&#xA;} catch (NumberFormatException e) {&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;this.value=val;&#xD;&#xA;return true;&#xD;&#xA;"/>
+        <details key="body" value="try {&#xD;&#xA;&#x9;Integer.parseInt(val);&#xD;&#xA;} catch (NumberFormatException e) {&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;super.setValue(val);&#xD;&#xA;return true;&#xD;&#xA;"/>
       </eAnnotations>
       <eParameters name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -131,7 +136,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PropertyFloatInstance" eSuperTypes="#//PropertyInstance">
     <eOperations name="setValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="try {&#xD;&#xA;&#x9;Float.parseFloat(val);&#xD;&#xA;} catch (NumberFormatException e) {&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;this.value=val;&#xD;&#xA;return true;&#xD;&#xA;"/>
+        <details key="body" value="try {&#xD;&#xA;&#x9;Float.parseFloat(val);&#xD;&#xA;} catch (NumberFormatException e) {&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;super.setValue(val);&#xD;&#xA;return true;&#xD;&#xA;"/>
       </eAnnotations>
       <eParameters name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
@@ -139,7 +144,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="PropertyBooleanInstance" eSuperTypes="#//PropertyInstance">
     <eOperations name="setValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="if (val.equals(&quot;true&quot;) || val.equals(&quot;false&quot;)) {&#xD;&#xA;&#x9;this.value=val;&#xD;&#xA;&#x9;return true;&#xD;&#xA;}&#xD;&#xA;return false;&#xD;&#xA;"/>
+        <details key="body" value="if (val.equals(&quot;true&quot;) || val.equals(&quot;false&quot;)) {&#xD;&#xA;&#x9;super.setValue(val);&#xD;&#xA;&#x9;return true;&#xD;&#xA;}&#xD;&#xA;return false;&#xD;&#xA;"/>
       </eAnnotations>
       <eParameters name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>

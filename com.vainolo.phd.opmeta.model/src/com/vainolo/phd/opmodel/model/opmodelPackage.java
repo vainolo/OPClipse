@@ -182,22 +182,31 @@ public interface opmodelPackage extends EPackage {
 	int NODE_INSTANCE__TYPE = INSTANCE_BASE__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NODE_INSTANCE__CONSTRAINTS = INSTANCE_BASE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_INSTANCE__NAME = INSTANCE_BASE_FEATURE_COUNT + 1;
+	int NODE_INSTANCE__NAME = INSTANCE_BASE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Alignment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE__ALIGNMENT = INSTANCE_BASE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_INSTANCE__CONSTRAINTS = INSTANCE_BASE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -206,7 +215,7 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_INSTANCE__INCOMING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 2;
+	int NODE_INSTANCE__INCOMING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing Links</b></em>' reference list.
@@ -215,7 +224,7 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_INSTANCE__OUTGOING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 3;
+	int NODE_INSTANCE__OUTGOING_LINKS = INSTANCE_BASE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Node Instance</em>' class.
@@ -224,7 +233,7 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_INSTANCE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 4;
+	int NODE_INSTANCE_FEATURE_COUNT = INSTANCE_BASE_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmodel.model.impl.LinkInstanceImpl <em>Link Instance</em>}' class.
@@ -410,15 +419,6 @@ public interface opmodelPackage extends EPackage {
 	int THING_INSTANCE__TYPE = NODE_INSTANCE__TYPE;
 
 	/**
-	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int THING_INSTANCE__CONSTRAINTS = NODE_INSTANCE__CONSTRAINTS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -426,6 +426,24 @@ public interface opmodelPackage extends EPackage {
 	 * @ordered
 	 */
 	int THING_INSTANCE__NAME = NODE_INSTANCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Alignment</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE__ALIGNMENT = NODE_INSTANCE__ALIGNMENT;
+
+	/**
+	 * The feature id for the '<em><b>Constraints</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int THING_INSTANCE__CONSTRAINTS = NODE_INSTANCE__CONSTRAINTS;
 
 	/**
 	 * The feature id for the '<em><b>Incoming Links</b></em>' reference list.
@@ -968,17 +986,6 @@ public interface opmodelPackage extends EPackage {
 	EAttribute getNodeInstance_Constraints();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmodel.model.NodeInstance#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see com.vainolo.phd.opmodel.model.NodeInstance#getName()
-	 * @see #getNodeInstance()
-	 * @generated
-	 */
-	EAttribute getNodeInstance_Name();
-
-	/**
 	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmodel.model.NodeInstance#getIncomingLinks <em>Incoming Links</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1505,14 +1512,6 @@ public interface opmodelPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NODE_INSTANCE__CONSTRAINTS = eINSTANCE.getNodeInstance_Constraints();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute NODE_INSTANCE__NAME = eINSTANCE.getNodeInstance_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Incoming Links</b></em>' reference list feature.

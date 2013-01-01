@@ -22,7 +22,7 @@ public interface PropertyBooleanInstance extends PropertyInstance {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model valRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='if (val.equals(\"true\") || val.equals(\"false\")) {\r\n\tthis.value=val;\r\n\treturn true;\r\n}\r\nreturn false;\r\n'"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='if (val.equals(\"true\") || val.equals(\"false\")) {\r\n\tsuper.setValue(val);\r\n\treturn true;\r\n}\r\nreturn false;\r\n'"
 	 * @generated
 	 */
 	boolean setValue(String val);

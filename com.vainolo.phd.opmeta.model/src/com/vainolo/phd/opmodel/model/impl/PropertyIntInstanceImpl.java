@@ -51,7 +51,7 @@ public class PropertyIntInstanceImpl extends PropertyInstanceImpl implements Pro
 		} catch (NumberFormatException e) {
 			return false;
 		}
-		this.value=val;
+		super.setValue(val);
 		return true;
 		
 	}

@@ -6,6 +6,9 @@
  */
 package com.vainolo.phd.opmodel.model.impl;
 
+import com.vainolo.phd.opm.model.OPMNamedElement;
+import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.VerticalAlignment;
 import com.vainolo.phd.opmodel.model.LinkInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
 import com.vainolo.phd.opmodel.model.opmodelFactory;
@@ -33,8 +36,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getAlignment <em>Alignment</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getConstraints <em>Constraints</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getIncomingLinks <em>Incoming Links</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.NodeInstanceImpl#getOutgoingLinks <em>Outgoing Links</em>}</li>
  * </ul>
@@ -43,6 +47,46 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = "<<name>>";
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAlignment() <em>Alignment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlignment()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final VerticalAlignment ALIGNMENT_EDEFAULT = VerticalAlignment.CENTER;
+
+	/**
+	 * The cached value of the '{@link #getAlignment() <em>Alignment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAlignment()
+	 * @generated
+	 * @ordered
+	 */
+	protected VerticalAlignment alignment = ALIGNMENT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getConstraints() <em>Constraints</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,26 +106,6 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	 * @ordered
 	 */
 	protected Rectangle constraints = CONSTRAINTS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getIncomingLinks() <em>Incoming Links</em>}' reference list.
@@ -169,6 +193,27 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public VerticalAlignment getAlignment() {
+		return alignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAlignment(VerticalAlignment newAlignment) {
+		VerticalAlignment oldAlignment = alignment;
+		alignment = newAlignment == null ? ALIGNMENT_EDEFAULT : newAlignment;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.NODE_INSTANCE__ALIGNMENT, oldAlignment, alignment));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public List<LinkInstance> getIncomingLinks() {
 		if (incomingLinks == null) {
 			incomingLinks = new EObjectWithInverseResolvingEList<LinkInstance>(LinkInstance.class, this, opmodelPackage.NODE_INSTANCE__INCOMING_LINKS, opmodelPackage.LINK_INSTANCE__TARGET);
@@ -229,10 +274,12 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
-				return getConstraints();
 			case opmodelPackage.NODE_INSTANCE__NAME:
 				return getName();
+			case opmodelPackage.NODE_INSTANCE__ALIGNMENT:
+				return getAlignment();
+			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
+				return getConstraints();
 			case opmodelPackage.NODE_INSTANCE__INCOMING_LINKS:
 				return getIncomingLinks();
 			case opmodelPackage.NODE_INSTANCE__OUTGOING_LINKS:
@@ -250,11 +297,14 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
-				setConstraints((Rectangle)newValue);
-				return;
 			case opmodelPackage.NODE_INSTANCE__NAME:
 				setName((String)newValue);
+				return;
+			case opmodelPackage.NODE_INSTANCE__ALIGNMENT:
+				setAlignment((VerticalAlignment)newValue);
+				return;
+			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
+				setConstraints((Rectangle)newValue);
 				return;
 			case opmodelPackage.NODE_INSTANCE__INCOMING_LINKS:
 				getIncomingLinks().clear();
@@ -276,11 +326,14 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
-				setConstraints(CONSTRAINTS_EDEFAULT);
-				return;
 			case opmodelPackage.NODE_INSTANCE__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case opmodelPackage.NODE_INSTANCE__ALIGNMENT:
+				setAlignment(ALIGNMENT_EDEFAULT);
+				return;
+			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
+				setConstraints(CONSTRAINTS_EDEFAULT);
 				return;
 			case opmodelPackage.NODE_INSTANCE__INCOMING_LINKS:
 				getIncomingLinks().clear();
@@ -300,10 +353,12 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
-				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
 			case opmodelPackage.NODE_INSTANCE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case opmodelPackage.NODE_INSTANCE__ALIGNMENT:
+				return alignment != ALIGNMENT_EDEFAULT;
+			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
+				return CONSTRAINTS_EDEFAULT == null ? constraints != null : !CONSTRAINTS_EDEFAULT.equals(constraints);
 			case opmodelPackage.NODE_INSTANCE__INCOMING_LINKS:
 				return incomingLinks != null && !incomingLinks.isEmpty();
 			case opmodelPackage.NODE_INSTANCE__OUTGOING_LINKS:
@@ -318,14 +373,50 @@ public class NodeInstanceImpl extends InstanceBaseImpl implements NodeInstance {
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == OPMNamedElement.class) {
+			switch (derivedFeatureID) {
+				case opmodelPackage.NODE_INSTANCE__NAME: return OPMPackage.OPM_NAMED_ELEMENT__NAME;
+				case opmodelPackage.NODE_INSTANCE__ALIGNMENT: return OPMPackage.OPM_NAMED_ELEMENT__ALIGNMENT;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == OPMNamedElement.class) {
+			switch (baseFeatureID) {
+				case OPMPackage.OPM_NAMED_ELEMENT__NAME: return opmodelPackage.NODE_INSTANCE__NAME;
+				case OPMPackage.OPM_NAMED_ELEMENT__ALIGNMENT: return opmodelPackage.NODE_INSTANCE__ALIGNMENT;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (constraints: ");
-		result.append(constraints);
-		result.append(", name: ");
+		result.append(" (name: ");
 		result.append(name);
+		result.append(", alignment: ");
+		result.append(alignment);
+		result.append(", constraints: ");
+		result.append(constraints);
 		result.append(')');
 		return result.toString();
 	}

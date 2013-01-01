@@ -159,6 +159,7 @@ import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
 import com.vainolo.phd.opmodel.model.provider.opmodelItemProviderAdapterFactory;
 
+import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 
@@ -695,6 +696,7 @@ public class opmodelEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new opmodelItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new OPMItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

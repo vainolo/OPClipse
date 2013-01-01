@@ -7,6 +7,7 @@
 package com.vainolo.phd.opmodel.model.provider;
 
 
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opmodel.model.NodeInstance;
 import com.vainolo.phd.opmodel.model.opmodelPackage;
 
@@ -61,8 +62,9 @@ public class NodeInstanceItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addConstraintsPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
+			addAlignmentPropertyDescriptor(object);
+			addConstraintsPropertyDescriptor(object);
 			addIncomingLinksPropertyDescriptor(object);
 			addOutgoingLinksPropertyDescriptor(object);
 		}
@@ -102,9 +104,31 @@ public class NodeInstanceItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NodeInstance_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NodeInstance_name_feature", "_UI_NodeInstance_type"),
-				 opmodelPackage.Literals.NODE_INSTANCE__NAME,
+				 getString("_UI_OPMNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMNamedElement_name_feature", "_UI_OPMNamedElement_type"),
+				 OPMPackage.Literals.OPM_NAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Alignment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAlignmentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_OPMNamedElement_alignment_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_OPMNamedElement_alignment_feature", "_UI_OPMNamedElement_type"),
+				 OPMPackage.Literals.OPM_NAMED_ELEMENT__ALIGNMENT,
 				 true,
 				 false,
 				 false,
@@ -194,8 +218,9 @@ public class NodeInstanceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(NodeInstance.class)) {
-			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
 			case opmodelPackage.NODE_INSTANCE__NAME:
+			case opmodelPackage.NODE_INSTANCE__ALIGNMENT:
+			case opmodelPackage.NODE_INSTANCE__CONSTRAINTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

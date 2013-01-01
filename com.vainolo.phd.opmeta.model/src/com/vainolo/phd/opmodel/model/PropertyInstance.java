@@ -62,22 +62,11 @@ public interface PropertyInstance extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #isSetValue()
 	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getPropertyInstance_Value()
-	 * @model default="" unsettable="true" required="true" changeable="false"
+	 * @model default="" unique="false" required="true" changeable="false"
 	 * @generated
 	 */
 	String getValue();
-
-	/**
-	 * Returns whether the value of the '{@link com.vainolo.phd.opmodel.model.PropertyInstance#getValue <em>Value</em>}' attribute is set.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return whether the value of the '<em>Value</em>' attribute is set.
-	 * @see #getValue()
-	 * @generated
-	 */
-	boolean isSetValue();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,6 +76,14 @@ public interface PropertyInstance extends EObject {
 	 * @generated
 	 */
 	boolean setValue(String val);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='value =VALUE_EDEFAULT;'"
+	 * @generated
+	 */
+	void unsetValue();
 
 	/**
 	 * <!-- begin-user-doc -->

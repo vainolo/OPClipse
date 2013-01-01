@@ -47,7 +47,7 @@ public class PropertyBooleanInstanceImpl extends PropertyInstanceImpl implements
 	 */
 	public boolean setValue(String val) {
 		if (val.equals("true") || val.equals("false")) {
-			this.value=val;
+			super.setValue(val);
 			return true;
 		}
 		return false;

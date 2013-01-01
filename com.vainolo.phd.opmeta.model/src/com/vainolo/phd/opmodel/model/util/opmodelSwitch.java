@@ -6,6 +6,7 @@
  */
 package com.vainolo.phd.opmodel.model.util;
 
+import com.vainolo.phd.opm.model.OPMNamedElement;
 import com.vainolo.phd.opmodel.model.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -86,6 +87,7 @@ public class opmodelSwitch<T> extends Switch<T> {
 				NodeInstance nodeInstance = (NodeInstance)theEObject;
 				T result = caseNodeInstance(nodeInstance);
 				if (result == null) result = caseInstanceBase(nodeInstance);
+				if (result == null) result = caseOPMNamedElement(nodeInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -109,6 +111,7 @@ public class opmodelSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNodeInstance(thingInstance);
 				if (result == null) result = caseContainerInstance(thingInstance);
 				if (result == null) result = caseInstanceBase(thingInstance);
+				if (result == null) result = caseOPMNamedElement(thingInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -374,6 +377,21 @@ public class opmodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePropertyBooleanInstance(PropertyBooleanInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOPMNamedElement(OPMNamedElement object) {
 		return null;
 	}
 

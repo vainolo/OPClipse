@@ -51,7 +51,7 @@ public class PropertyFloatInstanceImpl extends PropertyInstanceImpl implements P
 		} catch (NumberFormatException e) {
 			return false;
 		}
-		this.value=val;
+		super.setValue(val);
 		return true;
 		
 	}

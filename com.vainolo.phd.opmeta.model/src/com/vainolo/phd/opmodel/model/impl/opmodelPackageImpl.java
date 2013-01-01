@@ -6,6 +6,8 @@
  */
 package com.vainolo.phd.opmodel.model.impl;
 
+import com.vainolo.phd.opm.model.OPMPackage;
+import com.vainolo.phd.opm.model.impl.OPMPackageImpl;
 import com.vainolo.phd.opmodel.model.ContainerInstance;
 import com.vainolo.phd.opmodel.model.InstanceBase;
 import com.vainolo.phd.opmodel.model.LinkInstance;
@@ -209,11 +211,16 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 
 		isInited = true;
 
+		// Obtain or create and register interdependencies
+		OPMPackageImpl theOPMPackage = (OPMPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI) instanceof OPMPackageImpl ? EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI) : OPMPackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theopmodelPackage.createPackageContents();
+		theOPMPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theopmodelPackage.initializePackageContents();
+		theOPMPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theopmodelPackage.freeze();
@@ -310,17 +317,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNodeInstance_Name() {
-		return (EAttribute)nodeInstanceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getNodeInstance_IncomingLinks() {
-		return (EReference)nodeInstanceEClass.getEStructuralFeatures().get(2);
+		return (EReference)nodeInstanceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -329,7 +327,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * @generated
 	 */
 	public EReference getNodeInstance_OutgoingLinks() {
-		return (EReference)nodeInstanceEClass.getEStructuralFeatures().get(3);
+		return (EReference)nodeInstanceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -713,7 +711,6 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 
 		nodeInstanceEClass = createEClass(NODE_INSTANCE);
 		createEAttribute(nodeInstanceEClass, NODE_INSTANCE__CONSTRAINTS);
-		createEAttribute(nodeInstanceEClass, NODE_INSTANCE__NAME);
 		createEReference(nodeInstanceEClass, NODE_INSTANCE__INCOMING_LINKS);
 		createEReference(nodeInstanceEClass, NODE_INSTANCE__OUTGOING_LINKS);
 
@@ -794,12 +791,16 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		OPMPackage theOPMPackage = (OPMPackage)EPackage.Registry.INSTANCE.getEPackage(OPMPackage.eNS_URI);
+
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
 		nodeInstanceEClass.getESuperTypes().add(this.getInstanceBase());
+		nodeInstanceEClass.getESuperTypes().add(theOPMPackage.getOPMNamedElement());
 		linkInstanceEClass.getESuperTypes().add(this.getInstanceBase());
 		containerInstanceEClass.getESuperTypes().add(this.getInstanceBase());
 		thingInstanceEClass.getESuperTypes().add(this.getNodeInstance());
@@ -824,7 +825,6 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 
 		initEClass(nodeInstanceEClass, NodeInstance.class, "NodeInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNodeInstance_Constraints(), this.getRectangle(), "constraints", "0,0,50,50", 1, 1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getNodeInstance_Name(), ecorePackage.getEString(), "name", null, 0, 1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNodeInstance_IncomingLinks(), this.getLinkInstance(), this.getLinkInstance_Target(), "incomingLinks", null, 0, -1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getNodeInstance_IncomingLinks().getEKeys().add(this.getInstanceBase_Id());
 		initEReference(getNodeInstance_OutgoingLinks(), this.getLinkInstance(), this.getLinkInstance_Source(), "outgoingLinks", null, 0, -1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -879,7 +879,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		initEClass(propertyInstanceEClass, PropertyInstance.class, "PropertyInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyInstance_Descriptor(), this.getPropertyDescriptor(), null, "descriptor", null, 0, 1, PropertyInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getPropertyInstance_Descriptor().getEKeys().add(this.getPropertyDescriptor_Id());
-		initEAttribute(getPropertyInstance_Value(), ecorePackage.getEString(), "value", "", 1, 1, PropertyInstance.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPropertyInstance_Value(), ecorePackage.getEString(), "value", "", 1, 1, PropertyInstance.class, !IS_TRANSIENT, !IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(propertyInstanceEClass, ecorePackage.getEString(), "getName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -887,6 +887,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 
 		op = addEOperation(propertyInstanceEClass, ecorePackage.getEBoolean(), "setValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "val", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(propertyInstanceEClass, null, "unsetValue", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(propertyIntInstanceEClass, PropertyIntInstance.class, "PropertyIntInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
