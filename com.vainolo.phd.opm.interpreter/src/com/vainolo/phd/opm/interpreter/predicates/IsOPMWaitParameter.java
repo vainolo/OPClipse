@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.EClass;
 import com.google.common.base.Predicate;
 import com.vainolo.phd.opm.interpreter.utils.Parameter;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opm.model.OPMProceduralLink;
 
 /**
  * Predicate that returns true for wait inducing incoming parameters

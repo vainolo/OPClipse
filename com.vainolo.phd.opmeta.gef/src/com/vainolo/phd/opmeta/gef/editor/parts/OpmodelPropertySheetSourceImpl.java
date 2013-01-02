@@ -13,6 +13,7 @@ import com.vainolo.phd.opm.model.VerticalAlignment;
 import com.vainolo.phd.opmodel.model.InstanceBase;
 import com.vainolo.phd.opmodel.model.PropertyInstance;
 import com.vainolo.phd.opmodel.model.opmodelPackage;
+import com.vainolo.phd.opmodel.model.propertyType;
 
 public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 
@@ -22,6 +23,7 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 	private static final String alignmentPropId = "__Alignment_Id";
 	private static final String[] alignmentValues = 
 		{VerticalAlignment.BOTTOM.getLiteral(),VerticalAlignment.CENTER.getLiteral(),VerticalAlignment.TOP.getLiteral()};
+	private static final String[] booleanValues = {"true","false"};
 	
 	public OpmodelPropertySheetSourceImpl(InstanceBase instance){
 		this.instance = instance;
@@ -35,14 +37,16 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 			int i=0;
 			if (instance instanceof OPMNamedElement){
 				descriptors[0]=new TextPropertyDescriptor(namePropId, "Name");
-				ComboBoxPropertyDescriptor comboprop =new ComboBoxPropertyDescriptor(alignmentPropId, "Alignment",alignmentValues);
-				
-				
-				descriptors[1]=comboprop;
+				descriptors[1]=new ComboBoxPropertyDescriptor(alignmentPropId, "Alignment",alignmentValues);
 				i=2;
 			}
 			for (PropertyInstance property:instance.getProperties()){
-				descriptors[i]=new TextPropertyDescriptor(property.getName(), property.getName() +" : " + property.getType());
+				if (property.getType() == propertyType.BOOLEAN){
+					descriptors[i]=new ComboBoxPropertyDescriptor(property.getName(), 
+							property.getName() +" : " + property.getType(),booleanValues);
+				}else{
+					descriptors[i]=new TextPropertyDescriptor(property.getName(), property.getName() +" : " + property.getType());
+				}
 				i++;
 			}
 		}
@@ -54,6 +58,10 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 			return ((OPMNamedElement)instance).getName();
 		if (id.equals(alignmentPropId))
 			return alignmentToValeIndex(((OPMNamedElement)instance).getAlignment());
+		PropertyInstance prop = instance.getProperty((String)id);
+		if (prop.getType() == propertyType.BOOLEAN){
+			return booleanTextToValueIndex(prop.getValue());
+		}
 		return instance.getProperty((String)id).getValue();
 	}
 
@@ -65,10 +73,12 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 			((OPMNamedElement)instance).setAlignment(valeIndexToAlignment((int)value));
 		} else {
 			PropertyInstance prop = instance.getProperty((String)id);
-			if (!prop.setValue((String)value)){
-				
-				MessageDialog.openWarning(
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),"OPclipse",
+			Object val = value;
+			if (prop.getType() == propertyType.BOOLEAN){
+				val = valueIndexToBooleanText((int)value);
+			}
+			if (!prop.setValue((String)val)){				
+				MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),"OPclipse",
 	                     "Value '" + ((String)value) + "' is not legal for " + prop.getType().getName());
 			} 
 		}
@@ -118,5 +128,16 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 			return VerticalAlignment.BOTTOM;
 		}
 		return VerticalAlignment.CENTER;
+	}
+	
+	private String valueIndexToBooleanText(int value){
+		if (value == 0)
+			return "true";
+		return "false";
+	}
+	
+	private int booleanTextToValueIndex(String BooleanText){
+		if (BooleanText.equalsIgnoreCase("true")) return 0;
+		return 1;
 	}
 }
