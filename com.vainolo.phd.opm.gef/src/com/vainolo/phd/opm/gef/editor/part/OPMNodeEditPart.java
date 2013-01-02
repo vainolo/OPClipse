@@ -77,7 +77,6 @@ public abstract class OPMNodeEditPart extends AbstractGraphicalEditPart
 				new OPMNodeGraphicalNodeEditPolicy());
 	}
 
-	@SuppressWarnings("rawtypes")
 	@Override
 	protected List<OPMNode> getModelChildren() {
 		OPMNode model = (OPMNode) getModel();

@@ -1,5 +1,7 @@
 package com.vainolo.phd.opmeta.gef.editor.parts;
 
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.views.properties.ComboBoxPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -14,11 +16,12 @@ import com.vainolo.phd.opmodel.model.opmodelPackage;
 
 public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 
-	private InstanceBase instance;
+	private final InstanceBase instance;
 	private IPropertyDescriptor [] descriptors;
 	private static final String namePropId = "__Name_Id";
 	private static final String alignmentPropId = "__Alignment_Id";
-	private static final String[]  alignmentValues = {"Center"};
+	private static final String[] alignmentValues = 
+		{VerticalAlignment.BOTTOM.getLiteral(),VerticalAlignment.CENTER.getLiteral(),VerticalAlignment.TOP.getLiteral()};
 	
 	public OpmodelPropertySheetSourceImpl(InstanceBase instance){
 		this.instance = instance;
@@ -32,7 +35,10 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 			int i=0;
 			if (instance instanceof OPMNamedElement){
 				descriptors[0]=new TextPropertyDescriptor(namePropId, "Name");
-				descriptors[1]=new ComboBoxPropertyDescriptor(alignmentPropId, "Alignment",alignmentValues);
+				ComboBoxPropertyDescriptor comboprop =new ComboBoxPropertyDescriptor(alignmentPropId, "Alignment",alignmentValues);
+				
+				
+				descriptors[1]=comboprop;
 				i=2;
 			}
 			for (PropertyInstance property:instance.getProperties()){
@@ -47,19 +53,24 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 		if (id.equals(namePropId))
 			return ((OPMNamedElement)instance).getName();
 		if (id.equals(alignmentPropId))
-			return ((OPMNamedElement)instance).getAlignment();
+			return alignmentToValeIndex(((OPMNamedElement)instance).getAlignment());
 		return instance.getProperty((String)id).getValue();
 	}
 
 	public void setPropertyValue(Object id, Object value) {
+		if (PlatformUI.getWorkbench().isClosing()) return;
 		if (id.equals(namePropId)){
 			((OPMNamedElement)instance).setName((String)value);
 		} else if (id.equals(alignmentPropId)){
-			((OPMNamedElement)instance).setAlignment((VerticalAlignment)value);
+			((OPMNamedElement)instance).setAlignment(valeIndexToAlignment((int)value));
 		} else {
 			PropertyInstance prop = instance.getProperty((String)id);
-			if (!prop.setValue((String)value))
-				throw new RuntimeException("Ilegal Value!"); //TODO: find how to show message
+			if (!prop.setValue((String)value)){
+				
+				MessageDialog.openWarning(
+				PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),"OPclipse",
+	                     "Value '" + ((String)value) + "' is not legal for " + prop.getType().getName());
+			} 
 		}
 	}
 
@@ -87,4 +98,25 @@ public class OpmodelPropertySheetSourceImpl implements IPropertySource{
 		return null;
 	}	
 
+	private int alignmentToValeIndex(VerticalAlignment alignment){
+		switch(alignment){
+		case TOP:
+			return 2;
+		case CENTER:
+			return 1;
+		case BOTTOM:
+			return 0;
+		}
+		return -1;
+	}
+	
+	private VerticalAlignment valeIndexToAlignment(int value){
+		switch(value){
+		case 2:
+			return VerticalAlignment.TOP;
+		case 0:
+			return VerticalAlignment.BOTTOM;
+		}
+		return VerticalAlignment.CENTER;
+	}
 }

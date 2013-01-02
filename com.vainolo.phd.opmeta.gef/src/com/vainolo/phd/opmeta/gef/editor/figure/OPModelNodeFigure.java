@@ -6,11 +6,13 @@ import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
+import com.vainolo.phd.opm.model.VerticalAlignment;
 
 public abstract class OPModelNodeFigure extends Figure {
 
@@ -19,9 +21,10 @@ public abstract class OPModelNodeFigure extends Figure {
 	public OPModelNodeFigure(){
 		super();
 		setLayoutManager(new XYLayout());
+		verticalAlign = VerticalAlignment.CENTER;
 		nameLabel = new Label();
 	    nameLabel.setForegroundColor(ColorConstants.black);
-	    nameLabel.setTextAlignment(PositionConstants.MIDDLE);
+	    //nameLabel.setTextAlignment(PositionConstants.MIDDLE);
 	    add(nameLabel);
 	}
 	
@@ -53,6 +56,23 @@ public abstract class OPModelNodeFigure extends Figure {
 		  nameLabel.setText(text);
 	  }
 	  
+	  public void setLabelAlignment(VerticalAlignment align){
+		  verticalAlign = align;
+	  }
+	  
+	  private VerticalAlignment verticalAlign;
+	  
+	  protected int getLabelY(int figureHeight, int labelHeight){
+		  
+		  switch(verticalAlign){
+		  	case TOP:
+		  		return OPMFigureConstants.opmNodeInsets;
+		  	case BOTTOM:
+		  		return figureHeight - OPMFigureConstants.opmNodeInsets- labelHeight;
+		  }
+		  return (figureHeight - labelHeight)/2;
+	  }
+	  
 	  @Override
 	  protected void paintFigure(Graphics graphics) {
 	    super.paintFigure(graphics);
@@ -60,7 +80,7 @@ public abstract class OPModelNodeFigure extends Figure {
 	    // place label in middle
 	    Dimension labelDim = nameLabel.getPreferredSize();
 	    int newx=(r.width() - labelDim.width)/2;
-	    int newy= (r.height() - labelDim.height)/2;
+	    int newy= getLabelY(r.height(), labelDim.height()); 
 	    
 	    setConstraint(nameLabel, new Rectangle(new Point(newx, newy), labelDim));
 	    nameLabel.invalidate();
