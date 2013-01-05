@@ -15,7 +15,7 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 	
 	private Map<Class<?>, Map<Class<?>, List<ValidationLinkRule>>> rules = 
 			new  HashMap<Class<?>, Map<Class<?>, List<ValidationLinkRule>>>();
-
+	
 	public boolean insertRule(GenericRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {
 		if (!(newRule instanceof OpmLinkRule)) {
@@ -70,18 +70,6 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 		return false;
 	}
 	
-	public boolean validate(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null) {
-			return false;
-		}
-		return rule.getValue();
-	}
-	
 	public boolean validate (Class<?> from, Class<?> link) {
 		if (this.rules.containsKey(from)) {
 			for (Class<?> to : rules.get(from).keySet()) {
@@ -94,126 +82,145 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 		return false;
 	}
 	
-	public boolean isSpecified(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		return rule.getIsSpecified();
-	}
+	public boolean hide_comments() {
+		return true;
 	
-	public boolean getValue(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		return rule.getValue();
-	}
-	
-	public boolean setValue(GenericRule newRule, boolean value) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		return rule.setValue(value);
-	}
-	
-	public int getPositiveParentsCount(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return -2;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return -1;
-		}
-		return rule.getPositiveParentsCount();
-	}
-	
-	public boolean incrementPositiveParentsCount (GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		else if (rule.getIsSpecified()){
-			return false;
-		}
-		return rule.incrementPositiveParents();	
-	}
-	
-	public boolean decrementPositiveParentsCount (GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		else if (rule.getIsSpecified()){
-			return false;
-		}
-		return rule.decrementPositiveParents();	
-	}
-	
-	public int getNegativeParentsCount(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return -2;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return -1;
-		}
-		return rule.getNegativeParentsCount();
-	}
-	
-	public boolean incrementNegativeParentsCount (GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		else if (rule.getIsSpecified()){
-			return false;
-		}
-		return rule.incrementNegativeParents();	
-	}
-	
-	public boolean decrementNegativeParentsCount (GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
-			return false;
-		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		ValidationLinkRule rule = getSpecificRule(newOpmRule);
-		if (rule == null ) {
-			return false;
-		}
-		else if (rule.getIsSpecified()){
-			return false;
-		}
-		return rule.decrementNegativeParents();	
-	}
 		
+	
+//	public boolean validate(GenericRule newRule) {
+//	if (!(newRule instanceof OpmLinkRule)) {
+//		return false;
+//	}
+//	OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//	ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//	if (rule == null) {
+//		return false;
+//	}
+//	return rule.getValue();
+//}
+//
+//	public boolean isSpecified(GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		return rule.getIsSpecified();
+//	}
+//	
+//	public boolean getValue(GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		return rule.getValue();
+//	}
+//	
+//	public boolean setValue(GenericRule newRule, boolean value) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		return rule.setValue(value);
+//	}
+//	
+//	public int getPositiveParentsCount(GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return -2;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return -1;
+//		}
+//		return rule.getPositiveParentsCount();
+//	}
+//	
+//	public boolean incrementPositiveParentsCount (GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		else if (rule.getIsSpecified()){
+//			return false;
+//		}
+//		return rule.incrementPositiveParents();	
+//	}
+//	
+//	public boolean decrementPositiveParentsCount (GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		else if (rule.getIsSpecified()){
+//			return false;
+//		}
+//		return rule.decrementPositiveParents();	
+//	}
+//	
+//	public int getNegativeParentsCount(GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return -2;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return -1;
+//		}
+//		return rule.getNegativeParentsCount();
+//	}
+//	
+//	public boolean incrementNegativeParentsCount (GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		else if (rule.getIsSpecified()){
+//			return false;
+//		}
+//		return rule.incrementNegativeParents();	
+//	}
+//	
+//	public boolean decrementNegativeParentsCount (GenericRule newRule) {
+//		if (!(newRule instanceof OpmLinkRule)) {
+//			return false;
+//		}
+//		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
+//		ValidationLinkRule rule = getSpecificRule(newOpmRule);
+//		if (rule == null ) {
+//			return false;
+//		}
+//		else if (rule.getIsSpecified()){
+//			return false;
+//		}
+//		return rule.decrementNegativeParents();	
+//	}
+
+	}
+	
 	protected ValidationLinkRule getSpecificRule(GenericRule newLinkRule) {
 		if (!(newLinkRule instanceof OpmLinkRule)) {
 			return null;

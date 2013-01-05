@@ -12,115 +12,101 @@ import rules.GenericRule;
  */
 public abstract class BasicRulesContainer implements IRuleContainer {
 
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#insertRule(rules.GenericRule, boolean, boolean, int, int)
-	 */
 
-	@Override
-	public boolean insertRule(GenericRule rule, boolean value, boolean isSpecified, 
-			int PositiveParentCount, int negativeParentsCount) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public abstract boolean insertRule(GenericRule rule, boolean value, boolean isSpecified, 
+			int PositiveParentCount, int negativeParentsCount);
 
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#contains(rules.GenericRule)
-	 */
-	@Override
-	public boolean contains(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#validate(rules.GenericRule)
-	 */
-	@Override
-	public boolean validate(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#isSpecified(rules.GenericRule)
-	 */
-	@Override
-	public boolean isSpecified(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#getValue(rules.GenericRule)
-	 */
-	@Override
-	public boolean getValue(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#setValue(rules.GenericRule, boolean)
-	 */
-	@Override
-	public boolean setValue(GenericRule newRule, boolean value) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#getPositiveParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public int getPositiveParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#incrementPositiveParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public boolean incrementPositiveParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#decrementPositiveParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public boolean decrementPositiveParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#getNegativeParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public int getNegativeParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#incrementNegativeParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public boolean incrementNegativeParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	/* (non-Javadoc)
-	 * @see ruleContainers.IRuleContainer#decrementNegativeParentsCount(rules.GenericRule)
-	 */
-	@Override
-	public boolean decrementNegativeParentsCount(GenericRule newRule) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 	protected abstract GenericRule getSpecificRule(GenericRule newLinkRule);
+	
+	public abstract boolean contains(GenericRule newRule);
+
+	public boolean validate(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		return existingRule.getValue();	
+	}
+
+	public boolean isSpecified(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		return existingRule.getIsSpecified();	
+	}
+
+	public boolean setValue(GenericRule newRule, boolean value) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		else if (existingRule.getIsSpecified()){
+			return false;
+		}
+		return existingRule.setValue(value);	
+	}
+
+	public boolean incrementPositiveParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		else if (existingRule.getIsSpecified()){
+			return false;
+		}
+		return existingRule.incrementPositiveParents();	
+	}
+
+	public boolean decrementPositiveParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		else if (existingRule.getIsSpecified()){
+			return false;
+		}
+		return existingRule.decrementPositiveParents();	
+	}
+	
+	public int getPositiveParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return -1;
+		}
+
+		return existingRule.getPositiveParentsCount();	
+	}
+	
+	public int getNegativeParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return -1;
+		}
+
+		return existingRule.getNegativeParentsCount();	
+	}
+
+	public boolean incrementNegativeParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		else if (existingRule.getIsSpecified()){
+			return false;
+		}
+		return existingRule.incrementNegativeParents();	
+	}
+
+	public boolean decrementNegativeParentsCount(GenericRule newRule) {
+		GenericRule existingRule = getSpecificRule(newRule);
+		if (existingRule == null ) {
+			return false;
+		}
+		else if (existingRule.getIsSpecified()){
+			return false;
+		}
+		return existingRule.decrementNegativeParents();	
+	}
+	
 }

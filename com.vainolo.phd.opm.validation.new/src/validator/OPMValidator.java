@@ -43,7 +43,7 @@ public class OPMValidator {
 		// if this rule exists as non specified
 		if (rulesMat.contains(newRule)) {
 			// if it has the same value - set to specified, remove from conflicted rules if needed and do nothing further
-			if (rulesMat.getValue(newRule) == value) {
+			if (rulesMat.validate(newRule) == value) {
 				rulesMat.insertRule(newRule, value, true, 0, 0);
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
@@ -65,7 +65,7 @@ public class OPMValidator {
 		// if this rule exists - assumption : if it exists, then all derived rules also exist
 		if (rulesMat.contains(newRule)) {
 			// if it has the same value - do nothing ( the public addrule handles the case where this rule now becomes specified
-			if (rulesMat.getValue(newRule) == value) {
+			if (rulesMat.validate(newRule) == value) {
 				return true;
 			}
 			// else - set it as requested, change all the counts in the sons, and deduce new rules if needed

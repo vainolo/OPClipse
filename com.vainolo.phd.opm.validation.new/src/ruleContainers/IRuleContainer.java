@@ -13,7 +13,7 @@ public interface IRuleContainer {
 	
 	public boolean isSpecified(GenericRule newRule);
 	
-	public boolean getValue(GenericRule newRule);
+//	public boolean getValue(GenericRule newRule); same as validate
 	
 	public boolean setValue(GenericRule newRule, boolean value);
 	
