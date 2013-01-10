@@ -10,12 +10,12 @@ Bundle-Localization: plugin
 Export-Package: com.vainolo.phd.opmeta.model.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
- com.vainolo.phd.opmeta.model.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.ui.ide;visibility:=reexport
+ org.eclipse.ui.ide;visibility:=reexport,
+ com.vainolo.phd.opmeta.interpreter;bundle-version="1.0.0",
+ com.vainolo.phd.opm.model;bundle-version="1.0.0",
+ com.vainolo.phd.opmeta.model;bundle-version="1.0.0"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
-Import-Package: com.vainolo.phd.opm.model,
- com.vainolo.phd.opm.model.provider
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
