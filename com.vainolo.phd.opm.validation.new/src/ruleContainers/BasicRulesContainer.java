@@ -10,13 +10,13 @@ import rules.GenericRule;
  * @author itcherno
  *
  */
-public abstract class BasicRulesContainer implements IRuleContainer {
+public abstract class BasicRulesContainer {
 
 
 	public abstract boolean insertRule(GenericRule rule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount);
 
-	protected abstract GenericRule getSpecificRule(GenericRule newLinkRule);
+	protected abstract GenericRule getSpecificRule(GenericRule newRule);
 	
 	public abstract boolean contains(GenericRule newRule);
 

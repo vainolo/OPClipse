@@ -51,4 +51,5 @@ public abstract class GenericRule {
 		return this.isSpecified;
 	}
 	
+	public abstract boolean equals(GenericRule Rule);
 }

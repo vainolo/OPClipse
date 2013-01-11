@@ -6,35 +6,35 @@ import java.util.List;
 import java.util.Map;
 
 import rules.GenericRule;
-import rules.OpmLinkRule;
-import rules.ValidationLinkRule;
+//import rules.OpmLinkRule;
+import rules.OpmGenericLinkRule;
 
 
-public class LinkRulesContainer extends BasicRulesContainer implements IRuleContainer {
+public class LinkRulesContainer extends BasicRulesContainer	 {
 	
 	
-	private Map<Class<?>, Map<Class<?>, List<ValidationLinkRule>>> rules = 
-			new  HashMap<Class<?>, Map<Class<?>, List<ValidationLinkRule>>>();
+	private Map<Object, Map<Object, List<OpmGenericLinkRule>>> rules = 
+			new  HashMap<Object, Map<Object, List<OpmGenericLinkRule>>>();
 	
 	public boolean insertRule(GenericRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {
-		if (!(newRule instanceof OpmLinkRule)) {
+		if (!(newRule instanceof OpmGenericLinkRule)) {
 			return false;
 		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		Class<?> from = newOpmRule.From();
-		Class<?> link = newOpmRule.Link();
-		Class<?> to	  = newOpmRule.To();
+		OpmGenericLinkRule newOpmRule = (OpmGenericLinkRule) newRule;
+		Object from = newOpmRule.FromType();
+		Object link = newOpmRule.LinkType();
+		Object to	  = newOpmRule.ToType();
 		// check if we have a hash entry for from
 		if (! rules.containsKey(from) ) {
-			HashMap<Class<?>, List<ValidationLinkRule>> newHash = new HashMap<Class<?>, List<ValidationLinkRule>>();
+			HashMap<Object, List<OpmGenericLinkRule>> newHash = new HashMap<Object, List<OpmGenericLinkRule>>();
 			rules.put(from, newHash);
 		}
 		
 		// check if there is an entry for "to"
 		if (! rules.get(from).containsKey(to) ) {
-			ValidationLinkRule newLinkRule = new ValidationLinkRule(link, PositiveParentCount, negativeParentsCount, isSpecified, value);
-			List<ValidationLinkRule> newList = new ArrayList<ValidationLinkRule>();
+			OpmGenericLinkRule newLinkRule = new OpmGenericLinkRule(from,link,to, PositiveParentCount, negativeParentsCount, isSpecified, value);
+			List<OpmGenericLinkRule> newList = new ArrayList<OpmGenericLinkRule>();
 			newList.add(newLinkRule);
 			rules.get(from).put(to, newList);
 		}
@@ -43,7 +43,7 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 			if (this.getSpecificRule(newOpmRule).getIsSpecified() == true) {
 				return false;
 			}
-			ValidationLinkRule newLinkRule = new ValidationLinkRule(link,PositiveParentCount,negativeParentsCount, isSpecified,value);
+			OpmGenericLinkRule newLinkRule = new OpmGenericLinkRule(from,link,to,PositiveParentCount,negativeParentsCount, isSpecified,value);
 			rules.get(from).get(to).add(newLinkRule);
 		}
 		
@@ -51,17 +51,17 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 	}
 	
 	public boolean contains(GenericRule newRule) {
-		if (!(newRule instanceof OpmLinkRule)) {
+		if (!(newRule instanceof OpmGenericLinkRule)) {
 			return false;
 		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newRule;
-		Class<?> from = newOpmRule.From();
-		Class<?> link = newOpmRule.Link();
-		Class<?> to	  = newOpmRule.To();
+		OpmGenericLinkRule newOpmRule = (OpmGenericLinkRule) newRule;
+		Object from = newOpmRule.FromType();
+		Object link = newOpmRule.LinkType();
+		Object to	  = newOpmRule.ToType();
 		if (rules.containsKey(from)) {
 			if (rules.get(from).containsKey(to)) {
-				for (ValidationLinkRule rule: rules.get(from).get(to)) {
-					if (rule.getLinkType() == link ) {
+				for (OpmGenericLinkRule rule: rules.get(from).get(to)) {
+					if (rule.Link() == link ) {
 						return true;
 					}
 				}
@@ -70,10 +70,10 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 		return false;
 	}
 	
-	public boolean validate (Class<?> from, Class<?> link) {
+	public boolean validate (Object from, Object link) {
 		if (this.rules.containsKey(from)) {
-			for (Class<?> to : rules.get(from).keySet()) {
-				OpmLinkRule newLinkRule = new OpmLinkRule(from,link,to);
+			for (Object to : rules.get(from).keySet()) {
+				OpmGenericLinkRule newLinkRule = new OpmGenericLinkRule(from,link,to);
 				if (this.validate(newLinkRule)) {
 					return true;
 				}
@@ -221,17 +221,17 @@ public class LinkRulesContainer extends BasicRulesContainer implements IRuleCont
 
 	}
 	
-	protected ValidationLinkRule getSpecificRule(GenericRule newLinkRule) {
-		if (!(newLinkRule instanceof OpmLinkRule)) {
+	protected OpmGenericLinkRule getSpecificRule(GenericRule newOpmRule) {
+		if (!(newOpmRule instanceof OpmGenericLinkRule)) {
 			return null;
 		}
-		OpmLinkRule newOpmRule = (OpmLinkRule) newLinkRule;
-		Class<?> from = newOpmRule.From();
-		Class<?> link = newOpmRule.Link();
-		Class<?> to	  = newOpmRule.To();
-		if (this.contains(newOpmRule)) {
-			for (ValidationLinkRule rule : this.rules.get(from).get(to)) {
-				if (rule.getLinkType() == link) {
+		OpmGenericLinkRule newLinkRule = (OpmGenericLinkRule) newOpmRule;
+		Object from = newLinkRule.FromType();
+		Object link = newLinkRule.LinkType();
+		Object to	  = newLinkRule.ToType();
+		if (this.contains(newLinkRule)) {
+			for (OpmGenericLinkRule rule : this.rules.get(from).get(to)) {
+				if (rule.Link() == link) {
 					return rule;
 				}
 			}

@@ -3,38 +3,42 @@ package validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import ruleContainers.LinkRulesContainer;
-import rules.OpmLinkRule;
+import ruleContainers.BasicRulesContainer;
+import rules.GenericRule;
+import rules.OpmGenericLinkRule;
+import rules.OpmGenericThingRule;
 
-
-import GenericItems.GenericThing;
-
-public class OPMValidator {
+public class OpmBaseValidator {
+//	private OpmBaseValidator instance;
+	protected BasicRulesContainer rulesMat;
+	private List<GenericRule> conflictedRules;
+	protected boolean initDone;
 	
-	private OPMValidator instance;
-	private LinkRulesContainer rulesMat;
-	private List<OpmLinkRule> conflictedRules;
-	private boolean initDone;
-	
-	public OPMValidator getInstance() {
-		if (instance == null) {
-			instance = new OPMValidator();
-		}
-		return instance;
-	}
-	
-	private OPMValidator(){
-		this.rulesMat 			= new LinkRulesContainer();
-		this.conflictedRules 	= new ArrayList<OpmLinkRule>();
+//	public OpmBaseValidator getInstance(BasicRulesContainer container) {
+//		if (instance == null) {
+//			instance = new OpmBaseValidator(container);
+//		}
+//		return instance;
+//	}
+//	
+//	public OpmBaseValidator getInstance() {
+//		if (instance == null) {
+//			return null;
+//		}
+//		return instance;
+//	}
+//	
+	protected OpmBaseValidator(){
+//		this.rulesMat 			= container;
+		this.conflictedRules 	= new ArrayList<GenericRule>();
 		this.initDone 			= false;
 	}
 		
 	
-	public boolean addRule (GenericThing from, GenericThing link, GenericThing to, boolean value) {
+	public boolean addRule (OpmGenericLinkRule newRule, boolean value) throws Exception {
 		if (initDone) {
 			return false;
 		}
-		OpmLinkRule newRule = new OpmLinkRule(from.GetType(), link.GetType(), to.GetType());
 		// if this rule already exists as a "specified" rule - do nothing
 		if (rulesMat.isSpecified(newRule)) {
 			return false;
@@ -51,12 +55,11 @@ public class OPMValidator {
 				return true;
 			}
 		}
-		return this.addRule(from, link, to, value, true, 0, 0);
+		return this.addRule(newRule, value, true, 0, 0);
 	}
 	
-	private boolean addRule(GenericThing from, GenericThing link, GenericThing to, boolean value, boolean isSpecified, 
-			int PositiveParentCount, int negativeParentsCount){   //Return 0 if done, 1 otherwise
-		OpmLinkRule newRule = new OpmLinkRule(from.GetType(), link.GetType(), to.GetType());
+	private boolean addRule(OpmGenericThingRule newRule, boolean value, boolean isSpecified, 
+			int PositiveParentCount, int negativeParentsCount) throws Exception{   //Return 0 if done, 1 otherwise
 		// if this rule already exists as a "specified" rule - do nothing
 		if (rulesMat.isSpecified(newRule)) {
 			return false;
@@ -71,35 +74,22 @@ public class OPMValidator {
 			// else - set it as requested, change all the counts in the sons, and deduce new rules if needed
 			else {
 				rulesMat.setValue(newRule, value);
-				for (GenericThing fromSon: from.GetSonsOfType()) {
-					handleRuleChange(fromSon, link, to, value);
-				}
-				for (GenericThing linkSon: link.GetSonsOfType()) {
-					handleRuleChange(from, linkSon, to, value);
-				}
-				for (GenericThing toSon: to.GetSonsOfType()) {
-					handleRuleChange(from, link, toSon, value);
+				for (OpmGenericThingRule derivedRule: newRule.getAllSons()) {
+					handleRuleChange(derivedRule, value);
 				}
 			}
 		}
 		// this rule does not exist - set it with the appropriate parameters and set all sons
 		else {
 			rulesMat.insertRule(newRule, value, isSpecified, PositiveParentCount, negativeParentsCount);
-			for (GenericThing fromSon: from.GetSonsOfType()) {
-				handleRuleAdd(fromSon, link, to, value);
-			}
-			for (GenericThing linkSon: link.GetSonsOfType()) {
-				handleRuleAdd(from, linkSon, to, value);
-			}
-			for (GenericThing toSon: to.GetSonsOfType()) {
-				handleRuleAdd(from, link, toSon, value);
+			for (OpmGenericThingRule derivedRule: newRule.getAllSons()) {
+				handleRuleAdd(derivedRule, value);
 			}
 		}
 		return true;
 	};
 	
-	private boolean handleRuleChange (GenericThing from, GenericThing link, GenericThing to, boolean newValueOfParent) {
-		OpmLinkRule newRule = new OpmLinkRule(from.GetType(), link.GetType(), to.GetType());
+	private boolean handleRuleChange (OpmGenericThingRule newRule, boolean newValueOfParent) throws Exception {
 		if (newValueOfParent == true) {
 			rulesMat.incrementPositiveParentsCount(newRule);
 			rulesMat.decrementNegativeParentsCount(newRule);
@@ -116,7 +106,7 @@ public class OPMValidator {
 				}
 				int posParentCount = rulesMat.getPositiveParentsCount(newRule);
 				// TODO - think abobut it
-				this.addRule(from, link, to, newValueOfParent, false, posParentCount, 0);
+				this.addRule(newRule, newValueOfParent, false, posParentCount, 0);
 			}
 		}
 		else {
@@ -134,14 +124,13 @@ public class OPMValidator {
 					conflictedRules.remove(newRule);
 				}
 				int negParentCount = rulesMat.getNegativeParentsCount(newRule);
-				this.addRule(from, link, to, newValueOfParent, false, 0, negParentCount);
+				this.addRule(newRule, newValueOfParent, false, 0, negParentCount);
 			}
 		}
 		return true;
 	}
 	
-	private boolean handleRuleAdd (GenericThing from, GenericThing link, GenericThing to, boolean valueOfParent) {
-		OpmLinkRule newRule = new OpmLinkRule(from.GetType(),link.GetType(),to.GetType());
+	private boolean handleRuleAdd (OpmGenericThingRule newRule, boolean valueOfParent) throws Exception {
 		// if this rule already exist - handle parent count and deduce rules/add to conflicts
 		if (rulesMat.contains(newRule)) {
 			if (valueOfParent == true) {
@@ -177,49 +166,7 @@ public class OPMValidator {
 		}
 		return true;
 	}
-	
-//	public List<GenericThing> getSonsRecursive(GenericThing link) {
-//		// TODO - add a validation that this is indeed a link?
-//		List<GenericThing> returnList = new ArrayList<GenericThing>();
-//		List<GenericThing> sons = link.GetSonsOfType();
-//		for (GenericThing son : sons) {
-//			if (! returnList.contains(son)) {
-//				returnList.addAll(getSonsRecursive(son));
-//			}
-//		}		
-//		return returnList;
-//	}
-	
-	// validate different signatures
-	public boolean validate (Class<?> from, Class<?> link) {
-		if (! initDone) {
-			return false;
-		}
-		return rulesMat.validate(from, link);
-	}
-	
-	public boolean validate (Class<?> from, Class<?> link, Class<?> to) {
-		if (! initDone) {
-			return false;
-		}
-		OpmLinkRule newRule = new OpmLinkRule(from,link,to);
-		return rulesMat.validate(newRule);
-	}
-	
-	public boolean valdidate (GenericThing from, GenericThing link) {
-		if (! initDone) {
-			return false;
-		}
-		return validate(from.GetType(), link.GetType());
-	}
-	
-	public boolean valdidate (GenericThing from, GenericThing link, GenericThing to) {
-		if (! initDone) {
-			return false;
-		}		
-		return validate(from.GetType(),link.GetType(),to.GetType());
-	}
-	
+		
 	public boolean finalizeInit () throws Exception{
 		if (this.initDone) {
 			return false;
@@ -231,5 +178,4 @@ public class OPMValidator {
 		this.initDone = true;
 		return true;
 	}
-	
 }
