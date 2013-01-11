@@ -1,3 +1,4 @@
+package com.vainolo.phd.opm.validation.rules;
 //package rules;
 //
 //public class OpmLinkRule extends GenericRule {

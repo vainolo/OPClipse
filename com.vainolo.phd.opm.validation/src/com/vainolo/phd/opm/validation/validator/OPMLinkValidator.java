@@ -1,12 +1,12 @@
-package validator;
+package com.vainolo.phd.opm.validation.validator;
 
 
-import ruleContainers.LinkRulesContainer;
-import rules.OpmGenericLinkRule;
-//import rules.OpmLinkRule;
+import com.vainolo.phd.opm.validation.GenericItems.GenericThing;
+import com.vainolo.phd.opm.validation.ruleContainers.LinkRulesContainer;
+import com.vainolo.phd.opm.validation.rules.OpmGenericLinkRule;
 
 
-import GenericItems.GenericThing;
+
 
 public class OPMLinkValidator extends OpmBaseValidator{
 	

@@ -1,6 +1,6 @@
-package ruleContainers;
+package com.vainolo.phd.opm.validation.ruleContainers;
 
-import rules.GenericRule;
+import com.vainolo.phd.opm.validation.rules.GenericRule;
 
 public class ContainmentRuleContainer extends BasicRulesContainer {
 

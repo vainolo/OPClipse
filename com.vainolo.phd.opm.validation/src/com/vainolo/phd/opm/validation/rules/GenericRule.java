@@ -1,4 +1,4 @@
-package rules;
+package com.vainolo.phd.opm.validation.rules;
 
 public abstract class GenericRule {
 	protected int PositiveParentsCount;

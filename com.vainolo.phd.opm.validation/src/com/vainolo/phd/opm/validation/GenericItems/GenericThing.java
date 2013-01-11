@@ -1,4 +1,4 @@
-package GenericItems;
+package com.vainolo.phd.opm.validation.GenericItems;
 
 import java.util.List;
 

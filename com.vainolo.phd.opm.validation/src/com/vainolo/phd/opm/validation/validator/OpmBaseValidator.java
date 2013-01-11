@@ -1,12 +1,13 @@
-package validator;
+package com.vainolo.phd.opm.validation.validator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import ruleContainers.BasicRulesContainer;
-import rules.GenericRule;
-import rules.OpmGenericLinkRule;
-import rules.OpmGenericThingRule;
+import com.vainolo.phd.opm.validation.ruleContainers.BasicRulesContainer;
+import com.vainolo.phd.opm.validation.rules.GenericRule;
+import com.vainolo.phd.opm.validation.rules.OpmGenericLinkRule;
+import com.vainolo.phd.opm.validation.rules.OpmGenericElementRule;
+
 
 public class OpmBaseValidator {
 //	private OpmBaseValidator instance;
@@ -58,7 +59,7 @@ public class OpmBaseValidator {
 		return this.addRule(newRule, value, true, 0, 0);
 	}
 	
-	private boolean addRule(OpmGenericThingRule newRule, boolean value, boolean isSpecified, 
+	private boolean addRule(OpmGenericElementRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) throws Exception{   //Return 0 if done, 1 otherwise
 		// if this rule already exists as a "specified" rule - do nothing
 		if (rulesMat.isSpecified(newRule)) {
@@ -74,7 +75,7 @@ public class OpmBaseValidator {
 			// else - set it as requested, change all the counts in the sons, and deduce new rules if needed
 			else {
 				rulesMat.setValue(newRule, value);
-				for (OpmGenericThingRule derivedRule: newRule.getAllSons()) {
+				for (OpmGenericElementRule derivedRule: newRule.getAllSons()) {
 					handleRuleChange(derivedRule, value);
 				}
 			}
@@ -82,14 +83,14 @@ public class OpmBaseValidator {
 		// this rule does not exist - set it with the appropriate parameters and set all sons
 		else {
 			rulesMat.insertRule(newRule, value, isSpecified, PositiveParentCount, negativeParentsCount);
-			for (OpmGenericThingRule derivedRule: newRule.getAllSons()) {
+			for (OpmGenericElementRule derivedRule: newRule.getAllSons()) {
 				handleRuleAdd(derivedRule, value);
 			}
 		}
 		return true;
 	};
 	
-	private boolean handleRuleChange (OpmGenericThingRule newRule, boolean newValueOfParent) throws Exception {
+	private boolean handleRuleChange (OpmGenericElementRule newRule, boolean newValueOfParent) throws Exception {
 		if (newValueOfParent == true) {
 			rulesMat.incrementPositiveParentsCount(newRule);
 			rulesMat.decrementNegativeParentsCount(newRule);
@@ -130,7 +131,7 @@ public class OpmBaseValidator {
 		return true;
 	}
 	
-	private boolean handleRuleAdd (OpmGenericThingRule newRule, boolean valueOfParent) throws Exception {
+	private boolean handleRuleAdd (OpmGenericElementRule newRule, boolean valueOfParent) throws Exception {
 		// if this rule already exist - handle parent count and deduce rules/add to conflicts
 		if (rulesMat.contains(newRule)) {
 			if (valueOfParent == true) {

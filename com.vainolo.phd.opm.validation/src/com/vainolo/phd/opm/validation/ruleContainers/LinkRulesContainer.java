@@ -1,13 +1,14 @@
-package ruleContainers;
+package com.vainolo.phd.opm.validation.ruleContainers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import rules.GenericRule;
+import com.vainolo.phd.opm.validation.rules.GenericRule;
+import com.vainolo.phd.opm.validation.rules.OpmGenericLinkRule;
+
 //import rules.OpmLinkRule;
-import rules.OpmGenericLinkRule;
 
 
 public class LinkRulesContainer extends BasicRulesContainer	 {

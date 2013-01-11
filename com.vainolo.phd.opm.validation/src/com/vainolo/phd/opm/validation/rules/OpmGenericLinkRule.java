@@ -1,10 +1,12 @@
-package rules;
+package com.vainolo.phd.opm.validation.rules;
 
 import java.util.ArrayList;
 
-import GenericItems.GenericThing;
+import com.vainolo.phd.opm.validation.GenericItems.GenericThing;
 
-public class OpmGenericLinkRule extends OpmGenericThingRule {
+
+
+public class OpmGenericLinkRule extends OpmGenericElementRule {
 	
 	private GenericThing link;
 	private GenericThing from;
@@ -14,7 +16,7 @@ public class OpmGenericLinkRule extends OpmGenericThingRule {
 	private Object toType;
 //	private OpmLinkRule  opmLinkRule;
 	
-	public OpmGenericLinkRule (GenericThing from, GenericThing link, GenericThing to) {
+	private OpmGenericLinkRule (GenericThing from, GenericThing link, GenericThing to) {
 		this.from	 	= from;
 		this.link		= link;
 		this.to			= to;
@@ -65,9 +67,9 @@ public class OpmGenericLinkRule extends OpmGenericThingRule {
 //		return this.opmLinkRule;		
 //	}
 	
-	public ArrayList<OpmGenericThingRule> getAllSons() {
+	public ArrayList<OpmGenericElementRule> getAllSons() {
 		if (this.derivedRules == null) {
-			ArrayList<OpmGenericThingRule> returnarray = new ArrayList<OpmGenericThingRule>();
+			ArrayList<OpmGenericElementRule> returnarray = new ArrayList<OpmGenericElementRule>();
 			for (GenericThing fromSon: from.GetSonsOfType()) {
 				OpmGenericLinkRule derivedRule = new OpmGenericLinkRule(fromSon,link,to); 
 				returnarray.add(derivedRule);
