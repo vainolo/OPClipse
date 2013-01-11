@@ -92,7 +92,7 @@ public abstract class OPMNodeEditPart extends AbstractGraphicalEditPart
 	public ConnectionAnchor getSourceConnectionAnchor(
 			ConnectionEditPart connection) {
 		if (getFigure() instanceof OPMNodeFigure) {
-			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+			return ((OPMNodeFigure) getFigure()).getSourceConnectionAnchor();
 		} else {
 			return null;
 		}
