@@ -78,36 +78,52 @@ public abstract class OPMNodeEditPart extends AbstractGraphicalEditPart
 	}
 
 	@Override
-	protected List getModelChildren() {
+	protected List<OPMNode> getModelChildren() {
 		OPMNode model = (OPMNode) getModel();
 		if (model instanceof OPMContainer) {
 			OPMContainer container = (OPMContainer) model;
 			return Collections.unmodifiableList(container.getNodes());
 		} else {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
 	}
 
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(
 			ConnectionEditPart connection) {
-		return ((OPMNodeFigure) getFigure()).getSourceConnectionAnchor();
+		if (getFigure() instanceof OPMNodeFigure) {
+			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(
 			ConnectionEditPart connection) {
-		return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		if (getFigure() instanceof OPMNodeFigure) {
+			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public ConnectionAnchor getSourceConnectionAnchor(Request request) {
-		return ((OPMNodeFigure) getFigure()).getSourceConnectionAnchor();
+		if (getFigure() instanceof OPMNodeFigure) {
+			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
+		}	
 	}
 
 	@Override
 	public ConnectionAnchor getTargetConnectionAnchor(Request request) {
-		return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		if (getFigure() instanceof OPMNodeFigure) {
+			return ((OPMNodeFigure) getFigure()).getTargetConnectionAnchor();
+		} else {
+			return null;
+		}
 	}
 
 	/**

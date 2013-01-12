@@ -40,6 +40,11 @@ public final class OPMNodeDeleteCommand extends Command {
   private Map<OPMLink, OPMNode> linkTargets;
 
   @Override
+  public boolean canExecute() {
+	  return (node!=null && container!=null);
+  }
+  
+  @Override
   public void execute() {
     detachLinks();
     node.setContainer(null);

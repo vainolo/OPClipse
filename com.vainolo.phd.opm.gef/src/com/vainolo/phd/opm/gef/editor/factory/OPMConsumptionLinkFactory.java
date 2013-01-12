@@ -17,10 +17,16 @@ import com.vainolo.phd.opm.model.OPMFactory;
 
 public class OPMConsumptionLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMConsumptionLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMConsumptionLink link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
-    link.setId(OPMIdManager.getNextId());
+    link.setId(opmIdManager.getNextId());
     return link;
   }
 

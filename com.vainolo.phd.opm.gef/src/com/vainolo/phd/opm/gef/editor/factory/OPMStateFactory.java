@@ -13,10 +13,16 @@ import com.vainolo.phd.opm.model.OPMState;
 
 public class OPMStateFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMStateFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMState state = OPMFactory.eINSTANCE.createOPMState();
-    state.setId(OPMIdManager.getNextId());
+    state.setId(opmIdManager.getNextId());
     return state;
   }
 

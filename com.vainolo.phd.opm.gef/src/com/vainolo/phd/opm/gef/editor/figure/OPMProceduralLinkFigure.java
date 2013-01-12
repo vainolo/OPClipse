@@ -14,6 +14,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 import com.vainolo.phd.opm.gef.decorationLayer.OPMProceduralLinkKind;
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
 import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 public class OPMProceduralLinkFigure extends PolylineConnection {
@@ -35,7 +36,8 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
     Point pointAfterSource = points.getPoint(1);
     Point target = points.getLastPoint();
     Point pointBeforeTarget = points.getPoint(points.size() - 2);
-
+    int radius = OPMFigureConstants.agentCircleRadius;
+    
     switch(kind) {
       case EFFECT:	  
     	  arrow.setLocation(source);
@@ -49,7 +51,6 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
         g.drawPolyline(arrow.getPoints());
         break;
       case INSTRUMENT:
-        int radius = OPMFigureConstants.agentCircleRadius;
         g.pushState();
         g.setBackgroundColor(ColorConstants.black);
         g.fillOval(target.x() - radius, target.y() - radius, radius * 2, radius * 2);
@@ -57,6 +58,12 @@ public class OPMProceduralLinkFigure extends PolylineConnection {
         g.fillOval(target.x() - (radius - 2), target.y() - (radius - 2), (radius - 2) * 2, (radius - 2) * 2);
         g.popState();
         break;
+      case AGENT:
+          g.pushState();
+          g.setBackgroundColor(ColorConstants.black);
+          g.fillOval(target.x() - radius, target.y() - radius, radius * 2, radius * 2);
+          g.popState();
+    	  break;
     }
 
     switch(activationKind) {

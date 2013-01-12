@@ -7,21 +7,27 @@ package com.vainolo.phd.opm.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
 
-import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.Label;
 
 public class LabelFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public LabelFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+	
   @Override
   public Object getNewObject() {
     Label label = OPMFactory.eINSTANCE.createLabel();
-    label.setId(OPMIdManager.getNextId());
+    label.setId(opmIdManager.getNextId());
     return label;
   }
 
   @Override
   public Object getObjectType() {
-    return Label.class;
+	return Label.class;
   }
 
 }

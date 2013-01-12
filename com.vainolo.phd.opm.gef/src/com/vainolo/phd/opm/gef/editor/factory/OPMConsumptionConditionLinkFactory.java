@@ -16,11 +16,17 @@ import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
  */
 public class OPMConsumptionConditionLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMConsumptionConditionLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMConsumptionLink link = OPMFactory.eINSTANCE.createOPMConsumptionLink();
     link.setActivationKind(OPMProceduralActivationKind.CONDITION);
-    link.setId(OPMIdManager.getNextId());
+    link.setId(opmIdManager.getNextId());
     return link;
   }
 

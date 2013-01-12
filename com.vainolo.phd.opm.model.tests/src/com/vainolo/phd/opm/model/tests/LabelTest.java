@@ -9,8 +9,6 @@ package com.vainolo.phd.opm.model.tests;
 import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMFactory;
 
-import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**

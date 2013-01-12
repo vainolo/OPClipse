@@ -54,6 +54,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
   private IFile opdFile;
   private OPMObjectProcessDiagram opd;
+  private OPMIdManager opmIdManager;
 
   PropertySheetPage propertyPage;
 
@@ -61,9 +62,14 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
    * Initialize the {@link EditDomain} of the editor.
    */
   public OPMGraphicalEditor() {
-    setEditDomain(new DefaultEditDomain(this));
+	  this(new OPMIdManager());
   }
 
+  protected OPMGraphicalEditor(OPMIdManager opmIdManager) {
+	  this.opmIdManager = opmIdManager;
+    setEditDomain(new DefaultEditDomain(this));
+  }
+  
   @Override
   protected void initializeGraphicalViewer() {
     super.initializeGraphicalViewer();
@@ -93,9 +99,13 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
   @Override
   protected PaletteRoot getPaletteRoot() {
-    return new OPMGraphicalEditorPalette();
+    return new OPMGraphicalEditorPalette(opmIdManager);
   }
 
+  public void prepareForSave(){
+	  opd.setNextId(opmIdManager.getNextId());
+  }
+  
   /**
    * Save the model using the resource from which it was opened, and mark the current location in the
    * {@link CommandStack}.
@@ -103,7 +113,7 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   @Override
   public void doSave(IProgressMonitor monitor) {
     try {
-      opd.setNextId(OPMIdManager.getNextId());
+    	prepareForSave();
       opd.eResource().save(null);
       opdFile.touch(null);
       getCommandStack().markSaveLocation();
@@ -122,23 +132,35 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   private void loadInput(IEditorInput input) {
     OPMPackage.eINSTANCE.eClass(); // This initializes the OPMPackage singleton implementation. Must be called before
                                    // reading the file.
-    if(input instanceof IFileEditorInput) {
-
-      IFileEditorInput fileInput = (IFileEditorInput) input;
-      opdFile = fileInput.getFile();
-      opd = OPDLoader.loadOPDFile(opdFile.getLocationURI().toString());
-      if(opd == null) {
-        throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
-      }
-      opd = new OPMObjectProcessDiagramDecorator(opd);
-      if(opd.getId() == 0) {
-        opd.setId(1);
-        opd.setNextId(2);
-      }
-      OPMIdManager.setId(opd.getNextId());
+    
+    opd = getDiagramFromInput(input);
+    opd = new OPMObjectProcessDiagramDecorator(opd);
+    
+    if(opd.getId() == 0) {
+      opd.setId(1);
+      opd.setNextId(2);
     }
+    afterLoadInput();
   }
+  
+  protected OPMObjectProcessDiagram getDiagramFromInput(IEditorInput input){
+	  OPMObjectProcessDiagram opmd=null;
+	  if(input instanceof IFileEditorInput) {
 
+	      IFileEditorInput fileInput = (IFileEditorInput) input;
+	      opdFile = fileInput.getFile();
+	      opmd = OPDLoader.loadOPDFile(opdFile.getLocationURI().toString());
+	      if(opmd == null) {
+	        throw new RuntimeException("Could not load OPD file " + opdFile.getLocationURI().toString());
+	      }
+	    }
+	  return opmd;
+  }
+  
+  protected void afterLoadInput(){
+	  opmIdManager.setId(opd.getNextId());  
+  }
+  
   @SuppressWarnings("unchecked")
   @Override
   protected void createActions() {
@@ -269,5 +291,9 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
   
   @Override public void dispose(){
 	  super.dispose();
+  }
+  
+  protected OPMIdManager getOPMIdManager(){
+	  return opmIdManager;
   }
 }

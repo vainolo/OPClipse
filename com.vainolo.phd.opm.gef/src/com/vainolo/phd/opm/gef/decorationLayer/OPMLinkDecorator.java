@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
 
-import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMLinkRouterKind;
 import com.vainolo.phd.opm.model.OPMNode;

@@ -19,10 +19,16 @@ import com.vainolo.phd.opm.model.OPMGeneralizationLink;
  */
 public class OPMGeneralizationLinkFactory implements CreationFactory {
 
+	OPMIdManager opmIdManager;
+	
+	public OPMGeneralizationLinkFactory(OPMIdManager opmIdManager){
+		this.opmIdManager = opmIdManager;
+	}
+
   @Override
   public Object getNewObject() {
     OPMGeneralizationLink aggregator = OPMFactory.eINSTANCE.createOPMGeneralizationLink();
-    aggregator.setId(OPMIdManager.getNextId());
+    aggregator.setId(opmIdManager.getNextId());
     return aggregator;
   }
 

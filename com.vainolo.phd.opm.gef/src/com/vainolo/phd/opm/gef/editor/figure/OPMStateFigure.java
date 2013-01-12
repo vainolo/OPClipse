@@ -16,6 +16,8 @@ import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 
+import com.vainolo.phd.opm.gef.utils.OPMFigureConstants;
+
 /**
  * A figure representing an OPM State. A state is represented by a rountangle (rounded rectangle).
  * 

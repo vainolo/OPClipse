@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.vainolo.phd.opmeta.model/src"
+    editorDirectory="/com.vainolo.phd.opmeta.model.editor/src" modelPluginID="com.vainolo.phd.opmeta.model"
+    modelName="OPMeta" editPluginClass="com.vainolo.phd.opmeta.model.provider.opmetaEditPlugin"
+    editorPluginClass="com.vainolo.phd.opmeta.model.presentation.opmetaEditorPlugin"
+    suppressEMFTypes="true" testSuiteClass="com.vainolo.phd.opmeta.model.tests.opmetaAllTests"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    editorPluginID="com.vainolo.phd.opmeta.model.editor">
+  <foreignModel>opmeta.ecore</foreignModel>
+  <genPackages prefix="opmeta" basePackage="com.vainolo.phd" disposableProviderFactory="true"
+      interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
+      utilityPackageSuffix="model.util" providerPackageSuffix="model.provider" presentationPackageSuffix="model.presentation"
+      testsPackageSuffix="model.tests" generateExampleClass="false" ecorePackage="opmeta.ecore#/">
+    <genDataTypes ecoreDataType="opmeta.ecore#//Rectangle"/>
+    <genDataTypes ecoreDataType="opmeta.ecore#//Point"/>
+    <genClasses ecoreClass="opmeta.ecore#//OPMetaModelDiagram">
+      <genFeatures children="true" createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/ElementsDiagram"/>
+      <genFeatures children="true" createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/LinksDiagram"/>
+      <genFeatures children="true" createChild="true" propertyMultiLine="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/LinkValidations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPMetaModelDiagram/ContaimentValidations"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//OPMetaModelContaimentValidationRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/Valid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/ContainerTypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelContaimentValidationRule/NodeTypeName"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//OPMetaModelLinkValidationRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/Valid"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/SourceTypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/TargetTypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPMetaModelLinkValidationRule/LinkTypeName"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//OPModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPModel/MetaModel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//OPModel/Container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//OPModel/NextId"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="opmeta.ecore#//InstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//InstanceBase/TypeName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//InstanceBase/Id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//InstanceBase/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//NodeInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//NodeInstanceBase/constraints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//NodeInstanceBase/Name"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//ContainerInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//ContainerInstanceBase/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference opmeta.ecore#//ContainerInstanceBase/links"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//LinkInstanceBase" labelFeature="#//opmeta/InstanceBase/Id">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//LinkInstanceBase/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference opmeta.ecore#//LinkInstanceBase/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//LinkInstanceBase/bendpoints"/>
+    </genClasses>
+    <genClasses ecoreClass="opmeta.ecore#//ThingInstanceBase" labelFeature="#//opmeta/InstanceBase/Id"/>
+    <genClasses ecoreClass="opmeta.ecore#//KeyValuePair">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//KeyValuePair/Key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute opmeta.ecore#//KeyValuePair/Value"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="OPM" basePackage="com.vainolo.phd" interfacePackageSuffix="model"
+      metaDataPackageSuffix="model" classPackageSuffix="model.impl" utilityPackageSuffix="model.util"
+      providerPackageSuffix="model.provider" presentationPackageSuffix="model.presentation"
+      testsPackageSuffix="model.tests" ecorePackage="../../com.vainolo.phd.opm.model/model/opm.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLinkRouterKind">
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLinkRouterKind/BENDPOINT"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLinkRouterKind/MANHATTAN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcessKind">
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcessKind/COMPOUND"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcessKind/BUILT_IN"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcessKind/JAVA"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcessKind/CONCEPTUAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagramKind">
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagramKind/COMPOUND"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagramKind/SYSTEM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../com.vainolo.phd.opm.model/model/opm.ecore#//VerticalAlignment">
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//VerticalAlignment/TOP"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//VerticalAlignment/CENTER"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//VerticalAlignment/BOTTOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralActivationKind">
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralActivationKind/Normal"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralActivationKind/Event"/>
+      <genEnumLiterals ecoreEnumLiteral="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralActivationKind/Condition"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="../../com.vainolo.phd.opm.model/model/opm.ecore#//Point"/>
+    <genDataTypes ecoreDataType="../../com.vainolo.phd.opm.model/model/opm.ecore#//Rectangle"/>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMElementWithID">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMElementWithID/id"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNamedElement/alignment"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMContainer/nodes"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNode/incomingLinks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNode/outgoingLinks"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNode/container"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMNode/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram/links"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram/nextId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObjectProcessDiagram/kind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMThing">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMThing/description"/>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMState"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMObject"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcess">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProcess/kind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/opd"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/bendpoints"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/routerKind"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/sourceDecoration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/targetDecoration"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMLink/centerDecoration"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralLink">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMProceduralLink/ActivationKind"/>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//Label"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMAgentLink"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMEffectLink">
+      <genOperations ecoreOperation="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMEffectLink/setActivationKind">
+        <genParameters ecoreParameter="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMEffectLink/setActivationKind/activationKind"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMResultLink"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMInvocationLink"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMInstrumentLink">
+      <genOperations ecoreOperation="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMInstrumentLink/setActivationKind">
+        <genParameters ecoreParameter="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMInstrumentLink/setActivationKind/activationKind"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMConsumptionLink">
+      <genOperations ecoreOperation="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMConsumptionLink/setActivationKind">
+        <genParameters ecoreParameter="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMConsumptionLink/setActivationKind/activationKind"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMStructuralLink">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMStructuralLink/aggregatorPosition"/>
+    </genClasses>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMAggregationLink"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMExhibitionLink"/>
+    <genClasses ecoreClass="../../com.vainolo.phd.opm.model/model/opm.ecore#//OPMGeneralizationLink"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -9,5 +9,9 @@
 # *~
 
 *.class
+<<<<<<< HEAD
 
+>>>>>>> master
+=======
+.metadata/*
 >>>>>>> master

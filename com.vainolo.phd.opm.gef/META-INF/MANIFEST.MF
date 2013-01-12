@@ -15,7 +15,13 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui;bundle-version="2.7.0",
  com.vainolo.phd.opm.model.edit;bundle-version="1.0.0",
  com.vainolo.phd.opm.interpreter;bundle-version="0.1.0",
- com.vainolo.phd.opm.utilities;bundle-version="0.1.0"
+ com.vainolo.phd.opm.utilities;bundle-version="0.1.0",
+ com.vainolo.phd.opmeta.model;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
-Export-Package: com.vainolo.phd.opm.gef.decorationLayer
+Export-Package: com.vainolo.phd.opm.gef.decorationLayer,
+ com.vainolo.phd.opm.gef.editor,
+ com.vainolo.phd.opm.gef.editor.factory,
+ com.vainolo.phd.opm.gef.editor.part,
+ com.vainolo.phd.opm.gef.editor.tool,
+ com.vainolo.phd.opm.gef.utils
