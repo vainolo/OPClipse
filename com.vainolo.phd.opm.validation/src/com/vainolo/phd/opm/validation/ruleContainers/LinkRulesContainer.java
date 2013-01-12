@@ -9,9 +9,6 @@ import com.vainolo.phd.opm.validation.ElementType;
 import com.vainolo.phd.opm.validation.rules.BasicRule;
 import com.vainolo.phd.opm.validation.rules.LinkRule;
 
-//import rules.OpmLinkRule;
-
-
 public class LinkRulesContainer extends BasicRulesContainer	 {
 	
 	
