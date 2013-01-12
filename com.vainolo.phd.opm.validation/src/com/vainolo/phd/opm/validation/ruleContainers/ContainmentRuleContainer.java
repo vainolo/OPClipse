@@ -4,22 +4,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.vainolo.phd.opm.validation.rules.GenericLinkRule;
-import com.vainolo.phd.opm.validation.rules.GenericRule;
+import com.vainolo.phd.opm.validation.rules.LinkRule;
+import com.vainolo.phd.opm.validation.rules.BasicRule;
 
 public class ContainmentRuleContainer extends BasicRulesContainer {
 	
-	private Map<Object, List<GenericLinkRule>> rules = 
-			new  HashMap<Object, List<GenericLinkRule>>();
+	private Map<Object, List<LinkRule>> rules = 
+			new  HashMap<Object, List<LinkRule>>();
 	
 	@Override
-	protected GenericRule getSpecificRule(GenericRule newLinkRule) {
+	protected BasicRule getSpecificRule(BasicRule newLinkRule) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean insertRule(GenericRule rule, boolean value,
+	public boolean insertRule(BasicRule rule, boolean value,
 			boolean isSpecified, int PositiveParentCount,
 			int negativeParentsCount) {
 		// TODO Auto-generated method stub
@@ -27,7 +27,7 @@ public class ContainmentRuleContainer extends BasicRulesContainer {
 	}
 
 	@Override
-	public boolean contains(GenericRule newRule) {
+	public boolean contains(BasicRule newRule) {
 		// TODO Auto-generated method stub
 		return false;
 	}

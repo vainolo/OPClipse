@@ -5,44 +5,42 @@ package com.vainolo.phd.opm.validation.ruleContainers;
 
 import java.util.ArrayList;
 
-import com.vainolo.phd.opm.validation.rules.GenericRule;
-import com.vainolo.phd.opm.validation.rules.GenericElementRule;
-import com.vainolo.phd.opm.validation.rules.GenericLinkRule;
-
+import com.vainolo.phd.opm.validation.rules.BasicRule;
+import com.vainolo.phd.opm.validation.rules.LinkRule;
 
 /**
  * @author itcherno
  *
  */
 public abstract class BasicRulesContainer {
-	private ArrayList<GenericRule> conflictedRules 	= new ArrayList<GenericRule>();
-	private ArrayList<GenericRule> leafRules 		= new ArrayList<GenericRule>();
+	private ArrayList<BasicRule> conflictedRules 	= new ArrayList<BasicRule>();
+	private ArrayList<BasicRule> leafRules 		= new ArrayList<BasicRule>();
 
-	public abstract boolean insertRule(GenericRule rule, boolean value, boolean isSpecified, 
+	public abstract boolean insertRule(BasicRule rule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount);
 
-	protected abstract GenericRule getSpecificRule(GenericRule newRule);
+	protected abstract BasicRule getSpecificRule(BasicRule newRule);
 	
-	public abstract boolean contains(GenericRule newRule);
+	public abstract boolean contains(BasicRule newRule);
 
-	public boolean validate(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean validate(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
 		return existingRule.getValue();	
 	}
 
-	public boolean isSpecified(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean isSpecified(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
 		return existingRule.getIsSpecified();	
 	}
 
-	public boolean setValue(GenericRule newRule, boolean value) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean setValue(BasicRule newRule, boolean value) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -52,8 +50,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.setValue(value);	
 	}
 
-	public boolean incrementPositiveParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean incrementPositiveParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -63,8 +61,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementPositiveParents();	
 	}
 
-	public boolean decrementPositiveParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean decrementPositiveParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -74,8 +72,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementPositiveParents();	
 	}
 	
-	public int getPositiveParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public int getPositiveParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
 		}
@@ -83,8 +81,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.getPositiveParentsCount();	
 	}
 	
-	public int getNegativeParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public int getNegativeParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
 		}
@@ -92,8 +90,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.getNegativeParentsCount();	
 	}
 
-	public boolean incrementNegativeParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean incrementNegativeParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -103,8 +101,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementNegativeParents();	
 	}
 
-	public boolean decrementNegativeParentsCount(GenericRule newRule) {
-		GenericRule existingRule = getSpecificRule(newRule);
+	public boolean decrementNegativeParentsCount(BasicRule newRule) {
+		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -114,7 +112,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementNegativeParents();	
 	}
 	
-	public boolean addRule (GenericLinkRule newRule, boolean value) {
+	public boolean addRule (LinkRule newRule, boolean value) {
 		// if this rule already exists as a "specified" rule - do nothing
 		if (this.isSpecified(newRule)) {
 			return false;
@@ -134,7 +132,7 @@ public abstract class BasicRulesContainer {
 		return this.addRule(newRule, value, true, 0, 0);
 	}
 	
-	private boolean addRule(GenericElementRule newRule, boolean value, boolean isSpecified, 
+	private boolean addRule(BasicRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {   //Return 0 if done, 1 otherwise
 		// if this rule already exists as a "specified" rule - do nothing
 		if (this.isSpecified(newRule)) {
@@ -150,7 +148,7 @@ public abstract class BasicRulesContainer {
 			// else - set it as requested, change all the counts in the sons, and deduce new rules if needed
 			else {
 				this.setValue(newRule, value);
-				for (GenericElementRule derivedRule: newRule.getAllSons()) {
+				for (BasicRule derivedRule: newRule.getAllSons()) {
 					handleRuleChange(derivedRule, value);
 				}
 			}
@@ -158,12 +156,12 @@ public abstract class BasicRulesContainer {
 		// this rule does not exist - set it with the appropriate parameters and set all sons
 		else {
 			this.insertRule(newRule, value, isSpecified, PositiveParentCount, negativeParentsCount);
-			ArrayList<GenericElementRule> derivedRules = newRule.getAllSons();
+			ArrayList<BasicRule> derivedRules = newRule.getAllSons();
 			if (derivedRules.isEmpty() ) {
 				leafRules.add(newRule);
 			}
 			else {
-				for (GenericElementRule derivedRule: derivedRules) {
+				for (BasicRule derivedRule: derivedRules) {
 					handleRuleAdd(derivedRule, value);
 				}
 			}
@@ -171,7 +169,7 @@ public abstract class BasicRulesContainer {
 		return true;
 	};
 	
-	private boolean handleRuleChange (GenericElementRule newRule, boolean newValueOfParent) {
+	private boolean handleRuleChange (BasicRule newRule, boolean newValueOfParent) {
 		if (newValueOfParent == true) {
 			this.incrementPositiveParentsCount(newRule);
 			this.decrementNegativeParentsCount(newRule);
@@ -212,7 +210,7 @@ public abstract class BasicRulesContainer {
 		return true;
 	}
 	
-	private boolean handleRuleAdd (GenericElementRule newRule, boolean valueOfParent) {
+	private boolean handleRuleAdd (BasicRule newRule, boolean valueOfParent) {
 		// if this rule already exist - handle parent count and deduce rules/add to conflicts
 		if (this.contains(newRule)) {
 			if (valueOfParent == true) {
@@ -253,7 +251,7 @@ public abstract class BasicRulesContainer {
 		return (! this.conflictedRules.isEmpty() );
 	}
 	
-	public ArrayList<GenericRule> getLeafRules() {
+	public ArrayList<BasicRule> getLeafRules() {
 		return this.leafRules;
 	}
 }

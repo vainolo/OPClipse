@@ -1,15 +1,16 @@
-package com.vainolo.phd.opm.validation.validator;
+package com.vainolo.phd.opm.validation;
 
 import com.vainolo.phd.opm.validation.ruleContainers.BasicRulesContainer;
 
 
-public class BaseValidator {
-	protected BasicRulesContainer rulesMat;
+public abstract class BaseValidator<T extends BasicRulesContainer> {
+	protected final T rulesMat;
 
 	protected boolean initDone;
 	
-	protected BaseValidator(){
-		this.initDone 			= false;
+	protected BaseValidator(T rulesMat){
+		this.rulesMat = rulesMat;
+		this.initDone = false;
 	}
 		
 	public boolean finalizeInit () throws Exception{

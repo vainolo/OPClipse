@@ -1,10 +1,13 @@
 package com.vainolo.phd.opm.validation.rules;
 
-public abstract class GenericRule {
+import java.util.ArrayList;
+
+public abstract class BasicRule {
 	protected int PositiveParentsCount;
 	protected int NegativeParentsCount;
 	protected boolean isSpecified;
 	protected boolean value;
+	protected ArrayList<BasicRule> derivedRules;
 	
 	public int getPositiveParentsCount() {
 		return PositiveParentsCount;
@@ -51,5 +54,7 @@ public abstract class GenericRule {
 		return this.isSpecified;
 	}
 	
-	public abstract boolean equals(GenericRule Rule);
+	public abstract boolean equals(BasicRule Rule);
+		
+	public abstract ArrayList<BasicRule> getAllSons();
 }
