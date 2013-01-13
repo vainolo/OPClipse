@@ -1,5 +1,7 @@
 package com.vainolo.phd.opm.validation;
 
+import org.eclipse.emf.ecore.EClass;
+
 public interface OpmValidator {
 
 	/**
@@ -8,12 +10,12 @@ public interface OpmValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	OpmValidator eINSTANCE = null;// TODO : this needs init!!!
+	OpmValidator eINSTANCE = com.vainolo.phd.opm.validation.impl.OpmValidatorImpl.init();
 	
-	boolean validateLink(Class<?> fromType, Class<?> linkType);
+	boolean validateLink(EClass fromType, EClass linkType);
 	
-	boolean validateLink(Class<?> fromType, Class<?> toType, Class<?> linkType);
+	boolean validateLink(EClass fromType, EClass toType, EClass linkType);
 	
-	boolean validateContaiment(Class<?> container, Class<?> node);
+	boolean validateContaiment(EClass container, EClass node);
 	
 }

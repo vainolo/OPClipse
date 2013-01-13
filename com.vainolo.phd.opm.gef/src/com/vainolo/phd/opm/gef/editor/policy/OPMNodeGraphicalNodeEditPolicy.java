@@ -26,6 +26,7 @@ import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.OPMDecorated;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
+import com.vainolo.phd.opm.validation.OpmValidator;
 
 /**
  * Policy used to connect two nodes in the diagram. Currently connections can
@@ -59,6 +60,10 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
     OPMNode source = (OPMNode) getHost().getModel();
     if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
+    
+//    if (!OpmValidator.eINSTANCE.validateLink(source.eClass().getInstanceClass(), (Class<?>)request.getNewObjectType()))
+//    	return null;
+    
     result.setSource(source);
     result.setLink((OPMLink) request.getNewObject());
     OPMObjectProcessDiagram opd =OPDAnalysis.findOPD((OPMNode) getHost().getModel());

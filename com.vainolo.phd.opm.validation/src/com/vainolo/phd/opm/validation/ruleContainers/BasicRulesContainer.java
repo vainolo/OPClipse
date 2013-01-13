@@ -212,7 +212,7 @@ public abstract class BasicRulesContainer {
 	private boolean handleRuleAdd (BasicRule newRule, boolean valueOfParent) {
 		// if this rule already exist - handle parent count and deduce rules/add to conflicts
 		if (this.contains(newRule)) {
-			if (valueOfParent == true) {
+			if (valueOfParent) {
 				this.incrementPositiveParentsCount(newRule);
 				// if we have negative parents - add to conflicts
 				if (this.getNegativeParentsCount(newRule) > 0 ) {
@@ -237,7 +237,7 @@ public abstract class BasicRulesContainer {
 			}
 		}
 		// rules does not exist - add it
-		else if (valueOfParent == true) {
+		else if (valueOfParent) {
 			this.insertRule(newRule, valueOfParent, false, 1, 0);
 		}
 		else {

@@ -25,13 +25,11 @@ public class ContainmentRulesContainer extends BasicRulesContainer {
 		ElementType containedItem = newOpmRule.containedItem();
 		// check if we have a hash entry for from
 		if (! rules.containsKey(container) ) {
+			//  add rule set if doesn't already exists
 			List<ContainmentRule> newList = new ArrayList<ContainmentRule>();
 			rules.put(container, newList);
-		}
-		
-		//  add rule set if doesn't already exists
-		else {
-			if (this.getSpecificRule(newOpmRule).getIsSpecified() == true) {
+		} else {
+			if ((getSpecificRule(newOpmRule)!=null) && (getSpecificRule(newOpmRule).getIsSpecified() == true)) {
 				return false;
 			}
 			ContainmentRule newContainmentRule = new ContainmentRule(container,containedItem,PositiveParentCount,negativeParentsCount, isSpecified,value);
@@ -49,12 +47,9 @@ public class ContainmentRulesContainer extends BasicRulesContainer {
 		ElementType container 		= newOpmRule.container();
 		ElementType containedItem	= newOpmRule.containedItem();
 		if (rules.containsKey(container)) {
-			for (ContainmentRule rule: rules.get(container)) {
-				if (rule.containedItem() == containedItem ) {
+			if (rules.get(container).contains(containedItem)){
 					return true;
-				}
 			}
-			
 		}
 		return false;
 	}
@@ -69,7 +64,7 @@ public class ContainmentRulesContainer extends BasicRulesContainer {
 		ElementType containedItem	= newContainerRule.containedItem();
 		if (this.contains(newContainerRule)) {
 			for (ContainmentRule rule : this.rules.get(container)) {
-				if (rule.containedItem() == containedItem) {
+				if (rule.containedItem().equals(containedItem)) {
 					return rule;
 				}
 			}

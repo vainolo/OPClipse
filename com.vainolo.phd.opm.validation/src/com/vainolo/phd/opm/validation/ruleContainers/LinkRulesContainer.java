@@ -39,7 +39,7 @@ public class LinkRulesContainer extends BasicRulesContainer	 {
 		}
 		// "to" exists - add to rule set if doesn't already exists
 		else {
-			if (this.getSpecificRule(newOpmRule).getIsSpecified() == true) {
+			if ((getSpecificRule(newOpmRule)!=null) && (getSpecificRule(newOpmRule).getIsSpecified() == true)) {
 				return false;
 			}
 			LinkRule newLinkRule = new LinkRule(from,link,to,PositiveParentCount,negativeParentsCount, isSpecified,value);
@@ -59,10 +59,8 @@ public class LinkRulesContainer extends BasicRulesContainer	 {
 		ElementType to	  = newOpmRule.To();
 		if (rules.containsKey(from)) {
 			if (rules.get(from).containsKey(to)) {
-				for (LinkRule rule: rules.get(from).get(to)) {
-					if (rule.Link() == link ) {
-						return true;
-					}
+				if (rules.get(from).get(to).contains(link)){
+					return true;
 				}
 			}
 		}
@@ -91,7 +89,7 @@ public class LinkRulesContainer extends BasicRulesContainer	 {
 		ElementType to	  = newLinkRule.To();
 		if (this.contains(newLinkRule)) {
 			for (LinkRule rule : this.rules.get(from).get(to)) {
-				if (rule.Link() == link) {
+				if (rule.Link().equals(link)) {
 					return rule;
 				}
 			}
