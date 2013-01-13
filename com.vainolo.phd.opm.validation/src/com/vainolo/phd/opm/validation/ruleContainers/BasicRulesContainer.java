@@ -6,7 +6,6 @@ package com.vainolo.phd.opm.validation.ruleContainers;
 import java.util.ArrayList;
 
 import com.vainolo.phd.opm.validation.rules.BasicRule;
-import com.vainolo.phd.opm.validation.rules.LinkRule;
 
 /**
  * @author itcherno
@@ -112,7 +111,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementNegativeParents();	
 	}
 	
-	public boolean addRule (LinkRule newRule, boolean value) {
+	public boolean addRule (BasicRule newRule, boolean value) {
 		// if this rule already exists as a "specified" rule - do nothing
 		if (this.isSpecified(newRule)) {
 			return false;
