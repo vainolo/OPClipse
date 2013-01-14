@@ -66,6 +66,7 @@ public class OpmValidatorImpl implements OpmValidator {
 		
 		//Structural link -Aggregation: Object->Object
 		linkValidator.addRule(opmObject, new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMAggregationLink()), opmObject, true);
+		linkValidator.addRule(opmProcess, new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMAggregationLink()), opmProcess, true);
 		
 		//Structural link -Exhibition: Thing->Thing, All Options
 		temp = new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMExhibitionLink());
@@ -114,8 +115,8 @@ public class OpmValidatorImpl implements OpmValidator {
 	@Override
 	public boolean validateLink(EClass fromType, EClass toType,
 			EClass linkType) {
-		return linkValidator.valdidate(new ElementTypeEClassImpl(fromType), new ElementTypeEClassImpl(toType), 
-				new ElementTypeEClassImpl(linkType));
+		return linkValidator.valdidate(new ElementTypeEClassImpl(fromType), new ElementTypeEClassImpl(linkType), 
+				new ElementTypeEClassImpl(toType));
 	}
 
 	@Override

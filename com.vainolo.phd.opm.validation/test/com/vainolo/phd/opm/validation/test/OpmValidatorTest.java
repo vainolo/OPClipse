@@ -26,14 +26,135 @@ public class OpmValidatorTest {
 
 	@Test
 	public void testValidateLinkClassOfQClassOfQ() {
-		fail("Not yet implemented");
+		EClass currLink = OPMPackage.eINSTANCE.getOPMAggregationLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertTrue(validator.validateLink(opmProcess, currLink));
+		assertFalse(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMExhibitionLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertTrue(validator.validateLink(opmProcess, currLink));
+		assertFalse(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMGeneralizationLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertTrue(validator.validateLink(opmProcess, currLink));
+		assertFalse(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMAgentLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertFalse(validator.validateLink(opmProcess, currLink));
+		assertTrue(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMInstrumentLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertFalse(validator.validateLink(opmProcess, currLink));
+		assertTrue(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMConsumptionLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertFalse(validator.validateLink(opmProcess, currLink));
+		assertTrue(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMEffectLink();
+		
+		assertTrue(validator.validateLink(opmObject, currLink));
+		assertFalse(validator.validateLink(opmProcess, currLink));
+		assertTrue(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMResultLink();
+		
+		assertFalse(validator.validateLink(opmObject, currLink));
+		assertTrue(validator.validateLink(opmProcess, currLink));
+		assertFalse(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
+		
+		currLink = OPMPackage.eINSTANCE.getOPMInvocationLink();
+		
+		assertFalse(validator.validateLink(opmObject, currLink));
+		assertTrue(validator.validateLink(opmProcess, currLink));
+		assertFalse(validator.validateLink(opmState, currLink));
+		assertFalse(validator.validateLink(opmLabel, currLink));
 	}
 
 	@Test
 	public void testValidateLinkClassOfQClassOfQClassOfQ() {
-		fail("Not yet implemented");
+		EClass currLink = OPMPackage.eINSTANCE.getOPMAggregationLink();
+		testFromLinkToValidation(opmObject, currLink,true,false,false);
+		testFromLinkToValidation(opmProcess, currLink,false,true,false);
+		testFromLinkToValidation(opmState, currLink,false,false,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+		
+		currLink = OPMPackage.eINSTANCE.getOPMExhibitionLink();
+		testFromLinkToValidation(opmObject, currLink,true,true,false);
+		testFromLinkToValidation(opmProcess, currLink,true,true,false);
+		testFromLinkToValidation(opmState, currLink,false,false,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+
+		currLink = OPMPackage.eINSTANCE.getOPMGeneralizationLink();
+		testFromLinkToValidation(opmObject, currLink,true,false,false);
+		testFromLinkToValidation(opmProcess, currLink,false,true,false);
+		testFromLinkToValidation(opmState, currLink,false,false,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+
+		currLink = OPMPackage.eINSTANCE.getOPMAgentLink();
+		testFromLinkToValidation(opmObject, currLink,false,true,false);
+		testFromLinkToValidation(opmProcess, currLink,false,false,false);
+		testFromLinkToValidation(opmState, currLink,false,true,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+
+		currLink = OPMPackage.eINSTANCE.getOPMInstrumentLink();
+		testFromLinkToValidation(opmObject, currLink,false,true,false);
+		testFromLinkToValidation(opmProcess, currLink,false,false,false);
+		testFromLinkToValidation(opmState, currLink,false,true,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+		
+		currLink = OPMPackage.eINSTANCE.getOPMConsumptionLink();
+		testFromLinkToValidation(opmObject, currLink,false,true,false);
+		testFromLinkToValidation(opmProcess, currLink,false,false,false);
+		testFromLinkToValidation(opmState, currLink,false,true,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+		
+		currLink = OPMPackage.eINSTANCE.getOPMEffectLink();
+		testFromLinkToValidation(opmObject, currLink,false,true,false);
+		testFromLinkToValidation(opmProcess, currLink,false,false,false);
+		testFromLinkToValidation(opmState, currLink,false,true,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+		
+		currLink = OPMPackage.eINSTANCE.getOPMResultLink();
+		testFromLinkToValidation(opmObject, currLink,false,false,false);
+		testFromLinkToValidation(opmProcess, currLink,true,false,true);
+		testFromLinkToValidation(opmState, currLink,false,false,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
+		
+		currLink = OPMPackage.eINSTANCE.getOPMInvocationLink();
+		testFromLinkToValidation(opmObject, currLink,false,false,false);
+		testFromLinkToValidation(opmProcess, currLink,false,true,false);
+		testFromLinkToValidation(opmState, currLink,false,false,false);
+		testFromLinkToValidation(opmLabel, currLink,false,false,false);
 	}
 
+	private void testFromLinkToValidation(EClass from, EClass link, boolean objectExpected, boolean processExpected, boolean stateExpected)
+	{
+		assertEquals(objectExpected, validator.validateLink(from, opmObject, link));
+		assertEquals(processExpected, validator.validateLink(from, opmProcess, link));
+		assertEquals(stateExpected, validator.validateLink(from, opmState, link));
+		assertFalse(validator.validateLink(from, opmLabel, link));
+	}
+	
 	@Test
 	public void testValidateContaiment() {
 		

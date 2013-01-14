@@ -15,7 +15,7 @@ public abstract class BasicRulesContainer {
 	private ArrayList<BasicRule> conflictedRules 	= new ArrayList<BasicRule>();
 	private ArrayList<BasicRule> leafRules 		= new ArrayList<BasicRule>();
 
-	public abstract boolean insertRule(BasicRule rule, boolean value, boolean isSpecified, 
+	protected abstract boolean insertRule(BasicRule rule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount);
 
 	protected abstract BasicRule getSpecificRule(BasicRule newRule);
@@ -30,15 +30,15 @@ public abstract class BasicRulesContainer {
 		return existingRule.getValue();	
 	}
 
-	public boolean isSpecified(BasicRule newRule) {
+	protected boolean isSpecified(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
-		if (existingRule == null ) {
+		if (existingRule == null) {
 			return false;
 		}
 		return existingRule.getIsSpecified();	
 	}
 
-	public boolean setValue(BasicRule newRule, boolean value) {
+	protected boolean setValue(BasicRule newRule, boolean value) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
@@ -49,7 +49,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.setValue(value);	
 	}
 
-	public boolean incrementPositiveParentsCount(BasicRule newRule) {
+	protected boolean incrementPositiveParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
@@ -60,7 +60,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementPositiveParents();	
 	}
 
-	public boolean decrementPositiveParentsCount(BasicRule newRule) {
+	protected boolean decrementPositiveParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
@@ -71,7 +71,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementPositiveParents();	
 	}
 	
-	public int getPositiveParentsCount(BasicRule newRule) {
+	protected int getPositiveParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
@@ -80,7 +80,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.getPositiveParentsCount();	
 	}
 	
-	public int getNegativeParentsCount(BasicRule newRule) {
+	protected int getNegativeParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
@@ -89,7 +89,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.getNegativeParentsCount();	
 	}
 
-	public boolean incrementNegativeParentsCount(BasicRule newRule) {
+	protected boolean incrementNegativeParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
@@ -100,7 +100,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementNegativeParents();	
 	}
 
-	public boolean decrementNegativeParentsCount(BasicRule newRule) {
+	protected boolean decrementNegativeParentsCount(BasicRule newRule) {
 		BasicRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
