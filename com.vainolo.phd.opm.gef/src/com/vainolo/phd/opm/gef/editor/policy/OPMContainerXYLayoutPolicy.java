@@ -8,6 +8,7 @@ package com.vainolo.phd.opm.gef.editor.policy;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -19,13 +20,11 @@ import org.eclipse.gef.requests.CreateRequest;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeChangeConstraintCommand;
 import com.vainolo.phd.opm.gef.editor.command.OPMNodeCreateCommand;
 import com.vainolo.phd.opm.gef.editor.part.OPMStructuralLinkAggregatorEditPart;
-import com.vainolo.phd.opm.model.Label;
 import com.vainolo.phd.opm.model.OPMContainer;
 import com.vainolo.phd.opm.model.OPMNode;
-import com.vainolo.phd.opm.model.OPMObject;
-import com.vainolo.phd.opm.model.OPMProcess;
-import com.vainolo.phd.opm.model.OPMState;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.utilities.OPMDecorated;
+import com.vainolo.phd.opm.validation.OpmValidator;
 
 /**
  * This class describes the commands that can be used to change the layout and
@@ -53,6 +52,7 @@ public class OPMContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 	/**
 	 * Command created to add new nodes to a container.
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
 		// This policy is only installed in OPMContainer instances.
@@ -63,10 +63,11 @@ public class OPMContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 
 		Command retVal = null;
 
-		if (request.getNewObjectType().equals(OPMObject.class) || request.getNewObjectType().equals(OPMProcess.class)
-				|| request.getNewObjectType().equals(OPMState.class) || request.getNewObjectType().equals(Label.class)) {
-			if (request.getNewObjectType().equals(OPMState.class) && (!(model instanceof OPMObject))) {
-				return UnexecutableCommand.INSTANCE;
+		EClass newObjectType = (EClass)request.getNewObjectType();
+		
+		if (OPMPackage.eINSTANCE.getOPMNode().isSuperTypeOf(newObjectType)){
+			if (!OpmValidator.eINSTANCE.validateContaiment(model.eClass(), newObjectType)){
+				return null;
 			}
 			OPMNodeCreateCommand command = new OPMNodeCreateCommand();
 			Rectangle constraints = (Rectangle) getConstraintFor(request);

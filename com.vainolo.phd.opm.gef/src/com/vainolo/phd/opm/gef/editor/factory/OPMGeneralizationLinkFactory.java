@@ -10,6 +10,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMGeneralizationLink;
+import com.vainolo.phd.opm.model.OPMPackage;
 
 /**
  * Factory used by palette tools to create {@link OPMGeneralizationLink}.
@@ -34,7 +35,7 @@ public class OPMGeneralizationLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMGeneralizationLink.class;
+    return OPMPackage.eINSTANCE.getOPMGeneralizationLink();
   }
 
 }

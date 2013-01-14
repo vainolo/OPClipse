@@ -4,7 +4,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
@@ -23,7 +22,7 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 	 */
 	@Override
 	protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
-		if (!canGetChildCommand()) return UnexecutableCommand.INSTANCE;
+		if (!canGetChildCommand()) return null;
 		OPModelNodeChangeConstraintCommand command = new OPModelNodeChangeConstraintCommand();
 		command.setNode((NodeInstance) child.getModel());
 		command.setConstraint((Rectangle) constraint);
@@ -35,7 +34,7 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 	 */
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
-		if (!canGetChildCommand()) return UnexecutableCommand.INSTANCE;
+		if (!canGetChildCommand()) return null;
 		
 		ContainerInstance model = (ContainerInstance) getHost().getModel();
 		

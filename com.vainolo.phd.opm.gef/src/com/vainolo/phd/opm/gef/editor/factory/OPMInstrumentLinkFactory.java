@@ -10,6 +10,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMInstrumentLink;
+import com.vainolo.phd.opm.model.OPMPackage;
 
 /**
  * Factory used by palette tools to create {@link OPMInstrumentLink}.
@@ -31,7 +32,7 @@ public class OPMInstrumentLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMInstrumentLink.class;
+    return OPMPackage.eINSTANCE.getOPMInstrumentLink();
   }
 
 }

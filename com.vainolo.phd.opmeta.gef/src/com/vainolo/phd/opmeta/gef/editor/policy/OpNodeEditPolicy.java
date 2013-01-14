@@ -26,7 +26,7 @@ public class OpNodeEditPolicy extends GraphicalNodeEditPolicy {
 	@Override protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
 		OPModelLinkCreateCommand linkCreateCommand = (OPModelLinkCreateCommand) request.getStartCommand();
 		NodeInstance target = (NodeInstance) getHost().getModel();
-		if (target == linkCreateCommand.getSource()) return UnexecutableCommand.INSTANCE;
+		if (target == linkCreateCommand.getSource()) return null;
 	    linkCreateCommand.setTarget(target);
 	    return linkCreateCommand;
 	}

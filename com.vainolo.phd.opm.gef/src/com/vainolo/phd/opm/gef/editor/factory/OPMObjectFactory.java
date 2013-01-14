@@ -10,6 +10,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMObject;
+import com.vainolo.phd.opm.model.OPMPackage;
 
 public class OPMObjectFactory implements CreationFactory {
 
@@ -28,7 +29,7 @@ public class OPMObjectFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMObject.class;
+    return OPMPackage.eINSTANCE.getOPMObject();
   }
 
 }

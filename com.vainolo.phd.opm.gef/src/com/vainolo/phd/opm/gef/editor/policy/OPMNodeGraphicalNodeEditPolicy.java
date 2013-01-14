@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.gef.editor.policy;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
@@ -61,8 +62,8 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     OPMNode source = (OPMNode) getHost().getModel();
     if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
     
-//    if (!OpmValidator.eINSTANCE.validateLink(source.eClass().getInstanceClass(), (Class<?>)request.getNewObjectType()))
-//    	return null;
+    if (!OpmValidator.eINSTANCE.validateLink(source.eClass(), (EClass)request.getNewObjectType()))
+    	return null;
     
     result.setSource(source);
     result.setLink((OPMLink) request.getNewObject());
@@ -92,11 +93,13 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     		getHost() instanceof OPMStructuralLinkAggregatorEditPart) {
       return null;
     }
-
     
     OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
     OPMNode target = (OPMNode) getHost().getModel();
     if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<?>)target).getDecorated();
+    if (!OpmValidator.eINSTANCE.validateLink(linkCreateCommand.getSource().eClass(), target.eClass(), linkCreateCommand.getLink().eClass()))
+    	return null;
+    
     linkCreateCommand.setTarget(target);
     if(request.getNewObject() instanceof OPMStructuralLink){
     	setStructuralLinkAggregatorPosition(request);

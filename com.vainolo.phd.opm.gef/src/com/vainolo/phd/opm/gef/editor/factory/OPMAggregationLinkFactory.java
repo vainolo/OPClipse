@@ -10,6 +10,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMAggregationLink;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMPackage;
 /**
  * Factory used by palette tools to create {@link OPMAggregationLink}.
  * 
@@ -33,7 +34,7 @@ public class OPMAggregationLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMAggregationLink.class;
+    return OPMPackage.eINSTANCE.getOPMAggregationLink();
   }
 
 }

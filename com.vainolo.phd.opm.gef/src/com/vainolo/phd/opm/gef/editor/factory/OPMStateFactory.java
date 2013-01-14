@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.gef.editor.factory;
 import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMState;
 
 public class OPMStateFactory implements CreationFactory {
@@ -28,7 +29,7 @@ public class OPMStateFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMState.class;
+    return OPMPackage.eINSTANCE.getOPMState();
   }
 
 }
