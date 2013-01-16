@@ -121,7 +121,7 @@ public abstract class BasicRulesContainer {
 		if (this.contains(newRule)) {
 			// if it has the same value - set to specified, remove from conflicted rules if needed and do nothing further
 			if (this.validate(newRule) == value) {
-				this.insertRule(newRule, value, true, 0, 0);
+				this.insertRule(newRule, value, true, 0, 0);//change to GetSpecificRule(newRule).setIsSpesified(true)
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
 				}
