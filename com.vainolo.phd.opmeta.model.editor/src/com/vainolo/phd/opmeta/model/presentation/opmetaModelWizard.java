@@ -42,6 +42,9 @@ import org.eclipse.jface.wizard.Wizard;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
@@ -52,13 +55,13 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-import com.vainolo.phd.opm.model.OPMAggregationLink;
+//import com.vainolo.phd.opm.model.OPMAggregationLink;
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMGeneralizationLink;
 import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
-import com.vainolo.phd.opm.model.OPMState;
-import com.vainolo.phd.opm.model.VerticalAlignment;
+//import com.vainolo.phd.opm.model.OPMState;
+//import com.vainolo.phd.opm.model.VerticalAlignment;
 import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
@@ -181,15 +184,59 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		OPMetaModelDiagram rootObject = _opmetaFactory.createOPMetaModelDiagram();
 		rootObject.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 		rootObject.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		if (newFileCreationPage.getUsePredefinedMetaModel())
+			fillOpm(rootObject);	
+		else
+			fillBasic(rootObject);	
+		return rootObject;
+	}
+
+	private void fillBasic(OPMetaModelDiagram rootObject){
+		OPMObjectProcessDiagram elementsDiagram = rootObject.getElementsDiagram();
+		long id = 0;
+		OPMObject nodeObj = OPMFactory.eINSTANCE.createOPMObject();
+		nodeObj.setName("Node");
+		nodeObj.setId(++id);
+		nodeObj.setConstraints(new Rectangle(561,40,111,52));
+		elementsDiagram.getNodes().add(nodeObj);
+		OPMObject containerObj = OPMFactory.eINSTANCE.createOPMObject();
+		containerObj.setName("Container");
+		containerObj.setId(++id);
+		containerObj.setConstraints(new Rectangle(302,37,123,49));
+		elementsDiagram.getNodes().add(containerObj);
+		
+		OPMObject linkObj = OPMFactory.eINSTANCE.createOPMObject();
+		linkObj.setName("Link");
+		linkObj.setId(++id);
+		linkObj.setConstraints(new Rectangle(368,38,159,57));
+		rootObject.getLinksDiagram().getNodes().add(linkObj);
+		
+		OPMetaModelContaimentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		rule.setContainerTypeName("Container");
+		rule.setNodeTypeName("Node");
+		rule.setValid(true);
+		rootObject.getContaimentValidations().add(rule);
+		
+		OPMetaModelLinkValidationRule ruleLink = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
+		ruleLink.setLinkTypeName("Link");
+		ruleLink.setSourceTypeName("Node");
+		ruleLink.setTargetTypeName("Node");
+		ruleLink.setValid(true);
+		rootObject.getLinkValidations().add(ruleLink);
+		
+		rootObject.getElementsDiagram().setNextId(++id);
+		rootObject.getLinksDiagram().setNextId(id);
+	}
+	
+	private void fillOpm(OPMetaModelDiagram rootObject){
 		long lastId = fillOpmElements(rootObject.getElementsDiagram());
 		lastId = fillOpmLinks(rootObject.getLinksDiagram(),lastId);
 		fillOpmContaimentRules(rootObject.getContaimentValidations());
 		fillOpmLinkRules(rootObject.getLinkValidations());
 		rootObject.getElementsDiagram().setNextId(++lastId);
 		rootObject.getLinksDiagram().setNextId(lastId);
-		return rootObject;
 	}
-
+	
 	private long fillOpmLinks(OPMObjectProcessDiagram linksDiagram, long startId) {
 		long id = startId;
 		// main links
@@ -664,6 +711,9 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	 * @generated
 	 */
 	public class opmetaModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
+		
+		private Button metaModelCheckBox;
+		
 		/**
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
@@ -674,6 +724,18 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 			super(pageId, selection);
 		}
 
+		protected void createAdvancedControls(Composite parent) {
+			metaModelCheckBox = new Button(parent,SWT.CHECK);
+			metaModelCheckBox.setText("Check to load a pre defined OPM meta model");
+			metaModelCheckBox.setSelection(true);
+			
+			super.createAdvancedControls(parent);
+		}
+		
+		public boolean getUsePredefinedMetaModel(){
+			return metaModelCheckBox.getSelection();
+		}
+		
 		/**
 		 * The framework calls this to see if the file is correct.
 		 * <!-- begin-user-doc -->
