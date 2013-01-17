@@ -23,7 +23,8 @@ import com.vainolo.phd.opmodel.model.propertyType;
 public class OpmetaInterpreter {
 	
 	private static Map<String,TypeDescriptor> emptyExistingTypes =Collections.emptyMap();
-	private List<PropertyDescriptor> allPropertyDescriptors = new LinkedList<>(); 
+	//private List<PropertyDescriptor> allPropertyDescriptors = new LinkedList<>();
+	private HashMap<PropertyDescriptor,TypeDescriptor> propertyToSpecifingTypeMap = new HashMap<>();
 	
 	public static OPmodelHolder CreateOPmodelHolder(OPMetaModelDiagram diagram){
 		OPmetaDefinition interpretation = opmodelFactory.eINSTANCE.createOPmetaDefinition();
@@ -46,7 +47,7 @@ public class OpmetaInterpreter {
 		interpretation.getLinks().addAll(links.values());
 		interpretation.getTypes().addAll(links.values());
 		
-		interpretation.getProperties().addAll(creator.allPropertyDescriptors);
+		interpretation.getProperties().addAll(creator.propertyToSpecifingTypeMap.keySet());
 		// TODO : here should be some work of the validations
 		
 		OPmodelHolder holder = opmodelFactory.eINSTANCE.createOPmodelHolder();
@@ -74,6 +75,7 @@ public class OpmetaInterpreter {
 			preProcessWrapper current = preprocessedNodes.removeFirst(); 
 			String currKey = current.node.getName();
 		
+			// handle if was created before (like in diamonds)
 			if (created.containsKey(currKey)){
 				TypeDescriptor existingChild = created.get(currKey);
 				setParent(existingChild, current.parent);
@@ -86,21 +88,20 @@ public class OpmetaInterpreter {
 			created.put(currKey, descriptor);
 			Collection<OPMLink> links;
 			
+			// adding this nodes properties
+			links = OPDAnalysis.findOutgoingLinks(current.node,OPMPackage.eINSTANCE.getOPMAggregationLink());
+			for (OPMLink link:links){
+				PropertyDescriptor propertyDescriptor = CreatePropertyDescriptor(link.getTarget().getName(),descriptor);
+				if(!TryAddPropertyToType(descriptor,propertyDescriptor))
+					throw new RuntimeException("Failed to translate property '" + propertyDescriptor.getName() +"' to type: '" +
+							descriptor.getName() + "'");	
+			}
+			
 			// copying properties from a single parent (duplicates check inside addProperty)
 			TypeDescriptor parent=current.parent;
 			if (parent!=null){
 				for (PropertyDescriptor property : parent.getProperties())
-					if(!TryAddPropertyToType(descriptor,property))
-						System.err.print("duplicate property: " + property.getName());	
-			}
-			
-			
-			// adding this nodes properties
-			links = OPDAnalysis.findOutgoingLinks(current.node,OPMPackage.eINSTANCE.getOPMAggregationLink());
-			for (OPMLink link:links){
-				PropertyDescriptor propertyDescriptor = CreatePropertyDescriptor(link.getTarget().getName());
-				if(!TryAddPropertyToType(descriptor,propertyDescriptor))
-					System.err.print("duplicate property" + propertyDescriptor.getName());	
+					TryAddPropertyToType(descriptor,property);
 			}
 
 			// create children
@@ -121,24 +122,33 @@ public class OpmetaInterpreter {
 		return created;
 	}
 
-	private PropertyDescriptor CreatePropertyDescriptor(String property) {
+	private PropertyDescriptor CreatePropertyDescriptor(String property, TypeDescriptor firstOwner) {
 		PropertyDescriptor propDesc = opmodelFactory.eINSTANCE.createPropertyDescriptor();
 		propDesc.setId(getNextId());
 		
 		int split=property.indexOf(":");
 		propDesc.setName(property.substring(0, split));
 		propertyType type = propertyType.get(property.substring(split+1));
-		if (type == null) throw new RuntimeException("property type unrecognized");
+		if (type == null) throw new RuntimeException("property type '"+ property.substring(split+1) +"'unrecognized");
 		propDesc.setType(type);
 		
-		allPropertyDescriptors.add(propDesc);
+		propertyToSpecifingTypeMap.put(propDesc,firstOwner);
 		return propDesc;
 	}
 
 	private boolean TryAddPropertyToType(TypeDescriptor descriptor,	PropertyDescriptor property) {
-		for (PropertyDescriptor propertyinlist : descriptor.getProperties()){
-			if(propertyinlist.getName().equals(property.getName()))
+		for (PropertyDescriptor propertyInList : descriptor.getProperties()){
+			if(propertyInList.getName().equals(property.getName()))
+				if (propertyInList.getType().equals(property.getType())){
+					// if defined property has same name and same type - they are similar, not an error
 					return false;
+				}else if (propertyToSpecifingTypeMap.get(propertyInList) == descriptor){ 
+					// in case a property with the same name was defined on the current descriptor than the defined property overrides propertyInList
+					return false;
+				}else{
+					// case of two inherited properties with the same name but different types
+					throw new RuntimeException("Type '" + descriptor.getName() + "' inherits 2 properties named '" + property.getName() + "' of different types");
+				}
 		}
 		return descriptor.getProperties().add(property);
 	}
@@ -149,9 +159,7 @@ public class OpmetaInterpreter {
 		
 		ArrayList<PropertyDescriptor> acceptedProps = new ArrayList<>();
 		for (PropertyDescriptor property:properties)
-			if(!TryAddPropertyToType(existing, property)){
-				System.err.print("duplicate property: " + property.getName());
-			}else{
+			if(TryAddPropertyToType(existing, property)){
 				acceptedProps.add(property);
 			}
 		if (acceptedProps.isEmpty()) return;
@@ -189,4 +197,5 @@ public class OpmetaInterpreter {
 		nextId ++;
 		return nextId;
 	}
+	
 }

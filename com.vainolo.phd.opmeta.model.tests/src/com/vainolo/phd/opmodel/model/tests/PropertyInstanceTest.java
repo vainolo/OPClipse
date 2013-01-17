@@ -23,6 +23,7 @@ import junit.textui.TestRunner;
  *   <li>{@link com.vainolo.phd.opmodel.model.PropertyInstance#getName() <em>Get Name</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.PropertyInstance#getType() <em>Get Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.PropertyInstance#setValue(java.lang.String) <em>Set Value</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.PropertyInstance#unsetValue() <em>Unset Value</em>}</li>
  * </ul>
  * </p>
  * @generated
@@ -132,6 +133,19 @@ public class PropertyInstanceTest extends TestCase {
 	 * @generated
 	 */
 	public void testSetValue__String() {
+		// TODO: implement this operation test method
+		// Ensure that you remove @generated or mark it @generated NOT
+		fail();
+	}
+
+	/**
+	 * Tests the '{@link com.vainolo.phd.opmodel.model.PropertyInstance#unsetValue() <em>Unset Value</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.vainolo.phd.opmodel.model.PropertyInstance#unsetValue()
+	 * @generated
+	 */
+	public void testUnsetValue() {
 		// TODO: implement this operation test method
 		// Ensure that you remove @generated or mark it @generated NOT
 		fail();

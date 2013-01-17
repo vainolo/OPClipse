@@ -197,7 +197,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		OPMObject nodeObj = OPMFactory.eINSTANCE.createOPMObject();
 		nodeObj.setName("Node");
 		nodeObj.setId(++id);
-		nodeObj.setConstraints(new Rectangle(561,40,111,52));
+		nodeObj.setConstraints(new Rectangle(561,37,123,49));
 		elementsDiagram.getNodes().add(nodeObj);
 		OPMObject containerObj = OPMFactory.eINSTANCE.createOPMObject();
 		containerObj.setName("Container");

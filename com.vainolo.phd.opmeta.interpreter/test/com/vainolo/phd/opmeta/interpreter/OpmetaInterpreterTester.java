@@ -58,7 +58,6 @@ public class OpmetaInterpreterTester {
 		try {
 			resource.save(options);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -114,7 +113,7 @@ public class OpmetaInterpreterTester {
 		TypeDescriptor type2 = getDescriptor(interpretation.getNodes(),"Thing");
 		assertNotNull(type1);
 		assertSame(type1,type2);
-		propertyType[] expectedTypes = new propertyType[] {propertyType.FLOAT ,propertyType.BOOLEAN,propertyType.INT, propertyType.STRING};
+		propertyType[] expectedTypes = new propertyType[] {propertyType.STRING ,propertyType.INT, propertyType.STRING,propertyType.BOOLEAN};
 		List<propertyType> actualTypes = new LinkedList<propertyType>();
 		for (PropertyDescriptor propDesc:type2.getProperties())
 			actualTypes.add(propDesc.getType());
@@ -249,7 +248,7 @@ public class OpmetaInterpreterTester {
 		assertEquals(4, props.size());
 		
 		propertyType[] expectedTypes = new propertyType[] {propertyType.STRING ,propertyType.INT,propertyType.STRING, propertyType.STRING};
-		String[] expectedNames = new String[] {"NodeProp" ,"Node1Prop","Node3Prop", "Node2Prop"};
+		String[] expectedNames = new String[] {"Node3Prop", "Node1Prop","NodeProp" ,"Node2Prop" };
 		List<propertyType> actualTypes = new LinkedList<propertyType>();
 		List<String> actualNames= new LinkedList<String>();
 		for (PropertyDescriptor propDesc:props){
@@ -261,7 +260,90 @@ public class OpmetaInterpreterTester {
 		assertArrayEquals(expectedNames, actualNames.toArray());
 	}
 	
-	// TODO add unit test for two properties same name diff type
+	@Test public void testMultiInheritenceOfSameTypeProperties()
+	{
+		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		TesterUtils.createObject("Link",basicDiag.getLinksDiagram());
+		OPMObjectProcessDiagram opmDiagram = basicDiag.getElementsDiagram();
+		OPMNode node = TesterUtils.createObject("Node",opmDiagram);
+		OPMNode nodeProp = TesterUtils.createObject("Prop:String",opmDiagram);
+		OPMNode container = TesterUtils.createObject("Container",opmDiagram);
+		OPMNode containerProp = TesterUtils.createObject("Prop:String",opmDiagram);
+		OPMNode thing = TesterUtils.createObject("Thing",opmDiagram);
+		
+		TesterUtils.createGeneralizationLink(node, thing);
+		TesterUtils.createGeneralizationLink(container, thing);
+		
+		TesterUtils.createAggregationLink(node, nodeProp);
+		TesterUtils.createAggregationLink(container, containerProp);
+		
+		OPmodelHolder opmodelHolder = OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+		OPmetaDefinition interpretation = opmodelHolder.getMetaDefinition();
+		TypeDescriptor testable = getDescriptor(interpretation.getNodes(),"Thing");
+		assertEquals(1, testable.getProperties().size());
+		PropertyDescriptor prop = testable.getProperties().get(0);
+		assertEquals("Prop", prop.getName());
+		assertEquals(propertyType.STRING, prop.getType());
+	}
+	
+	@Test public void testMultiInheritenceOfDiffTypeProperties()
+	{
+		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		OPMObjectProcessDiagram opmDiagram = basicDiag.getElementsDiagram();
+		OPMNode node = TesterUtils.createObject("Node",opmDiagram);
+		OPMNode nodeProp = TesterUtils.createObject("Prop:String",opmDiagram);
+		OPMNode container = TesterUtils.createObject("Container",opmDiagram);
+		OPMNode containerProp = TesterUtils.createObject("Prop:String",opmDiagram);
+		OPMNode thing = TesterUtils.createObject("Thing",opmDiagram);
+		
+		TesterUtils.createGeneralizationLink(node, thing);
+		TesterUtils.createGeneralizationLink(container, thing);
+		
+		TesterUtils.createAggregationLink(node, nodeProp);
+		TesterUtils.createAggregationLink(container, containerProp);
+		
+		try{
+			OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+			fail("OPmodel creation should have failed");
+		} catch (RuntimeException ex){}
+	}
+
+	@Test public void testSimpleDiamondSinglePropCreateInterpretation(){
+		// if testSimpleDiamondCreateInterpretation doesn't pass - this is useless
+		
+		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		OPMObjectProcessDiagram opmDiagram = basicDiag.getElementsDiagram();
+		OPMNode node = TesterUtils.createObject("Node",opmDiagram); 
+		OPMNode nodeProp = TesterUtils.createObject("Prop:int",opmDiagram);
+		TesterUtils.createObject("Container",opmDiagram);
+		OPMNode nodeSon1 = TesterUtils.createObject("NodeSon1",opmDiagram); 
+		OPMNode nodeSon2 = TesterUtils.createObject("NodeSon2",opmDiagram); 
+		OPMNode nodeGrandSon = TesterUtils.createObject("NodeGrandSon",opmDiagram);
+		TesterUtils.createObject("Link",basicDiag.getLinksDiagram());
+		
+		TesterUtils.createGeneralizationLink(node, nodeSon1);
+		TesterUtils.createGeneralizationLink(node, nodeSon2);
+		TesterUtils.createGeneralizationLink(nodeSon1, nodeGrandSon);
+		TesterUtils.createGeneralizationLink(nodeSon2, nodeGrandSon);
+	
+		TesterUtils.createAggregationLink(node, nodeProp);
+		
+		OPmodelHolder opmodelHolder = OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+		assertEquals(null, opmodelHolder.getContainer());
+		OPmetaDefinition interpretation = opmodelHolder.getMetaDefinition();
+		
+		TypeDescriptor testable = getDescriptor(interpretation.getNodes(),"NodeGrandSon");
+		assertEquals(1,testable.getProperties().size());
+		PropertyDescriptor propDesc = testable.getProperties().get(0);
+		assertEquals("Prop", propDesc.getName());
+		assertEquals(propertyType.INT,propDesc.getType());
+	}
 	
 	@Test public void testCreateThingAndPassPropertiesInterpretation(){
 		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
