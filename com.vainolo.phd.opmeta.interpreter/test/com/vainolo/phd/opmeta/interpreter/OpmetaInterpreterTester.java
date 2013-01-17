@@ -6,7 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -92,27 +93,34 @@ public class OpmetaInterpreterTester {
 			switch(descriptor.getName()){
 				case "Node":
 					assertTrue(descriptor.isAbstract());
-					System.out.println("Node");
-					for (Iterator<PropertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
-						System.out.println(it.next().getType());
 					break;
 				case "State":
 					break;
 				case "Thing":
 					assertFalse(descriptor.isAbstract());
-					System.out.println("Thing");
-					for (Iterator<PropertyDescriptor> it = descriptor.getProperties().iterator(); it.hasNext(); )
-						System.out.println(it.next().getType());	
 					break;
 				default:
 					fail();
 			}
 		}
+		TypeDescriptor curr= getDescriptor(descriptors, "Node");
+		assertEquals(2, curr.getProperties().size());
+		assertTrue(((curr.getProperties().get(0).getType() == propertyType.BOOLEAN) &&
+				(curr.getProperties().get(1).getType() == propertyType.FLOAT)) ||
+				((curr.getProperties().get(0).getType() == propertyType.FLOAT) &&
+						(curr.getProperties().get(1).getType() == propertyType.BOOLEAN)));
 
 		TypeDescriptor type1 = getDescriptor(interpretation.getContainers(),"Thing");
 		TypeDescriptor type2 = getDescriptor(interpretation.getNodes(),"Thing");
 		assertNotNull(type1);
 		assertSame(type1,type2);
+		propertyType[] expectedTypes = new propertyType[] {propertyType.FLOAT ,propertyType.BOOLEAN,propertyType.INT, propertyType.STRING};
+		List<propertyType> actualTypes = new LinkedList<propertyType>();
+		for (PropertyDescriptor propDesc:type2.getProperties())
+			actualTypes.add(propDesc.getType());
+		assertArrayEquals(expectedTypes, actualTypes.toArray());
+		
+		
 		
 		descriptors = interpretation.getLinks();
 		assertEquals(2,descriptors.size());
@@ -131,7 +139,7 @@ public class OpmetaInterpreterTester {
 
 	}
 	
-	@Test public void testDiamondCreateInterpretation(){
+	@Test public void testSimpleDiamondCreateInterpretation(){
 		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
 		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
 		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
@@ -141,17 +149,119 @@ public class OpmetaInterpreterTester {
 		OPMNode nodeSon1 = TesterUtils.createObject("NodeSon1",opmDiagram); 
 		OPMNode nodeSon2 = TesterUtils.createObject("NodeSon2",opmDiagram); 
 		OPMNode nodeGrandSon = TesterUtils.createObject("NodeGrandSon",opmDiagram);
+		TesterUtils.createObject("Link",basicDiag.getLinksDiagram());
 		
 		TesterUtils.createGeneralizationLink(node, nodeSon1);
 		TesterUtils.createGeneralizationLink(node, nodeSon2);
 		TesterUtils.createGeneralizationLink(nodeSon1, nodeGrandSon);
 		TesterUtils.createGeneralizationLink(nodeSon2, nodeGrandSon);
 	
-		try{
-			OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
-			fail("diamonds suppose to throw exception");
-		}catch(RuntimeException re) {}
+		OPmodelHolder opmodelHolder = OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+		assertEquals(7, opmodelHolder.getNextId());
+		assertEquals(null, opmodelHolder.getContainer());
+		OPmetaDefinition interpretation = opmodelHolder.getMetaDefinition();
+		
+		List<TypeDescriptor> nodes = interpretation.getNodes();
+		assertEquals(4, nodes.size());
+		TypeDescriptor testable = getDescriptor(interpretation.getNodes(),"NodeGrandSon");
+		assertEquals(2,testable.getParents().size());
+		assertTrue(testable.getParents().contains(getDescriptor(interpretation.getNodes(),"NodeSon1")));
+		assertTrue(testable.getParents().contains(getDescriptor(interpretation.getNodes(),"NodeSon2")));
+		testable = getDescriptor(interpretation.getNodes(),"Node");
+		assertEquals(2,testable.getChildren().size());
+		assertTrue(testable.getChildren().contains(getDescriptor(interpretation.getNodes(),"NodeSon1")));
+		assertTrue(testable.getChildren().contains(getDescriptor(interpretation.getNodes(),"NodeSon2")));
 	}
+	
+	@Test public void testDiffLevelsDiamondCreateInterpretation(){
+		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		OPMObjectProcessDiagram opmDiagram = basicDiag.getElementsDiagram();
+		OPMNode node = TesterUtils.createObject("Node",opmDiagram); 
+		TesterUtils.createObject("Container",opmDiagram);
+		OPMNode nodeSon1 = TesterUtils.createObject("NodeLevel1",opmDiagram); 
+		OPMNode nodeSon2 = TesterUtils.createObject("NodeLevel2",opmDiagram); 
+		OPMNode nodeSon3 = TesterUtils.createObject("NodeLevel3",opmDiagram);
+		OPMNode nodeSon4 = TesterUtils.createObject("NodeSon",opmDiagram);
+		OPMNode nodeGrandSon = TesterUtils.createObject("NodeGrandSon",opmDiagram);
+		TesterUtils.createObject("Link",basicDiag.getLinksDiagram());
+		
+		TesterUtils.createGeneralizationLink(node, nodeSon1);
+		TesterUtils.createGeneralizationLink(nodeSon1,nodeSon2);
+		TesterUtils.createGeneralizationLink(nodeSon2, nodeSon3);
+		TesterUtils.createGeneralizationLink(node, nodeSon4);
+		TesterUtils.createGeneralizationLink(nodeSon3, nodeGrandSon);
+		TesterUtils.createGeneralizationLink(nodeSon4, nodeGrandSon);
+	
+		OPmodelHolder opmodelHolder = OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+		assertEquals(9, opmodelHolder.getNextId());
+		assertEquals(null, opmodelHolder.getContainer());
+		OPmetaDefinition interpretation = opmodelHolder.getMetaDefinition();
+		
+		List<TypeDescriptor> nodes = interpretation.getNodes();
+		assertEquals(6, nodes.size());
+		TypeDescriptor testable = getDescriptor(interpretation.getNodes(),"NodeGrandSon");
+		assertEquals(2,testable.getParents().size());
+		assertTrue(testable.getParents().contains(getDescriptor(interpretation.getNodes(),"NodeSon")));
+		assertTrue(testable.getParents().contains(getDescriptor(interpretation.getNodes(),"NodeLevel3")));
+		testable = getDescriptor(interpretation.getNodes(),"Node");
+		assertEquals(2,testable.getChildren().size());
+		assertTrue(testable.getChildren().contains(getDescriptor(interpretation.getNodes(),"NodeLevel1")));
+		assertTrue(testable.getChildren().contains(getDescriptor(interpretation.getNodes(),"NodeSon")));
+	}
+	
+	@Test public void testSimpleDiamondPropertiesPassCreateInterpretation(){
+		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();
+		basicDiag.setElementsDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		basicDiag.setLinksDiagram(OPMFactory.eINSTANCE.createOPMObjectProcessDiagram());
+		OPMObjectProcessDiagram opmDiagram = basicDiag.getElementsDiagram();
+		OPMNode node = TesterUtils.createObject("Node",opmDiagram);
+		OPMNode nodeProp = TesterUtils.createObject("NodeProp:String",opmDiagram);
+		TesterUtils.createObject("Container",opmDiagram);
+		OPMNode nodeSon1 = TesterUtils.createObject("NodeSon1",opmDiagram); 
+		OPMNode node1Prop = TesterUtils.createObject("Node1Prop:int",opmDiagram);
+		OPMNode nodeSon2 = TesterUtils.createObject("NodeSon2",opmDiagram);
+		OPMNode node2Prop = TesterUtils.createObject("Node2Prop:String",opmDiagram);
+		OPMNode nodeGrandSon = TesterUtils.createObject("NodeGrandSon",opmDiagram);
+		OPMNode node3Prop = TesterUtils.createObject("Node3Prop:String",opmDiagram);
+		TesterUtils.createObject("Link",basicDiag.getLinksDiagram());
+		
+		TesterUtils.createGeneralizationLink(node, nodeSon1);
+		TesterUtils.createGeneralizationLink(node, nodeSon2);
+		TesterUtils.createGeneralizationLink(nodeSon1, nodeGrandSon);
+		TesterUtils.createGeneralizationLink(nodeSon2, nodeGrandSon);
+	
+		TesterUtils.createAggregationLink(node, nodeProp);
+		TesterUtils.createAggregationLink(nodeSon1, node1Prop);
+		TesterUtils.createAggregationLink(nodeSon2, node2Prop);
+		TesterUtils.createAggregationLink(nodeGrandSon, node3Prop);
+		
+		OPmodelHolder opmodelHolder = OpmetaInterpreter.CreateOPmodelHolder(basicDiag);
+		assertEquals(11, opmodelHolder.getNextId());
+		assertEquals(null, opmodelHolder.getContainer());
+		OPmetaDefinition interpretation = opmodelHolder.getMetaDefinition();
+		
+		List<TypeDescriptor> nodes = interpretation.getNodes();
+		assertEquals(4, nodes.size());
+		TypeDescriptor testable = getDescriptor(interpretation.getNodes(),"NodeGrandSon");
+		List<PropertyDescriptor> props = testable.getProperties();
+		assertEquals(4, props.size());
+		
+		propertyType[] expectedTypes = new propertyType[] {propertyType.STRING ,propertyType.INT,propertyType.STRING, propertyType.STRING};
+		String[] expectedNames = new String[] {"NodeProp" ,"Node1Prop","Node3Prop", "Node2Prop"};
+		List<propertyType> actualTypes = new LinkedList<propertyType>();
+		List<String> actualNames= new LinkedList<String>();
+		for (PropertyDescriptor propDesc:props){
+			actualTypes.add(propDesc.getType());
+			actualNames.add(propDesc.getName());
+		}
+		
+		assertArrayEquals(expectedTypes, actualTypes.toArray());
+		assertArrayEquals(expectedNames, actualNames.toArray());
+	}
+	
+	// TODO add unit test for two properties same name diff type
 	
 	@Test public void testCreateThingAndPassPropertiesInterpretation(){
 		OPMetaModelDiagram basicDiag=opmetaFactory.eINSTANCE.createOPMetaModelDiagram();

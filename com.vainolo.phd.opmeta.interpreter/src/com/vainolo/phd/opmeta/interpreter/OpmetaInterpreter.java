@@ -59,8 +59,10 @@ public class OpmetaInterpreter {
 	
 	public HashMap<String,TypeDescriptor> CreateGraph(List<OPMNode> origNodes, String rootName, Map<String,TypeDescriptor> existingTypes){
 		Collection<OPMNode> rootNodes = OPDAnalysis.findNamedNodes(origNodes,rootName);
-		if (rootNodes.size() != 1) 
-			throw new RuntimeException("Incorrect number of root nodes in diagram");
+		if (rootNodes.size() == 0) 
+			throw new RuntimeException("Root '" + rootName + "' is Missing.");
+		if (rootNodes.size() > 1) 
+			throw new RuntimeException("Root '" + rootName + "' has more than one occurence.");
 		LinkedList<preProcessWrapper> preprocessedNodes = new LinkedList<>();
 		for (OPMNode rootNode:rootNodes){
 			preprocessedNodes.add(new preProcessWrapper(rootNode,null));
@@ -71,19 +73,21 @@ public class OpmetaInterpreter {
 		while (!preprocessedNodes.isEmpty()){
 			preProcessWrapper current = preprocessedNodes.removeFirst(); 
 			String currKey = current.node.getName();
-			
-			if (created.containsKey(currKey))
-				throw new RuntimeException("Diamond inheritence is not supported");
 		
+			if (created.containsKey(currKey)){
+				TypeDescriptor existingChild = created.get(currKey);
+				setParent(existingChild, current.parent);
+				recursiveSetProperties(existingChild,current.parent.getProperties(), created);
+				continue;
+			}
+			
 			// create new type
 			TypeDescriptor descriptor=getDescriptor(current);
 			created.put(currKey, descriptor);
-			
 			Collection<OPMLink> links;
 			
 			// copying properties from a single parent (duplicates check inside addProperty)
 			TypeDescriptor parent=current.parent;
-			
 			if (parent!=null){
 				for (PropertyDescriptor property : parent.getProperties())
 					if(!TryAddPropertyToType(descriptor,property))
@@ -105,7 +109,7 @@ public class OpmetaInterpreter {
 				OPMNode next = link.getTarget();
 				if (next == null || preprocessedNodes.contains(next)) continue;
 				String childKey = next.getName();
-				if (!existingTypes.containsKey(childKey))
+				if (!existingTypes.containsKey(childKey)) 
 					preprocessedNodes.add(new preProcessWrapper(next,descriptor));
 				else{
 					TypeDescriptor existingChild = existingTypes.get(childKey);
