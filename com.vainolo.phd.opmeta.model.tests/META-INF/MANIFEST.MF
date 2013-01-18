@@ -6,12 +6,11 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.vainolo.phd.opmeta.model.tests
 Require-Bundle: org.eclipse.core.runtime,
  com.vainolo.phd.opmeta.model;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.junit;visibility:=reexport
-Bundle-ActivationPolicy: lazy
-Import-Package: com.vainolo.phd.opm.model,
+ org.junit;visibility:=reexport,
  com.vainolo.phd.opm.model.tests
+Bundle-ActivationPolicy: lazy

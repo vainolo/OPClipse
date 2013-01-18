@@ -62,7 +62,7 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     OPMNode source = (OPMNode) getHost().getModel();
     if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
     
-    if (!OpmValidator.eINSTANCE.validateLink(source.eClass(), (EClass)request.getNewObjectType()))
+    if (!OpmValidator.eINSTANCE.validateLink(source, (EClass)request.getNewObjectType()))
     	return null;
     
     result.setSource(source);
@@ -97,7 +97,7 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
     OPMNode target = (OPMNode) getHost().getModel();
     if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<?>)target).getDecorated();
-    if (!OpmValidator.eINSTANCE.validateLink(linkCreateCommand.getSource().eClass(), target.eClass(), linkCreateCommand.getLink().eClass()))
+    if (!OpmValidator.eINSTANCE.validateLink(linkCreateCommand.getSource(), linkCreateCommand.getLink().eClass(), target))
     	return null;
     
     linkCreateCommand.setTarget(target);

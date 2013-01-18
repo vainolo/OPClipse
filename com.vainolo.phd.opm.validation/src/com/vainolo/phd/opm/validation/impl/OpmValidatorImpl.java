@@ -113,10 +113,20 @@ public class OpmValidatorImpl implements OpmValidator {
 	}
 
 	@Override
-	public boolean validateLink(EClass fromType, EClass toType,
-			EClass linkType) {
+	public boolean validateLink(OPMNode fromType, EClass linkType) {
+		return linkValidator.valdidate(new ElementTypeEClassImpl(fromType.eClass()), new ElementTypeEClassImpl(linkType));
+	}
+	
+	@Override
+	public boolean validateLink(EClass fromType, EClass linkType, EClass toType) {
 		return linkValidator.valdidate(new ElementTypeEClassImpl(fromType), new ElementTypeEClassImpl(linkType), 
 				new ElementTypeEClassImpl(toType));
+	}
+	
+	@Override
+	public boolean validateLink(OPMNode from, EClass linkType, OPMNode to) {
+		return linkValidator.valdidate(new ElementTypeEClassImpl(from.eClass()), new ElementTypeEClassImpl(linkType), 
+				new ElementTypeEClassImpl(to.eClass()));
 	}
 
 	@Override
@@ -127,4 +137,10 @@ public class OpmValidatorImpl implements OpmValidator {
 		return containmentValidator.valdidate(new ElementTypeEClassImpl(container), new ElementTypeEClassImpl(node));
 	}
 
+	@Override
+	public boolean validateContaiment(OPMContainer container, EClass node) {
+		if (!OPMPackage.eINSTANCE.getOPMNode().isSuperTypeOf(node)) return false;
+		
+		return containmentValidator.valdidate(new ElementTypeEClassImpl(container.eClass()), new ElementTypeEClassImpl(node));
+	}
 }

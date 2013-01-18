@@ -149,10 +149,10 @@ public class OpmValidatorTest {
 
 	private void testFromLinkToValidation(EClass from, EClass link, boolean objectExpected, boolean processExpected, boolean stateExpected)
 	{
-		assertEquals(objectExpected, validator.validateLink(from, opmObject, link));
-		assertEquals(processExpected, validator.validateLink(from, opmProcess, link));
-		assertEquals(stateExpected, validator.validateLink(from, opmState, link));
-		assertFalse(validator.validateLink(from, opmLabel, link));
+		assertEquals(objectExpected, validator.validateLink(from, link,opmObject ));
+		assertEquals(processExpected, validator.validateLink(from, link, opmProcess));
+		assertEquals(stateExpected, validator.validateLink(from, link, opmState));
+		assertFalse(validator.validateLink(from, link, opmLabel));
 	}
 	
 	@Test
