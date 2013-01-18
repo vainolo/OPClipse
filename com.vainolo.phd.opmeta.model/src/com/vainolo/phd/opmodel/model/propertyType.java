@@ -148,12 +148,12 @@ public enum propertyType implements Enumerator {
 	 * Returns the '<em><b>property Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public static propertyType get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
 			propertyType result = VALUES_ARRAY[i];
-			if (result.toString().equals(literal)) {
+			if (result.toString().equalsIgnoreCase(literal)) {
 				return result;
 			}
 		}

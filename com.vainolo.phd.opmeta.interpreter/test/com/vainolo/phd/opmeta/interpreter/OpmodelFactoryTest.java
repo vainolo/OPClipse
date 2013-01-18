@@ -1,4 +1,4 @@
-package com.vainolo.phd.opmeta.interpreter.opmodel;
+package com.vainolo.phd.opmeta.interpreter;
 
 import static org.junit.Assert.*;
 
@@ -11,7 +11,6 @@ import com.vainolo.phd.opmodel.model.TypeDescriptor;
 
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpreter;
 import com.vainolo.phd.opmeta.interpreter.OpmodelFactory;
-import com.vainolo.phd.opmeta.interpreter.TesterUtils;
 
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmodel.model.ContainerInstance;

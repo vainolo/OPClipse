@@ -77,6 +77,8 @@ public class opmodelFactoryImpl extends EFactoryImpl implements opmodelFactory {
 			case opmodelPackage.PROPERTY_INT_INSTANCE: return createPropertyIntInstance();
 			case opmodelPackage.PROPERTY_FLOAT_INSTANCE: return createPropertyFloatInstance();
 			case opmodelPackage.PROPERTY_BOOLEAN_INSTANCE: return createPropertyBooleanInstance();
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE: return createOPmodelLinkValidationRule();
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE: return createOPmodelContaimentValidationRule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -248,6 +250,26 @@ public class opmodelFactoryImpl extends EFactoryImpl implements opmodelFactory {
 	public PropertyBooleanInstance createPropertyBooleanInstance() {
 		PropertyBooleanInstanceImpl propertyBooleanInstance = new PropertyBooleanInstanceImpl();
 		return propertyBooleanInstance;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OPmodelLinkValidationRule createOPmodelLinkValidationRule() {
+		OPmodelLinkValidationRuleImpl oPmodelLinkValidationRule = new OPmodelLinkValidationRuleImpl();
+		return oPmodelLinkValidationRule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public OPmodelContaimentValidationRule createOPmodelContaimentValidationRule() {
+		OPmodelContaimentValidationRuleImpl oPmodelContaimentValidationRule = new OPmodelContaimentValidationRuleImpl();
+		return oPmodelContaimentValidationRule;
 	}
 
 	/**

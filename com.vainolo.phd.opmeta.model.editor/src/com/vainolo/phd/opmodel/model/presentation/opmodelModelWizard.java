@@ -531,7 +531,7 @@ public class opmodelModelWizard extends Wizard implements INewWizard {
 		private void fillContainerSelectionPanel(Composite composite){
 			Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(OPModelEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+				containerLabel.setText(OPModelEditorPlugin.INSTANCE.getString("_UI_ContainerObject"));
 				
 				GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
@@ -557,6 +557,9 @@ public class opmodelModelWizard extends Wizard implements INewWizard {
 					initialObjectField.add(curr.getName());
 			}
 			
+			if (initialObjectField.getItemCount() ==0){
+				setMyErrorMessage(OPModelEditorPlugin.INSTANCE.getString("_UI_FileHasNoContainers"));
+			}
 			if (initialObjectField.getItemCount() == 1) {
 				initialObjectField.select(0);
 			}

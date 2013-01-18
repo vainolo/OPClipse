@@ -166,6 +166,18 @@ public class opmodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE: {
+				OPmodelLinkValidationRule oPmodelLinkValidationRule = (OPmodelLinkValidationRule)theEObject;
+				T result = caseOPmodelLinkValidationRule(oPmodelLinkValidationRule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE: {
+				OPmodelContaimentValidationRule oPmodelContaimentValidationRule = (OPmodelContaimentValidationRule)theEObject;
+				T result = caseOPmodelContaimentValidationRule(oPmodelContaimentValidationRule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -377,6 +389,36 @@ public class opmodelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePropertyBooleanInstance(PropertyBooleanInstance object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OPmodel Link Validation Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OPmodel Link Validation Rule</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOPmodelLinkValidationRule(OPmodelLinkValidationRule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseOPmodelContaimentValidationRule(OPmodelContaimentValidationRule object) {
 		return null;
 	}
 

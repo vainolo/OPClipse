@@ -41,9 +41,10 @@ public class OPMGraphicalEditorActionBarContributor extends ActionBarContributor
     toolBarManager.add(getAction(ActionFactory.REDO.getId()));
     toolBarManager.add(getAction(ActionFactory.DELETE.getId()));
     toolBarManager.add(getAction(GEFActionConstants.TOGGLE_GRID_VISIBILITY));
-    toolBarManager.add(getAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY));
-    toolBarManager.add(getAction(InterpretAction.INTERPRET_ID));
-    toolBarManager.add(getAction(StopInterpreterAction.STOP_INTERPRETER_ID));
+    // TODO : just for show and tell:
+    //toolBarManager.add(getAction(GEFActionConstants.TOGGLE_SNAP_TO_GEOMETRY));
+    //toolBarManager.add(getAction(InterpretAction.INTERPRET_ID));
+    //toolBarManager.add(getAction(StopInterpreterAction.STOP_INTERPRETER_ID));
   }
 
   @Override
