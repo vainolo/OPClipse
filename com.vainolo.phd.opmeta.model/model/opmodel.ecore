@@ -90,6 +90,10 @@
         eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//PropertyDescriptor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkValidationRules" upperBound="-1"
+        eType="#//OPmodelLinkValidationRule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contaimentValidationRules"
+        upperBound="-1" eType="#//OPmodelContaimentValidationRule"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="propertyType">
     <eLiterals name="String"/>
@@ -148,5 +152,21 @@
       </eAnnotations>
       <eParameters name="val" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OPmodelLinkValidationRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceType" lowerBound="1"
+        eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetType" lowerBound="1"
+        eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkType" lowerBound="1"
+        eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OPmodelContaimentValidationRule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valid" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="containerType" lowerBound="1"
+        eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodeType" lowerBound="1"
+        eType="#//TypeDescriptor" eKeys="#//TypeDescriptor/id"/>
   </eClassifiers>
 </ecore:EPackage>

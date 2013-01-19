@@ -23,6 +23,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainers <em>Containers</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getLinks <em>Links</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getProperties <em>Properties</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getLinkValidationRules <em>Link Validation Rules</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContaimentValidationRules <em>Contaiment Validation Rules</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,5 +112,37 @@ public interface OPmetaDefinition extends EObject {
 	 * @generated
 	 */
 	List<PropertyDescriptor> getProperties();
+
+	/**
+	 * Returns the value of the '<em><b>Link Validation Rules</b></em>' containment reference list.
+	 * The list contents are of type {@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Link Validation Rules</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Link Validation Rules</em>' containment reference list.
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmetaDefinition_LinkValidationRules()
+	 * @model containment="true"
+	 * @generated
+	 */
+	List<OPmodelLinkValidationRule> getLinkValidationRules();
+
+	/**
+	 * Returns the value of the '<em><b>Contaiment Validation Rules</b></em>' reference list.
+	 * The list contents are of type {@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Contaiment Validation Rules</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Contaiment Validation Rules</em>' reference list.
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmetaDefinition_ContaimentValidationRules()
+	 * @model
+	 * @generated
+	 */
+	List<OPmodelContaimentValidationRule> getContaimentValidationRules();
 
 } // OPmetaDefinition

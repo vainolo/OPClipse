@@ -9,6 +9,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.Label;
+import com.vainolo.phd.opm.model.OPMPackage;
 
 public class LabelFactory implements CreationFactory {
 
@@ -27,7 +28,7 @@ public class LabelFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-	return Label.class;
+	return OPMPackage.eINSTANCE.getLabel();
   }
 
 }

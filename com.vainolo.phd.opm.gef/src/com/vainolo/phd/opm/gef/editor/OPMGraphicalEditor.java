@@ -46,6 +46,7 @@ import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.provider.OPMItemProviderAdapterFactory;
 import com.vainolo.phd.opm.utilities.OPDLoader;
 import com.vainolo.phd.opm.utilities.OPMDecorated;
+import com.vainolo.phd.opm.validation.OpmValidator;
 import com.vainolo.phd.opm.gef.decorationLayer.OPMObjectProcessDiagramDecorator;
 
 public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
@@ -75,6 +76,8 @@ public class OPMGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
     super.initializeGraphicalViewer();
     getGraphicalViewer().setContents(opd);
     getGraphicalControl().setFont(new Font(null, "Consolas", 10, SWT.NORMAL));
+    @SuppressWarnings("unused") // for initialisation 
+	OpmValidator validaotr = OpmValidator.eINSTANCE;
   }
 
   @Override

@@ -9,6 +9,7 @@ package com.vainolo.phd.opm.gef.editor.policy;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
@@ -26,6 +27,7 @@ import com.vainolo.phd.opm.model.OPMStructuralLink;
 import com.vainolo.phd.opm.model.OPMThing;
 import com.vainolo.phd.opm.utilities.OPMDecorated;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
+import com.vainolo.phd.opm.validation.OpmValidator;
 
 /**
  * Policy used to connect two nodes in the diagram. Currently connections can
@@ -59,6 +61,10 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     OPMLinkCreateCommand result = new OPMLinkCreateCommand();
     OPMNode source = (OPMNode) getHost().getModel();
     if (source instanceof OPMDecorated<?>) source = (OPMNode)((OPMDecorated<?>)source).getDecorated();
+    
+    if (!OpmValidator.eINSTANCE.validateLink(source, (EClass)request.getNewObjectType()))
+    	return null;
+    
     result.setSource(source);
     result.setLink((OPMLink) request.getNewObject());
     OPMObjectProcessDiagram opd =OPDAnalysis.findOPD((OPMNode) getHost().getModel());
@@ -87,11 +93,13 @@ public class OPMNodeGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy {
     		getHost() instanceof OPMStructuralLinkAggregatorEditPart) {
       return null;
     }
-
     
     OPMLinkCreateCommand linkCreateCommand = (OPMLinkCreateCommand) request.getStartCommand();
     OPMNode target = (OPMNode) getHost().getModel();
     if (target instanceof OPMDecorated<?>) target = (OPMNode)((OPMDecorated<?>)target).getDecorated();
+    if (!OpmValidator.eINSTANCE.validateLink(linkCreateCommand.getSource(), linkCreateCommand.getLink().eClass(), target))
+    	return null;
+    
     linkCreateCommand.setTarget(target);
     if(request.getNewObject() instanceof OPMStructuralLink){
     	setStructuralLinkAggregatorPosition(request);

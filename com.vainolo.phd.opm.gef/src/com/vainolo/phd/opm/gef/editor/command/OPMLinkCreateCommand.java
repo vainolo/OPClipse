@@ -73,6 +73,9 @@ public class OPMLinkCreateCommand extends Command {
   }
   
   public OPMLink getLink() { return link;}
+  
+  public OPMNode getSource() { return source;}
+  public OPMNode getTarget() { return target;}
 
   public void setOPD(OPMObjectProcessDiagram opd) {
     this.opd = opd;

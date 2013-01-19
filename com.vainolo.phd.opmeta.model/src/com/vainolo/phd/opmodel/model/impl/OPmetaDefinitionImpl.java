@@ -7,6 +7,8 @@
 package com.vainolo.phd.opmodel.model.impl;
 
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
+import com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule;
+import com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule;
 import com.vainolo.phd.opmodel.model.PropertyDescriptor;
 import com.vainolo.phd.opmodel.model.TypeDescriptor;
 import com.vainolo.phd.opmodel.model.opmodelPackage;
@@ -39,6 +41,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmetaDefinitionImpl#getContainers <em>Containers</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmetaDefinitionImpl#getLinks <em>Links</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmetaDefinitionImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmetaDefinitionImpl#getLinkValidationRules <em>Link Validation Rules</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmetaDefinitionImpl#getContaimentValidationRules <em>Contaiment Validation Rules</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,6 +96,26 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 	 * @ordered
 	 */
 	protected EList<PropertyDescriptor> properties;
+
+	/**
+	 * The cached value of the '{@link #getLinkValidationRules() <em>Link Validation Rules</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLinkValidationRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OPmodelLinkValidationRule> linkValidationRules;
+
+	/**
+	 * The cached value of the '{@link #getContaimentValidationRules() <em>Contaiment Validation Rules</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContaimentValidationRules()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OPmodelContaimentValidationRule> contaimentValidationRules;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -177,6 +201,30 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public List<OPmodelLinkValidationRule> getLinkValidationRules() {
+		if (linkValidationRules == null) {
+			linkValidationRules = new EObjectContainmentEList<OPmodelLinkValidationRule>(OPmodelLinkValidationRule.class, this, opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES);
+		}
+		return linkValidationRules;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public List<OPmodelContaimentValidationRule> getContaimentValidationRules() {
+		if (contaimentValidationRules == null) {
+			contaimentValidationRules = new EObjectResolvingEList<OPmodelContaimentValidationRule>(OPmodelContaimentValidationRule.class, this, opmodelPackage.OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES);
+		}
+		return contaimentValidationRules;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -184,6 +232,8 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
 			case opmodelPackage.OPMETA_DEFINITION__PROPERTIES:
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
+				return ((InternalEList<?>)getLinkValidationRules()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -206,6 +256,10 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 				return getLinks();
 			case opmodelPackage.OPMETA_DEFINITION__PROPERTIES:
 				return getProperties();
+			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
+				return getLinkValidationRules();
+			case opmodelPackage.OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES:
+				return getContaimentValidationRules();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,6 +293,14 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 				getProperties().clear();
 				getProperties().addAll((Collection<? extends PropertyDescriptor>)newValue);
 				return;
+			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
+				getLinkValidationRules().clear();
+				getLinkValidationRules().addAll((Collection<? extends OPmodelLinkValidationRule>)newValue);
+				return;
+			case opmodelPackage.OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES:
+				getContaimentValidationRules().clear();
+				getContaimentValidationRules().addAll((Collection<? extends OPmodelContaimentValidationRule>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -266,6 +328,12 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 			case opmodelPackage.OPMETA_DEFINITION__PROPERTIES:
 				getProperties().clear();
 				return;
+			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
+				getLinkValidationRules().clear();
+				return;
+			case opmodelPackage.OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES:
+				getContaimentValidationRules().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -288,6 +356,10 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 				return links != null && !links.isEmpty();
 			case opmodelPackage.OPMETA_DEFINITION__PROPERTIES:
 				return properties != null && !properties.isEmpty();
+			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
+				return linkValidationRules != null && !linkValidationRules.isEmpty();
+			case opmodelPackage.OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES:
+				return contaimentValidationRules != null && !contaimentValidationRules.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -4,13 +4,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+
 import com.vainolo.phd.opm.validation.ElementType;
 
-public class ElementTypeClassImpl implements ElementType {
+public class ElementTypeEClassImpl implements ElementType{
 
-	private Class<?> type;
+	private EClass type;
 	
-	public ElementTypeClassImpl(Class<?> type){
+	public ElementTypeEClassImpl(EClass type){
 		if (type == null) throw new NullPointerException();
 		this.type = type;
 	}
@@ -22,10 +24,10 @@ public class ElementTypeClassImpl implements ElementType {
 
 	@Override
 	public List<ElementType> GetParentsOfType() {
-		Class<?>[] parentTypes = type.getDeclaredClasses();
-		List<ElementType> parents = new LinkedList<ElementType>();
-		for (Class<?> parentType:parentTypes){
-			parents.add(new ElementTypeClassImpl(parentType));
+		List<EClass> superTypes = type.getESuperTypes();
+		List<ElementType> parents = new LinkedList<>();
+		for (EClass superT:superTypes){
+			parents.add(new ElementTypeEClassImpl(superT));
 		}
 		return parents;
 	}
@@ -37,8 +39,8 @@ public class ElementTypeClassImpl implements ElementType {
 
 	@Override
 	public boolean equals(Object obj) {
-		if ((obj == null ) || (!(obj instanceof ElementTypeClassImpl))) return false;
-		return type.equals(((ElementTypeClassImpl)obj).type);
+		if ((obj == null ) || (!(obj instanceof ElementTypeEClassImpl))) return false;
+		return type.equals(((ElementTypeEClassImpl)obj).type);
 	}
 	
 	@Override

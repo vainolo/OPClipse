@@ -9,6 +9,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMConsumptionLink;
 import com.vainolo.phd.opm.model.OPMFactory;
+import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.model.OPMProceduralActivationKind;
 
 /**
@@ -33,7 +34,7 @@ public class OPMConsumptionEventLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMConsumptionLink.class;
+    return OPMPackage.eINSTANCE.getOPMConsumptionLink();
   }
 
 }

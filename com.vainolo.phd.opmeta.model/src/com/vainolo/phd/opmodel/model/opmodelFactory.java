@@ -143,6 +143,24 @@ public interface opmodelFactory extends EFactory {
 	PropertyBooleanInstance createPropertyBooleanInstance();
 
 	/**
+	 * Returns a new object of class '<em>OPmodel Link Validation Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OPmodel Link Validation Rule</em>'.
+	 * @generated
+	 */
+	OPmodelLinkValidationRule createOPmodelLinkValidationRule();
+
+	/**
+	 * Returns a new object of class '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * @generated
+	 */
+	OPmodelContaimentValidationRule createOPmodelContaimentValidationRule();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

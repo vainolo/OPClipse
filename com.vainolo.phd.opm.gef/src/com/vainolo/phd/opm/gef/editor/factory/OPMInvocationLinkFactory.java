@@ -10,6 +10,7 @@ import org.eclipse.gef.requests.CreationFactory;
 
 import com.vainolo.phd.opm.model.OPMFactory;
 import com.vainolo.phd.opm.model.OPMInvocationLink;
+import com.vainolo.phd.opm.model.OPMPackage;
 
 /**
  * Factory used by palette tools to create {@link OPMInvocationLink}.
@@ -31,7 +32,7 @@ public class OPMInvocationLinkFactory implements CreationFactory {
 
   @Override
   public Object getObjectType() {
-    return OPMInvocationLink.class;
+    return OPMPackage.eINSTANCE.getOPMInvocationLink();
   }
 
 }

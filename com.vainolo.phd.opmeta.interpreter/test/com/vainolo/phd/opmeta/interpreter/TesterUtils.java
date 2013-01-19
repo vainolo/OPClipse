@@ -28,10 +28,10 @@ public class TesterUtils {
 	
 	// properties test
 	
-	public static OPMAggregationLink createAggregationLink(OPMNode parent, OPMNode child){
+	public static OPMAggregationLink createAggregationLink(OPMNode type, OPMNode property){
 		OPMAggregationLink link = OPMFactory.eINSTANCE.createOPMAggregationLink();
-		link.setSource(parent);
-		link.setTarget(child);
+		link.setSource(type);
+		link.setTarget(property);
 		return link;
 	}
 	

@@ -7,3 +7,4 @@ Bundle-Vendor: Arieh "Vainolo" Bibliowicz
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: com.vainolo.phd.opm.model;bundle-version="1.0.0",
  org.junit
+Export-Package: com.vainolo.phd.opm.validation

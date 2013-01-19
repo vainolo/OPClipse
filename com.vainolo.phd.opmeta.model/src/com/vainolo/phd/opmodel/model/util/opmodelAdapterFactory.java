@@ -129,6 +129,14 @@ public class opmodelAdapterFactory extends AdapterFactoryImpl {
 				return createPropertyBooleanInstanceAdapter();
 			}
 			@Override
+			public Adapter caseOPmodelLinkValidationRule(OPmodelLinkValidationRule object) {
+				return createOPmodelLinkValidationRuleAdapter();
+			}
+			@Override
+			public Adapter caseOPmodelContaimentValidationRule(OPmodelContaimentValidationRule object) {
+				return createOPmodelContaimentValidationRuleAdapter();
+			}
+			@Override
 			public Adapter caseOPMNamedElement(OPMNamedElement object) {
 				return createOPMNamedElementAdapter();
 			}
@@ -345,6 +353,34 @@ public class opmodelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPropertyBooleanInstanceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule <em>OPmodel Link Validation Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule
+	 * @generated
+	 */
+	public Adapter createOPmodelLinkValidationRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule <em>OPmodel Contaiment Validation Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule
+	 * @generated
+	 */
+	public Adapter createOPmodelContaimentValidationRuleAdapter() {
 		return null;
 	}
 
