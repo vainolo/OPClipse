@@ -7,15 +7,14 @@ import java.util.Map;
 
 import com.vainolo.phd.opm.validation.ElementType;
 import com.vainolo.phd.opm.validation.rules.ContainmentRule;
-import com.vainolo.phd.opm.validation.rules.BasicRule;
 
-public class ContainmentRulesContainer extends BasicRulesContainer {
+public class ContainmentRulesContainer extends BasicRulesContainer<ContainmentRule> {
 	
 	private Map<ElementType, List<ContainmentRule>> rules = 
 			new  HashMap<ElementType, List<ContainmentRule>>();
 	
 	@Override
-	protected boolean insertRule(BasicRule newRule, boolean value, boolean isSpecified, 
+	protected boolean insertRule(ContainmentRule newRule, boolean value, boolean isSpecified, 
 			int positiveParentCount, int negativeParentsCount) {
 		if (!(newRule instanceof ContainmentRule)) {
 			return false;
@@ -41,13 +40,13 @@ public class ContainmentRulesContainer extends BasicRulesContainer {
 		return true;
 	}
 	@Override
-	public boolean contains(BasicRule rule) {
+	public boolean contains(ContainmentRule rule) {
 		ContainmentRule specific = getSpecificRule(rule);
 		return (specific != null);
 	}
 		
 	@Override
-	protected ContainmentRule getSpecificRule(BasicRule newOpmRule) {
+	protected ContainmentRule getSpecificRule(ContainmentRule newOpmRule) {
 		if (!(newOpmRule instanceof ContainmentRule)) {
 			return null;
 		}

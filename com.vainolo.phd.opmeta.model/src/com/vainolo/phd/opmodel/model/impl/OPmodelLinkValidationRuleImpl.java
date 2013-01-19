@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelLinkValidationRuleImpl#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelLinkValidationRuleImpl#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelLinkValidationRuleImpl#getSourceType <em>Source Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelLinkValidationRuleImpl#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelLinkValidationRuleImpl#getLinkType <em>Link Type</em>}</li>
@@ -36,24 +36,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmodelLinkValidationRule {
 	/**
-	 * The default value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The default value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_VALID_EDEFAULT = false;
+	protected static final boolean VALID_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The cached value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isValid = IS_VALID_EDEFAULT;
+	protected boolean valid = VALID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSourceType() <em>Source Type</em>}' reference.
@@ -109,8 +109,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsValid() {
-		return isValid;
+	public boolean isValid() {
+		return valid;
 	}
 
 	/**
@@ -118,11 +118,11 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsValid(boolean newIsValid) {
-		boolean oldIsValid = isValid;
-		isValid = newIsValid;
+	public void setValid(boolean newValid) {
+		boolean oldValid = valid;
+		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__IS_VALID, oldIsValid, isValid));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__VALID, oldValid, valid));
 	}
 
 	/**
@@ -247,8 +247,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__IS_VALID:
-				return isIsValid();
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__VALID:
+				return isValid();
 			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__SOURCE_TYPE:
 				if (resolve) return getSourceType();
 				return basicGetSourceType();
@@ -270,8 +270,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__IS_VALID:
-				setIsValid((Boolean)newValue);
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__VALID:
+				setValid((Boolean)newValue);
 				return;
 			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__SOURCE_TYPE:
 				setSourceType((TypeDescriptor)newValue);
@@ -294,8 +294,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__IS_VALID:
-				setIsValid(IS_VALID_EDEFAULT);
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__VALID:
+				setValid(VALID_EDEFAULT);
 				return;
 			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__SOURCE_TYPE:
 				setSourceType((TypeDescriptor)null);
@@ -318,8 +318,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__IS_VALID:
-				return isValid != IS_VALID_EDEFAULT;
+			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__VALID:
+				return valid != VALID_EDEFAULT;
 			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__SOURCE_TYPE:
 				return sourceType != null;
 			case opmodelPackage.OPMODEL_LINK_VALIDATION_RULE__TARGET_TYPE:
@@ -340,8 +340,8 @@ public class OPmodelLinkValidationRuleImpl extends EObjectImpl implements OPmode
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isValid: ");
-		result.append(isValid);
+		result.append(" (valid: ");
+		result.append(valid);
 		result.append(')');
 		return result.toString();
 	}

@@ -12,6 +12,7 @@ import com.vainolo.phd.opm.model.OPMLink;
 import com.vainolo.phd.opm.model.OPMNode;
 import com.vainolo.phd.opm.model.OPMPackage;
 import com.vainolo.phd.opm.utilities.analysis.OPDAnalysis;
+import com.vainolo.phd.opmeta.interpreter.validation.ValidationInterpreter;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
 import com.vainolo.phd.opmodel.model.OPmodelHolder;
@@ -48,14 +49,20 @@ public class OpmetaInterpreter {
 		interpretation.getTypes().addAll(links.values());
 		
 		interpretation.getProperties().addAll(creator.propertyToSpecifingTypeMap.keySet());
+		
 		// TODO : here should be some work of the validations
+		
+		// this wasn't tested all the way
+		// interpretation.getLinkValidationRules().addAll(ValidationInterpreter.calculateLinkValidationRules(diagram.getLinkValidations(),interpretation));
+		
+		
 		
 		OPmodelHolder holder = opmodelFactory.eINSTANCE.createOPmodelHolder();
 		holder.setMetaDefinition(interpretation);
 		holder.setNextId(creator.getNextId());
 		return holder;
 	}
-	
+
 	private OpmetaInterpreter(){}
 	
 	public HashMap<String,TypeDescriptor> CreateGraph(List<OPMNode> origNodes, String rootName, Map<String,TypeDescriptor> existingTypes){
@@ -197,5 +204,7 @@ public class OpmetaInterpreter {
 		nextId ++;
 		return nextId;
 	}
+
+
 	
 }

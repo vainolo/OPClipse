@@ -56,5 +56,8 @@ public abstract class BasicRule {
 	
 	public abstract boolean equals(BasicRule Rule);
 		
+	/*
+	 * This should return rules made of the same type as the rule implementing this method
+	 */
 	public abstract ArrayList<BasicRule> getAllSons();
 }

@@ -3,8 +3,9 @@ package com.vainolo.phd.opm.validation.rules;
 import java.util.ArrayList;
 
 import com.vainolo.phd.opm.validation.ElementType;
+import com.vainolo.phd.opm.validation.IContainmentRule;
 
-public class ContainmentRule extends BasicRule {
+public class ContainmentRule extends BasicRule implements IContainmentRule{
 
 	private ElementType container;
 	private ElementType containedItem;

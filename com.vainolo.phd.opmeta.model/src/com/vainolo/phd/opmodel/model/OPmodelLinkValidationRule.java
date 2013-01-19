@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#getSourceType <em>Source Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#getTargetType <em>Target Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#getLinkType <em>Link Type</em>}</li>
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface OPmodelLinkValidationRule extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Is Valid</b></em>' attribute.
+	 * Returns the value of the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Is Valid</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Valid</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Is Valid</em>' attribute.
-	 * @see #setIsValid(boolean)
-	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelLinkValidationRule_IsValid()
+	 * @return the value of the '<em>Valid</em>' attribute.
+	 * @see #setValid(boolean)
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelLinkValidationRule_Valid()
 	 * @model
 	 * @generated
 	 */
-	boolean isIsValid();
+	boolean isValid();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#isIsValid <em>Is Valid</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule#isValid <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Is Valid</em>' attribute.
-	 * @see #isIsValid()
+	 * @param value the new value of the '<em>Valid</em>' attribute.
+	 * @see #isValid()
 	 * @generated
 	 */
-	void setIsValid(boolean value);
+	void setValid(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Source Type</b></em>' reference.

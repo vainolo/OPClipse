@@ -11,35 +11,35 @@ import com.vainolo.phd.opm.validation.rules.BasicRule;
  * @author itcherno
  *
  */
-public abstract class BasicRulesContainer {
-	private ArrayList<BasicRule> conflictedRules 	= new ArrayList<BasicRule>();
-	private ArrayList<BasicRule> leafRules 		= new ArrayList<BasicRule>();
+public abstract class BasicRulesContainer<TRule extends BasicRule> {
+	private ArrayList<TRule> conflictedRules 	= new ArrayList<TRule>();
+	private ArrayList<TRule> leafRules 		= new ArrayList<TRule>();
 
-	protected abstract boolean insertRule(BasicRule rule, boolean value, boolean isSpecified, 
+	protected abstract boolean insertRule(TRule rule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount);
 
-	protected abstract BasicRule getSpecificRule(BasicRule newRule);
+	protected abstract TRule getSpecificRule(TRule newRule);
 	
-	public abstract boolean contains(BasicRule newRule);
+	public abstract boolean contains(TRule newRule);
 
-	public boolean validate(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	public boolean validate(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
 		return existingRule.getValue();	
 	}
 
-	protected boolean isSpecified(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean isSpecified(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null) {
 			return false;
 		}
 		return existingRule.getIsSpecified();	
 	}
 
-	protected boolean setValue(BasicRule newRule, boolean value) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean setValue(TRule newRule, boolean value) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -49,8 +49,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.setValue(value);	
 	}
 
-	protected boolean incrementPositiveParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean incrementPositiveParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -60,8 +60,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementPositiveParents();	
 	}
 
-	protected boolean decrementPositiveParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean decrementPositiveParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -71,8 +71,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementPositiveParents();	
 	}
 	
-	protected int getPositiveParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected int getPositiveParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
 		}
@@ -80,8 +80,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.getPositiveParentsCount();	
 	}
 	
-	protected int getNegativeParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected int getNegativeParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return -1;
 		}
@@ -89,8 +89,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.getNegativeParentsCount();	
 	}
 
-	protected boolean incrementNegativeParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean incrementNegativeParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -100,8 +100,8 @@ public abstract class BasicRulesContainer {
 		return existingRule.incrementNegativeParents();	
 	}
 
-	protected boolean decrementNegativeParentsCount(BasicRule newRule) {
-		BasicRule existingRule = getSpecificRule(newRule);
+	protected boolean decrementNegativeParentsCount(TRule newRule) {
+		TRule existingRule = getSpecificRule(newRule);
 		if (existingRule == null ) {
 			return false;
 		}
@@ -111,7 +111,7 @@ public abstract class BasicRulesContainer {
 		return existingRule.decrementNegativeParents();	
 	}
 	
-	public boolean addRule (BasicRule newRule, boolean value) {
+	public boolean addRule (TRule newRule, boolean value) {
 		// if this rule already exists as a "specified" rule - do nothing
 		if (this.isSpecified(newRule)) {
 			return false;
@@ -131,7 +131,8 @@ public abstract class BasicRulesContainer {
 		return this.addRule(newRule, value, true, 0, 0);
 	}
 	
-	private boolean addRule(BasicRule newRule, boolean value, boolean isSpecified, 
+	@SuppressWarnings("unchecked")
+	private boolean addRule(TRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {   //Return 0 if done, 1 otherwise
 		// if this rule already exists as a "specified" rule - do nothing
 		if (this.isSpecified(newRule)) {
@@ -148,7 +149,7 @@ public abstract class BasicRulesContainer {
 			else {
 				this.setValue(newRule, value);
 				for (BasicRule derivedRule: newRule.getAllSons()) {
-					handleRuleChange(derivedRule, value);
+					handleRuleChange((TRule)derivedRule, value);
 				}
 			}
 		}
@@ -161,14 +162,14 @@ public abstract class BasicRulesContainer {
 			}
 			else {
 				for (BasicRule derivedRule: derivedRules) {
-					handleRuleAdd(derivedRule, value);
+					handleRuleAdd((TRule)derivedRule, value);
 				}
 			}
 		}
 		return true;
 	};
 	
-	private boolean handleRuleChange (BasicRule newRule, boolean newValueOfParent) {
+	private boolean handleRuleChange (TRule newRule, boolean newValueOfParent) {
 		if (newValueOfParent == true) {
 			this.incrementPositiveParentsCount(newRule);
 			this.decrementNegativeParentsCount(newRule);
@@ -209,7 +210,7 @@ public abstract class BasicRulesContainer {
 		return true;
 	}
 	
-	private boolean handleRuleAdd (BasicRule newRule, boolean valueOfParent) {
+	private boolean handleRuleAdd (TRule newRule, boolean valueOfParent) {
 		// if this rule already exist - handle parent count and deduce rules/add to conflicts
 		if (this.contains(newRule)) {
 			if (valueOfParent) {
@@ -250,7 +251,16 @@ public abstract class BasicRulesContainer {
 		return (! this.conflictedRules.isEmpty() );
 	}
 	
-	public ArrayList<BasicRule> getLeafRules() {
+	public ArrayList<TRule> getLeafRules() {
 		return this.leafRules;
+	}
+	
+	public void testForConflictedRules() throws Exception {
+		if (this.conflictedRules.isEmpty()) return;
+		
+		StringBuilder msg = new StringBuilder("unhandled conflict rule");
+		// TODO build an explaining message
+		Exception ex = new Exception(msg.toString()); 
+		throw(ex);
 	}
 }

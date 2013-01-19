@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#isIsValid <em>Is Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#isValid <em>Valid</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#getContainerType <em>Container Type</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#getNodeType <em>Node Type</em>}</li>
  * </ul>
@@ -35,24 +35,24 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  */
 public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements OPmodelContaimentValidationRule {
 	/**
-	 * The default value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The default value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_VALID_EDEFAULT = false;
+	protected static final boolean VALID_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isIsValid() <em>Is Valid</em>}' attribute.
+	 * The cached value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsValid()
+	 * @see #isValid()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isValid = IS_VALID_EDEFAULT;
+	protected boolean valid = VALID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getContainerType() <em>Container Type</em>}' reference.
@@ -98,8 +98,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsValid() {
-		return isValid;
+	public boolean isValid() {
+		return valid;
 	}
 
 	/**
@@ -107,11 +107,11 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsValid(boolean newIsValid) {
-		boolean oldIsValid = isValid;
-		isValid = newIsValid;
+	public void setValid(boolean newValid) {
+		boolean oldValid = valid;
+		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID, oldIsValid, isValid));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID, oldValid, valid));
 	}
 
 	/**
@@ -198,8 +198,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				return isIsValid();
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				return isValid();
 			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				if (resolve) return getContainerType();
 				return basicGetContainerType();
@@ -218,8 +218,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				setIsValid((Boolean)newValue);
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				setValid((Boolean)newValue);
 				return;
 			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				setContainerType((TypeDescriptor)newValue);
@@ -239,8 +239,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				setIsValid(IS_VALID_EDEFAULT);
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				setValid(VALID_EDEFAULT);
 				return;
 			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				setContainerType((TypeDescriptor)null);
@@ -260,8 +260,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__IS_VALID:
-				return isValid != IS_VALID_EDEFAULT;
+			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+				return valid != VALID_EDEFAULT;
 			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				return containerType != null;
 			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE:
@@ -280,8 +280,8 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isValid: ");
-		result.append(isValid);
+		result.append(" (valid: ");
+		result.append(valid);
 		result.append(')');
 		return result.toString();
 	}

@@ -6,16 +6,15 @@ import java.util.List;
 import java.util.Map;
 
 import com.vainolo.phd.opm.validation.ElementType;
-import com.vainolo.phd.opm.validation.rules.BasicRule;
 import com.vainolo.phd.opm.validation.rules.LinkRule;
 
-public class LinkRulesContainer extends BasicRulesContainer	 {
+public class LinkRulesContainer extends BasicRulesContainer<LinkRule>	 {
 	
 	
 	private Map<ElementType, Map<ElementType, List<LinkRule>>> rules = 
 			new  HashMap<ElementType, Map<ElementType, List<LinkRule>>>();
 	
-	protected boolean insertRule(BasicRule newRule, boolean value, boolean isSpecified, 
+	protected boolean insertRule(LinkRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {
 		if (!(newRule instanceof LinkRule)) {
 			return false;
@@ -47,7 +46,7 @@ public class LinkRulesContainer extends BasicRulesContainer	 {
 		return true;
 	}
 	
-	public boolean contains(BasicRule rule) {
+	public boolean contains(LinkRule rule) {
 		return (getSpecificRule(rule) != null);
 	}
 	
@@ -63,7 +62,7 @@ public class LinkRulesContainer extends BasicRulesContainer	 {
 		return false;
 	}
 	
-	protected LinkRule getSpecificRule(BasicRule newOpmRule) {
+	protected LinkRule getSpecificRule(LinkRule newOpmRule) {
 		if (!(newOpmRule instanceof LinkRule)) {
 			return null;
 		}

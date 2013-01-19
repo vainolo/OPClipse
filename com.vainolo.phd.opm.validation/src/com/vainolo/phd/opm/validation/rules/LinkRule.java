@@ -3,8 +3,9 @@ package com.vainolo.phd.opm.validation.rules;
 import java.util.ArrayList;
 
 import com.vainolo.phd.opm.validation.ElementType;
+import com.vainolo.phd.opm.validation.ILinkRule;
 
-public class LinkRule extends BasicRule {
+public class LinkRule extends BasicRule implements ILinkRule {
 	
 	private ElementType link;
 	private ElementType from;
