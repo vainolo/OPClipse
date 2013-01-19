@@ -12,7 +12,7 @@ public abstract class BaseValidator<T extends BasicRulesContainer> {
 		this.rulesMat = rulesMat;
 		this.initDone = false;
 	}
-		
+	
 	public boolean finalizeInit () throws Exception{
 		if (this.initDone) {
 			return false;
