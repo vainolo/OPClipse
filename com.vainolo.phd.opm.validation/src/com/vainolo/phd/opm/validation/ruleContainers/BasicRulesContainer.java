@@ -6,6 +6,7 @@ package com.vainolo.phd.opm.validation.ruleContainers;
 import java.util.ArrayList;
 
 import com.vainolo.phd.opm.validation.rules.BasicRule;
+import com.vainolo.phd.opm.validation.rules.LinkRule;
 
 /**
  * @author itcherno
@@ -121,9 +122,10 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		if (this.contains(newRule)) {
 			// if it has the same value - set to specified, remove from conflicted rules if needed and do nothing further
 			if (this.validate(newRule) == value) {
-				this.insertRule(newRule, value, true, 0, 0);//change to GetSpecificRule(newRule).setIsSpesified(true)
+				this.getSpecificRule(newRule).setIsSpecified(true);//, value, true, 0, 0);//change to GetSpecificRule(newRule).setIsSpesified(true)
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
+					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				return true;
 			}
@@ -177,12 +179,14 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 			if (this.getNegativeParentsCount(newRule) > 0 ) {
 				if (! conflictedRules.contains(newRule)) {
 					conflictedRules.add(newRule);
+					dbgPrint("added rule:" + toStr(newRule));
 				}
 			}
 			// rule is not conflicted -> remove from conf. rules if needed, and deduce new rules 
 			else {
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
+					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				int posParentCount = this.getPositiveParentsCount(newRule);
 				// TODO - think about it
@@ -196,12 +200,14 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 			if (this.getPositiveParentsCount(newRule) > 0 ) {
 				if (! conflictedRules.contains(newRule)) {
 					conflictedRules.add(newRule);
+					dbgPrint("added rule:" + toStr(newRule));
 				}
 			}
 			// rule is not conflicted -> remove from conf. rules if needed, and deduce new rules 
 			else {
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
+					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				int negParentCount = this.getNegativeParentsCount(newRule);
 				this.addRule(newRule, newValueOfParent, false, 0, negParentCount);
@@ -219,6 +225,7 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 				if (this.getNegativeParentsCount(newRule) > 0 ) {
 					if (! conflictedRules.contains(newRule)) {
 						conflictedRules.add(newRule);
+						dbgPrint("added rule:" + toStr(newRule));
 					}
 					return true;
 				}
@@ -231,6 +238,7 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 				if (this.getPositiveParentsCount(newRule) > 0 ) {
 					if (! conflictedRules.contains(newRule)) {
 						conflictedRules.add(newRule);
+						dbgPrint("added rule:" + toStr(newRule));
 					}
 					return true;
 				}
@@ -239,10 +247,10 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		}
 		// rules does not exist - add it
 		else if (valueOfParent) {
-			this.insertRule(newRule, valueOfParent, false, 1, 0);
+			this.addRule(newRule, valueOfParent, false, 1, 0);
 		}
 		else {
-			this.insertRule(newRule, valueOfParent, false, 0, 1);
+			this.addRule(newRule, valueOfParent, false, 0, 1);
 		}
 		return true;
 	}
@@ -258,9 +266,21 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 	public void testForConflictedRules() throws Exception {
 		if (this.conflictedRules.isEmpty()) return;
 		
-		StringBuilder msg = new StringBuilder("unhandled conflict rule");
+		StringBuilder msg = new StringBuilder("unhandled conflicet rule: " + "'" + conflictedRules.get(0).toString() + "'");
 		// TODO build an explaining message
 		Exception ex = new Exception(msg.toString()); 
 		throw(ex);
+	}
+	
+	public String toStr(TRule rule) {
+		LinkRule lrule = (LinkRule) rule;
+		String ret = "";
+		ret += lrule.From().GetType() + " ";
+		ret += lrule.Link().GetType() + " ";
+		ret += lrule.To().GetType();
+		return ret;		
+	}
+	public void dbgPrint(String str) {
+		System.out.println(str + "\n");
 	}
 }

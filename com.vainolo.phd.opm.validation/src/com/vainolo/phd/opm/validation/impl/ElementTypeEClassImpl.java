@@ -14,12 +14,17 @@ public class ElementTypeEClassImpl implements ElementType{
 	
 	public ElementTypeEClassImpl(EClass type){
 		if (type == null) throw new NullPointerException();
-		this.type = type;
+		this.type 		= type;
 	}
 	
 	@Override
 	public Object GetType() {
 		return type;
+	}
+	
+	@Override
+	public String getTypeName() {
+		return "";
 	}
 
 	@Override

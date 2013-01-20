@@ -53,9 +53,12 @@ public abstract class BasicRule {
 	public boolean getIsSpecified(){
 		return this.isSpecified;
 	}
+	public boolean setIsSpecified(boolean value){
+		this.isSpecified = value;
+		return true;
+	}
 	
-	public abstract boolean equals(BasicRule Rule);
-		
+	public abstract String toString();
 	/*
 	 * This should return rules made of the same type as the rule implementing this method
 	 */

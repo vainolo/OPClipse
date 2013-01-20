@@ -53,7 +53,7 @@ public class ContainmentRule extends BasicRule implements IContainmentRule{
 		return this.derivedRules;
 	}
 	@Override
-	public boolean equals(BasicRule rule) {
+	public boolean equals(Object rule) {
 		if (!(rule instanceof ContainmentRule)) {
 			return false;
 		}
@@ -68,6 +68,11 @@ public class ContainmentRule extends BasicRule implements IContainmentRule{
 		ret += (3* container.hashCode() 	) 	;
 		ret += (5* containedItem.hashCode() )	;
 		return ret;
+	}
+
+	@Override
+	public String toString() {
+		return container.getTypeName() + " contains " + containedItem.getTypeName();
 	}
 
 }

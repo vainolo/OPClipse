@@ -6,5 +6,6 @@ public interface ElementType {
 	public Object GetType();
 	public List<ElementType> GetParentsOfType();
 	public List<ElementType> GetSonsOfType();
+	public String getTypeName(); 
 	
 }
