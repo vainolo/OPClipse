@@ -383,6 +383,8 @@ public class OpmetaInterpreterTester {
 		
 	}
 	
+	// TODO : add test of Object no properties is grandson to both container and node 
+	
 	private void testCreateThingAndPassPropertiesInterpretationTestProperties(TypeDescriptor testable){
 		Iterable<PropertyDescriptor> properties = testable.getProperties();
 		ArrayList<PropertyDescriptor> props = new ArrayList<PropertyDescriptor>();  

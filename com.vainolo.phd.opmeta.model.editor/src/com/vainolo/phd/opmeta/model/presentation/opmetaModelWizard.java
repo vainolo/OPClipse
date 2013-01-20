@@ -62,7 +62,7 @@ import com.vainolo.phd.opm.model.OPMObject;
 import com.vainolo.phd.opm.model.OPMObjectProcessDiagram;
 //import com.vainolo.phd.opm.model.OPMState;
 //import com.vainolo.phd.opm.model.VerticalAlignment;
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
@@ -211,11 +211,11 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		linkObj.setConstraints(new Rectangle(368,38,159,57));
 		rootObject.getLinksDiagram().getNodes().add(linkObj);
 		
-		OPMetaModelContaimentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		OPMetaModelContainmentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Container");
 		rule.setNodeTypeName("Node");
 		rule.setValid(true);
-		rootObject.getContaimentValidations().add(rule);
+		rootObject.getContainmentValidations().add(rule);
 		
 		OPMetaModelLinkValidationRule ruleLink = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
 		ruleLink.setLinkTypeName("Link");
@@ -231,7 +231,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	private void fillOpm(OPMetaModelDiagram rootObject){
 		long lastId = fillOpmElements(rootObject.getElementsDiagram());
 		lastId = fillOpmLinks(rootObject.getLinksDiagram(),lastId);
-		fillOpmContaimentRules(rootObject.getContaimentValidations());
+		fillOpmContainmentRules(rootObject.getContainmentValidations());
 		fillOpmLinkRules(rootObject.getLinkValidations());
 		rootObject.getElementsDiagram().setNextId(++lastId);
 		rootObject.getLinksDiagram().setNextId(lastId);
@@ -270,7 +270,7 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		
 		// Structural links
 		OPMObject generalizeObj = OPMFactory.eINSTANCE.createOPMObject();
-		generalizeObj.setName("Generalize Link");
+		generalizeObj.setName("Generalization Link");
 		generalizeObj.setId(++id);
 		generalizeObj.setConstraints(new Rectangle(709,194,120,50));
 		linksDiagram.getNodes().add(generalizeObj);
@@ -486,23 +486,23 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		
 	}
 
-	private void fillOpmContaimentRules(List<OPMetaModelContaimentValidationRule> contaimentRules){
-		OPMetaModelContaimentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+	private void fillOpmContainmentRules(List<OPMetaModelContainmentValidationRule> contaimentRules){
+		OPMetaModelContainmentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Diagram");
 		rule.setNodeTypeName("Node");
 		rule.setValid(true);
 		contaimentRules.add(rule);
-		rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Diagram");
 		rule.setNodeTypeName("State");
 		rule.setValid(false);
 		contaimentRules.add(rule);
-		rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Thing");
 		rule.setNodeTypeName("Thing");
 		rule.setValid(true);
 		contaimentRules.add(rule);
-		rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Object");
 		rule.setNodeTypeName("State");
 		rule.setValid(true);
@@ -512,31 +512,31 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 	private void fillOpmLinkRules(List<OPMetaModelLinkValidationRule> linkRules){
 		// Structural link rules
 		OPMetaModelLinkValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Aggregation");
+		rule.setLinkTypeName("Aggregation Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Object");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Aggregation");
+		rule.setLinkTypeName("Aggregation Link");
 		rule.setSourceTypeName("Process");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Generalization");
+		rule.setLinkTypeName("Generalization Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Object");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Generalization");
+		rule.setLinkTypeName("Generalization Link");
 		rule.setSourceTypeName("Process");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Exhibition");
+		rule.setLinkTypeName("Exhibition Link");
 		rule.setSourceTypeName("Thing");
 		rule.setTargetTypeName("Thing");
 		rule.setValid(true);
@@ -544,69 +544,69 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		
 		// Procedural link rules
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Agent");
+		rule.setLinkTypeName("Agent Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Agent");
+		rule.setLinkTypeName("Agent Link");
 		rule.setSourceTypeName("State");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Instrument");
+		rule.setLinkTypeName("Instrument Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Instrument");
+		rule.setLinkTypeName("Instrument Link");
 		rule.setSourceTypeName("State");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Consumption");
+		rule.setLinkTypeName("Consumption Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Consumption");
+		rule.setLinkTypeName("Consumption Link");
 		rule.setSourceTypeName("State");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Effect");
+		rule.setLinkTypeName("Effect Link");
 		rule.setSourceTypeName("Object");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Effect");
+		rule.setLinkTypeName("Effect Link");
 		rule.setSourceTypeName("State");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);
 		linkRules.add(rule);
 		
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Result");
+		rule.setLinkTypeName("Result Link");
 		rule.setSourceTypeName("Process");
 		rule.setTargetTypeName("Object");
 		rule.setValid(true);
 		linkRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Result");
+		rule.setLinkTypeName("Result Link");
 		rule.setSourceTypeName("Process");
 		rule.setTargetTypeName("State");
 		rule.setValid(true);
 		linkRules.add(rule);
 		
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelLinkValidationRule();
-		rule.setLinkTypeName("Invocation");
+		rule.setLinkTypeName("Invocation Link");
 		rule.setSourceTypeName("Process");
 		rule.setTargetTypeName("Process");
 		rule.setValid(true);

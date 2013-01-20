@@ -109,7 +109,7 @@ public class OpmodelFactoryTest {
 	}
 	
 	
-	@Test
+	// TODO make this into a unit test!
 	public void testSettingProperties() {
 		// print ALL the stuff and modify and shit
 		Collection<TypeDescriptor> nodes = interpretation.getNodes();

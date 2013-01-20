@@ -2,19 +2,19 @@ package com.vainolo.phd.opmeta.gef.editor.command;
 
 import org.eclipse.gef.commands.Command;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 
-public class OPMetaModelContaimentValidationRuleEditCommand extends Command {
+public class OPMetaModelContainmentValidationRuleEditCommand extends Command {
 
-	private OPMetaModelContaimentValidationRule orig;
-	private OPMetaModelContaimentValidationRule changes;
-	private OPMetaModelContaimentValidationRule rule;
+	private OPMetaModelContainmentValidationRule orig;
+	private OPMetaModelContainmentValidationRule changes;
+	private OPMetaModelContainmentValidationRule rule;
 	
-	public OPMetaModelContaimentValidationRuleEditCommand(OPMetaModelContaimentValidationRule rule,OPMetaModelContaimentValidationRule changes){
+	public OPMetaModelContainmentValidationRuleEditCommand(OPMetaModelContainmentValidationRule rule,OPMetaModelContainmentValidationRule changes){
 		this.rule = rule;
 		this.changes = changes;
-		this.orig = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+		this.orig = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		orig.setContainerTypeName(rule.getContainerTypeName());
 		orig.setNodeTypeName(rule.getNodeTypeName());
 		orig.setValid(rule.isValid());

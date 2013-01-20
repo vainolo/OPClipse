@@ -10,7 +10,7 @@ import com.vainolo.phd.opm.model.OPMPackage;
 
 import com.vainolo.phd.opm.model.impl.OPMPackageImpl;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
@@ -42,7 +42,7 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass opMetaModelContaimentValidationRuleEClass = null;
+	private EClass opMetaModelContainmentValidationRuleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -158,7 +158,7 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOPMetaModelDiagram_ContaimentValidations() {
+	public EReference getOPMetaModelDiagram_ContainmentValidations() {
 		return (EReference)opMetaModelDiagramEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -167,8 +167,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPMetaModelContaimentValidationRule() {
-		return opMetaModelContaimentValidationRuleEClass;
+	public EClass getOPMetaModelContainmentValidationRule() {
+		return opMetaModelContainmentValidationRuleEClass;
 	}
 
 	/**
@@ -176,8 +176,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPMetaModelContaimentValidationRule_Valid() {
-		return (EAttribute)opMetaModelContaimentValidationRuleEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOPMetaModelContainmentValidationRule_Valid() {
+		return (EAttribute)opMetaModelContainmentValidationRuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -185,8 +185,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPMetaModelContaimentValidationRule_ContainerTypeName() {
-		return (EAttribute)opMetaModelContaimentValidationRuleEClass.getEStructuralFeatures().get(1);
+	public EAttribute getOPMetaModelContainmentValidationRule_ContainerTypeName() {
+		return (EAttribute)opMetaModelContainmentValidationRuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -194,8 +194,8 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPMetaModelContaimentValidationRule_NodeTypeName() {
-		return (EAttribute)opMetaModelContaimentValidationRuleEClass.getEStructuralFeatures().get(2);
+	public EAttribute getOPMetaModelContainmentValidationRule_NodeTypeName() {
+		return (EAttribute)opMetaModelContainmentValidationRuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -275,12 +275,12 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__ELEMENTS_DIAGRAM);
 		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__LINKS_DIAGRAM);
 		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__LINK_VALIDATIONS);
-		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__CONTAIMENT_VALIDATIONS);
+		createEReference(opMetaModelDiagramEClass, OP_META_MODEL_DIAGRAM__CONTAINMENT_VALIDATIONS);
 
-		opMetaModelContaimentValidationRuleEClass = createEClass(OP_META_MODEL_CONTAIMENT_VALIDATION_RULE);
-		createEAttribute(opMetaModelContaimentValidationRuleEClass, OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__VALID);
-		createEAttribute(opMetaModelContaimentValidationRuleEClass, OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME);
-		createEAttribute(opMetaModelContaimentValidationRuleEClass, OP_META_MODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE_NAME);
+		opMetaModelContainmentValidationRuleEClass = createEClass(OP_META_MODEL_CONTAINMENT_VALIDATION_RULE);
+		createEAttribute(opMetaModelContainmentValidationRuleEClass, OP_META_MODEL_CONTAINMENT_VALIDATION_RULE__VALID);
+		createEAttribute(opMetaModelContainmentValidationRuleEClass, OP_META_MODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE_NAME);
+		createEAttribute(opMetaModelContainmentValidationRuleEClass, OP_META_MODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE_NAME);
 
 		opMetaModelLinkValidationRuleEClass = createEClass(OP_META_MODEL_LINK_VALIDATION_RULE);
 		createEAttribute(opMetaModelLinkValidationRuleEClass, OP_META_MODEL_LINK_VALIDATION_RULE__VALID);
@@ -326,12 +326,12 @@ public class opmetaPackageImpl extends EPackageImpl implements opmetaPackage {
 		initEReference(getOPMetaModelDiagram_ElementsDiagram(), theOPMPackage.getOPMObjectProcessDiagram(), null, "ElementsDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPMetaModelDiagram_LinksDiagram(), theOPMPackage.getOPMObjectProcessDiagram(), null, "LinksDiagram", null, 1, 1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPMetaModelDiagram_LinkValidations(), this.getOPMetaModelLinkValidationRule(), null, "LinkValidations", null, 0, -1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPMetaModelDiagram_ContaimentValidations(), this.getOPMetaModelContaimentValidationRule(), null, "ContaimentValidations", null, 0, -1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPMetaModelDiagram_ContainmentValidations(), this.getOPMetaModelContainmentValidationRule(), null, "ContainmentValidations", null, 0, -1, OPMetaModelDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(opMetaModelContaimentValidationRuleEClass, OPMetaModelContaimentValidationRule.class, "OPMetaModelContaimentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOPMetaModelContaimentValidationRule_Valid(), ecorePackage.getEBoolean(), "Valid", null, 1, 1, OPMetaModelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOPMetaModelContaimentValidationRule_ContainerTypeName(), ecorePackage.getEString(), "ContainerTypeName", null, 1, 1, OPMetaModelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOPMetaModelContaimentValidationRule_NodeTypeName(), ecorePackage.getEString(), "NodeTypeName", null, 1, 1, OPMetaModelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(opMetaModelContainmentValidationRuleEClass, OPMetaModelContainmentValidationRule.class, "OPMetaModelContainmentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOPMetaModelContainmentValidationRule_Valid(), ecorePackage.getEBoolean(), "Valid", null, 1, 1, OPMetaModelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOPMetaModelContainmentValidationRule_ContainerTypeName(), ecorePackage.getEString(), "ContainerTypeName", null, 1, 1, OPMetaModelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOPMetaModelContainmentValidationRule_NodeTypeName(), ecorePackage.getEString(), "NodeTypeName", null, 1, 1, OPMetaModelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(opMetaModelLinkValidationRuleEClass, OPMetaModelLinkValidationRule.class, "OPMetaModelLinkValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getOPMetaModelLinkValidationRule_Valid(), ecorePackage.getEBoolean(), "Valid", null, 1, 1, OPMetaModelLinkValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

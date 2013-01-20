@@ -5,14 +5,14 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 
-public class EditContaimentValidationRuleDialog extends
-		AddContaimentValidationRuleDialog {
+public class EditContainmentValidationRuleDialog extends
+		AddContainmentValidationRuleDialog {
 
-	private final OPMetaModelContaimentValidationRule editedRule;
+	private final OPMetaModelContainmentValidationRule editedRule;
 	
-	public EditContaimentValidationRuleDialog(Shell parentShell, final OPMetaModelContaimentValidationRule editedRule) {
+	public EditContainmentValidationRuleDialog(Shell parentShell, final OPMetaModelContainmentValidationRule editedRule) {
 		super(parentShell);
 		this.editedRule = editedRule;
 	}

@@ -152,13 +152,13 @@ public interface opmodelFactory extends EFactory {
 	OPmodelLinkValidationRule createOPmodelLinkValidationRule();
 
 	/**
-	 * Returns a new object of class '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * Returns a new object of class '<em>OPmodel Containment Validation Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * @return a new object of class '<em>OPmodel Containment Validation Rule</em>'.
 	 * @generated
 	 */
-	OPmodelContaimentValidationRule createOPmodelContaimentValidationRule();
+	OPmodelContainmentValidationRule createOPmodelContainmentValidationRule();
 
 	/**
 	 * Returns the package supported by this factory.

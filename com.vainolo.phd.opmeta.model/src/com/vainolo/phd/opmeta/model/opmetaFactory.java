@@ -35,13 +35,13 @@ public interface opmetaFactory extends EFactory {
 	OPMetaModelDiagram createOPMetaModelDiagram();
 
 	/**
-	 * Returns a new object of class '<em>OP Meta Model Contaiment Validation Rule</em>'.
+	 * Returns a new object of class '<em>OP Meta Model Containment Validation Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>OP Meta Model Contaiment Validation Rule</em>'.
+	 * @return a new object of class '<em>OP Meta Model Containment Validation Rule</em>'.
 	 * @generated
 	 */
-	OPMetaModelContaimentValidationRule createOPMetaModelContaimentValidationRule();
+	OPMetaModelContainmentValidationRule createOPMetaModelContainmentValidationRule();
 
 	/**
 	 * Returns a new object of class '<em>OP Meta Model Link Validation Rule</em>'.

@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.eclipse.gef.commands.Command;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 
-public class OPMetaModelContaimentValidationRuleRemoveCommand extends Command {
+public class OPMetaModelContainmentValidationRuleRemoveCommand extends Command {
 
-	private List<OPMetaModelContaimentValidationRule> list;
-	private OPMetaModelContaimentValidationRule rule;
+	private List<OPMetaModelContainmentValidationRule> list;
+	private OPMetaModelContainmentValidationRule rule;
 	private boolean didRemove;
 	
-	public OPMetaModelContaimentValidationRuleRemoveCommand(List<OPMetaModelContaimentValidationRule> list, OPMetaModelContaimentValidationRule rule){
+	public OPMetaModelContainmentValidationRuleRemoveCommand(List<OPMetaModelContainmentValidationRule> list, OPMetaModelContainmentValidationRule rule){
 		this.list = list;
 		this.rule = rule;
 	}

@@ -12,10 +12,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="LinkValidations" upperBound="-1"
         eType="#//OPMetaModelLinkValidationRule" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ContaimentValidations"
-        upperBound="-1" eType="#//OPMetaModelContaimentValidationRule" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ContainmentValidations"
+        upperBound="-1" eType="#//OPMetaModelContainmentValidationRule" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContaimentValidationRule">
+  <eClassifiers xsi:type="ecore:EClass" name="OPMetaModelContainmentValidationRule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="Valid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ContainerTypeName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
