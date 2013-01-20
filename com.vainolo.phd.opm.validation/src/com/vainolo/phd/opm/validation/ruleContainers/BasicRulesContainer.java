@@ -125,7 +125,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 				this.getSpecificRule(newRule).setIsSpecified(true);//, value, true, 0, 0);//change to GetSpecificRule(newRule).setIsSpesified(true)
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
-					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				return true;
 			}
@@ -179,14 +178,12 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 			if (this.getNegativeParentsCount(newRule) > 0 ) {
 				if (! conflictedRules.contains(newRule)) {
 					conflictedRules.add(newRule);
-					dbgPrint("added rule:" + toStr(newRule));
 				}
 			}
 			// rule is not conflicted -> remove from conf. rules if needed, and deduce new rules 
 			else {
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
-					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				int posParentCount = this.getPositiveParentsCount(newRule);
 				// TODO - think about it
@@ -200,14 +197,12 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 			if (this.getPositiveParentsCount(newRule) > 0 ) {
 				if (! conflictedRules.contains(newRule)) {
 					conflictedRules.add(newRule);
-					dbgPrint("added rule:" + toStr(newRule));
 				}
 			}
 			// rule is not conflicted -> remove from conf. rules if needed, and deduce new rules 
 			else {
 				if (conflictedRules.contains(newRule)) {
 					conflictedRules.remove(newRule);
-					dbgPrint("removed rule:" + toStr(newRule));
 				}
 				int negParentCount = this.getNegativeParentsCount(newRule);
 				this.addRule(newRule, newValueOfParent, false, 0, negParentCount);
@@ -225,7 +220,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 				if (this.getNegativeParentsCount(newRule) > 0 ) {
 					if (! conflictedRules.contains(newRule)) {
 						conflictedRules.add(newRule);
-						dbgPrint("added rule:" + toStr(newRule));
 					}
 					return true;
 				}
@@ -238,7 +232,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 				if (this.getPositiveParentsCount(newRule) > 0 ) {
 					if (! conflictedRules.contains(newRule)) {
 						conflictedRules.add(newRule);
-						dbgPrint("added rule:" + toStr(newRule));
 					}
 					return true;
 				}
@@ -280,7 +273,5 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		ret += lrule.To().GetType();
 		return ret;		
 	}
-	public void dbgPrint(String str) {
-		System.out.println(str + "\n");
-	}
+
 }
