@@ -6,7 +6,6 @@ package com.vainolo.phd.opm.validation.ruleContainers;
 import java.util.ArrayList;
 
 import com.vainolo.phd.opm.validation.rules.BasicRule;
-import com.vainolo.phd.opm.validation.rules.LinkRule;
 
 /**
  * @author itcherno
@@ -263,15 +262,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		// TODO build an explaining message
 		Exception ex = new Exception(msg.toString()); 
 		throw(ex);
-	}
-	
-	public String toStr(TRule rule) {
-		LinkRule lrule = (LinkRule) rule;
-		String ret = "";
-		ret += lrule.From().GetType() + " ";
-		ret += lrule.Link().GetType() + " ";
-		ret += lrule.To().GetType();
-		return ret;		
 	}
 
 }
