@@ -15,7 +15,7 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 	private ArrayList<TRule> conflictedRules 	= new ArrayList<TRule>();
 	private ArrayList<TRule> leafRules 		= new ArrayList<TRule>();
 
-	protected abstract boolean insertRule(TRule rule, boolean value, boolean isSpecified, 
+	protected abstract TRule insertRule(TRule rule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount);
 
 	protected abstract TRule getSpecificRule(TRule newRule);
@@ -155,10 +155,10 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		}
 		// this rule does not exist - set it with the appropriate parameters and set all sons
 		else {
-			this.insertRule(newRule, value, isSpecified, PositiveParentCount, negativeParentsCount);
-			ArrayList<BasicRule> derivedRules = newRule.getAllSons();
+			TRule addedRule = this.insertRule(newRule, value, isSpecified, PositiveParentCount, negativeParentsCount);
+			ArrayList<BasicRule> derivedRules = addedRule.getAllSons();
 			if (derivedRules.isEmpty() ) {
-				leafRules.add(newRule);
+				leafRules.add(addedRule);
 			}
 			else {
 				for (BasicRule derivedRule: derivedRules) {

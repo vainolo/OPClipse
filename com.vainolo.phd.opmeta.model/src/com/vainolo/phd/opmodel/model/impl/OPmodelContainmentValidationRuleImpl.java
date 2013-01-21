@@ -273,14 +273,18 @@ public class OPmodelContainmentValidationRuleImpl extends EObjectImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (valid: ");
+		result.append(" (containerType: ");
+		result.append(containerType.getName());
+		result.append(", nodeType: ");
+		result.append(nodeType.getName());
+		result.append(", valid: ");
 		result.append(valid);
 		result.append(')');
 		return result.toString();

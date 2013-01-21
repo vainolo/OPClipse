@@ -14,10 +14,10 @@ public class ContainmentRulesContainer extends BasicRulesContainer<ContainmentRu
 			new  HashMap<ElementType, List<ContainmentRule>>();
 	
 	@Override
-	protected boolean insertRule(ContainmentRule newRule, boolean value, boolean isSpecified, 
+	protected ContainmentRule insertRule(ContainmentRule newRule, boolean value, boolean isSpecified, 
 			int positiveParentCount, int negativeParentsCount) {
 		if (!(newRule instanceof ContainmentRule)) {
-			return false;
+			return null;
 		}
 		ContainmentRule newOpmRule = (ContainmentRule) newRule;
 		ElementType container = newOpmRule.container();
@@ -33,7 +33,7 @@ public class ContainmentRulesContainer extends BasicRulesContainer<ContainmentRu
 		ContainmentRule newContainmentRule = new ContainmentRule(container,containedItem,positiveParentCount,negativeParentsCount, isSpecified,value);
 		rules.get(container).add(newContainmentRule);
 		
-		return true;
+		return newContainmentRule;
 	}
 	@Override
 	public boolean contains(ContainmentRule rule) {

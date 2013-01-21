@@ -14,10 +14,10 @@ public class LinkRulesContainer extends BasicRulesContainer<LinkRule>	 {
 	private Map<ElementType, Map<ElementType, List<LinkRule>>> rules = 
 			new  HashMap<ElementType, Map<ElementType, List<LinkRule>>>();
 	
-	protected boolean insertRule(LinkRule newRule, boolean value, boolean isSpecified, 
+	protected LinkRule insertRule(LinkRule newRule, boolean value, boolean isSpecified, 
 			int PositiveParentCount, int negativeParentsCount) {
 		if (!(newRule instanceof LinkRule)) {
-			return false;
+			return null;
 		}
 		LinkRule newOpmRule = (LinkRule) newRule;
 		
@@ -39,7 +39,7 @@ public class LinkRulesContainer extends BasicRulesContainer<LinkRule>	 {
 		LinkRule newLinkRule = new LinkRule(from,link,to,PositiveParentCount,negativeParentsCount, isSpecified,value);
 		rules.get(from).get(to).add(newLinkRule);
 		
-		return true;
+		return newLinkRule;
 	}
 	
 	public boolean contains(LinkRule rule) {
