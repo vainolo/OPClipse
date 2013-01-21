@@ -10,6 +10,7 @@ import java.util.List;
 import com.vainolo.phd.opm.validation.LinkValidator;
 import com.vainolo.phd.opm.validation.ElementType;
 import com.vainolo.phd.opm.validation.rules.LinkRule;
+import com.vainolo.phd.opm.validation.test.utils.ElementTypeImpl;
 
 public class LinkValidatorTest {
 	
@@ -18,6 +19,7 @@ public class LinkValidatorTest {
 	ElementTypeImpl nodeA 			= new ElementTypeImpl("nodeA");
 	ElementTypeImpl nodeA_son 		= new ElementTypeImpl("nodeA_son");
 	ElementTypeImpl nodeA_son2 		= new ElementTypeImpl("nodeA_son2");
+	ElementTypeImpl nodeA_son3 		= new ElementTypeImpl("nodeA_son3");
 	ElementTypeImpl nodeA_grandSon1	= new ElementTypeImpl("nodeA_grandSon1");
 	ElementTypeImpl nodeA_grandSon2	= new ElementTypeImpl("nodeA_grandSon2");
 	ElementTypeImpl nodeB 			= new ElementTypeImpl("nodeB");
@@ -97,55 +99,67 @@ public class LinkValidatorTest {
 		assertEquals(leafRules, validator.getLeafRules());
 	}
 	
+	@Test 
+	public void parentsCountTest1() {
+		addInheritence(nodeA, nodeA_son);
+		addInheritence(nodeA, nodeA_son2);
+		addInheritence(nodeA, nodeA_son3);
+		addInheritence(nodeA_son3, nodeA_grandSon1);
+		addInheritence(nodeA_son2, nodeA_grandSon1);
+		addInheritence(nodeA_son, nodeA_grandSon1);
+		addInheritence(nodeA_grandSon1, nodeA_grandSon2);
+		validator.addRule(nodeA, linkA, nodeB, true);
+		validator.addRule(nodeA_son, linkA, nodeB, false);
+		validator.addRule(nodeA_son2, linkA, nodeB, false);
+		boolean excepetionCaught = false;
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {
+			assertEquals("unhandled conflicet rule: 'from 'nodeA_grandSon1' to 'nodeB' with link 'linkA''", e.getMessage());
+			excepetionCaught = true;
+		}
+		assertTrue(excepetionCaught);
+		validator.addRule(nodeA_son3, linkA, nodeB, false);
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {assertTrue(false);}
+		assertFalse(validator.valdidate(nodeA_grandSon2, linkA, nodeB));
+		assertFalse(validator.valdidate(nodeA_grandSon1, linkA, nodeB));
+	}
+	
+	@Test 
+	public void parentsCountTest2() {
+		addInheritence(nodeA, nodeA_son);
+		addInheritence(nodeA, nodeA_son2);
+		addInheritence(nodeA, nodeA_son3);
+		addInheritence(nodeA_son3, nodeA_grandSon1);
+		addInheritence(nodeA_son2, nodeA_grandSon1);
+		addInheritence(nodeA_son, nodeA_grandSon1);
+		addInheritence(nodeA_grandSon1, nodeA_grandSon2);
+		validator.addRule(nodeA, linkA, nodeB, true);
+		validator.addRule(nodeA_son, linkA, nodeB, false);
+		validator.addRule(nodeA_son2, linkA, nodeB, false);
+		boolean excepetionCaught = false;
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {
+			assertEquals("unhandled conflicet rule: 'from 'nodeA_grandSon1' to 'nodeB' with link 'linkA''", e.getMessage());
+			excepetionCaught = true;
+		}
+		assertTrue(excepetionCaught);
+		validator.addRule(nodeA_son3, linkA, nodeB, false);
+		validator.addRule(nodeA_grandSon1, linkA, nodeB, true);
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {assertTrue(false);}
+		assertTrue(validator.valdidate(nodeA_grandSon2, linkA, nodeB));
+		assertTrue(validator.valdidate(nodeA_grandSon1, linkA, nodeB));
+	}
 	private void addInheritence(ElementTypeImpl parent, ElementTypeImpl son) {
 		parent.AddSon(son);
 		son.AddParent(parent);
 	}
 	
 	
-	private class ElementTypeImpl implements ElementType {
 
-		private String type;
-		private List<ElementType> Parents;
-		private List<ElementType> Sons;
-		public ElementTypeImpl(String type) {
-			this.type = type;
-			Parents = new ArrayList<ElementType>();
-			Sons = new ArrayList<ElementType>();
-		}
-		public void AddParent(ElementTypeImpl parent) {
-			this.Parents.add(parent);
-		}
-		public void AddSon(ElementTypeImpl son) {
-			this.Sons.add(son);
-		}
-		@Override
-		public Object GetType() {
-			return this.type;
-		}
-
-		@Override
-		public List<ElementType> GetParentsOfType() {
-			return Parents;
-		}
-
-		@Override
-		public List<ElementType> GetSonsOfType() {
-			return Sons;
-		}
-		@Override
-		public boolean equals(Object obj) {
-			if ((obj == null ) || (!(obj instanceof ElementTypeImpl))) return false;
-			return type.equals(((ElementTypeImpl)obj).type);
-		}
-		
-		@Override
-		public int hashCode() {
-			return type.hashCode();
-		}
-		@Override
-		public String getTypeName() {
-			return type;
-		}
-	}
 }

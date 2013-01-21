@@ -27,7 +27,7 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		if (existingRule == null ) {
 			return false;
 		}
-		return existingRule.getValue();	
+		return existingRule.getValue();
 	}
 
 	protected boolean isSpecified(TRule newRule) {
@@ -185,7 +185,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 					conflictedRules.remove(newRule);
 				}
 				int posParentCount = this.getPositiveParentsCount(newRule);
-				// TODO - think about it
 				this.addRule(newRule, newValueOfParent, false, posParentCount, 0);
 			}
 		}
@@ -259,7 +258,6 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		if (this.conflictedRules.isEmpty()) return;
 		
 		StringBuilder msg = new StringBuilder("unhandled conflicet rule: " + "'" + conflictedRules.get(0).toString() + "'");
-		// TODO build an explaining message
 		Exception ex = new Exception(msg.toString()); 
 		throw(ex);
 	}

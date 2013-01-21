@@ -20,10 +20,6 @@ public class LinkRulesContainer extends BasicRulesContainer<LinkRule>	 {
 			return false;
 		}
 		LinkRule newOpmRule = (LinkRule) newRule;
-		// TODO : do we really need this?
-		if ((getSpecificRule(newOpmRule)!=null) && (getSpecificRule(newOpmRule).getIsSpecified() == true)) {
-			return false;
-		}
 		
 		ElementType from = newOpmRule.From();
 		ElementType link = newOpmRule.Link();
