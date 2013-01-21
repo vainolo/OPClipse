@@ -11,11 +11,18 @@ import com.vainolo.phd.opmeta.gef.editor.command.OPModelNodeChangeConstraintComm
 import com.vainolo.phd.opmeta.gef.editor.command.OPModelNodeCreateCommand;
 import com.vainolo.phd.opmodel.model.ContainerInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
-import com.vainolo.phd.opmodel.model.ThingInstance;
+import com.vainolo.phd.opmeta.interpreter.validation.OpmodelValidator;
 
 public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
 	private static final Dimension DEFAULT_NODE_DIMENSION = new Dimension(50, 50);
+	
+	private final OpmodelValidator opmodelValidator;
+	
+	public OpXYLayoutEditPolicy(OpmodelValidator opmodelValidator){
+		super();
+		this.opmodelValidator = opmodelValidator;
+	}
 	
 	/**
 	 * Command created to change the constraints of a {@link OpmodelNodeInstance} instance.
@@ -40,9 +47,9 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 		
 		Command retVal = null;
 
-		if (request.getNewObjectType().equals(NodeInstance.class) || request.getNewObjectType().equals(ThingInstance.class)) {
+		NodeInstance newNode = (NodeInstance) request.getNewObject();
+		if (opmodelValidator.validateContaiment(model, newNode)){
 			
-			// TODO : here should go some kind of validation
 			OPModelNodeCreateCommand command = new OPModelNodeCreateCommand();
 			Rectangle constraints = (Rectangle) getConstraintFor(request);
 			if (constraints.getSize().isEmpty()) {
@@ -50,7 +57,7 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 			}
 			command.setConstraints(constraints);
 			command.setContainer(model);
-			command.setNode((NodeInstance) request.getNewObject());
+			command.setNode(newNode);
 			retVal = command;
 		}
 		return retVal;		

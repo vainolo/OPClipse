@@ -24,6 +24,7 @@ import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeRectangleFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OPModelNodeComponentEditPolicy;
+import com.vainolo.phd.opmeta.interpreter.validation.OpmodelValidator;
 import com.vainolo.phd.opmodel.model.InstanceBase;
 import com.vainolo.phd.opmodel.model.LinkInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
@@ -32,9 +33,11 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	implements NodeEditPart {
 
 	private OpmodelNodeInstanceAdapter adapter;
+	private final OpmodelValidator opmodelValidator;
 	
-	public OPModelNodeEditPart(){
+	public OPModelNodeEditPart(OpmodelValidator opmodelValidator){
 		adapter = new OpmodelNodeInstanceAdapter();
+		this.opmodelValidator = opmodelValidator;
 	}
 	
 	@Override
@@ -78,8 +81,8 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 
 	@Override
 	protected void createEditPolicies() {
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy());
-		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,new OpNodeEditPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy(opmodelValidator));
+		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE,new OpNodeEditPolicy(opmodelValidator));
 		installEditPolicy(EditPolicy.COMPONENT_ROLE, new OPModelNodeComponentEditPolicy());
 	}
 

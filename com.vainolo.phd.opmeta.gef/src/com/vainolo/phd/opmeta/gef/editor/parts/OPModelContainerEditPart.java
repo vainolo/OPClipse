@@ -19,16 +19,19 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
+import com.vainolo.phd.opmeta.interpreter.validation.OpmodelValidator;
 import com.vainolo.phd.opmodel.model.ContainerInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
 
 public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 
 	private OPModelContainerAdapter adapter;
+	private final OpmodelValidator opmodelValidator;
 	
-	public OPModelContainerEditPart(){
+	public OPModelContainerEditPart(OpmodelValidator opmodelValidator){
 		super();
 		adapter = new OPModelContainerAdapter();
+		this.opmodelValidator = opmodelValidator;
 	}
 	
 	@Override
@@ -42,7 +45,7 @@ public class OPModelContainerEditPart extends AbstractGraphicalEditPart {
 	@Override
 	protected void createEditPolicies() {
 		installEditPolicy("Snap Feedback", new SnapFeedbackPolicy());
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy());
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new OpXYLayoutEditPolicy(opmodelValidator));
 	}
 
 	@Override
