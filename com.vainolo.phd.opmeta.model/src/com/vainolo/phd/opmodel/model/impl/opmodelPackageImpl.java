@@ -13,7 +13,7 @@ import com.vainolo.phd.opmodel.model.InstanceBase;
 import com.vainolo.phd.opmodel.model.LinkInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
-import com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule;
+import com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule;
 import com.vainolo.phd.opmodel.model.OPmodelHolder;
 import com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule;
 import com.vainolo.phd.opmodel.model.PropertyBooleanInstance;
@@ -158,7 +158,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass oPmodelContaimentValidationRuleEClass = null;
+	private EClass oPmodelContainmentValidationRuleEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -621,7 +621,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOPmetaDefinition_ContaimentValidationRules() {
+	public EReference getOPmetaDefinition_ContainmentValidationRules() {
 		return (EReference)oPmetaDefinitionEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -729,8 +729,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getOPmodelContaimentValidationRule() {
-		return oPmodelContaimentValidationRuleEClass;
+	public EClass getOPmodelContainmentValidationRule() {
+		return oPmodelContainmentValidationRuleEClass;
 	}
 
 	/**
@@ -738,8 +738,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOPmodelContaimentValidationRule_Valid() {
-		return (EAttribute)oPmodelContaimentValidationRuleEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOPmodelContainmentValidationRule_Valid() {
+		return (EAttribute)oPmodelContainmentValidationRuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -747,8 +747,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOPmodelContaimentValidationRule_ContainerType() {
-		return (EReference)oPmodelContaimentValidationRuleEClass.getEStructuralFeatures().get(1);
+	public EReference getOPmodelContainmentValidationRule_ContainerType() {
+		return (EReference)oPmodelContainmentValidationRuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -756,8 +756,8 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOPmodelContaimentValidationRule_NodeType() {
-		return (EReference)oPmodelContaimentValidationRuleEClass.getEStructuralFeatures().get(2);
+	public EReference getOPmodelContainmentValidationRule_NodeType() {
+		return (EReference)oPmodelContainmentValidationRuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -865,7 +865,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		createEReference(oPmetaDefinitionEClass, OPMETA_DEFINITION__LINKS);
 		createEReference(oPmetaDefinitionEClass, OPMETA_DEFINITION__PROPERTIES);
 		createEReference(oPmetaDefinitionEClass, OPMETA_DEFINITION__LINK_VALIDATION_RULES);
-		createEReference(oPmetaDefinitionEClass, OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES);
+		createEReference(oPmetaDefinitionEClass, OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES);
 
 		propertyInstanceEClass = createEClass(PROPERTY_INSTANCE);
 		createEReference(propertyInstanceEClass, PROPERTY_INSTANCE__DESCRIPTOR);
@@ -883,10 +883,10 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		createEReference(oPmodelLinkValidationRuleEClass, OPMODEL_LINK_VALIDATION_RULE__TARGET_TYPE);
 		createEReference(oPmodelLinkValidationRuleEClass, OPMODEL_LINK_VALIDATION_RULE__LINK_TYPE);
 
-		oPmodelContaimentValidationRuleEClass = createEClass(OPMODEL_CONTAIMENT_VALIDATION_RULE);
-		createEAttribute(oPmodelContaimentValidationRuleEClass, OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID);
-		createEReference(oPmodelContaimentValidationRuleEClass, OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE);
-		createEReference(oPmodelContaimentValidationRuleEClass, OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE);
+		oPmodelContainmentValidationRuleEClass = createEClass(OPMODEL_CONTAINMENT_VALIDATION_RULE);
+		createEAttribute(oPmodelContainmentValidationRuleEClass, OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID);
+		createEReference(oPmodelContainmentValidationRuleEClass, OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE);
+		createEReference(oPmodelContainmentValidationRuleEClass, OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE);
 
 		// Create enums
 		propertyTypeEEnum = createEEnum(PROPERTY_TYPE);
@@ -1004,7 +1004,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		getOPmetaDefinition_Links().getEKeys().add(this.getTypeDescriptor_Id());
 		initEReference(getOPmetaDefinition_Properties(), this.getPropertyDescriptor(), null, "properties", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPmetaDefinition_LinkValidationRules(), this.getOPmodelLinkValidationRule(), null, "linkValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPmetaDefinition_ContaimentValidationRules(), this.getOPmodelContaimentValidationRule(), null, "contaimentValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPmetaDefinition_ContainmentValidationRules(), this.getOPmodelContainmentValidationRule(), null, "containmentValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyInstanceEClass, PropertyInstance.class, "PropertyInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyInstance_Descriptor(), this.getPropertyDescriptor(), null, "descriptor", null, 0, 1, PropertyInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1044,12 +1044,12 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		initEReference(getOPmodelLinkValidationRule_LinkType(), this.getTypeDescriptor(), null, "linkType", null, 1, 1, OPmodelLinkValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getOPmodelLinkValidationRule_LinkType().getEKeys().add(this.getTypeDescriptor_Id());
 
-		initEClass(oPmodelContaimentValidationRuleEClass, OPmodelContaimentValidationRule.class, "OPmodelContaimentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOPmodelContaimentValidationRule_Valid(), ecorePackage.getEBoolean(), "valid", null, 0, 1, OPmodelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPmodelContaimentValidationRule_ContainerType(), this.getTypeDescriptor(), null, "containerType", null, 1, 1, OPmodelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getOPmodelContaimentValidationRule_ContainerType().getEKeys().add(this.getTypeDescriptor_Id());
-		initEReference(getOPmodelContaimentValidationRule_NodeType(), this.getTypeDescriptor(), null, "nodeType", null, 1, 1, OPmodelContaimentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getOPmodelContaimentValidationRule_NodeType().getEKeys().add(this.getTypeDescriptor_Id());
+		initEClass(oPmodelContainmentValidationRuleEClass, OPmodelContainmentValidationRule.class, "OPmodelContainmentValidationRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getOPmodelContainmentValidationRule_Valid(), ecorePackage.getEBoolean(), "valid", null, 0, 1, OPmodelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPmodelContainmentValidationRule_ContainerType(), this.getTypeDescriptor(), null, "containerType", null, 1, 1, OPmodelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getOPmodelContainmentValidationRule_ContainerType().getEKeys().add(this.getTypeDescriptor_Id());
+		initEReference(getOPmodelContainmentValidationRule_NodeType(), this.getTypeDescriptor(), null, "nodeType", null, 1, 1, OPmodelContainmentValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getOPmodelContainmentValidationRule_NodeType().getEKeys().add(this.getTypeDescriptor_Id());
 
 		// Initialize enums and add enum literals
 		initEEnum(propertyTypeEEnum, propertyType.class, "propertyType");

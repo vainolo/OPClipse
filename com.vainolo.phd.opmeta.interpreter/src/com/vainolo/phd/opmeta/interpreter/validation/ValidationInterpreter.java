@@ -3,10 +3,14 @@ package com.vainolo.phd.opmeta.interpreter.validation;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.vainolo.phd.opm.validation.ContainmentValidator;
+import com.vainolo.phd.opm.validation.IContainmentRule;
 import com.vainolo.phd.opm.validation.ILinkRule;
 import com.vainolo.phd.opm.validation.LinkValidator;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 import com.vainolo.phd.opmeta.model.OPMetaModelLinkValidationRule;
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
+import com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule;
 import com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule;
 import com.vainolo.phd.opmodel.model.TypeDescriptor;
 import com.vainolo.phd.opmodel.model.opmodelFactory;
@@ -47,8 +51,8 @@ public class ValidationInterpreter {
 		for (ILinkRule rule:linkRules){
 			ElementTypeDecriptor source=null,target=null, link =null;
 			if (rule.From() instanceof ElementTypeDecriptor) source = (ElementTypeDecriptor) rule.From();
-			if (rule.Link() instanceof ElementTypeDecriptor) target = (ElementTypeDecriptor) rule.Link();
-			if (rule.To() instanceof ElementTypeDecriptor) link = (ElementTypeDecriptor) rule.To();
+			if (rule.Link() instanceof ElementTypeDecriptor) link = (ElementTypeDecriptor) rule.Link();
+			if (rule.To() instanceof ElementTypeDecriptor) target = (ElementTypeDecriptor) rule.To();
 			
 			OPmodelLinkValidationRule created = opmodelFactory.eINSTANCE.createOPmodelLinkValidationRule();
 			created.setLinkType(link.getDescriptor());
@@ -58,6 +62,46 @@ public class ValidationInterpreter {
 			result.add(created);
 		}
 		
+		
+		return result;
+	}
+	
+	public static List<OPmodelContainmentValidationRule> calculateContainmentValidationRules(List<OPMetaModelContainmentValidationRule> containmentValidations,
+			OPmetaDefinition interpretation){
+		ContainmentValidator validator = new ContainmentValidator(); 
+		
+		for (OPMetaModelContainmentValidationRule validation:containmentValidations){
+			// try get the type descriptors mentioned, if fails throw an exception (cannot continue interpretation)
+			TypeDescriptor containerDescriptor = getDescriptor(interpretation.getContainers(),validation.getContainerTypeName());
+			if (containerDescriptor == null) throw new RuntimeException("Cannot find Container with name '" + validation.getContainerTypeName() + "' to use as container type");
+			ElementTypeDecriptor container = new ElementTypeDecriptor(containerDescriptor);
+			
+			TypeDescriptor containedItemDescriptor = getDescriptor(interpretation.getNodes(),validation.getNodeTypeName());
+			if (containedItemDescriptor == null) throw new RuntimeException("Cannot find Container with name '" + validation.getNodeTypeName() + "' to use as contained item type");
+			ElementTypeDecriptor containedItem = new ElementTypeDecriptor(containedItemDescriptor);
+			
+			validator.addRule(container, containedItem, validation.isValid());
+		}
+	
+		try {
+			validator.finalizeInit();
+		} catch (Exception ex){
+			throw new RuntimeException("Failed translate Link Validation Rules.\nInner Error:\n"+ex.getMessage(),ex);
+		}
+		
+		Iterable<IContainmentRule> containmentRules = validator.getLeafRules();
+		List<OPmodelContainmentValidationRule> result = new LinkedList<>();
+		for (IContainmentRule rule:containmentRules){
+			ElementTypeDecriptor container=null,node=null;
+			if (rule.container() instanceof ElementTypeDecriptor) container = (ElementTypeDecriptor) rule.container();
+			if (rule.containedItem() instanceof ElementTypeDecriptor) node = (ElementTypeDecriptor) rule.containedItem();
+			
+			OPmodelContainmentValidationRule created = opmodelFactory.eINSTANCE.createOPmodelContainmentValidationRule();
+			created.setContainerType(container.getDescriptor());
+			created.setNodeType(node.getDescriptor());
+			created.setValid(rule.getValue());
+			result.add(created);
+		}
 		
 		return result;
 	}

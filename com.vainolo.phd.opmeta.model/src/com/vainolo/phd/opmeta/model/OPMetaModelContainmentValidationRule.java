@@ -10,24 +10,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>OP Meta Model Contaiment Validation Rule</b></em>'.
+ * A representation of the model object '<em><b>OP Meta Model Containment Validation Rule</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid <em>Valid</em>}</li>
- *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName <em>Container Type Name</em>}</li>
- *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getNodeTypeName <em>Node Type Name</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#isValid <em>Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#getContainerTypeName <em>Container Type Name</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#getNodeTypeName <em>Node Type Name</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule()
+ * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContainmentValidationRule()
  * @model
  * @generated
  */
-public interface OPMetaModelContaimentValidationRule extends EObject {
-
+public interface OPMetaModelContainmentValidationRule extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -38,14 +37,14 @@ public interface OPMetaModelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Valid</em>' attribute.
 	 * @see #setValid(boolean)
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule_Valid()
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContainmentValidationRule_Valid()
 	 * @model required="true"
 	 * @generated
 	 */
 	boolean isValid();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#isValid <em>Valid</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#isValid <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Valid</em>' attribute.
@@ -64,14 +63,14 @@ public interface OPMetaModelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Container Type Name</em>' attribute.
 	 * @see #setContainerTypeName(String)
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule_ContainerTypeName()
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContainmentValidationRule_ContainerTypeName()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getContainerTypeName();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getContainerTypeName <em>Container Type Name</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#getContainerTypeName <em>Container Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Container Type Name</em>' attribute.
@@ -90,14 +89,14 @@ public interface OPMetaModelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node Type Name</em>' attribute.
 	 * @see #setNodeTypeName(String)
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContaimentValidationRule_NodeTypeName()
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelContainmentValidationRule_NodeTypeName()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getNodeTypeName();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule#getNodeTypeName <em>Node Type Name</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule#getNodeTypeName <em>Node Type Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Node Type Name</em>' attribute.
@@ -105,4 +104,5 @@ public interface OPMetaModelContaimentValidationRule extends EObject {
 	 * @generated
 	 */
 	void setNodeTypeName(String value);
-} // OPMetaModelContaimentValidationRule
+
+} // OPMetaModelContainmentValidationRule

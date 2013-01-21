@@ -6,7 +6,7 @@
  */
 package com.vainolo.phd.opmodel.model.impl;
 
-import com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule;
+import com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule;
 import com.vainolo.phd.opmodel.model.TypeDescriptor;
 import com.vainolo.phd.opmodel.model.opmodelPackage;
 
@@ -20,20 +20,20 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>OPmodel Contaiment Validation Rule</b></em>'.
+ * An implementation of the model object '<em><b>OPmodel Containment Validation Rule</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#isValid <em>Valid</em>}</li>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#getContainerType <em>Container Type</em>}</li>
- *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl#isValid <em>Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl#getContainerType <em>Container Type</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl#getNodeType <em>Node Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements OPmodelContaimentValidationRule {
+public class OPmodelContainmentValidationRuleImpl extends EObjectImpl implements OPmodelContainmentValidationRule {
 	/**
 	 * The default value of the '{@link #isValid() <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OPmodelContaimentValidationRuleImpl() {
+	protected OPmodelContainmentValidationRuleImpl() {
 		super();
 	}
 
@@ -90,7 +90,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return opmodelPackage.Literals.OPMODEL_CONTAIMENT_VALIDATION_RULE;
+		return opmodelPackage.Literals.OPMODEL_CONTAINMENT_VALIDATION_RULE;
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 		boolean oldValid = valid;
 		valid = newValid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID, oldValid, valid));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID, oldValid, valid));
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 			containerType = (TypeDescriptor)eResolveProxy(oldContainerType);
 			if (containerType != oldContainerType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE, oldContainerType, containerType));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE, oldContainerType, containerType));
 			}
 		}
 		return containerType;
@@ -149,7 +149,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 		TypeDescriptor oldContainerType = containerType;
 		containerType = newContainerType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE, oldContainerType, containerType));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE, oldContainerType, containerType));
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 			nodeType = (TypeDescriptor)eResolveProxy(oldNodeType);
 			if (nodeType != oldNodeType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE, oldNodeType, nodeType));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE, oldNodeType, nodeType));
 			}
 		}
 		return nodeType;
@@ -187,7 +187,7 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 		TypeDescriptor oldNodeType = nodeType;
 		nodeType = newNodeType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE, oldNodeType, nodeType));
+			eNotify(new ENotificationImpl(this, Notification.SET, opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE, oldNodeType, nodeType));
 	}
 
 	/**
@@ -198,12 +198,12 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID:
 				return isValid();
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				if (resolve) return getContainerType();
 				return basicGetContainerType();
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE:
 				if (resolve) return getNodeType();
 				return basicGetNodeType();
 		}
@@ -218,13 +218,13 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID:
 				setValid((Boolean)newValue);
 				return;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				setContainerType((TypeDescriptor)newValue);
 				return;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE:
 				setNodeType((TypeDescriptor)newValue);
 				return;
 		}
@@ -239,13 +239,13 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID:
 				setValid(VALID_EDEFAULT);
 				return;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				setContainerType((TypeDescriptor)null);
 				return;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE:
 				setNodeType((TypeDescriptor)null);
 				return;
 		}
@@ -260,11 +260,11 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID:
 				return valid != VALID_EDEFAULT;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE:
 				return containerType != null;
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE:
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE:
 				return nodeType != null;
 		}
 		return super.eIsSet(featureID);
@@ -286,4 +286,4 @@ public class OPmodelContaimentValidationRuleImpl extends EObjectImpl implements 
 		return result.toString();
 	}
 
-} //OPmodelContaimentValidationRuleImpl
+} //OPmodelContainmentValidationRuleImpl

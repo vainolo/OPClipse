@@ -711,13 +711,13 @@ public interface opmodelPackage extends EPackage {
 	int OPMETA_DEFINITION__LINK_VALIDATION_RULES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Contaiment Validation Rules</b></em>' reference list.
+	 * The feature id for the '<em><b>Containment Validation Rules</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES = 6;
+	int OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES = 6;
 
 	/**
 	 * The number of structural features of the '<em>OPmeta Definition</em>' class.
@@ -932,14 +932,14 @@ public interface opmodelPackage extends EPackage {
 	int OPMODEL_LINK_VALIDATION_RULE_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl <em>OPmodel Contaiment Validation Rule</em>}' class.
+	 * The meta object id for the '{@link com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl <em>OPmodel Containment Validation Rule</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl
-	 * @see com.vainolo.phd.opmodel.model.impl.opmodelPackageImpl#getOPmodelContaimentValidationRule()
+	 * @see com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl
+	 * @see com.vainolo.phd.opmodel.model.impl.opmodelPackageImpl#getOPmodelContainmentValidationRule()
 	 * @generated
 	 */
-	int OPMODEL_CONTAIMENT_VALIDATION_RULE = 15;
+	int OPMODEL_CONTAINMENT_VALIDATION_RULE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Valid</b></em>' attribute.
@@ -948,7 +948,7 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID = 0;
+	int OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID = 0;
 
 	/**
 	 * The feature id for the '<em><b>Container Type</b></em>' reference.
@@ -957,7 +957,7 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE = 1;
+	int OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Node Type</b></em>' reference.
@@ -966,16 +966,16 @@ public interface opmodelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE = 2;
+	int OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE = 2;
 
 	/**
-	 * The number of structural features of the '<em>OPmodel Contaiment Validation Rule</em>' class.
+	 * The number of structural features of the '<em>OPmodel Containment Validation Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPMODEL_CONTAIMENT_VALIDATION_RULE_FEATURE_COUNT = 3;
+	int OPMODEL_CONTAINMENT_VALIDATION_RULE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link com.vainolo.phd.opmodel.model.propertyType <em>property Type</em>}' enum.
@@ -1450,15 +1450,15 @@ public interface opmodelPackage extends EPackage {
 	EReference getOPmetaDefinition_LinkValidationRules();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContaimentValidationRules <em>Contaiment Validation Rules</em>}'.
+	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules <em>Containment Validation Rules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Contaiment Validation Rules</em>'.
-	 * @see com.vainolo.phd.opmodel.model.OPmetaDefinition#getContaimentValidationRules()
+	 * @return the meta object for the reference list '<em>Containment Validation Rules</em>'.
+	 * @see com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules()
 	 * @see #getOPmetaDefinition()
 	 * @generated
 	 */
-	EReference getOPmetaDefinition_ContaimentValidationRules();
+	EReference getOPmetaDefinition_ContainmentValidationRules();
 
 	/**
 	 * Returns the meta object for class '{@link com.vainolo.phd.opmodel.model.PropertyInstance <em>Property Instance</em>}'.
@@ -1577,47 +1577,47 @@ public interface opmodelPackage extends EPackage {
 	EReference getOPmodelLinkValidationRule_LinkType();
 
 	/**
-	 * Returns the meta object for class '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule <em>OPmodel Contaiment Validation Rule</em>}'.
+	 * Returns the meta object for class '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule <em>OPmodel Containment Validation Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>OPmodel Contaiment Validation Rule</em>'.
-	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule
+	 * @return the meta object for class '<em>OPmodel Containment Validation Rule</em>'.
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule
 	 * @generated
 	 */
-	EClass getOPmodelContaimentValidationRule();
+	EClass getOPmodelContainmentValidationRule();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#isValid <em>Valid</em>}'.
+	 * Returns the meta object for the attribute '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#isValid <em>Valid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Valid</em>'.
-	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#isValid()
-	 * @see #getOPmodelContaimentValidationRule()
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#isValid()
+	 * @see #getOPmodelContainmentValidationRule()
 	 * @generated
 	 */
-	EAttribute getOPmodelContaimentValidationRule_Valid();
+	EAttribute getOPmodelContainmentValidationRule_Valid();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getContainerType <em>Container Type</em>}'.
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getContainerType <em>Container Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Container Type</em>'.
-	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getContainerType()
-	 * @see #getOPmodelContaimentValidationRule()
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getContainerType()
+	 * @see #getOPmodelContainmentValidationRule()
 	 * @generated
 	 */
-	EReference getOPmodelContaimentValidationRule_ContainerType();
+	EReference getOPmodelContainmentValidationRule_ContainerType();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getNodeType <em>Node Type</em>}'.
+	 * Returns the meta object for the reference '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getNodeType <em>Node Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Node Type</em>'.
-	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getNodeType()
-	 * @see #getOPmodelContaimentValidationRule()
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getNodeType()
+	 * @see #getOPmodelContainmentValidationRule()
 	 * @generated
 	 */
-	EReference getOPmodelContaimentValidationRule_NodeType();
+	EReference getOPmodelContainmentValidationRule_NodeType();
 
 	/**
 	 * Returns the meta object for enum '{@link com.vainolo.phd.opmodel.model.propertyType <em>property Type</em>}'.
@@ -2022,12 +2022,12 @@ public interface opmodelPackage extends EPackage {
 		EReference OPMETA_DEFINITION__LINK_VALIDATION_RULES = eINSTANCE.getOPmetaDefinition_LinkValidationRules();
 
 		/**
-		 * The meta object literal for the '<em><b>Contaiment Validation Rules</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Containment Validation Rules</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPMETA_DEFINITION__CONTAIMENT_VALIDATION_RULES = eINSTANCE.getOPmetaDefinition_ContaimentValidationRules();
+		EReference OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES = eINSTANCE.getOPmetaDefinition_ContainmentValidationRules();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmodel.model.impl.PropertyInstanceImpl <em>Property Instance</em>}' class.
@@ -2128,14 +2128,14 @@ public interface opmodelPackage extends EPackage {
 		EReference OPMODEL_LINK_VALIDATION_RULE__LINK_TYPE = eINSTANCE.getOPmodelLinkValidationRule_LinkType();
 
 		/**
-		 * The meta object literal for the '{@link com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl <em>OPmodel Contaiment Validation Rule</em>}' class.
+		 * The meta object literal for the '{@link com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl <em>OPmodel Containment Validation Rule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see com.vainolo.phd.opmodel.model.impl.OPmodelContaimentValidationRuleImpl
-		 * @see com.vainolo.phd.opmodel.model.impl.opmodelPackageImpl#getOPmodelContaimentValidationRule()
+		 * @see com.vainolo.phd.opmodel.model.impl.OPmodelContainmentValidationRuleImpl
+		 * @see com.vainolo.phd.opmodel.model.impl.opmodelPackageImpl#getOPmodelContainmentValidationRule()
 		 * @generated
 		 */
-		EClass OPMODEL_CONTAIMENT_VALIDATION_RULE = eINSTANCE.getOPmodelContaimentValidationRule();
+		EClass OPMODEL_CONTAINMENT_VALIDATION_RULE = eINSTANCE.getOPmodelContainmentValidationRule();
 
 		/**
 		 * The meta object literal for the '<em><b>Valid</b></em>' attribute feature.
@@ -2143,7 +2143,7 @@ public interface opmodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OPMODEL_CONTAIMENT_VALIDATION_RULE__VALID = eINSTANCE.getOPmodelContaimentValidationRule_Valid();
+		EAttribute OPMODEL_CONTAINMENT_VALIDATION_RULE__VALID = eINSTANCE.getOPmodelContainmentValidationRule_Valid();
 
 		/**
 		 * The meta object literal for the '<em><b>Container Type</b></em>' reference feature.
@@ -2151,7 +2151,7 @@ public interface opmodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPMODEL_CONTAIMENT_VALIDATION_RULE__CONTAINER_TYPE = eINSTANCE.getOPmodelContaimentValidationRule_ContainerType();
+		EReference OPMODEL_CONTAINMENT_VALIDATION_RULE__CONTAINER_TYPE = eINSTANCE.getOPmodelContainmentValidationRule_ContainerType();
 
 		/**
 		 * The meta object literal for the '<em><b>Node Type</b></em>' reference feature.
@@ -2159,7 +2159,7 @@ public interface opmodelPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference OPMODEL_CONTAIMENT_VALIDATION_RULE__NODE_TYPE = eINSTANCE.getOPmodelContaimentValidationRule_NodeType();
+		EReference OPMODEL_CONTAINMENT_VALIDATION_RULE__NODE_TYPE = eINSTANCE.getOPmodelContainmentValidationRule_NodeType();
 
 		/**
 		 * The meta object literal for the '{@link com.vainolo.phd.opmodel.model.propertyType <em>property Type</em>}' enum.

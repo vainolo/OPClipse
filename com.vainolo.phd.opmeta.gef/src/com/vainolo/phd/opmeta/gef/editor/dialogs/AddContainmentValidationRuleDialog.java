@@ -16,17 +16,17 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 import com.vainolo.phd.opmeta.model.opmetaFactory;
 
-public class AddContaimentValidationRuleDialog extends TitleAreaDialog {
+public class AddContainmentValidationRuleDialog extends TitleAreaDialog {
 
 	protected Text containerTypeNameTxt;
 	protected Text nodeTypeNameTxt;
 	protected Combo cmbIsValid;
-	private OPMetaModelContaimentValidationRule rule;
+	private OPMetaModelContainmentValidationRule rule;
 	
-	public AddContaimentValidationRuleDialog(Shell parentShell) {
+	public AddContainmentValidationRuleDialog(Shell parentShell) {
 		super(parentShell);
 	}
 	
@@ -72,7 +72,7 @@ public class AddContaimentValidationRuleDialog extends TitleAreaDialog {
 	      public void widgetSelected(SelectionEvent e) {
 	        if (containerTypeNameTxt.getText().length() != 0
 	            && nodeTypeNameTxt.getText().length() != 0) {
-	        	rule = opmetaFactory.eINSTANCE.createOPMetaModelContaimentValidationRule();
+	        	rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 	        	rule.setContainerTypeName(containerTypeNameTxt.getText());
 	        	rule.setNodeTypeName(nodeTypeNameTxt.getText());
 	        	rule.setValid(cmbIsValid.getSelectionIndex()==0);
@@ -84,6 +84,6 @@ public class AddContaimentValidationRuleDialog extends TitleAreaDialog {
 	    });
 	  }
 
-	public OPMetaModelContaimentValidationRule getRule(){return rule;}
+	public OPMetaModelContainmentValidationRule getRule(){return rule;}
 	
 }

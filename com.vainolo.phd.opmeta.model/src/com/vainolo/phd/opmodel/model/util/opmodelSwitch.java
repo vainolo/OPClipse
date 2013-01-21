@@ -172,9 +172,9 @@ public class opmodelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case opmodelPackage.OPMODEL_CONTAIMENT_VALIDATION_RULE: {
-				OPmodelContaimentValidationRule oPmodelContaimentValidationRule = (OPmodelContaimentValidationRule)theEObject;
-				T result = caseOPmodelContaimentValidationRule(oPmodelContaimentValidationRule);
+			case opmodelPackage.OPMODEL_CONTAINMENT_VALIDATION_RULE: {
+				OPmodelContainmentValidationRule oPmodelContainmentValidationRule = (OPmodelContainmentValidationRule)theEObject;
+				T result = caseOPmodelContainmentValidationRule(oPmodelContainmentValidationRule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -408,17 +408,17 @@ public class opmodelSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OPmodel Containment Validation Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>OPmodel Contaiment Validation Rule</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OPmodel Containment Validation Rule</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOPmodelContaimentValidationRule(OPmodelContaimentValidationRule object) {
+	public T caseOPmodelContainmentValidationRule(OPmodelContainmentValidationRule object) {
 		return null;
 	}
 

@@ -20,6 +20,7 @@ import org.eclipse.ui.PartInitException;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opmeta.gef.editor.parts.OPModelEditPartFactory;
+import com.vainolo.phd.opmeta.interpreter.validation.OpmodelValidator;
 import com.vainolo.phd.opmeta.model.util.OPMMLoader;
 import com.vainolo.phd.opmodel.model.ContainerInstance;
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
@@ -84,7 +85,7 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	@Override
 	  protected void configureGraphicalViewer() {
 	    super.configureGraphicalViewer();
-	    getGraphicalViewer().setEditPartFactory(new OPModelEditPartFactory());
+	    getGraphicalViewer().setEditPartFactory(new OPModelEditPartFactory(new OpmodelValidator(interpretation)));
 	    getActionRegistry().registerAction(new ToggleGridAction(getGraphicalViewer()));
 	    getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));
 	    getGraphicalViewer().setContextMenu(

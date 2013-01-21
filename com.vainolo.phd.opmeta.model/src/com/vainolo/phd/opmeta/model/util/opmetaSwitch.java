@@ -76,9 +76,9 @@ public class opmetaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE: {
-				OPMetaModelContaimentValidationRule opMetaModelContaimentValidationRule = (OPMetaModelContaimentValidationRule)theEObject;
-				T result = caseOPMetaModelContaimentValidationRule(opMetaModelContaimentValidationRule);
+			case opmetaPackage.OP_META_MODEL_CONTAINMENT_VALIDATION_RULE: {
+				OPMetaModelContainmentValidationRule opMetaModelContainmentValidationRule = (OPMetaModelContainmentValidationRule)theEObject;
+				T result = caseOPMetaModelContainmentValidationRule(opMetaModelContainmentValidationRule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -108,17 +108,17 @@ public class opmetaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>OP Meta Model Contaiment Validation Rule</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>OP Meta Model Containment Validation Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>OP Meta Model Contaiment Validation Rule</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>OP Meta Model Containment Validation Rule</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
+	public T caseOPMetaModelContainmentValidationRule(OPMetaModelContainmentValidationRule object) {
 		return null;
 	}
 

@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getLinks <em>Links</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getProperties <em>Properties</em>}</li>
  *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getLinkValidationRules <em>Link Validation Rules</em>}</li>
- *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContaimentValidationRules <em>Contaiment Validation Rules</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules <em>Containment Validation Rules</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,19 +130,19 @@ public interface OPmetaDefinition extends EObject {
 	List<OPmodelLinkValidationRule> getLinkValidationRules();
 
 	/**
-	 * Returns the value of the '<em><b>Contaiment Validation Rules</b></em>' reference list.
-	 * The list contents are of type {@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule}.
+	 * Returns the value of the '<em><b>Containment Validation Rules</b></em>' reference list.
+	 * The list contents are of type {@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Contaiment Validation Rules</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Containment Validation Rules</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contaiment Validation Rules</em>' reference list.
-	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmetaDefinition_ContaimentValidationRules()
+	 * @return the value of the '<em>Containment Validation Rules</em>' reference list.
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmetaDefinition_ContainmentValidationRules()
 	 * @model
 	 * @generated
 	 */
-	List<OPmodelContaimentValidationRule> getContaimentValidationRules();
+	List<OPmodelContainmentValidationRule> getContainmentValidationRules();
 
 } // OPmetaDefinition

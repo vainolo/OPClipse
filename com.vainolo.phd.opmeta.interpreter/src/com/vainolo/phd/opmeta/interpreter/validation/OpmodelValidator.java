@@ -8,7 +8,7 @@ import com.vainolo.phd.opmodel.model.ContainerInstance;
 import com.vainolo.phd.opmodel.model.LinkInstance;
 import com.vainolo.phd.opmodel.model.NodeInstance;
 import com.vainolo.phd.opmodel.model.OPmetaDefinition;
-import com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule;
+import com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule;
 import com.vainolo.phd.opmodel.model.OPmodelLinkValidationRule;
 
 public class OpmodelValidator {
@@ -27,7 +27,7 @@ public class OpmodelValidator {
 	
 	private void initValidationRules(){
 		List<OPmodelLinkValidationRule> rawLinkRules =  interpretation.getLinkValidationRules();
-		List<OPmodelContaimentValidationRule> rawContaimentRules =  interpretation.getContaimentValidationRules();
+		List<OPmodelContainmentValidationRule> rawContaimentRules =  interpretation.getContainmentValidationRules();
 		
 		for (OPmodelLinkValidationRule rule:rawLinkRules){
 			ElementTypeDecriptor from = new ElementTypeDecriptor(rule.getSourceType());
@@ -36,7 +36,7 @@ public class OpmodelValidator {
 			linkValidator.addRule(from, link, to, rule.isValid());
 		}
 		
-		for (OPmodelContaimentValidationRule rule:rawContaimentRules){
+		for (OPmodelContainmentValidationRule rule:rawContaimentRules){
 			ElementTypeDecriptor container = new ElementTypeDecriptor(rule.getContainerType());
 			ElementTypeDecriptor containedItem = new ElementTypeDecriptor(rule.getNodeType());
 			contaimentValidator.addRule(container, containedItem, rule.isValid());

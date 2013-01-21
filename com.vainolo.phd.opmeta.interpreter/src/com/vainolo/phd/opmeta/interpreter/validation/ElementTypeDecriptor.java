@@ -44,7 +44,7 @@ public class ElementTypeDecriptor implements ElementType{
 				children.add(new ElementTypeDecriptor(child));
 			}
 		}
-		return parents;
+		return children;
 	}
 
 	@Override public boolean equals(Object obj) {
@@ -56,5 +56,10 @@ public class ElementTypeDecriptor implements ElementType{
 	@Override
 	public int hashCode() {
 		return descriptor.hashCode();
+	}
+
+	@Override
+	public String getTypeName() {
+		return descriptor.getName();
 	}
 }

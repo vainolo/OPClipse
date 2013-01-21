@@ -10,23 +10,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>OPmodel Contaiment Validation Rule</b></em>'.
+ * A representation of the model object '<em><b>OPmodel Containment Validation Rule</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#isValid <em>Valid</em>}</li>
- *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getContainerType <em>Container Type</em>}</li>
- *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getNodeType <em>Node Type</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#isValid <em>Valid</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getContainerType <em>Container Type</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getNodeType <em>Node Type</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContaimentValidationRule()
+ * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContainmentValidationRule()
  * @model
  * @generated
  */
-public interface OPmodelContaimentValidationRule extends EObject {
+public interface OPmodelContainmentValidationRule extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Valid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -37,14 +37,14 @@ public interface OPmodelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Valid</em>' attribute.
 	 * @see #setValid(boolean)
-	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContaimentValidationRule_Valid()
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContainmentValidationRule_Valid()
 	 * @model
 	 * @generated
 	 */
 	boolean isValid();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#isValid <em>Valid</em>}' attribute.
+	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#isValid <em>Valid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Valid</em>' attribute.
@@ -63,14 +63,14 @@ public interface OPmodelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Container Type</em>' reference.
 	 * @see #setContainerType(TypeDescriptor)
-	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContaimentValidationRule_ContainerType()
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContainmentValidationRule_ContainerType()
 	 * @model keys="id" required="true"
 	 * @generated
 	 */
 	TypeDescriptor getContainerType();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getContainerType <em>Container Type</em>}' reference.
+	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getContainerType <em>Container Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Container Type</em>' reference.
@@ -89,14 +89,14 @@ public interface OPmodelContaimentValidationRule extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Node Type</em>' reference.
 	 * @see #setNodeType(TypeDescriptor)
-	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContaimentValidationRule_NodeType()
+	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmodelContainmentValidationRule_NodeType()
 	 * @model keys="id" required="true"
 	 * @generated
 	 */
 	TypeDescriptor getNodeType();
 
 	/**
-	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule#getNodeType <em>Node Type</em>}' reference.
+	 * Sets the value of the '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule#getNodeType <em>Node Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Node Type</em>' reference.
@@ -105,4 +105,4 @@ public interface OPmodelContaimentValidationRule extends EObject {
 	 */
 	void setNodeType(TypeDescriptor value);
 
-} // OPmodelContaimentValidationRule
+} // OPmodelContainmentValidationRule

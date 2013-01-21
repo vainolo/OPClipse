@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getElementsDiagram <em>Elements Diagram</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinksDiagram <em>Links Diagram</em>}</li>
  *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getLinkValidations <em>Link Validations</em>}</li>
- *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getContaimentValidations <em>Contaiment Validations</em>}</li>
+ *   <li>{@link com.vainolo.phd.opmeta.model.OPMetaModelDiagram#getContainmentValidations <em>Containment Validations</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,19 +100,19 @@ public interface OPMetaModelDiagram extends EObject {
 	List<OPMetaModelLinkValidationRule> getLinkValidations();
 
 	/**
-	 * Returns the value of the '<em><b>Contaiment Validations</b></em>' containment reference list.
-	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule}.
+	 * Returns the value of the '<em><b>Containment Validations</b></em>' containment reference list.
+	 * The list contents are of type {@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Contaiment Validations</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Containment Validations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contaiment Validations</em>' containment reference list.
-	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelDiagram_ContaimentValidations()
+	 * @return the value of the '<em>Containment Validations</em>' containment reference list.
+	 * @see com.vainolo.phd.opmeta.model.opmetaPackage#getOPMetaModelDiagram_ContainmentValidations()
 	 * @model containment="true"
 	 * @generated
 	 */
-	List<OPMetaModelContaimentValidationRule> getContaimentValidations();
+	List<OPMetaModelContainmentValidationRule> getContainmentValidations();
 
 } // OPMetaModelDiagram

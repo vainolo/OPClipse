@@ -24,7 +24,6 @@ import com.vainolo.phd.opmodel.model.propertyType;
 public class OpmetaInterpreter {
 	
 	private static Map<String,TypeDescriptor> emptyExistingTypes =Collections.emptyMap();
-	//private List<PropertyDescriptor> allPropertyDescriptors = new LinkedList<>();
 	private HashMap<PropertyDescriptor,TypeDescriptor> propertyToSpecifingTypeMap = new HashMap<>();
 	
 	public static OPmodelHolder CreateOPmodelHolder(OPMetaModelDiagram diagram){
@@ -50,12 +49,9 @@ public class OpmetaInterpreter {
 		
 		interpretation.getProperties().addAll(creator.propertyToSpecifingTypeMap.keySet());
 		
-		// TODO : here should be some work of the validations
+		interpretation.getLinkValidationRules().addAll(ValidationInterpreter.calculateLinkValidationRules(diagram.getLinkValidations(),interpretation));
 		
-		// this wasn't tested all the way
-		// interpretation.getLinkValidationRules().addAll(ValidationInterpreter.calculateLinkValidationRules(diagram.getLinkValidations(),interpretation));
-		
-		
+		interpretation.getContainmentValidationRules().addAll(ValidationInterpreter.calculateContainmentValidationRules(diagram.getContainmentValidations(),interpretation));
 		
 		OPmodelHolder holder = opmodelFactory.eINSTANCE.createOPmodelHolder();
 		holder.setMetaDefinition(interpretation);
@@ -169,7 +165,6 @@ public class OpmetaInterpreter {
 			if(TryAddPropertyToType(existing, property)){
 				acceptedProps.add(property);
 			}
-		if (acceptedProps.isEmpty()) return;
 		
 		for (TypeDescriptor child:existing.getChildren())
 			recursiveSetProperties(child,acceptedProps,created);

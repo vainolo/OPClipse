@@ -133,8 +133,8 @@ public class opmodelAdapterFactory extends AdapterFactoryImpl {
 				return createOPmodelLinkValidationRuleAdapter();
 			}
 			@Override
-			public Adapter caseOPmodelContaimentValidationRule(OPmodelContaimentValidationRule object) {
-				return createOPmodelContaimentValidationRuleAdapter();
+			public Adapter caseOPmodelContainmentValidationRule(OPmodelContainmentValidationRule object) {
+				return createOPmodelContainmentValidationRuleAdapter();
 			}
 			@Override
 			public Adapter caseOPMNamedElement(OPMNamedElement object) {
@@ -371,16 +371,16 @@ public class opmodelAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule <em>OPmodel Contaiment Validation Rule</em>}'.
+	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule <em>OPmodel Containment Validation Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmodel.model.OPmodelContaimentValidationRule
+	 * @see com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule
 	 * @generated
 	 */
-	public Adapter createOPmodelContaimentValidationRuleAdapter() {
+	public Adapter createOPmodelContainmentValidationRuleAdapter() {
 		return null;
 	}
 

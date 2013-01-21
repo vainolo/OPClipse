@@ -15,22 +15,22 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
-import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContaimentValidationRuleAddCommand;
-import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContaimentValidationRuleEditCommand;
-import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContaimentValidationRuleRemoveCommand;
-import com.vainolo.phd.opmeta.gef.editor.dialogs.AddContaimentValidationRuleDialog;
-import com.vainolo.phd.opmeta.gef.editor.dialogs.EditContaimentValidationRuleDialog;
-import com.vainolo.phd.opmeta.gef.editor.input.ContaimentValidationListEditorInput;
-import com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule;
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContainmentValidationRuleAddCommand;
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContainmentValidationRuleEditCommand;
+import com.vainolo.phd.opmeta.gef.editor.command.OPMetaModelContainmentValidationRuleRemoveCommand;
+import com.vainolo.phd.opmeta.gef.editor.dialogs.AddContainmentValidationRuleDialog;
+import com.vainolo.phd.opmeta.gef.editor.dialogs.EditContainmentValidationRuleDialog;
+import com.vainolo.phd.opmeta.gef.editor.input.ContainmentValidationListEditorInput;
+import com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule;
 
-public class ContaimentValidationTableEditorPart extends TableEditorPart {
+public class ContainmentValidationTableEditorPart extends TableEditorPart {
 
-	private List<OPMetaModelContaimentValidationRule> list;
+	private List<OPMetaModelContainmentValidationRule> list;
 	
 	@Override
 	public void init(IEditorSite site, IEditorInput input)
 			throws PartInitException {
-		if (!(input instanceof ContaimentValidationListEditorInput)) 
+		if (!(input instanceof ContainmentValidationListEditorInput)) 
 			throw new PartInitException("Unknown input type");
 		setSite(site);
 	    setInput(input);
@@ -39,7 +39,7 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 	@Override
 	protected void setInput(IEditorInput input){
 		super.setInput(input);
-		list = ((ContaimentValidationListEditorInput)input).getList();
+		list = ((ContainmentValidationListEditorInput)input).getList();
 	}
 	
 	// This will create the columns for the table
@@ -52,7 +52,7 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 	    col.setLabelProvider(new ColumnLabelProvider() {
 	      @Override
 	      public String getText(Object element) {
-	    	  OPMetaModelContaimentValidationRule p = (OPMetaModelContaimentValidationRule) element;
+	    	  OPMetaModelContainmentValidationRule p = (OPMetaModelContainmentValidationRule) element;
 	        return p.getContainerTypeName();
 	      }
 	    });
@@ -62,7 +62,7 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 	    col.setLabelProvider(new ColumnLabelProvider() {
 	      @Override
 	      public String getText(Object element) {
-	    	  OPMetaModelContaimentValidationRule p = (OPMetaModelContaimentValidationRule) element;
+	    	  OPMetaModelContainmentValidationRule p = (OPMetaModelContainmentValidationRule) element;
 		        return p.getNodeTypeName();
 	      }
 	    });
@@ -72,14 +72,14 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 	    col.setLabelProvider(new ColumnLabelProvider() {
 	      @Override
 	      public String getText(Object element) {
-	    	  OPMetaModelContaimentValidationRule p = (OPMetaModelContaimentValidationRule) element;
+	    	  OPMetaModelContainmentValidationRule p = (OPMetaModelContainmentValidationRule) element;
 	    	  if (p.isValid()) return "True";
 	    	  return "False";
 	      }
 	    });
 	  }
 	
-	 @Override protected List<OPMetaModelContaimentValidationRule> getData() {return list;}
+	 @Override protected List<OPMetaModelContainmentValidationRule> getData() {return list;}
 	
 	@SuppressWarnings("unchecked")
 	public Command getEditCommand(){
@@ -88,22 +88,22 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 		        .getSelection();
 		if ((selection != null) && (selection instanceof IStructuredSelection)) {
 			IStructuredSelection sel = (IStructuredSelection)selection;
-			for (Iterator<OPMetaModelContaimentValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
-				OPMetaModelContaimentValidationRule orig = iterator.next(); 
-				EditContaimentValidationRuleDialog dialog = new EditContaimentValidationRuleDialog(getSite().getShell(),orig);
+			for (Iterator<OPMetaModelContainmentValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
+				OPMetaModelContainmentValidationRule orig = iterator.next(); 
+				EditContainmentValidationRuleDialog dialog = new EditContainmentValidationRuleDialog(getSite().getShell(),orig);
 				dialog.open();
-				OPMetaModelContaimentValidationRule rule = dialog.getRule();
-				ccmd.add(new OPMetaModelContaimentValidationRuleEditCommand(orig,rule));
+				OPMetaModelContainmentValidationRule rule = dialog.getRule();
+				ccmd.add(new OPMetaModelContainmentValidationRuleEditCommand(orig,rule));
 			}
 		}
 		return ccmd;
 	}
 
 	public Command getAddCommand(){
-		AddContaimentValidationRuleDialog dialog = new AddContaimentValidationRuleDialog(getSite().getShell());
+		AddContainmentValidationRuleDialog dialog = new AddContainmentValidationRuleDialog(getSite().getShell());
 		dialog.open();
-		OPMetaModelContaimentValidationRule rule = dialog.getRule();
-		return new OPMetaModelContaimentValidationRuleAddCommand(list,rule);
+		OPMetaModelContainmentValidationRule rule = dialog.getRule();
+		return new OPMetaModelContainmentValidationRuleAddCommand(list,rule);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -112,9 +112,9 @@ public class ContaimentValidationTableEditorPart extends TableEditorPart {
 		CompoundCommand ccmd = new CompoundCommand();
 		if ((selection == null) || !(selection instanceof IStructuredSelection)){ 
 			IStructuredSelection sel = (IStructuredSelection)selection;
-			for (Iterator<OPMetaModelContaimentValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
-				OPMetaModelContaimentValidationRule rule = iterator.next();
-				ccmd.add(new OPMetaModelContaimentValidationRuleRemoveCommand(list,rule));
+			for (Iterator<OPMetaModelContainmentValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
+				OPMetaModelContainmentValidationRule rule = iterator.next();
+				ccmd.add(new OPMetaModelContainmentValidationRuleRemoveCommand(list,rule));
 		    }
 		}
 		return ccmd;

@@ -16,7 +16,7 @@ import org.eclipse.ui.part.MultiPageEditorPart;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditor;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opm.model.OPMPackage;
-import com.vainolo.phd.opmeta.gef.editor.input.ContaimentValidationListEditorInput;
+import com.vainolo.phd.opmeta.gef.editor.input.ContainmentValidationListEditorInput;
 import com.vainolo.phd.opmeta.gef.editor.input.LinkValidationListEditorInput;
 import com.vainolo.phd.opmeta.gef.editor.input.OPMDiagramEditorInput;
 import com.vainolo.phd.opmeta.model.OPMetaModelDiagram;
@@ -106,7 +106,7 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 			e.printStackTrace();
 		}
 		try {
-			index = addPage(new ContaimentValidationTableEditorPart(), new ContaimentValidationListEditorInput(opmeta.getContaimentValidations()));
+			index = addPage(new ContainmentValidationTableEditorPart(), new ContainmentValidationListEditorInput(opmeta.getContainmentValidations()));
 			setPageText(index, "Contaiment Validation Rules");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),

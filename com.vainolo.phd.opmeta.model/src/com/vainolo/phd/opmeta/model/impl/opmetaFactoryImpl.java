@@ -61,7 +61,7 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case opmetaPackage.OP_META_MODEL_DIAGRAM: return createOPMetaModelDiagram();
-			case opmetaPackage.OP_META_MODEL_CONTAIMENT_VALIDATION_RULE: return createOPMetaModelContaimentValidationRule();
+			case opmetaPackage.OP_META_MODEL_CONTAINMENT_VALIDATION_RULE: return createOPMetaModelContainmentValidationRule();
 			case opmetaPackage.OP_META_MODEL_LINK_VALIDATION_RULE: return createOPMetaModelLinkValidationRule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -83,9 +83,9 @@ public class opmetaFactoryImpl extends EFactoryImpl implements opmetaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OPMetaModelContaimentValidationRule createOPMetaModelContaimentValidationRule() {
-		OPMetaModelContaimentValidationRuleImpl opMetaModelContaimentValidationRule = new OPMetaModelContaimentValidationRuleImpl();
-		return opMetaModelContaimentValidationRule;
+	public OPMetaModelContainmentValidationRule createOPMetaModelContainmentValidationRule() {
+		OPMetaModelContainmentValidationRuleImpl opMetaModelContainmentValidationRule = new OPMetaModelContainmentValidationRuleImpl();
+		return opMetaModelContainmentValidationRule;
 	}
 
 	/**

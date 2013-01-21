@@ -76,8 +76,8 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 				return createOPMetaModelDiagramAdapter();
 			}
 			@Override
-			public Adapter caseOPMetaModelContaimentValidationRule(OPMetaModelContaimentValidationRule object) {
-				return createOPMetaModelContaimentValidationRuleAdapter();
+			public Adapter caseOPMetaModelContainmentValidationRule(OPMetaModelContainmentValidationRule object) {
+				return createOPMetaModelContainmentValidationRuleAdapter();
 			}
 			@Override
 			public Adapter caseOPMetaModelLinkValidationRule(OPMetaModelLinkValidationRule object) {
@@ -118,16 +118,16 @@ public class opmetaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule <em>OP Meta Model Contaiment Validation Rule</em>}'.
+	 * Creates a new adapter for an object of class '{@link com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule <em>OP Meta Model Containment Validation Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContaimentValidationRule
+	 * @see com.vainolo.phd.opmeta.model.OPMetaModelContainmentValidationRule
 	 * @generated
 	 */
-	public Adapter createOPMetaModelContaimentValidationRuleAdapter() {
+	public Adapter createOPMetaModelContainmentValidationRuleAdapter() {
 		return null;
 	}
 
