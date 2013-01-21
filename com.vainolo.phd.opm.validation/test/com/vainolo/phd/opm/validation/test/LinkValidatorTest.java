@@ -19,6 +19,7 @@ public class LinkValidatorTest {
 	ElementTypeImpl nodeA 			= new ElementTypeImpl("nodeA");
 	ElementTypeImpl nodeA_son 		= new ElementTypeImpl("nodeA_son");
 	ElementTypeImpl nodeA_son2 		= new ElementTypeImpl("nodeA_son2");
+	ElementTypeImpl nodeA_son3 		= new ElementTypeImpl("nodeA_son3");
 	ElementTypeImpl nodeA_grandSon1	= new ElementTypeImpl("nodeA_grandSon1");
 	ElementTypeImpl nodeA_grandSon2	= new ElementTypeImpl("nodeA_grandSon2");
 	ElementTypeImpl nodeB 			= new ElementTypeImpl("nodeB");
@@ -98,6 +99,62 @@ public class LinkValidatorTest {
 		assertEquals(leafRules, validator.getLeafRules());
 	}
 	
+	@Test 
+	public void parentsCountTest1() {
+		addInheritence(nodeA, nodeA_son);
+		addInheritence(nodeA, nodeA_son2);
+		addInheritence(nodeA, nodeA_son3);
+		addInheritence(nodeA_son3, nodeA_grandSon1);
+		addInheritence(nodeA_son2, nodeA_grandSon1);
+		addInheritence(nodeA_son, nodeA_grandSon1);
+		addInheritence(nodeA_grandSon1, nodeA_grandSon2);
+		validator.addRule(nodeA, linkA, nodeB, true);
+		validator.addRule(nodeA_son, linkA, nodeB, false);
+		validator.addRule(nodeA_son2, linkA, nodeB, false);
+		boolean excepetionCaught = false;
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {
+			assertEquals("unhandled conflicet rule: 'from 'nodeA_grandSon1' to 'nodeB' with link 'linkA''", e.getMessage());
+			excepetionCaught = true;
+		}
+		assertTrue(excepetionCaught);
+		validator.addRule(nodeA_son3, linkA, nodeB, false);
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {assertTrue(false);}
+		assertFalse(validator.valdidate(nodeA_grandSon2, linkA, nodeB));
+		assertFalse(validator.valdidate(nodeA_grandSon1, linkA, nodeB));
+	}
+	
+	@Test 
+	public void parentsCountTest2() {
+		addInheritence(nodeA, nodeA_son);
+		addInheritence(nodeA, nodeA_son2);
+		addInheritence(nodeA, nodeA_son3);
+		addInheritence(nodeA_son3, nodeA_grandSon1);
+		addInheritence(nodeA_son2, nodeA_grandSon1);
+		addInheritence(nodeA_son, nodeA_grandSon1);
+		addInheritence(nodeA_grandSon1, nodeA_grandSon2);
+		validator.addRule(nodeA, linkA, nodeB, true);
+		validator.addRule(nodeA_son, linkA, nodeB, false);
+		validator.addRule(nodeA_son2, linkA, nodeB, false);
+		boolean excepetionCaught = false;
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {
+			assertEquals("unhandled conflicet rule: 'from 'nodeA_grandSon1' to 'nodeB' with link 'linkA''", e.getMessage());
+			excepetionCaught = true;
+		}
+		assertTrue(excepetionCaught);
+		validator.addRule(nodeA_son3, linkA, nodeB, false);
+		validator.addRule(nodeA_grandSon1, linkA, nodeB, true);
+		try {
+			validator.finalizeInit();
+		} catch (Exception e) {assertTrue(false);}
+		assertTrue(validator.valdidate(nodeA_grandSon2, linkA, nodeB));
+		assertTrue(validator.valdidate(nodeA_grandSon1, linkA, nodeB));
+	}
 	private void addInheritence(ElementTypeImpl parent, ElementTypeImpl son) {
 		parent.AddSon(son);
 		son.AddParent(parent);

@@ -20,10 +20,6 @@ public class ContainmentRulesContainer extends BasicRulesContainer<ContainmentRu
 			return false;
 		}
 		ContainmentRule newOpmRule = (ContainmentRule) newRule;
-		// TODO : do we really need this?
-		if ((getSpecificRule(newOpmRule)!=null) && (getSpecificRule(newOpmRule).getIsSpecified() == true)) {
-			return false;
-		}
 		ElementType container = newOpmRule.container();
 		ElementType containedItem = newOpmRule.containedItem();
 		

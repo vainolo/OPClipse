@@ -13,11 +13,12 @@ public class ContainmentRule extends BasicRule implements IContainmentRule{
 	public ContainmentRule (ElementType container, ElementType containedItem) {
 		this.container	 	= container;
 		this.containedItem	= containedItem;
-		// TODO : all these should get some default value
-		// this.NegativeParentsCount = NegativeParentCount;
-		// this.PositiveParentsCount = PositiveParentCount;
-		// this.isSpecified = isSpecified;
-		// this.value = value;
+		// default value for the remaining fields - if  object is built using this constructor these fields 
+		// won't be used
+		 this.NegativeParentsCount 	= 0;
+		 this.PositiveParentsCount 	= 0;
+		 this.isSpecified 			= false;
+		 this.value 				= false;
 	}
 	
 	public ContainmentRule (ElementType container, ElementType containedItem,  
