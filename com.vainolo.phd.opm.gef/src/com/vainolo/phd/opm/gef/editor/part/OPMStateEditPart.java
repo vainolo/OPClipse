@@ -74,6 +74,7 @@ public class OPMStateEditPart extends OPMNodeEditPart {
 	 * Currently the class only adapts to create a {@link SnapToHelper} when the
 	 * editor is in snapping mode (either to grid or to shapes).
 	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class key) {
 		if (key == SnapToHelper.class) {

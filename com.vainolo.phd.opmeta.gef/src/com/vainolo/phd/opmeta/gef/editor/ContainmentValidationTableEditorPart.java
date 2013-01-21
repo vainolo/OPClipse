@@ -110,7 +110,7 @@ public class ContainmentValidationTableEditorPart extends TableEditorPart {
 	public Command getDeleteCommand(){
 		ISelection selection = getSite().getSelectionProvider().getSelection();
 		CompoundCommand ccmd = new CompoundCommand();
-		if ((selection == null) || !(selection instanceof IStructuredSelection)){ 
+		if ((selection != null) && (selection instanceof IStructuredSelection)){ 
 			IStructuredSelection sel = (IStructuredSelection)selection;
 			for (Iterator<OPMetaModelContainmentValidationRule> iterator = sel.iterator(); iterator.hasNext();) {
 				OPMetaModelContainmentValidationRule rule = iterator.next();

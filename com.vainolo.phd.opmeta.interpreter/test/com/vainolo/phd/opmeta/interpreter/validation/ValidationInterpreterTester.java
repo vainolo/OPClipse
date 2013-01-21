@@ -40,6 +40,7 @@ public class ValidationInterpreterTester {
 		rule.setLinkTypeName("link");
 		rule.setSourceTypeName("Node1");
 		rule.setTargetTypeName("Node2");
+		rule.setValid(true);
 		
 		LinkedList<OPMetaModelLinkValidationRule> ruleLinks = new LinkedList<>();
 		ruleLinks.add(rule);
@@ -50,6 +51,7 @@ public class ValidationInterpreterTester {
 		assertEquals(descriptor3 ,tested.getLinkType());
 		assertEquals(descriptor1 ,tested.getSourceType());
 		assertEquals(descriptor2 ,tested.getTargetType());
+		assertTrue(tested.isValid());
 		
 		rule.setLinkTypeName("Non-Type");
 		try{
@@ -85,6 +87,7 @@ public class ValidationInterpreterTester {
 		OPMetaModelContainmentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Container1");
 		rule.setNodeTypeName("Node1");
+		rule.setValid(true);
 		
 		LinkedList<OPMetaModelContainmentValidationRule> ruleLinks = new LinkedList<>();
 		ruleLinks.add(rule);
@@ -94,6 +97,7 @@ public class ValidationInterpreterTester {
 		OPmodelContainmentValidationRule tested =result.get(0);
 		assertEquals(descriptor1 ,tested.getNodeType());
 		assertEquals(descriptor2 ,tested.getContainerType());
+		assertTrue(tested.isValid());
 		
 		rule.setContainerTypeName("Non-Type");
 		try{

@@ -48,7 +48,7 @@ public abstract class OPModelNodeFigure extends Figure {
 	   * 
 	   * @return the label where the name of the state is shown.
 	   */
-	  protected Label getNameLabel() {
+	  public Label getNameLabel() {
 	    return nameLabel;
 	  }
 	

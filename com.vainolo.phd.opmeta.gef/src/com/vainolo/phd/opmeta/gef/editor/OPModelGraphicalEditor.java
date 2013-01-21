@@ -5,10 +5,13 @@ import java.util.EventObject;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.KeyStroke;
 import org.eclipse.gef.palette.PaletteRoot;
+import org.eclipse.gef.ui.actions.GEFActionConstants;
 import org.eclipse.gef.ui.actions.ToggleGridAction;
 import org.eclipse.gef.ui.actions.ToggleSnapToGeometryAction;
 import org.eclipse.gef.ui.parts.GraphicalEditorWithFlyoutPalette;
+import org.eclipse.gef.ui.parts.GraphicalViewerKeyHandler;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.ui.IEditorInput;
@@ -17,6 +20,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PartInitException;
 
+//import com.vainolo.phd.opm.gef.action.ResizeToContentsAction;
 import com.vainolo.phd.opm.gef.editor.OPMGraphicalEditorContextMenuProvider;
 import com.vainolo.phd.opm.gef.editor.factory.OPMIdManager;
 import com.vainolo.phd.opmeta.gef.editor.parts.OPModelEditPartFactory;
@@ -90,9 +94,18 @@ public class OPModelGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	    getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));
 	    getGraphicalViewer().setContextMenu(
 	        new OPMGraphicalEditorContextMenuProvider(getGraphicalViewer(), getActionRegistry()));
-	    //configureKeyboardShortcuts();
+	    configureKeyboardShortcuts();
 	  }
 
+	private void configureKeyboardShortcuts() {
+	    GraphicalViewerKeyHandler keyHandler = new GraphicalViewerKeyHandler(getGraphicalViewer());
+	    keyHandler.put(KeyStroke.getPressed(SWT.F2, 0), getActionRegistry().getAction(GEFActionConstants.DIRECT_EDIT));
+//	    keyHandler.put(KeyStroke.getPressed(SWT.F3, 0),
+//	        getActionRegistry().getAction(ResizeToContentsAction.RESIZE_TO_CONTENTS_ID));
+	    getGraphicalViewer().setKeyHandler(keyHandler);
+
+	  }
+	
 	@Override
 	  protected void initializeGraphicalViewer() {
 	    super.initializeGraphicalViewer();

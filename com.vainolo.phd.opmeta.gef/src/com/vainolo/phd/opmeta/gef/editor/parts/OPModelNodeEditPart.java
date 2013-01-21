@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -14,12 +15,17 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.SnapToGeometry;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.ui.views.properties.IPropertySource;
 
+import com.vainolo.phd.opm.gef.editor.part.OPMNamedElementCellEditorLocator;
+import com.vainolo.phd.opm.gef.editor.part.OPMNamedElementDirectEditManager;
+import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeFigure;
 import com.vainolo.phd.opmeta.gef.editor.figure.OPModelNodeRectangleFigure;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpNodeEditPolicy;
 import com.vainolo.phd.opmeta.gef.editor.policy.OpXYLayoutEditPolicy;
@@ -72,6 +78,17 @@ public class OPModelNodeEditPart extends AbstractGraphicalEditPart
 	protected List<LinkInstance> getModelTargetConnections() {
 		NodeInstance model = (NodeInstance) getModel();
 		return new ArrayList<LinkInstance>(model.getIncomingLinks());
+	}
+	
+	public void performRequest(Request req) {
+		if (req.getType() == RequestConstants.REQ_DIRECT_EDIT) {
+			Label label = ((OPModelNodeFigure) getFigure()).getNameLabel();
+			OPMNamedElementDirectEditManager manager = new OPMNamedElementDirectEditManager(this,
+					TextCellEditor.class,
+					new OPMNamedElementCellEditorLocator(label),
+					label);
+			manager.show();
+		}
 	}
 	
 	@Override
