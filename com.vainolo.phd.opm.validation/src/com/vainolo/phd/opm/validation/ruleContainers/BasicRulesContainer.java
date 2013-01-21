@@ -27,7 +27,7 @@ public abstract class BasicRulesContainer<TRule extends BasicRule> {
 		if (existingRule == null ) {
 			return false;
 		}
-		return existingRule.getValue();	
+		return existingRule.getValue();
 	}
 
 	protected boolean isSpecified(TRule newRule) {
