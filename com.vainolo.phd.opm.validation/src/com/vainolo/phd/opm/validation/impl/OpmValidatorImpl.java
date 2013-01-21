@@ -22,14 +22,14 @@ public class OpmValidatorImpl implements OpmValidator {
 	public static OpmValidatorImpl init(){
 		if (instance == null){
 			OpmValidatorImpl validator = new OpmValidatorImpl();
-			validator.initContaimentRules();
+			validator.initContainmentRules();
 			validator.initLinkRules();
 			instance = validator;
 		}
 		return instance;
 	}
 	
-	private void initContaimentRules(){
+	private void initContainmentRules(){
 		ElementTypeEClassImpl opmDiagram = new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMObjectProcessDiagram());
 		ElementTypeEClassImpl opmObject = new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMObject());
 		ElementTypeEClassImpl opmProcess = new ElementTypeEClassImpl(OPMPackage.eINSTANCE.getOPMProcess());
@@ -53,7 +53,7 @@ public class OpmValidatorImpl implements OpmValidator {
 		try{
 			containmentValidator.finalizeInit();
 		}catch (Exception ex){
-			throw new RuntimeException("failed to init opm contaiment rules",ex);
+			throw new RuntimeException("failed to init opm containment rules",ex);
 		}
 		
 	}
@@ -130,7 +130,7 @@ public class OpmValidatorImpl implements OpmValidator {
 	}
 
 	@Override
-	public boolean validateContaiment(EClass container, EClass node) {
+	public boolean validateContainment(EClass container, EClass node) {
 		if (!OPMPackage.eINSTANCE.getOPMContainer().isSuperTypeOf(container) || 
 				!OPMPackage.eINSTANCE.getOPMNode().isSuperTypeOf(node)) return false;
 		
@@ -138,7 +138,7 @@ public class OpmValidatorImpl implements OpmValidator {
 	}
 
 	@Override
-	public boolean validateContaiment(OPMContainer container, EClass node) {
+	public boolean validateContainment(OPMContainer container, EClass node) {
 		if (!OPMPackage.eINSTANCE.getOPMNode().isSuperTypeOf(node)) return false;
 		
 		return containmentValidator.valdidate(new ElementTypeEClassImpl(container.eClass()), new ElementTypeEClassImpl(node));

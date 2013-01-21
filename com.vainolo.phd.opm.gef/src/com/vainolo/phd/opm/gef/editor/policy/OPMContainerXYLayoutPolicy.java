@@ -66,7 +66,7 @@ public class OPMContainerXYLayoutPolicy extends XYLayoutEditPolicy {
 		EClass newObjectType = (EClass)request.getNewObjectType();
 		
 		if (OPMPackage.eINSTANCE.getOPMNode().isSuperTypeOf(newObjectType)){
-			if (!OpmValidator.eINSTANCE.validateContaiment(model, newObjectType)){
+			if (!OpmValidator.eINSTANCE.validateContainment(model, newObjectType)){
 				return null;
 			}
 			OPMNodeCreateCommand command = new OPMNodeCreateCommand();

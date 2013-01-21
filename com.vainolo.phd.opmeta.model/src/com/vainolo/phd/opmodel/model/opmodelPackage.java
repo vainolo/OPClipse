@@ -711,7 +711,7 @@ public interface opmodelPackage extends EPackage {
 	int OPMETA_DEFINITION__LINK_VALIDATION_RULES = 5;
 
 	/**
-	 * The feature id for the '<em><b>Containment Validation Rules</b></em>' reference list.
+	 * The feature id for the '<em><b>Containment Validation Rules</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1450,10 +1450,10 @@ public interface opmodelPackage extends EPackage {
 	EReference getOPmetaDefinition_LinkValidationRules();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules <em>Containment Validation Rules</em>}'.
+	 * Returns the meta object for the containment reference list '{@link com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules <em>Containment Validation Rules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Containment Validation Rules</em>'.
+	 * @return the meta object for the containment reference list '<em>Containment Validation Rules</em>'.
 	 * @see com.vainolo.phd.opmodel.model.OPmetaDefinition#getContainmentValidationRules()
 	 * @see #getOPmetaDefinition()
 	 * @generated
@@ -2022,7 +2022,7 @@ public interface opmodelPackage extends EPackage {
 		EReference OPMETA_DEFINITION__LINK_VALIDATION_RULES = eINSTANCE.getOPmetaDefinition_LinkValidationRules();
 
 		/**
-		 * The meta object literal for the '<em><b>Containment Validation Rules</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Containment Validation Rules</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

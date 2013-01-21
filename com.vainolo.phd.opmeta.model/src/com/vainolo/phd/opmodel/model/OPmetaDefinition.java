@@ -130,7 +130,7 @@ public interface OPmetaDefinition extends EObject {
 	List<OPmodelLinkValidationRule> getLinkValidationRules();
 
 	/**
-	 * Returns the value of the '<em><b>Containment Validation Rules</b></em>' reference list.
+	 * Returns the value of the '<em><b>Containment Validation Rules</b></em>' containment reference list.
 	 * The list contents are of type {@link com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -138,9 +138,9 @@ public interface OPmetaDefinition extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Containment Validation Rules</em>' reference list.
+	 * @return the value of the '<em>Containment Validation Rules</em>' containment reference list.
 	 * @see com.vainolo.phd.opmodel.model.opmodelPackage#getOPmetaDefinition_ContainmentValidationRules()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	List<OPmodelContainmentValidationRule> getContainmentValidationRules();

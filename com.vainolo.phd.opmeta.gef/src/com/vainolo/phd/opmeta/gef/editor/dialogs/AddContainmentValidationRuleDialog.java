@@ -33,8 +33,8 @@ public class AddContainmentValidationRuleDialog extends TitleAreaDialog {
 	@Override
 	  protected Control createContents(Composite parent) {
 	    Control contents = super.createContents(parent);
-	    setTitle("Add a new Contaiment Validation Rule");
-	    setMessage("Please enter the data of the new Contaiment Validation Rule",
+	    setTitle("Add a new Containment Validation Rule");
+	    setMessage("Please enter the data of the new Containment Validation Rule",
 	        IMessageProvider.INFORMATION);
 	    return contents;
 	  }

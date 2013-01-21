@@ -107,10 +107,10 @@ public class OPMetaMultiGraphicalEditor extends MultiPageEditorPart implements I
 		}
 		try {
 			index = addPage(new ContainmentValidationTableEditorPart(), new ContainmentValidationListEditorInput(opmeta.getContainmentValidations()));
-			setPageText(index, "Contaiment Validation Rules");
+			setPageText(index, "Containment Validation Rules");
 		} catch (PartInitException e) {
 			 ErrorDialog.openError(getSite().getShell(),
-                     "Error creating Contaiment Validation Rules editor",
+                     "Error creating Containment Validation Rules editor",
                      null, e.getStatus());
 			e.printStackTrace();
 		}

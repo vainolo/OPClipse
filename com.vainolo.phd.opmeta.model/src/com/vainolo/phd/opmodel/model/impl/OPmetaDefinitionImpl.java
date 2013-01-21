@@ -108,7 +108,7 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 	protected EList<OPmodelLinkValidationRule> linkValidationRules;
 
 	/**
-	 * The cached value of the '{@link #getContainmentValidationRules() <em>Containment Validation Rules</em>}' reference list.
+	 * The cached value of the '{@link #getContainmentValidationRules() <em>Containment Validation Rules</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getContainmentValidationRules()
@@ -215,7 +215,7 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 	 */
 	public List<OPmodelContainmentValidationRule> getContainmentValidationRules() {
 		if (containmentValidationRules == null) {
-			containmentValidationRules = new EObjectResolvingEList<OPmodelContainmentValidationRule>(OPmodelContainmentValidationRule.class, this, opmodelPackage.OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES);
+			containmentValidationRules = new EObjectContainmentEList<OPmodelContainmentValidationRule>(OPmodelContainmentValidationRule.class, this, opmodelPackage.OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES);
 		}
 		return containmentValidationRules;
 	}
@@ -234,6 +234,8 @@ public class OPmetaDefinitionImpl extends EObjectImpl implements OPmetaDefinitio
 				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
 			case opmodelPackage.OPMETA_DEFINITION__LINK_VALIDATION_RULES:
 				return ((InternalEList<?>)getLinkValidationRules()).basicRemove(otherEnd, msgs);
+			case opmodelPackage.OPMETA_DEFINITION__CONTAINMENT_VALIDATION_RULES:
+				return ((InternalEList<?>)getContainmentValidationRules()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

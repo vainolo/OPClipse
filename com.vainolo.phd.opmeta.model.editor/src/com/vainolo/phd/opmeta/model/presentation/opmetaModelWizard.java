@@ -486,27 +486,27 @@ public class opmetaModelWizard extends Wizard implements INewWizard {
 		
 	}
 
-	private void fillOpmContainmentRules(List<OPMetaModelContainmentValidationRule> contaimentRules){
+	private void fillOpmContainmentRules(List<OPMetaModelContainmentValidationRule> containmentRules){
 		OPMetaModelContainmentValidationRule rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Diagram");
 		rule.setNodeTypeName("Node");
 		rule.setValid(true);
-		contaimentRules.add(rule);
+		containmentRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Diagram");
 		rule.setNodeTypeName("State");
 		rule.setValid(false);
-		contaimentRules.add(rule);
+		containmentRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Thing");
 		rule.setNodeTypeName("Thing");
 		rule.setValid(true);
-		contaimentRules.add(rule);
+		containmentRules.add(rule);
 		rule = opmetaFactory.eINSTANCE.createOPMetaModelContainmentValidationRule();
 		rule.setContainerTypeName("Object");
 		rule.setNodeTypeName("State");
 		rule.setValid(true);
-		contaimentRules.add(rule);
+		containmentRules.add(rule);
 	}
 	
 	private void fillOpmLinkRules(List<OPMetaModelLinkValidationRule> linkRules){

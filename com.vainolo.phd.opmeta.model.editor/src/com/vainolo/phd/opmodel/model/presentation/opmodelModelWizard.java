@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -77,6 +78,7 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import com.vainolo.phd.opmeta.interpreter.OpmetaInterpreter;
 import com.vainolo.phd.opmeta.interpreter.OpmodelFactory;
 import com.vainolo.phd.opmodel.model.ContainerInstance;
+import com.vainolo.phd.opmodel.model.OPmodelContainmentValidationRule;
 import com.vainolo.phd.opmodel.model.OPmodelHolder;
 import com.vainolo.phd.opmodel.model.TypeDescriptor;
 import org.eclipse.core.runtime.Path;
@@ -225,6 +227,8 @@ public class opmodelModelWizard extends Wizard implements INewWizard {
 							// Add the initial model object to the contents.
 							//
 							EObject rootObject = createInitialModel();
+							//((OPmodelHolder)rootObject).getMetaDefinition().getContainmentValidationRules().get(0)
+							//((EObjectResolvingEList<OPmodelContainmentValidationRule>)((OPmodelHolder)rootObject).getMetaDefinition().getContainmentValidationRules()).eResource()
 							if (rootObject != null) {
 								resource.getContents().add(rootObject);
 							}

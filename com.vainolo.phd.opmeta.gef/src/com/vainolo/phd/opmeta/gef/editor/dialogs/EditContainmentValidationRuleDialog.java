@@ -20,8 +20,8 @@ public class EditContainmentValidationRuleDialog extends
 	@Override
 	  protected Control createContents(Composite parent) {
 	    Control contents = super.createContents(parent);
-	    setTitle("Edit a Contaiment Validation Rule");
-	    setMessage("Please change the data of the Contaiment Validation Rule",
+	    setTitle("Edit a Containment Validation Rule");
+	    setMessage("Please change the data of the Containment Validation Rule",
 	        IMessageProvider.INFORMATION);
 	    return contents;
 	  }

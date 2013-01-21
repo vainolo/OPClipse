@@ -93,7 +93,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="linkValidationRules" upperBound="-1"
         eType="#//OPmodelLinkValidationRule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="containmentValidationRules"
-        upperBound="-1" eType="#//OPmodelContainmentValidationRule"/>
+        upperBound="-1" eType="#//OPmodelContainmentValidationRule" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="propertyType">
     <eLiterals name="String"/>

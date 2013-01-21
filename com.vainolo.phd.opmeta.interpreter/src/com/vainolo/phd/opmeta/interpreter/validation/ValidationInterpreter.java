@@ -77,7 +77,7 @@ public class ValidationInterpreter {
 			ElementTypeDecriptor container = new ElementTypeDecriptor(containerDescriptor);
 			
 			TypeDescriptor containedItemDescriptor = getDescriptor(interpretation.getNodes(),validation.getNodeTypeName());
-			if (containedItemDescriptor == null) throw new RuntimeException("Cannot find Container with name '" + validation.getNodeTypeName() + "' to use as contained item type");
+			if (containedItemDescriptor == null) throw new RuntimeException("Cannot find Node with name '" + validation.getNodeTypeName() + "' to use as contained item type");
 			ElementTypeDecriptor containedItem = new ElementTypeDecriptor(containedItemDescriptor);
 			
 			validator.addRule(container, containedItem, validation.isValid());

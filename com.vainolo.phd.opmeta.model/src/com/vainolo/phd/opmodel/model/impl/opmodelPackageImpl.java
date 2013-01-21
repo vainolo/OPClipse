@@ -1004,7 +1004,7 @@ public class opmodelPackageImpl extends EPackageImpl implements opmodelPackage {
 		getOPmetaDefinition_Links().getEKeys().add(this.getTypeDescriptor_Id());
 		initEReference(getOPmetaDefinition_Properties(), this.getPropertyDescriptor(), null, "properties", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOPmetaDefinition_LinkValidationRules(), this.getOPmodelLinkValidationRule(), null, "linkValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOPmetaDefinition_ContainmentValidationRules(), this.getOPmodelContainmentValidationRule(), null, "containmentValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOPmetaDefinition_ContainmentValidationRules(), this.getOPmodelContainmentValidationRule(), null, "containmentValidationRules", null, 0, -1, OPmetaDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyInstanceEClass, PropertyInstance.class, "PropertyInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertyInstance_Descriptor(), this.getPropertyDescriptor(), null, "descriptor", null, 0, 1, PropertyInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -23,8 +23,8 @@ public interface OpmValidator {
 	
 	boolean validateLink(EClass fromType, EClass link, EClass toType);
 	
-	boolean validateContaiment(OPMContainer container, EClass node);
+	boolean validateContainment(OPMContainer container, EClass node);
 	
-	boolean validateContaiment(EClass container, EClass node);
+	boolean validateContainment(EClass container, EClass node);
 	
 }

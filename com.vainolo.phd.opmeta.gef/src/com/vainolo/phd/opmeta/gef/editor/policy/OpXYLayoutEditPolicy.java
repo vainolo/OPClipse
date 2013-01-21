@@ -48,7 +48,7 @@ public class OpXYLayoutEditPolicy extends XYLayoutEditPolicy {
 		Command retVal = null;
 
 		NodeInstance newNode = (NodeInstance) request.getNewObject();
-		if (opmodelValidator.validateContaiment(model, newNode)){
+		if (opmodelValidator.validateContainment(model, newNode)){
 			
 			OPModelNodeCreateCommand command = new OPModelNodeCreateCommand();
 			Rectangle constraints = (Rectangle) getConstraintFor(request);

@@ -156,42 +156,42 @@ public class OpmValidatorTest {
 	}
 	
 	@Test
-	public void testValidateContaiment() {
+	public void testValidateContainment() {
 		
 		// test Diagram
-		assertTrue(validator.validateContaiment(opmDiagram, opmObject));
-		assertTrue(validator.validateContaiment(opmDiagram, opmProcess));
-		assertFalse(validator.validateContaiment(opmDiagram, opmState));
-		assertTrue(validator.validateContaiment(opmDiagram, opmLabel));
-		assertFalse(validator.validateContaiment(opmDiagram, opmDiagram));
+		assertTrue(validator.validateContainment(opmDiagram, opmObject));
+		assertTrue(validator.validateContainment(opmDiagram, opmProcess));
+		assertFalse(validator.validateContainment(opmDiagram, opmState));
+		assertTrue(validator.validateContainment(opmDiagram, opmLabel));
+		assertFalse(validator.validateContainment(opmDiagram, opmDiagram));
 		
 		// test Object
-		assertTrue(validator.validateContaiment(opmObject, opmObject));
-		assertTrue(validator.validateContaiment(opmObject, opmProcess));
-		assertTrue(validator.validateContaiment(opmObject, opmState));
-		assertFalse(validator.validateContaiment(opmObject, opmLabel));
-		assertFalse(validator.validateContaiment(opmObject, opmDiagram));
+		assertTrue(validator.validateContainment(opmObject, opmObject));
+		assertTrue(validator.validateContainment(opmObject, opmProcess));
+		assertTrue(validator.validateContainment(opmObject, opmState));
+		assertFalse(validator.validateContainment(opmObject, opmLabel));
+		assertFalse(validator.validateContainment(opmObject, opmDiagram));
 		
 		// test Process
-		assertTrue(validator.validateContaiment(opmProcess, opmObject));
-		assertTrue(validator.validateContaiment(opmProcess, opmProcess));
-		assertFalse(validator.validateContaiment(opmProcess, opmState));
-		assertFalse(validator.validateContaiment(opmProcess, opmLabel));
-		assertFalse(validator.validateContaiment(opmProcess, opmDiagram));
+		assertTrue(validator.validateContainment(opmProcess, opmObject));
+		assertTrue(validator.validateContainment(opmProcess, opmProcess));
+		assertFalse(validator.validateContainment(opmProcess, opmState));
+		assertFalse(validator.validateContainment(opmProcess, opmLabel));
+		assertFalse(validator.validateContainment(opmProcess, opmDiagram));
 		
 		// test State
-		assertFalse(validator.validateContaiment(opmState, opmObject));
-		assertFalse(validator.validateContaiment(opmState, opmProcess));
-		assertFalse(validator.validateContaiment(opmState, opmState));
-		assertFalse(validator.validateContaiment(opmState, opmLabel));
-		assertFalse(validator.validateContaiment(opmState, opmDiagram));
+		assertFalse(validator.validateContainment(opmState, opmObject));
+		assertFalse(validator.validateContainment(opmState, opmProcess));
+		assertFalse(validator.validateContainment(opmState, opmState));
+		assertFalse(validator.validateContainment(opmState, opmLabel));
+		assertFalse(validator.validateContainment(opmState, opmDiagram));
 		
 		// test Label
-		assertFalse(validator.validateContaiment(opmLabel, opmObject));
-		assertFalse(validator.validateContaiment(opmLabel, opmProcess));
-		assertFalse(validator.validateContaiment(opmLabel, opmState));
-		assertFalse(validator.validateContaiment(opmLabel, opmLabel));
-		assertFalse(validator.validateContaiment(opmState, opmDiagram));		
+		assertFalse(validator.validateContainment(opmLabel, opmObject));
+		assertFalse(validator.validateContainment(opmLabel, opmProcess));
+		assertFalse(validator.validateContainment(opmLabel, opmState));
+		assertFalse(validator.validateContainment(opmLabel, opmLabel));
+		assertFalse(validator.validateContainment(opmState, opmDiagram));		
 	}
 
 }

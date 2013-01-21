@@ -15,19 +15,19 @@ public class OpmodelValidator {
 
 	private OPmetaDefinition interpretation;
 	private LinkValidator linkValidator;
-	private ContainmentValidator contaimentValidator;
+	private ContainmentValidator containmentValidator;
 	
 	public OpmodelValidator(OPmetaDefinition interpretation){
 		this.interpretation = interpretation;
 		linkValidator = new LinkValidator();
-		contaimentValidator = new ContainmentValidator();
+		containmentValidator = new ContainmentValidator();
 		
 		initValidationRules();
 	}
 	
 	private void initValidationRules(){
 		List<OPmodelLinkValidationRule> rawLinkRules =  interpretation.getLinkValidationRules();
-		List<OPmodelContainmentValidationRule> rawContaimentRules =  interpretation.getContainmentValidationRules();
+		List<OPmodelContainmentValidationRule> rawContainmentRules =  interpretation.getContainmentValidationRules();
 		
 		for (OPmodelLinkValidationRule rule:rawLinkRules){
 			ElementTypeDecriptor from = new ElementTypeDecriptor(rule.getSourceType());
@@ -36,16 +36,16 @@ public class OpmodelValidator {
 			linkValidator.addRule(from, link, to, rule.isValid());
 		}
 		
-		for (OPmodelContainmentValidationRule rule:rawContaimentRules){
+		for (OPmodelContainmentValidationRule rule:rawContainmentRules){
 			ElementTypeDecriptor container = new ElementTypeDecriptor(rule.getContainerType());
 			ElementTypeDecriptor containedItem = new ElementTypeDecriptor(rule.getNodeType());
-			contaimentValidator.addRule(container, containedItem, rule.isValid());
+			containmentValidator.addRule(container, containedItem, rule.isValid());
 		}
 		
 		try
 		{
 			linkValidator.finalizeInit();
-			contaimentValidator.finalizeInit();
+			containmentValidator.finalizeInit();
 		} catch (Exception ex){
 			throw new RuntimeException("Failed to initialize OpmodelValidator", ex);
 		}
@@ -68,11 +68,11 @@ public class OpmodelValidator {
 		return linkValidator.valdidate(fromType, linkType,toType);
 	}
 	
-	public boolean validateContaiment(ContainerInstance container, NodeInstance containedItem){
+	public boolean validateContainment(ContainerInstance container, NodeInstance containedItem){
 		if ((container == null) || (containedItem == null)) return false;
 		ElementTypeDecriptor containerType = new ElementTypeDecriptor(container.getType());
 		ElementTypeDecriptor containedItemType = new ElementTypeDecriptor(containedItem.getType());
 		
-		return contaimentValidator.valdidate(containerType, containedItemType);
+		return containmentValidator.valdidate(containerType, containedItemType);
 	}
 }
