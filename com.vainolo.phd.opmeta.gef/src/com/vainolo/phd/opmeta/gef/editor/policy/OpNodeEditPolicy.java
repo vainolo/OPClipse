@@ -39,6 +39,10 @@ public class OpNodeEditPolicy extends GraphicalNodeEditPolicy {
 		OPModelLinkCreateCommand linkCreateCommand = (OPModelLinkCreateCommand) request.getStartCommand();
 		NodeInstance target = (NodeInstance) getHost().getModel();
 		if (target == linkCreateCommand.getSource()) return null;
+		
+		// validation
+		if (!opmodelValidator.validateLink(linkCreateCommand.getSource(), linkCreateCommand.getLink(),target)) return null;
+		
 	    linkCreateCommand.setTarget(target);
 	    return linkCreateCommand;
 	}
